@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/CosmoXtrike/Scenes/Title.unity
+    guid: 7204136fa9912944f9f7dd2ee967e151
+  - enabled: 1
+    path: Assets/CosmoXtrike/Scenes/Game.unity
+    guid: c01a830adac9191459b06c96a02906a4
+  - enabled: 0
+    path: Assets/CosmoXtrike/Scenes/Planer.unity
+    guid: 7b03e278f814ca9479a75a4e07d7c60d
   m_configObjects: {}
