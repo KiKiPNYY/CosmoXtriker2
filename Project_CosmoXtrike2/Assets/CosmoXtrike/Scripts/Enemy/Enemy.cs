@@ -8,6 +8,7 @@ abstract public class Enemy : MonoBehaviour
     //Flag機かどうか
     [SerializeField]
     protected bool flagShip;
+    [HideInInspector]
     public bool FlagShip{
         get { return flagShip; }
     }
