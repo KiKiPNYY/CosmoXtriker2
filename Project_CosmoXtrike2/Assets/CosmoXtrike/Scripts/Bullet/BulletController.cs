@@ -19,6 +19,11 @@ public class BulletController
         m_bullets.Add(CreateBullet());
     }
 
+    /// <summary>
+    /// 発射関数
+    /// </summary>
+    /// <param name="_instncePos"></param>
+    /// <param name="_direction"></param>
     public virtual void Fire(Vector3 _instncePos ,Vector3 _direction)
     {
         Bullet bullet = GetBullet();
@@ -56,9 +61,17 @@ public class BulletController
         return newBullet;
     }
 
-    public void ThisControllerUpdate(float deltaTime)
+    /// <summary>
+    /// Updateのまとめ
+    /// </summary>
+    /// <param name="_deltaTime"></param>
+    public void ThisControllerUpdate(float _deltaTime)
     {
-        
+        for(int i = 0; i < m_bullets.Count; i++)
+        {
+            if (!m_bullets[i].ThisObjectActive) { continue; }
+            m_bullets[i].ThisObjectUpdate(_deltaTime);
+        }
     }
 
 }

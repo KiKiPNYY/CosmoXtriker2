@@ -32,6 +32,7 @@ public class Bullet : MonoBehaviour
         if (m_rb == null)
         {
             m_rb = this.transform.gameObject.GetComponent<Rigidbody>();
+            m_rb.useGravity = false;
         }
 
         BoxCollider collider = this.transform.gameObject.GetComponent<BoxCollider>();

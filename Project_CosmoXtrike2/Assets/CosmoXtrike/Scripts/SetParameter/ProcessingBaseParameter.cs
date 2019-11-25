@@ -12,7 +12,7 @@ public interface CommonProcessing
     void Damege(int _addDamege);
 }
 
-[CreateAssetMenu(menuName = "CreateScriptable/Create BulletData")]
+[CreateAssetMenu(menuName = "CreateScriptable/Create ProcessingBaseParameterData")]
 public class ProcessingBaseParameterData : ScriptableObject
 {
     [SerializeField] private int m_maxHp;
