@@ -42,10 +42,10 @@ public class BulletManager : MonoBehaviour
 
     public void AddBullet(Bullet _bullet)
     {
-        for(int i = 0; i < m_bulletControllers.Count; i++)
+        for (int i = 0; i < m_bulletControllers.Count; i++)
         {
-            if(m_bulletControllers[i].ThisHaveBullet != null) { continue; }
-            if(m_bulletControllers[i].ThisHaveBullet == _bullet) { return; }
+            if (m_bulletControllers[i].ThisHaveBullet != null) { continue; }
+            if (m_bulletControllers[i].ThisHaveBullet == _bullet) { return; }
         }
 
         BulletController newBulletController = new BulletController();
@@ -53,13 +53,13 @@ public class BulletManager : MonoBehaviour
         m_bulletControllers.Add(newBulletController);
     }
 
-    public void Fire(Bullet _bullet, Vector3 _instncePos, Vector3 _direction)
+    public void Fire(Bullet _bullet, Vector3 _instncePos, Vector3 _direction, ThisType _thisType)
     {
-        
+
         for (int i = 0; i < m_bulletControllers.Count; i++)
         {
             if (m_bulletControllers[i].ThisHaveBullet != _bullet) { continue; }
-            m_bulletControllers[i].Fire(_instncePos, _direction);
+            m_bulletControllers[i].Fire(_instncePos, _direction, _thisType);
         }
     }
 
@@ -77,7 +77,7 @@ public class BulletManager : MonoBehaviour
     private void FixedUpdate()
     {
         float deltaTime = Time.deltaTime;
-        for(int i = 0; i < m_bulletControllers.Count;i++)
+        for (int i = 0; i < m_bulletControllers.Count; i++)
         {
             m_bulletControllers[i].ThisControllerUpdate(deltaTime);
         }

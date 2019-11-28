@@ -19,16 +19,28 @@ public class BulletController
         m_bullets.Add(CreateBullet());
     }
 
+    ///// <summary>
+    ///// 発射関数(ミサイル)
+    ///// </summary>
+    ///// <param name="_instncePos"></param>
+    ///// <param name="_direction"></param>
+    //public virtual void Fire(Vector3 _instncePos, Vector3 _direction, ThisType _thisType, GameObject _target)
+    //{
+    //    Missile bullet = GetBullet();
+    //    bullet.Init();
+    //    bullet.Fire(_instncePos, _direction, _thisType, _target);
+    //}
+
     /// <summary>
     /// 発射関数
     /// </summary>
     /// <param name="_instncePos"></param>
     /// <param name="_direction"></param>
-    public virtual void Fire(Vector3 _instncePos ,Vector3 _direction)
+    public virtual void Fire(Vector3 _instncePos ,Vector3 _direction, ThisType _thisType)
     {
         Bullet bullet = GetBullet();
         bullet.Init();
-        bullet.Fire(_instncePos, _direction);
+        bullet.Fire(_instncePos, _direction, _thisType);
     }
 
     /// <summary>

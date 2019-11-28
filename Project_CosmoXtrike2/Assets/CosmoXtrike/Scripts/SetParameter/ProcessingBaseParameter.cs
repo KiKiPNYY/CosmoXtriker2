@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+public enum ThisType
+{
+    Enemy,Player
+}
+
 public interface CommonProcessing
 {
+    ThisType ReturnMyType();
     /// <summary>
     /// ダメージ関数
     /// </summary>

@@ -5,9 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] BulletData m_bulletData = null;
+    [SerializeField] private BulletData m_bulletData = null;
     private Rigidbody m_rb = null;
-    private Vector3 m_instanceOrigin = Vector3.zero;
+    protected Vector3 m_instanceOrigin = Vector3.zero;
+    protected ThisType m_targetType = ThisType.Enemy;
 
     public GameObject ThisGameObject { get => this.transform.gameObject; }
 
@@ -54,12 +55,13 @@ public class Bullet : MonoBehaviour
         this.transform.gameObject.SetActive(false);
     }
 
-    public virtual void Fire(Vector3 _instncePos,Vector3 _direction)
+    public virtual void Fire(Vector3 _instncePos,Vector3 _direction, ThisType _thisType)
     {
         this.transform.position = _instncePos;
         m_instanceOrigin = this.transform.position;
         Quaternion rotation = Quaternion.LookRotation(_direction);
         this.transform.rotation = rotation;
+        m_targetType = _thisType;
     }
 
     /// <summary>
@@ -76,7 +78,7 @@ public class Bullet : MonoBehaviour
     /// 移動
     /// </summary>
     /// <param name="_deltaTime"></param>
-    public virtual void Move(float _deltaTime)
+    protected virtual void Move(float _deltaTime)
     {
         m_rb.MovePosition(this.transform.position + this.transform.forward * _deltaTime * m_bulletData.BulletSpeed);
     }
@@ -109,6 +111,7 @@ public class Bullet : MonoBehaviour
         CommonProcessing commonProcessing = null;
         commonProcessing = _other.GetComponent<CommonProcessing>();
         if (commonProcessing == null) { return; }
+        if (commonProcessing.ReturnMyType() == m_targetType) { return; }
         GiveDamege(commonProcessing);
     }
 
