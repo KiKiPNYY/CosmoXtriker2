@@ -14,16 +14,15 @@ public class Formation : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-            
+        
     }
 
     //機体数をチェックする
     void CheckFormation(){
         if(planes.Count != this.transform.childCount) {
             LlstUpdate();
-            if (CheckFlagShip()) {
-                Flagshipalive = false;
-            }
+            Flagshipalive = CheckFlagShip();
+            
         }
     }
     //フラグシップを確認する
@@ -33,13 +32,15 @@ public class Formation : MonoBehaviour
         }
         return false;
     }
-
+    //リストをアップデートする
     void LlstUpdate() {
         planes.Clear();
         var childTransform = GameObject.Find("RootObject").GetComponentsInChildren<Transform>();
         foreach (Transform child in childTransform){
-            planes.Add(child.gameObject.GetComponent<Enemy>());
+        planes.Add(child.gameObject.GetComponent<Enemy>());
         }
     }
+
+    
 
 }
