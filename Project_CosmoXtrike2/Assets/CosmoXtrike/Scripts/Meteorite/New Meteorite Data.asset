@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bae27d0ecfbf4d4995ef6513f2e3008, type: 3}
+  m_Name: New Meteorite Data
+  m_EditorClassIdentifier: 
+  m_minRotation: {x: 0, y: 0, z: 0}
+  m_maxRotation: {x: 1010, y: 10, z: 10}
+  m_forceMode: 1
+  m_playerDamege: 0
+  m_maxHp: 0

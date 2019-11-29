@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
-    private static BulletManager m_instance = null;
-
-    private List<BulletController> m_bulletControllers = new List<BulletController>();
 
     #region シングルトン
+    private static BulletManager m_instance = null;
+
     public static BulletManager Instnce
     {
         get
@@ -36,6 +35,9 @@ public class BulletManager : MonoBehaviour
         }
     }
     #endregion
+
+    private List<BulletController> m_bulletControllers = new List<BulletController>();
+
     private void Init()
     {
         //m_bulletControllers = new List<BulletController>();
