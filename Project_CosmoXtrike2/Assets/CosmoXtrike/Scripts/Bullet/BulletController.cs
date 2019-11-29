@@ -7,29 +7,33 @@ public class BulletController
     private Bullet m_bulletOrigin = null;
     private List<Bullet> m_bullets = null;
 
+    /// <summary>
+    /// このコントローラーの所持してるBulletを返す
+    /// </summary>
     public Bullet ThisHaveBullet { get => m_bulletOrigin; }
 
     /// <summary>
     /// 初期化
     /// </summary>
-    public void Init(Bullet _bullet)
+    /// <param name="_bullet"></param>
+    public BulletController(Bullet _bullet)
     {
         m_bulletOrigin = _bullet;
         m_bullets = new List<Bullet>();
         m_bullets.Add(CreateBullet());
     }
 
-    ///// <summary>
-    ///// 発射関数(ミサイル)
-    ///// </summary>
-    ///// <param name="_instncePos"></param>
-    ///// <param name="_direction"></param>
-    //public virtual void Fire(Vector3 _instncePos, Vector3 _direction, ThisType _thisType, GameObject _target)
-    //{
-    //    Missile bullet = GetBullet();
-    //    bullet.Init();
-    //    bullet.Fire(_instncePos, _direction, _thisType, _target);
-    //}
+    /// <summary>
+    /// 発射関数(ミサイル)
+    /// </summary>
+    /// <param name="_instncePos"></param>
+    /// <param name="_direction"></param>
+    public virtual void Fire(Vector3 _instncePos, Vector3 _direction, ThisType _thisType, GameObject _target)
+    {
+        Bullet bullet = GetBullet();
+        bullet.Init();
+        bullet.Fire(_instncePos, _direction, _thisType, _target);
+    }
 
     /// <summary>
     /// 発射関数

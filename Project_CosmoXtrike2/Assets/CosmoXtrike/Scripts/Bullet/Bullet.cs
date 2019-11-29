@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour
         this.transform.gameObject.SetActive(false);
     }
 
-    public virtual void Fire(Vector3 _instncePos,Vector3 _direction, ThisType _thisType)
+    public virtual void Fire(Vector3 _instncePos,Vector3 _direction, ThisType _thisType, GameObject _target = null)
     {
         this.transform.position = _instncePos;
         m_instanceOrigin = this.transform.position;
@@ -106,6 +106,7 @@ public class Bullet : MonoBehaviour
         Final();
     }
 
+    #region Unity関数
     private void OnTriggerEnter(Collider _other)
     {
         CommonProcessing commonProcessing = null;
@@ -114,5 +115,5 @@ public class Bullet : MonoBehaviour
         if (commonProcessing.ReturnMyType() == m_targetType) { return; }
         GiveDamege(commonProcessing);
     }
-
+    #endregion
 }

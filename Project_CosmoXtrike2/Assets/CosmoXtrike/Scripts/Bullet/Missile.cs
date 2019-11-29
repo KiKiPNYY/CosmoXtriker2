@@ -8,7 +8,7 @@ public class Missile : Bullet
 
     private GameObject m_target = null;
 
-    public virtual void Fire(Vector3 _instncePos, Vector3 _direction, ThisType _thisType, GameObject _target)
+    public override void Fire(Vector3 _instncePos, Vector3 _direction, ThisType _thisType, GameObject _target)
     {
         if(_target == null) { return; }
         m_target = _target;
