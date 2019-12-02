@@ -24,11 +24,17 @@ abstract public class Enemy : MonoBehaviour
 
     //フラグ機が落とされたか
     protected bool flagshipCrash;
-    
     [HideInInspector]
     public bool FlagshipCrash{
         get { return flagshipCrash; }
         set { flagshipCrash = value; }
+    }
+    //解散するときの角度
+    protected float angle;
+
+    public float Angle {
+        get { return angle; }
+        set { angle = value; }
     }
 
     //散開時の角度

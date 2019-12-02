@@ -6,7 +6,7 @@ public class Formation : MonoBehaviour
 {
 
     private List<Enemy> planes = new List<Enemy>();
-    private bool Flagshipalive = true;
+    private float[] Discrete = new float[4] { 15, 60, 120, 165 };
     // Start is called before the first frame update
     void Start(){
         
@@ -21,8 +21,11 @@ public class Formation : MonoBehaviour
     void CheckFormation(){
         if(planes.Count != this.transform.childCount) {
             LlstUpdate();
-            Flagshipalive = CheckFlagShip();
-            
+            if (CheckFlagShip()) { return; }
+            for(int i =0;i < planes.Count; i++){
+                planes[i].FlagshipCrash = true;
+                planes[i].Angle = Discrete[i];
+            }
         }
     }
     //フラグシップを確認する
