@@ -38,6 +38,9 @@ public class BulletManager : MonoBehaviour
 
     private List<BulletController> m_bulletControllers = new List<BulletController>();
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
     private void Init()
     {
         //m_bulletControllers = new List<BulletController>();
@@ -111,6 +114,17 @@ public class BulletManager : MonoBehaviour
         for (int i = 0; i < m_bulletControllers.Count; i++)
         {
             m_bulletControllers[i].ThisControllerUpdate(deltaTime);
+        }
+    }
+
+    /// <summary>
+    /// 破棄処理
+    /// </summary>
+    private void OnDestroy()
+    {
+        for (int i = 0; i < m_bulletControllers.Count; i++)
+        {
+            m_bulletControllers[i].CallDestroy();
         }
     }
     #endregion

@@ -49,12 +49,18 @@ public class Bullet : MonoBehaviour
     /// <summary>
     /// 終了処理
     /// </summary>
-    public virtual void Final()
+    public virtual void Hidden()
     {
-
         this.transform.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 弾発射
+    /// </summary>
+    /// <param name="_instncePos"></param>
+    /// <param name="_direction"></param>
+    /// <param name="_thisType"></param>
+    /// <param name="_target"></param>
     public virtual void Fire(Vector3 _instncePos,Vector3 _direction, ThisType _thisType, GameObject _target = null)
     {
         this.transform.position = _instncePos;
@@ -90,7 +96,7 @@ public class Bullet : MonoBehaviour
     {
         float nowDistance = Vector3.Distance(this.transform.position, m_instanceOrigin);
         if(nowDistance < m_bulletData.InstanceDistance) { return; }
-        Final();
+        Hidden();
     }
 
     /// <summary>
@@ -103,10 +109,22 @@ public class Bullet : MonoBehaviour
 
         // エフェクトがあれば発生させる
 
-        Final();
+        Hidden();
+    }
+
+    /// <summary>
+    /// 破棄処理
+    /// </summary>
+    public virtual void CallDestroy()
+    {
+        m_bulletData = null;
+        m_instanceOrigin = Vector3.zero;
+        m_rb = null;
+        m_targetType = ThisType.Enemy;
     }
 
     #region Unity関数
+
     private void OnTriggerEnter(Collider _other)
     {
         CommonProcessing commonProcessing = null;

@@ -15,23 +15,29 @@ public class Meteorite : MonoBehaviour
     protected virtual void GiveDamege(CommonProcessing _commonProcessing)
     {
         _commonProcessing.Damege(m_meteoriteData.PlayerDamege);
-        m_hp -= _commonProcessing.AircraftDaege();
+        m_hp -= _commonProcessing.MeteoriteDamege();
 
         // エフェクトがあれば発生させる
         if (m_hp > 0) { return; }
         
-        Final();
+        CallDestory();
     }
 
     /// <summary>
     /// 終了処理
     /// </summary>
-    protected void Final()
+    protected void CallDestory()
     {
-
+        m_meteoriteData = null;
+        m_hp = 0;
     }
 
     #region Unity関数
+
+    private void OnDestroy()
+    {
+        CallDestory();
+    }
 
     void Start()
     {

@@ -90,4 +90,18 @@ public class BulletController
         }
     }
 
+    /// <summary>
+    /// 破棄処理
+    /// </summary>
+    public void CallDestroy()
+    {
+        for (int i = 0; i < m_bullets.Count; i++)
+        {
+            m_bullets[i].CallDestroy();
+        }
+
+        m_bulletOrigin = null;
+        m_bullets = null;
+    }
+
 }

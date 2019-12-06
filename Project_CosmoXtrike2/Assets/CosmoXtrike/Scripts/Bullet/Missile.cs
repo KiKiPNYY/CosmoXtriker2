@@ -25,4 +25,12 @@ public class Missile : Bullet
         base.Move(_deltaTime);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, this.m_target.transform.rotation,Time.deltaTime * m_missileData.RotationTimeSpeed);
     }
+
+    public override void CallDestroy()
+    {
+        m_instanceOrigin = Vector3.zero;
+        m_targetType = ThisType.Enemy;
+        m_missileData = null;
+        m_target = null;
+    }
 }
