@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 //エネミーの基底クラス
-abstract public class Enemy : MonoBehaviour
+abstract public class Enemy : MonoBehaviour, CommonProcessing
 {
     //Flag機かどうか
     [SerializeField]
@@ -53,6 +53,19 @@ abstract public class Enemy : MonoBehaviour
     }
 
     //Enemyのダメージ。インターフェースで実装
+    public void Damege(int add){
+        enemyHp =- add;
+        if(enemyHp <= 0){
+            this.transform.parent = null;
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    public ThisType ReturnMyType()
+    {
+        return ThisType.Enemy;
+    }
+
 
     //Enemyの攻撃
     virtual public void Attack() {
