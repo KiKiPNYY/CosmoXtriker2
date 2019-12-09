@@ -6,6 +6,7 @@ using System;
 //エネミーの基底クラス
 abstract public class Enemy : MonoBehaviour, CommonProcessing
 {
+    [SerializeField] private Effect effect;
     //Flag機かどうか
     [SerializeField]
     protected bool flagShip;
@@ -54,8 +55,11 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
 
     //Enemyのダメージ。インターフェースで実装
     public void Damege(int add){
-        enemyHp =- add;
-        if(enemyHp <= 0){
+        EffectManager.Instnce.EffectPlay(effect, this.transform);
+        enemyHp -= add;
+        if (enemyHp <= 0)
+        {
+
             this.transform.parent = null;
             this.gameObject.SetActive(false);
         }

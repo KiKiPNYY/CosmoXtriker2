@@ -6,6 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private BulletData m_bulletData = null;
+    [SerializeField] private Effect m_effect = null;
     private ParticleSystem m_particleSystem = null;
     private Rigidbody m_rb = null;
     protected Vector3 m_instanceOrigin = Vector3.zero;
@@ -80,7 +81,6 @@ public class Bullet : MonoBehaviour
         {
             m_particleSystem.Play();
         }
-        Debug.Log(m_particleSystem);
     }
 
     /// <summary>
@@ -120,9 +120,13 @@ public class Bullet : MonoBehaviour
     protected virtual void GiveDamege(CommonProcessing _commonProcessing)
     {
         _commonProcessing.Damege(m_bulletData.Damege);
-
+        
         // エフェクトがあれば発生させる
+        if (m_effect != null)
+        {
+            EffectManager.Instnce.EffectPlay(m_effect, this.transform);
 
+        }
         Hidden();
     }
 

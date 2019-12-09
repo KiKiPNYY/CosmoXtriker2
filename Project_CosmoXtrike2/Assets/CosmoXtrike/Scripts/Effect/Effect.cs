@@ -25,7 +25,7 @@ public class Effect : MonoBehaviour
 
         if (m_particleSystem == null)
         {
-            
+            m_particleSystem = this.transform.gameObject.GetComponent<ParticleSystem>();
         }
         m_timer = 0;
 
@@ -45,8 +45,8 @@ public class Effect : MonoBehaviour
 
             this.transform.rotation = quaternion;
         }
-        m_thisActive = true;
-        this.transform.gameObject.SetActive(true);
+        //if (!this.transform.gameObject.activeSelf) { return; }
+        this.transform.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -54,6 +54,8 @@ public class Effect : MonoBehaviour
     /// </summary>
     public virtual void EffectPlay()
     {
+        m_thisActive = true;
+        this.transform.gameObject.SetActive(true);
         m_particleSystem.Play();
     }
 

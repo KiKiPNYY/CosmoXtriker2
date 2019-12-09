@@ -56,6 +56,7 @@ public class EffectController
         GameObject bulletObj = Object.Instantiate(m_effectOrigin.ThisGameObject);
         bulletObj.name = m_effectOrigin.name + m_effects.Count + 1;
         newEffect = bulletObj.GetComponent<Effect>();
+        newEffect.Init(newEffect.ThisGameObject.transform);
         return newEffect;
     }
 
