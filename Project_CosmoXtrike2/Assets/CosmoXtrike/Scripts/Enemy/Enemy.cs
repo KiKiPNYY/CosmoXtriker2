@@ -20,7 +20,11 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
     //エネミーの攻撃力
     protected int attack;
     //エネミーの弾の種類
+    [SerializeField]
     protected GameObject bullet;
+    //砲弾の向き
+    [SerializeField]
+    protected GameObject aim;
 
     //フラグ機が落とされたか
     protected bool flagshipCrash;
@@ -57,6 +61,10 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
         enemyHp =- add;
         if(enemyHp <= 0){
             this.transform.parent = null;
+            var formationScript = this.gameObject.GetComponentInParent<Formation>();
+            if(formationScript != null){
+                formationScript.CheckFormation();
+            }
             this.gameObject.SetActive(false);
         }
     }
@@ -69,7 +77,9 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
 
     //Enemyの攻撃
     virtual public void Attack() {
-
+        var target = GameObject.FindGameObjectWithTag("Player");
+        aim.transform.LookAt(target.transform.position);
+        Instantiate(bullet, aim.transform.position, aim.transform.rotation);
     }
 
 

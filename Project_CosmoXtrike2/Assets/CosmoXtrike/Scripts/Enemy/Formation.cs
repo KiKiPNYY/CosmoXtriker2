@@ -12,6 +12,16 @@ public class Formation : MonoBehaviour
       new Vector3(30, 30, 0),
       new Vector3(30, 45, 0)
     };
+
+    //フラグシップが生きているか。
+    bool flagshipAlive = true;
+
+    //弾の発射猶予
+    bool fireWait = false;
+    //現在の順番
+    int fireOrder = 0;
+
+
     // Start is called before the first frame update
     void Start(){
         
@@ -24,13 +34,13 @@ public class Formation : MonoBehaviour
     }
 
     //機体数をチェックする
-    void CheckFormation(){
-        bool flagship = true;
+    public void CheckFormation(){
+        
         if (planes.Count != this.transform.childCount) {
             LlstUpdate();
-            flagship = CheckFlagShip();
+            flagshipAlive = CheckFlagShip();
         }
-        if (!flagship) {
+        if (!flagshipAlive) {
             int i = 0;
             foreach(Enemy enemy in planes){
                 enemy.FlagshipCrash = true;
