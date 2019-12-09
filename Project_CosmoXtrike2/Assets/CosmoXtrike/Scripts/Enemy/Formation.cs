@@ -17,7 +17,7 @@ public class Formation : MonoBehaviour
     bool flagshipAlive = true;
 
     //弾の発射猶予
-    bool fireWait = false;
+    bool fireWait = true;
     //現在の順番
     int fireOrder = 0;
 
@@ -29,6 +29,8 @@ public class Formation : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
+        //弾を順番に放つ。
+        Shot();
         //デバッグ用
         if (Input.GetKeyDown(KeyCode.P)) { CheckFormation(); }
     }
@@ -69,7 +71,22 @@ public class Formation : MonoBehaviour
         }
 
     }
-
     
+    void Shot(){
+        if (flagshipAlive&&!fireWait){
+            StartCoroutine(FireWaitCoroutine());
+        }
+    }
+    
+    IEnumerator FireWaitCoroutine(){
+        fireWait = true;
+        yield return new WaitForSeconds(1.0f);
+        planes[fireOrder].Attack();
+        fireOrder++;
+        if (fireOrder <= planes.Count) {
+            fireOrder = 0;
+        }
+        fireWait = false;
+    }
 
 }
