@@ -61,6 +61,11 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
         }
     }
 
+    public int MeteoriteDamege()
+    {
+        return 0;
+    }
+
     public ThisType ReturnMyType()
     {
         return ThisType.Enemy;

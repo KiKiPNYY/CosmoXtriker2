@@ -6,6 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private BulletData m_bulletData = null;
+    private ParticleSystem m_particleSystem = null;
     private Rigidbody m_rb = null;
     protected Vector3 m_instanceOrigin = Vector3.zero;
     protected ThisType m_targetType = ThisType.Enemy;
@@ -43,6 +44,12 @@ public class Bullet : MonoBehaviour
             collider.isTrigger = true;
             collider.isTrigger = true;
         }
+
+        if (m_particleSystem == null)
+        {
+            m_particleSystem = this.transform.gameObject.GetComponent<ParticleSystem>();
+        }
+
         this.transform.gameObject.SetActive(true);
     }
 
@@ -63,11 +70,17 @@ public class Bullet : MonoBehaviour
     /// <param name="_target"></param>
     public virtual void Fire(Vector3 _instncePos,Vector3 _direction, ThisType _thisType, GameObject _target = null)
     {
-        this.transform.position = _instncePos;
-        m_instanceOrigin = this.transform.position;
         Quaternion rotation = Quaternion.LookRotation(_direction);
         this.transform.rotation = rotation;
+        this.transform.position = _instncePos;
+        m_instanceOrigin = this.transform.position;
         m_targetType = _thisType;
+
+        if(m_particleSystem != null)
+        {
+            m_particleSystem.Play();
+        }
+        Debug.Log(m_particleSystem);
     }
 
     /// <summary>
@@ -86,7 +99,8 @@ public class Bullet : MonoBehaviour
     /// <param name="_deltaTime"></param>
     protected virtual void Move(float _deltaTime)
     {
-        m_rb.MovePosition(this.transform.position + this.transform.forward * _deltaTime * m_bulletData.BulletSpeed);
+        // m_rb.MovePosition(this.transform.position + this.transform.forward * _deltaTime * m_bulletData.BulletSpeed);
+        m_rb.velocity = ((this.transform.position + this.transform.forward) - this.transform.position) * _deltaTime * m_bulletData.BulletSpeed;
     }
 
     /// <summary>
@@ -117,6 +131,7 @@ public class Bullet : MonoBehaviour
     /// </summary>
     public virtual void CallDestroy()
     {
+        m_particleSystem = null;
         m_bulletData = null;
         m_instanceOrigin = Vector3.zero;
         m_rb = null;

@@ -49,6 +49,9 @@ public class Effect : MonoBehaviour
         this.transform.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// エフェクト再生
+    /// </summary>
     public virtual void EffectPlay()
     {
         m_particleSystem.Play();
