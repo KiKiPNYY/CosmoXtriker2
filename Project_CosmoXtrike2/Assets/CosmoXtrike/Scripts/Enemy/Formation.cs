@@ -83,7 +83,8 @@ public class Formation : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         planes[fireOrder].Attack();
         fireOrder++;
-        if (fireOrder >= planes.Count) {
+        if (fireOrder >= planes.Count)
+        {
             fireOrder = 0;
         }
         fireWait = false;

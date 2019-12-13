@@ -3,9 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[CreateAssetMenu(menuName = "CreateScriptable/Create EnemyDate")]
+public class EnemyDate : ScriptableObject{
+    [SerializeField]
+    [Header("初期HP")]
+    int hitpoint;
+    [SerializeField]
+    [Header("移動速度")]
+    float speed = 1.0f;
+    [SerializeField]
+    [Header("攻撃力")]
+    int attack;
+
+    public int HP { get { return hitpoint; } }
+    public float Speed { get { return speed; } }
+    public int Attack { get { return attack; } }
+}
+
 //エネミーの基底クラス
-abstract public class Enemy : MonoBehaviour, CommonProcessing
-{
+abstract public class Enemy : MonoBehaviour, CommonProcessing{
     [SerializeField] private Effect effect;
     //Flag機かどうか
     [SerializeField]
@@ -14,16 +30,15 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
     public bool FlagShip{
         get { return flagShip; }
     }
+    //エネミーのステータス
+    [SerializeField]
+    EnemyDate parameter;
     //エネミーのライフ
     protected int enemyHp;
-    //エネミーの移動速度
-    protected float speed = 1.0f;
-    //エネミーの攻撃力
-    protected int attack;
     //エネミーの弾の種類
     [SerializeField]
     protected GameObject bullet;
-    //砲弾の向き
+    //砲弾の向きの位置
     [SerializeField]
     protected GameObject aim;
 
@@ -42,20 +57,30 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
         get { return spreadAngle; }
         set { spreadAngle = value; }
     }
+
     [SerializeField]
     public int formationNum = 0;
 
+    protected void Start(){
+        enemyHp = parameter.HP;
+    }
 
     protected void FixedUpdate(){
 
-        Move();
+        EnemyUpdate();
+    }
 
+    /// <summary>
+    /// 継承先のUpdateを書くところ　
+    /// </summary>
+    virtual protected void EnemyUpdate(){
+        Move();
     }
 
     //Enemyの移動
     virtual protected void Move() {
         
-        transform.Translate(0f, 0f, speed*Time.deltaTime);
+        transform.Translate(0f, 0f, parameter.Speed*Time.deltaTime);
         
     }
 
