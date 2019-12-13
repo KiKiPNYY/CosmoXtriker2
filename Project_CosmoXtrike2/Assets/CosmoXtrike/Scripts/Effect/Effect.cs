@@ -46,6 +46,10 @@ public class Effect : MonoBehaviour
             this.transform.rotation = quaternion;
         }
         //if (!this.transform.gameObject.activeSelf) { return; }
+        if(m_effectData.SetParent)
+        {
+            this.transform.parent = _offsetTransform;
+        }
         this.transform.gameObject.SetActive(false);
     }
 
@@ -78,7 +82,7 @@ public class Effect : MonoBehaviour
     {
         m_timer += _deltaTime;
         if(m_timer < m_effectData.ActiveTime) { return; }
-
+        this.transform.parent = null;
         m_thisActive = false;
         this.transform.gameObject.SetActive(false);
 
