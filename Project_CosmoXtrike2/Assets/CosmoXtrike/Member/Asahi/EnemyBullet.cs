@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    float speed = 3.0f;
+
+    protected float speed = 1.0f;
 
     // Start is called before the first frame update
     void Start(){
-        
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(this.transform.forward*speed*Time.deltaTime);
+    void Update(){
+
+    }
+
+    private void FixedUpdate(){
+        Fright();
+    }
+
+    virtual protected void Fright(){
+
+        this.transform.Translate(transform.forward * speed);
+
     }
 }

@@ -27,7 +27,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
     protected GameObject aim;
 
     //フラグ機が落とされたか
-    protected bool flagshipCrash;
+    protected bool flagshipCrash = false;
     [HideInInspector]
     public bool FlagshipCrash{
         get { return flagshipCrash; }
@@ -41,6 +41,8 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
         get { return spreadAngle; }
         set { spreadAngle = value; }
     }
+    [SerializeField]
+    public int formationNum = 0;
 
 
     protected void FixedUpdate(){

@@ -145,7 +145,7 @@ Transform:
   m_Children:
   - {fileID: 1524255669}
   m_Father: {fileID: 1055397031}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &26795705
 MonoBehaviour:
@@ -162,6 +162,7 @@ MonoBehaviour:
   flagShip: 0
   bullet: {fileID: 2020660097620957171, guid: 422bf33d9f20cfa41b9324c2dac32fc5, type: 3}
   aim: {fileID: 1524255668}
+  formationNum: 4
 --- !u!65 &26795706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -234,7 +235,7 @@ GameObject:
   - component: {fileID: 272624427}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,7 +346,7 @@ Transform:
   m_Children:
   - {fileID: 1507588323}
   m_Father: {fileID: 1055397031}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &989195881
 MonoBehaviour:
@@ -362,6 +363,7 @@ MonoBehaviour:
   flagShip: 0
   bullet: {fileID: 2020660097620957171, guid: 422bf33d9f20cfa41b9324c2dac32fc5, type: 3}
   aim: {fileID: 1507588322}
+  formationNum: 3
 --- !u!65 &989195882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -461,9 +463,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1693061782}
-  - {fileID: 26795704}
   - {fileID: 1457067079}
   - {fileID: 989195880}
+  - {fileID: 26795704}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -500,7 +502,7 @@ Transform:
   m_Children:
   - {fileID: 1734102173}
   m_Father: {fileID: 1055397031}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1457067080
 MonoBehaviour:
@@ -517,6 +519,7 @@ MonoBehaviour:
   flagShip: 0
   bullet: {fileID: 2020660097620957171, guid: 422bf33d9f20cfa41b9324c2dac32fc5, type: 3}
   aim: {fileID: 1734102172}
+  formationNum: 1
 --- !u!65 &1457067081
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -764,9 +767,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b66ccd239c5d944b24396f948192ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flagShip: 0
+  flagShip: 1
   bullet: {fileID: 2020660097620957171, guid: 422bf33d9f20cfa41b9324c2dac32fc5, type: 3}
   aim: {fileID: 1842657790}
+  formationNum: 0
 --- !u!65 &1693061784
 BoxCollider:
   m_ObjectHideFlags: 0

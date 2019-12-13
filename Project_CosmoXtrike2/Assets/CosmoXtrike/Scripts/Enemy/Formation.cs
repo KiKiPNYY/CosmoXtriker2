@@ -17,14 +17,14 @@ public class Formation : MonoBehaviour
     bool flagshipAlive = true;
 
     //弾の発射猶予
-    bool fireWait = true;
+    bool fireWait = false;
     //現在の順番
     int fireOrder = 0;
 
 
     // Start is called before the first frame update
     void Start(){
-        
+        CheckFormation();
     }
 
     // Update is called once per frame
@@ -64,12 +64,12 @@ public class Formation : MonoBehaviour
         planes.Clear();
         var childTransform = GetComponentsInChildren<Transform>();
         foreach (Transform child in childTransform){
-            if(this.name != child.gameObject.name){
+            if(child.GetComponent<Enemy>() != null){
                 planes.Add(child.gameObject.GetComponent<Enemy>());
             }
         
         }
-
+        planes.Sort((a, b) => a.formationNum - b.formationNum);
     }
     
     void Shot(){
@@ -83,7 +83,7 @@ public class Formation : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         planes[fireOrder].Attack();
         fireOrder++;
-        if (fireOrder <= planes.Count) {
+        if (fireOrder >= planes.Count) {
             fireOrder = 0;
         }
         fireWait = false;
