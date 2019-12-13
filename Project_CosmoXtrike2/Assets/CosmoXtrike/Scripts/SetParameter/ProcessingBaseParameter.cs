@@ -11,11 +11,14 @@ public enum ThisType
 public interface CommonProcessing
 {
     ThisType ReturnMyType();
+
     /// <summary>
     /// ダメージ関数
     /// </summary>
     /// <param name="_addDamege"></param>
     void Damege(int _addDamege);
+
+    int MeteoriteDamege();
 }
 
 [CreateAssetMenu(menuName = "CreateScriptable/Create ProcessingBaseParameterData")]

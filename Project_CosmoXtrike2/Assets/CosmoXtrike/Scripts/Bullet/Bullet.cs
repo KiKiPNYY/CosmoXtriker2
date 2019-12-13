@@ -6,6 +6,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private BulletData m_bulletData = null;
+    [SerializeField] private Effect m_effect = null;
+    private ParticleSystem m_particleSystem = null;
     private Rigidbody m_rb = null;
     protected Vector3 m_instanceOrigin = Vector3.zero;
     protected ThisType m_targetType = ThisType.Enemy;
@@ -43,25 +45,42 @@ public class Bullet : MonoBehaviour
             collider.isTrigger = true;
             collider.isTrigger = true;
         }
+
+        if (m_particleSystem == null)
+        {
+            m_particleSystem = this.transform.gameObject.GetComponent<ParticleSystem>();
+        }
+
         this.transform.gameObject.SetActive(true);
     }
 
     /// <summary>
     /// 終了処理
     /// </summary>
-    public virtual void Final()
+    public virtual void Hidden()
     {
-
         this.transform.gameObject.SetActive(false);
     }
 
-    public virtual void Fire(Vector3 _instncePos,Vector3 _direction, ThisType _thisType)
+    /// <summary>
+    /// 弾発射
+    /// </summary>
+    /// <param name="_instncePos"></param>
+    /// <param name="_direction"></param>
+    /// <param name="_thisType"></param>
+    /// <param name="_target"></param>
+    public virtual void Fire(Vector3 _instncePos,Vector3 _direction, ThisType _thisType, GameObject _target = null)
     {
-        this.transform.position = _instncePos;
-        m_instanceOrigin = this.transform.position;
         Quaternion rotation = Quaternion.LookRotation(_direction);
         this.transform.rotation = rotation;
+        this.transform.position = _instncePos;
+        m_instanceOrigin = this.transform.position;
         m_targetType = _thisType;
+
+        if(m_particleSystem != null)
+        {
+            m_particleSystem.Play();
+        }
     }
 
     /// <summary>
@@ -80,7 +99,8 @@ public class Bullet : MonoBehaviour
     /// <param name="_deltaTime"></param>
     protected virtual void Move(float _deltaTime)
     {
-        m_rb.MovePosition(this.transform.position + this.transform.forward * _deltaTime * m_bulletData.BulletSpeed);
+        // m_rb.MovePosition(this.transform.position + this.transform.forward * _deltaTime * m_bulletData.BulletSpeed);
+        m_rb.velocity = ((this.transform.position + this.transform.forward) - this.transform.position) * _deltaTime * m_bulletData.BulletSpeed;
     }
 
     /// <summary>
@@ -90,7 +110,7 @@ public class Bullet : MonoBehaviour
     {
         float nowDistance = Vector3.Distance(this.transform.position, m_instanceOrigin);
         if(nowDistance < m_bulletData.InstanceDistance) { return; }
-        Final();
+        Hidden();
     }
 
     /// <summary>
@@ -100,11 +120,29 @@ public class Bullet : MonoBehaviour
     protected virtual void GiveDamege(CommonProcessing _commonProcessing)
     {
         _commonProcessing.Damege(m_bulletData.Damege);
-
+        
         // エフェクトがあれば発生させる
+        if (m_effect != null)
+        {
+            EffectManager.Instnce.EffectPlay(m_effect, this.transform);
 
-        Final();
+        }
+        Hidden();
     }
+
+    /// <summary>
+    /// 破棄処理
+    /// </summary>
+    public virtual void CallDestroy()
+    {
+        m_particleSystem = null;
+        m_bulletData = null;
+        m_instanceOrigin = Vector3.zero;
+        m_rb = null;
+        m_targetType = ThisType.Enemy;
+    }
+
+    #region Unity関数
 
     private void OnTriggerEnter(Collider _other)
     {
@@ -114,5 +152,5 @@ public class Bullet : MonoBehaviour
         if (commonProcessing.ReturnMyType() == m_targetType) { return; }
         GiveDamege(commonProcessing);
     }
-
+    #endregion
 }

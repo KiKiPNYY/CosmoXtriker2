@@ -8,7 +8,7 @@ public class Missile : Bullet
 
     private GameObject m_target = null;
 
-    public virtual void Fire(Vector3 _instncePos, Vector3 _direction, ThisType _thisType, GameObject _target)
+    public override void Fire(Vector3 _instncePos, Vector3 _direction, ThisType _thisType, GameObject _target)
     {
         if(_target == null) { return; }
         m_target = _target;
@@ -24,5 +24,13 @@ public class Missile : Bullet
     {
         base.Move(_deltaTime);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, this.m_target.transform.rotation,Time.deltaTime * m_missileData.RotationTimeSpeed);
+    }
+
+    public override void CallDestroy()
+    {
+        m_instanceOrigin = Vector3.zero;
+        m_targetType = ThisType.Enemy;
+        m_missileData = null;
+        m_target = null;
     }
 }
