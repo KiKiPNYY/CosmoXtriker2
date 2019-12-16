@@ -5,157 +5,114 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
-    #region Singleton
-    private static SoundManager instance;
-    public static SoundManager Instance
+    #region シングルトン
+    private static SoundManager m_instance = null;
+
+    public static SoundManager Instnce
     {
         get
         {
-            if (instance == null)
+            if (m_instance == null)
             {
-                Debug.LogWarning("SoundManager is Null");
+                Debug.LogError("BulletManagerがありません");
             }
-            return instance;
+            return m_instance;
         }
     }
 
-    private bool CheckInstance()
+    /// <summary>
+    /// シングルトン作成
+    /// </summary>
+    private void CreateInstnce()
     {
-        if (instance == null)
+        if (m_instance == null)
         {
-            instance = (SoundManager)this;
-            DontDestroyOnLoad(this.gameObject);
-            return true;
+            m_instance = this;
         }
-        else if (Instance == this)
+        else
         {
-            DontDestroyOnLoad(this.gameObject);
-            return true;
+            Destroy(this.transform.gameObject);
         }
-
-        Destroy(this);
-        return false;
     }
     #endregion
 
-    [SerializeField]
-    private AudioClip[] BGM = default;
-    [SerializeField]
-    private AudioClip[] SE = default;
+    private AudioSource[] m_audioSources = default;
 
-    private AudioSource[] audioSource;
-    [SerializeField]
-    float fadeTime = 0.5f;
+    private SoundData m_soundData = default;
 
-    public enum SE_Name
-    {
-        SE_00_AAA,
-        SE_01_BBB,
-        SE_02_CCC,
-    };
-
-    public enum BGM_Name
-    {
-        BGM_00_Opening,
-        BGM_01_Game,
-    };
+    private int[] m_BGMHash = default;
+    private int[] m_SEHash = default;
 
     void Awake()
     {
-        CheckInstance();
-        audioSource = GetComponents<AudioSource>();
+        CreateInstnce();
     }
 
-    private void Start()
+    /// <summary>
+    /// シーン移動後に初期化
+    /// </summary>
+    /// <param name="_soundData"></param>
+    public void SceneStart(SoundData _soundData)
     {
+        m_soundData = _soundData;
+
+        m_audioSources = new AudioSource[m_soundData.AudioNum];
+        for (int i = 0; i < m_audioSources.Length; i++)
+        {
+            GameObject audioObject = new GameObject();
+            audioObject.AddComponent<AudioSource>();
+            m_audioSources[i] = audioObject.GetComponent<AudioSource>();
+        }
+    
+        m_audioSources[0].clip = m_soundData.BGMParameters[0].AudioClip;
+        m_audioSources[0].loop = m_soundData.BGMParameters[0].Loop;
+        m_audioSources[0].volume = m_soundData.BGMParameters[0].Volume;
+
+        m_BGMHash = new int[m_soundData.BGMParameters.Length];
+        m_SEHash = new int[_soundData.SEParameters.Length];
+
+        for (int i = 0; i < m_BGMHash.Length; i++)
+        {
+            m_BGMHash[i] = m_soundData.BGMParameters[i].AudioClip.name.GetHashCode();
+        }
+
+        for (int i = 0; i < m_SEHash.Length; i++)
+        {
+            m_SEHash[i] = m_soundData.SEParameters[i].AudioClip.name.GetHashCode();
+        }
 
     }
 
     /// <summary>
-    /// その時間軸内でのBGM切り替え
+    /// シーン移動するときに初期化
     /// </summary>
-    /// <param name="_Name"></param>
-    public void PlayBGM(BGM_Name _Name)
+    public void SceneEnd()
     {
-        switch (_Name)
+        m_soundData = null;
+        for (int i = 0; i < m_audioSources.Length; i++)
         {
-            case BGM_Name.BGM_00_Opening:
-                break;
-            case BGM_Name.BGM_01_Game:
-                break;
-            default:
-                Debug.Log("不明な値");
-                break;
+            m_audioSources[i].clip = null;
         }
+        m_audioSources = null;
     }
 
-    /// <summary>
-    /// fadein
-    /// </summary>
-    IEnumerator FadeIn()
+    public void SEPlay(string _SEname)
     {
-        float time = 0;
-        audioSource[0].Play();
-        while (time <= fadeTime)
-        {
-            audioSource[0].volume = time / fadeTime;
-            time += Time.unscaledDeltaTime;
-            yield return null;
-        }
-        audioSource[0].volume = 1;
-        yield break;
+        int SEHash = _SEname.GetHashCode();
     }
 
-    /// <summary>
-    /// fadeout
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator FadeOut()
+    public void SEFade(string _SEname)
     {
-        bool act1 = audioSource[1].isPlaying;
-        float time = 0;
-        while (time <= fadeTime)
-        {
-            if (act1)
-            {
-                audioSource[1].volume = 1 - (time / fadeTime);
-                audioSource[0].volume = (1 - (time / fadeTime)) / 2;
-            }
-            else
-            {
-                audioSource[0].volume = 1 - (time / fadeTime);
-            }
-            time += Time.unscaledDeltaTime;
-            yield return null;
-        }
-        audioSource[0].volume = 0;
-        audioSource[0].Stop();
-        if (act1)
-        {
-            audioSource[1].volume = 0;
-            audioSource[1].Stop();
-        }
-        yield break;
+        int SEHash = _SEname.GetHashCode();
     }
 
-    /// <summary>
-    /// 止める
-    /// </summary>
-    public void StopBGM()
+    public void BGMPlay(string _BGMname)
     {
-        StartCoroutine(FadeOut());
+        int BGMHash = _BGMname.GetHashCode();
     }
 
-    /// <summary>SEの再生(音量調整)</summary>
-    /// <param name="_Name"></param>
-    /// <param name="_Vol"></param>
-    public void PlaySE(SE_Name _Name, float _Vol = 1)
+    public void BGMFade(string _BGMname)
     {
-        audioSource[2].PlayOneShot(SE[(int)_Name], _Vol);
+        int BGMHash = _BGMname.GetHashCode();
     }
-    public void PlaySE(int num, float _Vol = 1)
-    {
-        audioSource[2].PlayOneShot(SE[num], _Vol);
-    }
-
 }

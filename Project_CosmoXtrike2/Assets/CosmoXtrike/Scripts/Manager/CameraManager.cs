@@ -9,6 +9,6 @@ public class CameraManager : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.position = targetPos.position;
+      //  gameObject.transform.position = targetPos.position;
     }
 }

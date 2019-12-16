@@ -23,6 +23,10 @@ public class EffectController
         m_effects.Add(CreateBullet());
     }
     
+    /// <summary>
+    /// エフェクト再生
+    /// </summary>
+    /// <param name="_offsetTransform"></param>
     public void EffectPlay(Transform _offsetTransform)
     {
         Effect effect = GetBullet();

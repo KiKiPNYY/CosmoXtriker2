@@ -60,11 +60,11 @@ public class PlayerManager : MonoBehaviour
 
         // x = Input.GetAxis("Right_Horizontal");
         // y = Input.GetAxis("Right_Vertical");
-        if(Input.GetButtonDown("accele") && !m_accele)
+        if(Input.GetButtonDown("LeftTrigger") && !m_accele)
         {
             m_accele = true;
         }
-        if(Input.GetButtonUp("accele") && m_accele)
+        if(Input.GetButtonUp("LeftTrigger") && m_accele)
         {
             Debug.Log(timer);
             m_accele = false;
@@ -86,7 +86,7 @@ public class PlayerManager : MonoBehaviour
             speed = m_defaultSpeed + (addAccele * timer);
         }
         speed = Mathf.Clamp(speed, m_defaultSpeed, m_maxSpeed);
-        Debug.Log(speed);
+
 
         vector = m_player.transform.right * x *-1 + m_player.transform.up * y + m_player.transform.forward;
         loockRotation = Quaternion.LookRotation((m_player.transform.position + vector) - m_player.transform.position);
@@ -94,7 +94,7 @@ public class PlayerManager : MonoBehaviour
         m_player.transform.position += m_player.transform.forward * speed;
 
        
-        if(Input.GetButtonDown("BulletFire"))
+        if(Input.GetButtonDown("RightTrigger"))
         {
             
             for(int i =0 ; i < m_bulletFire.Length; i++)
