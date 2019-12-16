@@ -5,46 +5,48 @@ using Valve.VR;
 
 public class CameraControl : MonoBehaviour
 {
-    //上から回転させるカメラ、速度、フラグ
-    [SerializeField] private Camera camera;
+    //上から回転させるカメラ、回転速度、ズーム距離、ズーム速度、アニメーションフラグ
+    [SerializeField] private GameObject cameraObject;
     [SerializeField] private float rotSpeed;
-    private bool rotFlag;
+    [SerializeField] private float zoomDistance;
+    [SerializeField] private float zoomSpeed;
+    private bool animFlag;
 
-    //上からズーム倍率のデフォルト値とズーム倍率
-    private float defView = 60f;
-    [SerializeField] private float minView;
-    private float zoom;
+    //タイトルキャンバス
+    [SerializeField] private GameObject titleCanvas;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        defView = camera.fieldOfView;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
-        {
-            rotFlag = true;
-        }
-        CameraRotation();
+            animFlag = true;
 
+        CameraRotation(rotSpeed);
+        CameraZoom(zoomSpeed);
     }
 
-    private void CameraRotation()
+    private void CameraRotation(float Speed)
     {
-        camera.fieldOfView = defView + zoom;
+        if (!animFlag) { return; }
 
-        if (!rotFlag) { return; }
+        iTween.RotateTo(cameraObject, iTween.Hash("y", -180f, "time", Speed));
+        Destroy(titleCanvas);
+        //camera.transform.rotation = Quaternion.RotateTowards(camera.transform.rotation, Quaternion.Euler(0, 180f, 0), rotSpeed);
+    }
 
-        camera.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 180f, 0), rotSpeed);
+    private void CameraZoom(float Speed)
+    {
+        if (!animFlag) { return; }
 
-        if (defView != minView)
-        {
-            zoom = -1;
-        }
+
+
+        animFlag = false;
     }
 }
