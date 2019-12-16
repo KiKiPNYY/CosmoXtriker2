@@ -22,7 +22,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     protected int enemyHp;
     //エネミーの弾の種類
     [SerializeField]
-    protected GameObject bullet;
+    protected Bullet bullet;
     //砲弾の向きの位置
     [SerializeField]
     protected GameObject aim;
@@ -49,6 +49,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     protected void Start(){
         Debug.Log(parameter.HP);
         enemyHp = parameter.HP;
+        BulletManager.Instnce.AddBullet( bullet );
     }
 
     protected void FixedUpdate(){
@@ -100,8 +101,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     //Enemyの攻撃
     virtual public void Attack() {
         var target = GameObject.FindGameObjectWithTag("Player");
-        var bulletScript = bullet.GetComponent<Bullet>();
-        BulletManager.Instnce.Fire(bulletScript,aim.transform.position,target.transform.position,ReturnMyType());
+        BulletManager.Instnce.Fire(bullet,aim.transform.position,target.transform.position,ReturnMyType());
     }
 
 

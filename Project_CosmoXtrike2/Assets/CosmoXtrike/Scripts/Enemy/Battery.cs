@@ -10,6 +10,7 @@ public class Battery : Enemy{
     protected override void Move(){
         Vector3 target = GameObject.FindGameObjectWithTag("Player").transform.position;
         target.y = this.transform.position.y;
+        
         this.transform.rotation = Quaternion.LookRotation(target);
     }
 
@@ -23,6 +24,11 @@ public class Battery : Enemy{
         yield return new WaitForSeconds(2.0f);
         Attack();
         fireWait = false;
+    }
+
+    bool AngleRestriction(){
+        
+        return true;
     }
      
 
