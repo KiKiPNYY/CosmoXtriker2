@@ -9,11 +9,14 @@ public class SoundParameter
     [SerializeField][Range(0,1)] private float m_volume = 0;
     [SerializeField] private float m_fadeTime = 0;
     [SerializeField] private bool m_loop = false;
+    [SerializeField] private bool m_3DSound;
+
 
     public AudioClip AudioClip { get => m_audioClip; }
     public float Volume { get => m_volume; }
     public float FadeTime { get => m_fadeTime; }
     public bool Loop { get => m_loop; }
+    public bool SoundType3D { get => m_3DSound; }
 }
 
 [CreateAssetMenu(menuName = "CreateScriptable/Create SoundData")]

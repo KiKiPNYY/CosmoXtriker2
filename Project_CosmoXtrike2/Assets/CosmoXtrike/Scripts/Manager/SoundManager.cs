@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour
     }
     #endregion
 
-    private AudioSource[] m_audioSources = default;
+    private SoundObject[] m_soundObjects = default;
 
     private SoundData m_soundData = default;
 
@@ -56,17 +56,16 @@ public class SoundManager : MonoBehaviour
     {
         m_soundData = _soundData;
 
-        m_audioSources = new AudioSource[m_soundData.AudioNum];
-        for (int i = 0; i < m_audioSources.Length; i++)
+        m_soundObjects = new SoundObject[m_soundData.AudioNum];
+        for (int i = 0; i < m_soundObjects.Length; i++)
         {
             GameObject audioObject = new GameObject();
-            audioObject.AddComponent<AudioSource>();
-            m_audioSources[i] = audioObject.GetComponent<AudioSource>();
+            audioObject.AddComponent<SoundObject>();
+            m_soundObjects[i] = audioObject.GetComponent<SoundObject>();
         }
-    
-        m_audioSources[0].clip = m_soundData.BGMParameters[0].AudioClip;
-        m_audioSources[0].loop = m_soundData.BGMParameters[0].Loop;
-        m_audioSources[0].volume = m_soundData.BGMParameters[0].Volume;
+
+        m_soundObjects[0].Init();
+        m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[0].AudioClip, m_soundData.BGMParameters[0].Volume, m_soundData.BGMParameters[0].Loop, m_soundData.BGMParameters[0].SoundType3D, null);
 
         m_BGMHash = new int[m_soundData.BGMParameters.Length];
         m_SEHash = new int[_soundData.SEParameters.Length];
@@ -89,30 +88,147 @@ public class SoundManager : MonoBehaviour
     public void SceneEnd()
     {
         m_soundData = null;
-        for (int i = 0; i < m_audioSources.Length; i++)
+        for (int i = 0; i < m_soundObjects.Length; i++)
         {
-            m_audioSources[i].clip = null;
+            m_soundObjects[i].End();
         }
-        m_audioSources = null;
+        m_soundObjects = null;
     }
 
-    public void SEPlay(string _SEname)
+    /// <summary>
+    /// SE再生
+    /// </summary>
+    /// <param name="_SEname"></param>
+    public void SEPlay(string _SEname, Transform generatTrans = null)
     {
         int SEHash = _SEname.GetHashCode();
+        int recordSENum = -1;
+        for (int i = 0; i < m_SEHash.Length; i++)
+        {
+            if (SEHash != m_SEHash[i]) { continue; }
+            recordSENum = i;
+            break;
+        }
+
+        if (recordSENum < 0) { return; }
+
+        float maxSoundPlayTime = -1;
+        int recordObjectNum = -1;
+        for (int i = 1; i < m_soundObjects.Length; i++)
+        {
+            if (!m_soundObjects[i].SoundPlayNow)
+            {
+                m_soundObjects[i].Init();
+                m_soundObjects[i].SoundPlay(m_soundData.SEParameters[recordSENum].AudioClip, m_soundData.SEParameters[recordSENum].Volume, m_soundData.SEParameters[recordSENum].Loop, m_soundData.SEParameters[recordSENum].SoundType3D, generatTrans);
+                return;
+            }
+            if (m_soundObjects[i].SoundPlayTime < maxSoundPlayTime) { continue; }
+            maxSoundPlayTime = m_soundObjects[i].SoundPlayTime;
+            recordObjectNum = i;
+        }
+        if (recordObjectNum < 0) { return; }
+        m_soundObjects[recordObjectNum].SoundPlay(m_soundData.SEParameters[recordSENum].AudioClip, m_soundData.SEParameters[recordSENum].Volume, m_soundData.SEParameters[recordSENum].Loop, m_soundData.SEParameters[recordSENum].SoundType3D, generatTrans);
+
     }
 
-    public void SEFade(string _SEname)
+    /// <summary>
+    /// SEフェード
+    /// </summary>
+    /// <param name="_SEname"></param>
+    public void SEFade(FadeType _fadeType, float _fadeTime, bool _allFadeOut, string _SEname = null, Transform generatTrans = null)
     {
+        if (_fadeType == FadeType.Nun) { return; }
+
+        if (_allFadeOut && _fadeType == FadeType.fadeOut)
+        {
+            for (int i = 1; i < m_soundObjects.Length; i++)
+            {
+                m_soundObjects[i].FadeCall(_fadeType, _fadeTime, 0);
+            }
+        }
+
         int SEHash = _SEname.GetHashCode();
+        int recordSENum = -1;
+        for (int i = 0; i < m_SEHash.Length; i++)
+        {
+            if (SEHash != m_SEHash[i]) { continue; }
+            recordSENum = i;
+            break;
+        }
+
+        if (recordSENum < 0) { return; }
+
+        for (int i = 1; i < m_soundObjects.Length; i++)
+        {
+            if (m_soundObjects[i].PlaySoundHash != m_SEHash[recordSENum]) { continue; }
+            if (_fadeType == FadeType.FadeIN)
+            {
+                m_soundObjects[i].Init();
+                m_soundObjects[i].SoundPlay(m_soundData.SEParameters[recordSENum].AudioClip, 0, m_soundData.SEParameters[recordSENum].Loop, m_soundData.SEParameters[recordSENum].SoundType3D, generatTrans);
+                m_soundObjects[i].FadeCall(_fadeType, _fadeTime, m_soundData.SEParameters[recordSENum].Volume);
+                return;
+            }
+            else
+            {
+                m_soundObjects[i].FadeCall(_fadeType, _fadeTime, 0);
+            }
+        }
     }
 
+    /// <summary>
+    /// BGM再生
+    /// </summary>
+    /// <param name="_BGMname"></param>
     public void BGMPlay(string _BGMname)
     {
         int BGMHash = _BGMname.GetHashCode();
+        int recordBGMNum = -1;
+        for (int i = 0; i < m_BGMHash.Length; i++)
+        {
+            if (BGMHash != m_BGMHash[i]) { continue; }
+            recordBGMNum = i;
+            break;
+        }
+
+        if (recordBGMNum < 0) { return; }
+
+        m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[recordBGMNum].AudioClip, m_soundData.BGMParameters[recordBGMNum].Volume, m_soundData.BGMParameters[recordBGMNum].Loop, m_soundData.BGMParameters[recordBGMNum].SoundType3D, null);
     }
 
-    public void BGMFade(string _BGMname)
+    /// <summary>
+    /// BGMフェード
+    /// </summary>
+    /// <param name="_BGMname"></param>
+    public void BGMFade(string _BGMname, float _fadeTime, FadeType _fadeType)
     {
+        if(_fadeType == FadeType.fadeOut)
+        {
+            m_soundObjects[0].FadeCall(_fadeType, _fadeTime, 0);
+            return;
+        }
+
         int BGMHash = _BGMname.GetHashCode();
+        int recordBGMNum = -1;
+        for (int i = 0; i < m_BGMHash.Length; i++)
+        {
+            if (BGMHash != m_BGMHash[i]) { continue; }
+            recordBGMNum = i;
+            break;
+        }
+
+        if(recordBGMNum < 0) { return; }
+        m_soundObjects[0].Init();
+        m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[recordBGMNum].AudioClip, 0, m_soundData.BGMParameters[recordBGMNum].Loop, m_soundData.BGMParameters[recordBGMNum].SoundType3D, null);
+        m_soundObjects[0].FadeCall(_fadeType, _fadeTime, m_soundData.BGMParameters[recordBGMNum].Volume);
+    }
+
+    private void FixedUpdate()
+    {
+        float deltaTime = Time.deltaTime;
+        for (int i = 0; i < m_soundObjects.Length; i++)
+        {
+            if (!m_soundObjects[i]) { continue; }
+            m_soundObjects[i].ThisObjectUpdate(deltaTime);
+        }
     }
 }
