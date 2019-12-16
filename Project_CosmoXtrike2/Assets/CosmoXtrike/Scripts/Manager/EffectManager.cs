@@ -49,7 +49,7 @@ public class EffectManager : MonoBehaviour
         for(int i = 0; i < m_useEffectData.Effects.Length; i++)
         {
             AddEffect(m_useEffectData.Effects[i]);
-            m_useEffectData.Effects[i].Init(this.transform);
+            m_useEffectData.Effects[i].Init(this.transform,true);
         }
 
     }

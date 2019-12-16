@@ -20,7 +20,7 @@ public class Effect : MonoBehaviour
     /// 初期化
     /// </summary>
     /// <param name="_offsetTransform"></param>
-    public virtual void Init(Transform _offsetTransform)
+    public virtual void Init(Transform _offsetTransform, bool _start = false)
     {
 
         if (m_particleSystem == null)
@@ -30,8 +30,8 @@ public class Effect : MonoBehaviour
         m_timer = 0;
 
         this.transform.position = _offsetTransform.position + m_effectData.ActiveOffset;
-        
-        if(m_effectData.RotationStandardWorld)
+
+        if (m_effectData.RotationStandardWorld)
         {
             this.transform.rotation = Quaternion.Euler(m_effectData.ActiveRotation);
         }
@@ -46,6 +46,10 @@ public class Effect : MonoBehaviour
             this.transform.rotation = quaternion;
         }
         //if (!this.transform.gameObject.activeSelf) { return; }
+        if (!_start && m_effectData.SetParent)
+        {
+            this.transform.parent = _offsetTransform;
+        }
         this.transform.gameObject.SetActive(false);
     }
 
@@ -77,8 +81,8 @@ public class Effect : MonoBehaviour
     public virtual void ThisObjectUpdate(float _deltaTime)
     {
         m_timer += _deltaTime;
-        if(m_timer < m_effectData.ActiveTime) { return; }
-
+        if (m_timer < m_effectData.ActiveTime) { return; }
+        this.transform.parent = null;
         m_thisActive = false;
         this.transform.gameObject.SetActive(false);
 

@@ -20,16 +20,16 @@ public class WaveController : MonoBehaviour
 
     void Update()
     {
-        if (flagManager.IsPlaying && Input.GetKeyDown(KeyCode.A))
-        {
-            //  敵の生成
-            StartCoroutine(spawnCorutine);
-        }
+        //if (flagManager.IsPlaying && Input.GetKeyDown(KeyCode.A))
+        //{
+        //    //  敵の生成
+        //    StartCoroutine(spawnCorutine);
+        //}
 
-        if (!flagManager.IsPlaying || Input.GetKeyDown(KeyCode.B))
-        {
-            StopCoroutine(spawnCorutine);
-        }
+        //if (!flagManager.IsPlaying || Input.GetKeyDown(KeyCode.B))
+        //{
+        //    StopCoroutine(spawnCorutine);
+        //}
         
         if (Input.GetKeyDown(KeyCode.S))
         {

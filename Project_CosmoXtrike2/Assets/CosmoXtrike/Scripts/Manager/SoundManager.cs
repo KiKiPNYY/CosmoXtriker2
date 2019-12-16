@@ -5,157 +5,230 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
-    #region Singleton
-    private static SoundManager instance;
-    public static SoundManager Instance
+    #region シングルトン
+    private static SoundManager m_instance = null;
+
+    public static SoundManager Instnce
     {
         get
         {
-            if (instance == null)
+            if (m_instance == null)
             {
-                Debug.LogWarning("SoundManager is Null");
+                Debug.LogError("BulletManagerがありません");
             }
-            return instance;
+            return m_instance;
         }
     }
 
-    private bool CheckInstance()
+    /// <summary>
+    /// シングルトン作成
+    /// </summary>
+    private void CreateInstnce()
     {
-        if (instance == null)
+        if (m_instance == null)
         {
-            instance = (SoundManager)this;
-            DontDestroyOnLoad(this.gameObject);
-            return true;
+            m_instance = this;
         }
-        else if (Instance == this)
+        else
         {
-            DontDestroyOnLoad(this.gameObject);
-            return true;
+            Destroy(this.transform.gameObject);
         }
-
-        Destroy(this);
-        return false;
     }
     #endregion
 
-    [SerializeField]
-    private AudioClip[] BGM = default;
-    [SerializeField]
-    private AudioClip[] SE = default;
+    private SoundObject[] m_soundObjects = default;
 
-    private AudioSource[] audioSource;
-    [SerializeField]
-    float fadeTime = 0.5f;
+    private SoundData m_soundData = default;
 
-    public enum SE_Name
-    {
-        SE_00_AAA,
-        SE_01_BBB,
-        SE_02_CCC,
-    };
-
-    public enum BGM_Name
-    {
-        BGM_00_Opening,
-        BGM_01_Game,
-    };
+    private int[] m_BGMHash = default;
+    private int[] m_SEHash = default;
 
     void Awake()
     {
-        CheckInstance();
-        audioSource = GetComponents<AudioSource>();
-    }
-
-    private void Start()
-    {
-
+        CreateInstnce();
     }
 
     /// <summary>
-    /// その時間軸内でのBGM切り替え
+    /// シーン移動後に初期化
     /// </summary>
-    /// <param name="_Name"></param>
-    public void PlayBGM(BGM_Name _Name)
+    /// <param name="_soundData"></param>
+    public void SceneStart(SoundData _soundData)
     {
-        switch (_Name)
+        m_soundData = _soundData;
+
+        m_soundObjects = new SoundObject[m_soundData.AudioNum];
+        for (int i = 0; i < m_soundObjects.Length; i++)
         {
-            case BGM_Name.BGM_00_Opening:
-                break;
-            case BGM_Name.BGM_01_Game:
-                break;
-            default:
-                Debug.Log("不明な値");
-                break;
+            GameObject audioObject = new GameObject();
+            audioObject.AddComponent<SoundObject>();
+            m_soundObjects[i] = audioObject.GetComponent<SoundObject>();
         }
-    }
 
-    /// <summary>
-    /// fadein
-    /// </summary>
-    IEnumerator FadeIn()
-    {
-        float time = 0;
-        audioSource[0].Play();
-        while (time <= fadeTime)
+        m_soundObjects[0].Init();
+        m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[0].AudioClip, m_soundData.BGMParameters[0].Volume, m_soundData.BGMParameters[0].Loop, m_soundData.BGMParameters[0].SoundType3D, null);
+
+        m_BGMHash = new int[m_soundData.BGMParameters.Length];
+        m_SEHash = new int[_soundData.SEParameters.Length];
+
+        for (int i = 0; i < m_BGMHash.Length; i++)
         {
-            audioSource[0].volume = time / fadeTime;
-            time += Time.unscaledDeltaTime;
-            yield return null;
+            m_BGMHash[i] = m_soundData.BGMParameters[i].AudioClip.name.GetHashCode();
         }
-        audioSource[0].volume = 1;
-        yield break;
+
+        for (int i = 0; i < m_SEHash.Length; i++)
+        {
+            m_SEHash[i] = m_soundData.SEParameters[i].AudioClip.name.GetHashCode();
+        }
+
     }
 
     /// <summary>
-    /// fadeout
+    /// シーン移動するときに初期化
     /// </summary>
-    /// <returns></returns>
-    IEnumerator FadeOut()
+    public void SceneEnd()
     {
-        bool act1 = audioSource[1].isPlaying;
-        float time = 0;
-        while (time <= fadeTime)
+        m_soundData = null;
+        for (int i = 0; i < m_soundObjects.Length; i++)
         {
-            if (act1)
+            m_soundObjects[i].End();
+        }
+        m_soundObjects = null;
+    }
+
+    /// <summary>
+    /// SE再生
+    /// </summary>
+    /// <param name="_SEname"></param>
+    public void SEPlay(string _SEname, Transform generatTrans = null)
+    {
+        int SEHash = _SEname.GetHashCode();
+        int recordSENum = -1;
+        for (int i = 0; i < m_SEHash.Length; i++)
+        {
+            if (SEHash != m_SEHash[i]) { continue; }
+            recordSENum = i;
+            break;
+        }
+
+        if (recordSENum < 0) { return; }
+
+        float maxSoundPlayTime = -1;
+        int recordObjectNum = -1;
+        for (int i = 1; i < m_soundObjects.Length; i++)
+        {
+            if (!m_soundObjects[i].SoundPlayNow)
             {
-                audioSource[1].volume = 1 - (time / fadeTime);
-                audioSource[0].volume = (1 - (time / fadeTime)) / 2;
+                m_soundObjects[i].Init();
+                m_soundObjects[i].SoundPlay(m_soundData.SEParameters[recordSENum].AudioClip, m_soundData.SEParameters[recordSENum].Volume, m_soundData.SEParameters[recordSENum].Loop, m_soundData.SEParameters[recordSENum].SoundType3D, generatTrans);
+                return;
+            }
+            if (m_soundObjects[i].SoundPlayTime < maxSoundPlayTime) { continue; }
+            maxSoundPlayTime = m_soundObjects[i].SoundPlayTime;
+            recordObjectNum = i;
+        }
+        if (recordObjectNum < 0) { return; }
+        m_soundObjects[recordObjectNum].SoundPlay(m_soundData.SEParameters[recordSENum].AudioClip, m_soundData.SEParameters[recordSENum].Volume, m_soundData.SEParameters[recordSENum].Loop, m_soundData.SEParameters[recordSENum].SoundType3D, generatTrans);
+
+    }
+
+    /// <summary>
+    /// SEフェード
+    /// </summary>
+    /// <param name="_SEname"></param>
+    public void SEFade(FadeType _fadeType, float _fadeTime, bool _allFadeOut, string _SEname = null, Transform generatTrans = null)
+    {
+        if (_fadeType == FadeType.Nun) { return; }
+
+        if (_allFadeOut && _fadeType == FadeType.fadeOut)
+        {
+            for (int i = 1; i < m_soundObjects.Length; i++)
+            {
+                m_soundObjects[i].FadeCall(_fadeType, _fadeTime, 0);
+            }
+        }
+
+        int SEHash = _SEname.GetHashCode();
+        int recordSENum = -1;
+        for (int i = 0; i < m_SEHash.Length; i++)
+        {
+            if (SEHash != m_SEHash[i]) { continue; }
+            recordSENum = i;
+            break;
+        }
+
+        if (recordSENum < 0) { return; }
+
+        for (int i = 1; i < m_soundObjects.Length; i++)
+        {
+            if (m_soundObjects[i].PlaySoundHash != m_SEHash[recordSENum]) { continue; }
+            if (_fadeType == FadeType.FadeIN)
+            {
+                m_soundObjects[i].Init();
+                m_soundObjects[i].SoundPlay(m_soundData.SEParameters[recordSENum].AudioClip, 0, m_soundData.SEParameters[recordSENum].Loop, m_soundData.SEParameters[recordSENum].SoundType3D, generatTrans);
+                m_soundObjects[i].FadeCall(_fadeType, _fadeTime, m_soundData.SEParameters[recordSENum].Volume);
+                return;
             }
             else
             {
-                audioSource[0].volume = 1 - (time / fadeTime);
+                m_soundObjects[i].FadeCall(_fadeType, _fadeTime, 0);
             }
-            time += Time.unscaledDeltaTime;
-            yield return null;
         }
-        audioSource[0].volume = 0;
-        audioSource[0].Stop();
-        if (act1)
-        {
-            audioSource[1].volume = 0;
-            audioSource[1].Stop();
-        }
-        yield break;
     }
 
     /// <summary>
-    /// 止める
+    /// BGM再生
     /// </summary>
-    public void StopBGM()
+    /// <param name="_BGMname"></param>
+    public void BGMPlay(string _BGMname)
     {
-        StartCoroutine(FadeOut());
+        int BGMHash = _BGMname.GetHashCode();
+        int recordBGMNum = -1;
+        for (int i = 0; i < m_BGMHash.Length; i++)
+        {
+            if (BGMHash != m_BGMHash[i]) { continue; }
+            recordBGMNum = i;
+            break;
+        }
+
+        if (recordBGMNum < 0) { return; }
+
+        m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[recordBGMNum].AudioClip, m_soundData.BGMParameters[recordBGMNum].Volume, m_soundData.BGMParameters[recordBGMNum].Loop, m_soundData.BGMParameters[recordBGMNum].SoundType3D, null);
     }
 
-    /// <summary>SEの再生(音量調整)</summary>
-    /// <param name="_Name"></param>
-    /// <param name="_Vol"></param>
-    public void PlaySE(SE_Name _Name, float _Vol = 1)
+    /// <summary>
+    /// BGMフェード
+    /// </summary>
+    /// <param name="_BGMname"></param>
+    public void BGMFade(string _BGMname, float _fadeTime, FadeType _fadeType)
     {
-        audioSource[2].PlayOneShot(SE[(int)_Name], _Vol);
-    }
-    public void PlaySE(int num, float _Vol = 1)
-    {
-        audioSource[2].PlayOneShot(SE[num], _Vol);
+        if(_fadeType == FadeType.fadeOut)
+        {
+            m_soundObjects[0].FadeCall(_fadeType, _fadeTime, 0);
+            return;
+        }
+
+        int BGMHash = _BGMname.GetHashCode();
+        int recordBGMNum = -1;
+        for (int i = 0; i < m_BGMHash.Length; i++)
+        {
+            if (BGMHash != m_BGMHash[i]) { continue; }
+            recordBGMNum = i;
+            break;
+        }
+
+        if(recordBGMNum < 0) { return; }
+        m_soundObjects[0].Init();
+        m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[recordBGMNum].AudioClip, 0, m_soundData.BGMParameters[recordBGMNum].Loop, m_soundData.BGMParameters[recordBGMNum].SoundType3D, null);
+        m_soundObjects[0].FadeCall(_fadeType, _fadeTime, m_soundData.BGMParameters[recordBGMNum].Volume);
     }
 
+    private void FixedUpdate()
+    {
+        float deltaTime = Time.deltaTime;
+        for (int i = 0; i < m_soundObjects.Length; i++)
+        {
+            if (!m_soundObjects[i]) { continue; }
+            m_soundObjects[i].ThisObjectUpdate(deltaTime);
+        }
+    }
 }
