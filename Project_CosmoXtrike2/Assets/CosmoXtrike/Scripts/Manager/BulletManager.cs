@@ -38,12 +38,9 @@ public class BulletManager : MonoBehaviour
 
     private List<BulletController> m_bulletControllers = new List<BulletController>();
 
-    /// <summary>
-    /// 初期化
-    /// </summary>
-    private void Init()
+    public BulletManager()
     {
-        //m_bulletControllers = new List<BulletController>();
+        m_bulletControllers = new List<BulletController>();
     }
 
     /// <summary>
@@ -101,11 +98,6 @@ public class BulletManager : MonoBehaviour
     private void Awake()
     {
         CreateInstnce();
-    }
-
-    void Start()
-    {
-        Init();
     }
 
     private void FixedUpdate()

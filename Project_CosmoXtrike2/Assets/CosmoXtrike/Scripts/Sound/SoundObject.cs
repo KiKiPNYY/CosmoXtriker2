@@ -17,6 +17,9 @@ public class SoundObject : MonoBehaviour
     private FadeType m_fade = FadeType.Nun;
     private AudioSource m_audioSource = null;
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
     public SoundObject()
     {
         m_aoudioTime = 0;
@@ -27,8 +30,19 @@ public class SoundObject : MonoBehaviour
         m_audioSource = null;
     }
 
+    /// <summary>
+    /// Updateを行うかのチェック
+    /// </summary>
     public bool UpdateAction { get; private set; }
+
+    /// <summary>
+    /// サウンドを再生しているかのチェック
+    /// </summary>
     public bool SoundPlayNow { get; private set; }
+
+    /// <summary>
+    /// 再生中のサウンドのハッシュ値を取得
+    /// </summary>
     public int PlaySoundHash
     {
         get
@@ -40,6 +54,10 @@ public class SoundObject : MonoBehaviour
             return m_audioSource.clip.GetHashCode();
         }
     }
+
+    /// <summary>
+    /// 再生しているサウンドの割合を0～1の間で返す
+    /// </summary>
     public float SoundPlayTime { get => Mathf.Clamp((m_aoudioTime / m_audioSource.clip.length), 0, 1); }
 
     /// <summary>
@@ -57,7 +75,9 @@ public class SoundObject : MonoBehaviour
 
         if (m_audioSource == null)
         {
+            
             m_audioSource = GetComponent<AudioSource>();
+            m_audioSource.playOnAwake = false;
         }
         m_audioSource.clip = null;
     }
@@ -157,9 +177,11 @@ public class SoundObject : MonoBehaviour
             End();
             return;
         }
-
+        Debug.Log(this.transform.gameObject.name);
+        Debug.Log(m_audioSource);
         if (m_audioSource.loop) { return; }
         if (m_aoudioTime < m_audioSource.clip.length) { return; }
         End();
     }
+
 }

@@ -5,24 +5,73 @@ using UnityEngine.UI;
 
 public class TitleController : MonoBehaviour
 {
-    [SerializeField] [Range(1, 10)] private float m_fadeTime = 1f;
-    [SerializeField] [Range(0, 1)] private float m_changeFadeTime = 0.6f;
-    [SerializeField] private Text m_text;
+    #region シングルトン
+    private static TitleController m_instance = null;
 
-    private float m_timer;
-    private bool m_isChange = false;
-
-    private void ChangeScene()
+    public static TitleController Instnce
     {
-        if (m_isChange) { return; }
-        if (Input.GetButtonDown("LeftTrigger") || Input.GetButtonDown("RightTrigger") || Input.GetKeyDown(KeyCode.Space))
+        get
         {
-            m_isChange = true;
-            m_timer = 0;
-            SceneLoadManager.Instnce.LoadScene("Game");
+            if (m_instance == null)
+            {
+                Debug.LogError("BulletManagerがありません");
+            }
+            return m_instance;
         }
     }
 
+    /// <summary>
+    /// シングルトン作成
+    /// </summary>
+    private void CreateInstnce()
+    {
+        if (m_instance == null)
+        {
+            m_instance = this;
+            DontDestroyOnLoad(this.transform.gameObject);
+        }
+        else
+        {
+            Destroy(this.transform.gameObject);
+        }
+    }
+    #endregion
+
+    [SerializeField] [Range(1, 10)] private float m_fadeTime = 1f;
+    [SerializeField] [Range(0, 1)] private float m_changeFadeTime = 0.6f;
+    [SerializeField] private Text m_text = null;
+    [SerializeField] private SoundData m_soundData = null;
+
+    private float m_timer = 0;
+    private bool m_isChange = false;
+
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    public TitleController()
+    {
+        m_timer = 0;
+        m_isChange = false;
+    }
+
+    /// <summary>
+    /// シーン遷移のチェック
+    /// </summary>
+    private void ChangeScene()
+    {
+        if (m_isChange) { return; }
+        if (!Input.GetButtonDown("LeftTrigger") && !Input.GetButtonDown("RightTrigger") && !Input.GetKeyDown(KeyCode.Space)) { return; }
+
+        m_isChange = true;
+        m_timer = 0;
+        SoundManager.Instnce.BGMFade(1, FadeType.fadeOut);
+        SoundManager.Instnce.SEFade(FadeType.fadeOut, 1, true);
+        SceneLoadManager.Instnce.LoadScene("Game");
+    }
+
+    /// <summary>
+    /// テキストのUpdates
+    /// </summary>
     private void TextUpdate()
     {
         
@@ -37,14 +86,22 @@ public class TitleController : MonoBehaviour
 
     }
 
-    void Start()
+    #region Unity関数
+
+    private void Start()
     {
-        m_isChange = false;
+        SoundManager.Instnce.SceneStart(m_soundData);
     }
 
-    void Update()
+    private void Update()
     {
-        TextUpdate();
         ChangeScene();
     }
+
+    private void FixedUpdate()
+    {
+        TextUpdate();
+    }
+    #endregion
+
 }

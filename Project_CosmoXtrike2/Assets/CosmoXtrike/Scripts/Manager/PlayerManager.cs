@@ -2,116 +2,159 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider), typeof(Rigidbody))]
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private GameObject m_player;
     [SerializeField] private Transform[] m_bulletFire;
-
     [SerializeField] private Transform[] m_gunTrans;
-    [SerializeField] private Bullet m_bullet;
-    [SerializeField] private Effect m_fireEffect;
+    [SerializeField] private PlayerData m_playerData;
 
-    [SerializeField] private float m_acceleTime = 0;
-    [SerializeField] private float m_defaultSpeed = 0;
-    [SerializeField] private float m_maxSpeed = 0;
-    private float speed = 0;
-    private float timer = 0;
+    private Rigidbody m_rb = null;
+    private float m_moveSpeed = 0;
+    private float m_acceleTimer = 0;
+    private float m_bulletIntervalTimer = 0;
     private bool m_accele = false;
+    private bool m_bulletTrigger = false;
 
-    void Start()
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    public PlayerManager()
     {
-        for(int i =0 ; i < m_bulletFire.Length; i++)
-        {
-            BulletManager.Instnce.AddBullet(m_bullet);
-        }
-        speed = m_defaultSpeed;
+        m_moveSpeed = 0;
+        m_acceleTimer = 0;
+        m_bulletIntervalTimer = 0;
         m_accele = false;
-        timer = 0;
+        m_bulletTrigger = false;
+        m_rb = null;
     }
 
-    
-    void Update()
+    /// <summary>
+    /// 移動Update
+    /// </summary>
+    /// <param name="_deltaTime"></param>
+    private void MoveUpdate(float _deltaTime)
     {
-        float x = Input.GetAxis("Left_Horizontal");
-        float y = Input.GetAxis("Left_Vertical");
-        
+        if (m_accele)
+        {
+            m_acceleTimer += _deltaTime / m_playerData.AcceleTime;
+            m_acceleTimer = Mathf.Clamp(m_acceleTimer, 0, 1);
+            float addAccele = m_playerData.MaxSpeed - m_playerData.DefaultSpeed;
+            m_moveSpeed = m_playerData.DefaultSpeed + (addAccele * m_acceleTimer);
+        }
+        if (!m_accele)
+        {
+            m_acceleTimer -= _deltaTime / m_playerData.AcceleTime;
+            m_acceleTimer = Mathf.Clamp(m_acceleTimer, 0, 1);
+            float addAccele = m_playerData.MaxSpeed - m_playerData.DefaultSpeed;
+            m_moveSpeed = m_playerData.DefaultSpeed + (addAccele * m_acceleTimer);
+        }
+
+        m_moveSpeed = Mathf.Clamp(m_moveSpeed, m_playerData.DefaultSpeed, m_playerData.MaxSpeed);
+        this.transform.position += this.transform.forward * m_moveSpeed;
+    }
+
+    /// <summary>
+    /// バレットのUpdate
+    /// </summary>
+    /// <param name="_deltaTime"></param>
+    private void BulletUpdate(float _deltaTime)
+    {
+        if (!m_bulletTrigger) { return; }
+        m_bulletIntervalTimer += _deltaTime;
+        if (m_bulletIntervalTimer < m_playerData.BulletInterval) { return; }
+        for (int i = 0; i < m_bulletFire.Length; i++)
+        {
+            EffectManager.Instnce.EffectPlay(m_playerData.Effect, m_bulletFire[i]);
+            BulletManager.Instnce.Fire(m_playerData.Bullet, m_bulletFire[i].position + m_bulletFire[i].forward, m_bulletFire[i].forward, ThisType.Player);
+        }
+        m_bulletIntervalTimer = 0;
+    }
+
+    #region Unity関数
+
+    private void Start()
+    {
+        for (int i = 0; i < m_bulletFire.Length; i++)
+        {
+            BulletManager.Instnce.AddBullet(m_playerData.Bullet);
+        }
+        m_rb = GetComponent<Rigidbody>();
+        m_moveSpeed = m_playerData.DefaultSpeed;
+        m_accele = false;
+        m_acceleTimer = 0;
+    }
+
+    private void Update()
+    {
+        float x = Input.GetAxis("Right_Horizontal");
+        float y = Input.GetAxis("Right_Vertical");
+
+        x = Input.GetKey(KeyCode.RightArrow) == true ? 1 : 0;
+        x = Input.GetKey(KeyCode.LeftArrow) == true ? -1 : 0;
+
         Vector3 vector = Vector3.zero;
         Quaternion loockRotation;
-        bool ishoge = false;
-        // for(int i =0 ; i < m_gunTrans.Length; i++)
-        // {
-            
-        //     if((m_gunTrans[i].localEulerAngles.y > 30 && y > 0) || (m_gunTrans[i].localEulerAngles.y < -30 && y < 0))
-        //     {
-        //         m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x, m_gunTrans[i].rotation.y > 0 ? 30:-30,m_gunTrans[i].rotation.z);
-        //         ishoge = true;
-        //     }
-        //     if((m_gunTrans[i].localEulerAngles.x > 10 && x > 0) || (m_gunTrans[i].localEulerAngles.x < -10 && x < 0))
-        //     {
-        //         m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x > 0 ? 10:-10, m_gunTrans[i].rotation.y,m_gunTrans[i].rotation.z);
-        //     }
+        for (int i = 0; i < m_gunTrans.Length; i++)
+        {
 
-        //     vector = m_gunTrans[i].right * x + m_gunTrans[i].up * y + m_gunTrans[i].forward;
-        //     loockRotation = Quaternion.LookRotation((m_gunTrans[i].position + vector) - m_gunTrans[i].position);
-        //     m_gunTrans[i].rotation = Quaternion.Slerp(m_gunTrans[i].rotation, loockRotation, Time.deltaTime);
+            if ((m_gunTrans[i].localEulerAngles.y > 30 && y > 0) || (m_gunTrans[i].localEulerAngles.y < -30 && y < 0))
+            {
+                m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x, m_gunTrans[i].rotation.y > 0 ? 30 : -30, m_gunTrans[i].rotation.z);
+            }
+            if ((m_gunTrans[i].localEulerAngles.x > 10 && x > 0) || (m_gunTrans[i].localEulerAngles.x < -10 && x < 0))
+            {
+                m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x > 0 ? 10 : -10, m_gunTrans[i].rotation.y, m_gunTrans[i].rotation.z);
+            }
 
-        // }
+            vector = m_gunTrans[i].right * x + m_gunTrans[i].up * y + m_gunTrans[i].forward;
+            loockRotation = Quaternion.LookRotation((m_gunTrans[i].position + vector) - m_gunTrans[i].position);
+            m_gunTrans[i].rotation = Quaternion.Slerp(m_gunTrans[i].rotation, loockRotation, Time.deltaTime);
 
+        }
 
-        // x = Input.GetAxis("Right_Horizontal");
-        // y = Input.GetAxis("Right_Vertical");
-        if(Input.GetButtonDown("LeftTrigger") && !m_accele)
+        x = Input.GetAxis("Left_Horizontal");
+        y = Input.GetAxis("Left_Vertical");
+
+        if (Input.GetButtonDown("LeftTrigger") && !m_accele)
         {
             m_accele = true;
         }
-        if(Input.GetButtonUp("LeftTrigger") && m_accele)
+        if (Input.GetButtonUp("LeftTrigger") && m_accele)
         {
-            Debug.Log(timer);
             m_accele = false;
         }
 
-        if(m_accele )
-        {
-            timer += Time.deltaTime / m_acceleTime;
-            timer = Mathf.Clamp(timer,0,1);
-            float addAccele = m_maxSpeed - m_defaultSpeed;
-            speed = m_defaultSpeed + (addAccele * timer);
-        }
-        if(!m_accele )
-        {
-            timer -= Time.deltaTime / m_acceleTime;
-            timer = Mathf.Clamp(timer,0,1);
-        //     Debug.Log(timer);
-            float addAccele = m_maxSpeed - m_defaultSpeed;
-            speed = m_defaultSpeed + (addAccele * timer);
-        }
-        speed = Mathf.Clamp(speed, m_defaultSpeed, m_maxSpeed);
+        vector = Vector3.zero;
 
+        vector = this.transform.right * x * -1 + this.transform.up * y + this.transform.forward;
+        loockRotation = Quaternion.LookRotation((this.transform.position + vector) - this.transform.position);
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime);
 
-        vector = m_player.transform.right * x *-1 + m_player.transform.up * y + m_player.transform.forward;
-        loockRotation = Quaternion.LookRotation((m_player.transform.position + vector) - m_player.transform.position);
-        m_player.transform.rotation = Quaternion.Slerp(m_player.transform.rotation, loockRotation, Time.deltaTime);
-        m_player.transform.position += m_player.transform.forward * speed;
-
-       
-        if(Input.GetButtonDown("RightTrigger"))
+        if (Input.GetButtonDown("RightTrigger") || Input.GetKeyDown(KeyCode.Space))
         {
-            
-            for(int i =0 ; i < m_bulletFire.Length; i++)
+            for (int i = 0; i < m_bulletFire.Length; i++)
             {
-                EffectManager.Instnce.EffectPlay(m_fireEffect,m_bulletFire[i]);
-                BulletManager.Instnce.Fire(m_bullet, m_bulletFire[i].position + m_bulletFire[i].forward, m_bulletFire[i].forward,ThisType.Player);
+                EffectManager.Instnce.EffectPlay(m_playerData.Effect, m_bulletFire[i]);
+                BulletManager.Instnce.Fire(m_playerData.Bullet, m_bulletFire[i].position + m_bulletFire[i].forward, m_bulletFire[i].forward, ThisType.Player);
             }
+            m_bulletTrigger = true;
         }
 
-        // if(Input.anyKey)
-        // {
-        //     for(int i =0 ; i < m_bulletFire.Length; i++)
-        //     {
-        //         Debug.Log("hoge");
-        //         return;
-        //         BulletManager.Instnce.Fire(m_bullet, m_bulletFire[i].position, m_bulletFire[i].forward,ThisType.Player);
-        //     }
-        // }
+        if (Input.GetButtonUp("RightTrigger") || Input.GetKeyUp(KeyCode.Space))
+        {
+            m_bulletIntervalTimer = 0;
+            m_bulletTrigger = false;
+        }
     }
+
+    private void FixedUpdate()
+    {
+        float deltatime = Time.deltaTime;
+        MoveUpdate(deltatime);
+        BulletUpdate(deltatime);
+    }
+
+    #endregion
+
 }

@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
         if (m_instance == null)
         {
             m_instance = this;
+            DontDestroyOnLoad(this.transform.gameObject);
         }
         else
         {
@@ -43,9 +44,15 @@ public class SoundManager : MonoBehaviour
     private int[] m_BGMHash = default;
     private int[] m_SEHash = default;
 
-    void Awake()
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    public SoundManager()
     {
-        CreateInstnce();
+        m_soundObjects = new SoundObject[0];
+        m_soundData = null;
+        m_BGMHash = new int[0];
+        m_SEHash = new int[0];
     }
 
     /// <summary>
@@ -61,6 +68,8 @@ public class SoundManager : MonoBehaviour
         {
             GameObject audioObject = new GameObject();
             audioObject.AddComponent<SoundObject>();
+            audioObject.AddComponent<AudioSource>();
+            audioObject.name = "audioObject" + (i + 1).ToString();
             m_soundObjects[i] = audioObject.GetComponent<SoundObject>();
         }
 
@@ -199,7 +208,7 @@ public class SoundManager : MonoBehaviour
     /// BGMフェード
     /// </summary>
     /// <param name="_BGMname"></param>
-    public void BGMFade(string _BGMname, float _fadeTime, FadeType _fadeType)
+    public void BGMFade( float _fadeTime, FadeType _fadeType, string _BGMname = null)
     {
         if(_fadeType == FadeType.fadeOut)
         {
@@ -222,13 +231,30 @@ public class SoundManager : MonoBehaviour
         m_soundObjects[0].FadeCall(_fadeType, _fadeTime, m_soundData.BGMParameters[recordBGMNum].Volume);
     }
 
+    #region Unity関数
+
+    void Awake()
+    {
+        CreateInstnce();
+    }
+
     private void FixedUpdate()
     {
         float deltaTime = Time.deltaTime;
         for (int i = 0; i < m_soundObjects.Length; i++)
         {
-            if (!m_soundObjects[i]) { continue; }
+            if (!m_soundObjects[i].UpdateAction) { continue; }
             m_soundObjects[i].ThisObjectUpdate(deltaTime);
         }
     }
+
+    private void OnDestroy()
+    {
+        for (int i = 0; i < m_soundObjects.Length; i++)
+        {
+            m_soundObjects[i].End();
+        }
+    }
+
+    #endregion
 }

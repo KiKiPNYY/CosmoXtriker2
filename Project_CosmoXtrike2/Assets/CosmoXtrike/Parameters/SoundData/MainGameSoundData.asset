@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89a1cc90f16afce43828fed8aaa2427e, type: 3}
-  m_Name: New Effect Data
+  m_Script: {fileID: 11500000, guid: 119629faa6d1d77438690bbc8f8a0c87, type: 3}
+  m_Name: MainGameSoundData
   m_EditorClassIdentifier: 
-  m_activeTime: 1
-  m_activeOffset: {x: 0, y: 0, z: 2}
-  m_rotationStandardWorld: 0
-  m_activeRotation: {x: 0, y: 0, z: 0}
+  m_BGM: []
+  m_SE: []
+  m_audioNum: 0
