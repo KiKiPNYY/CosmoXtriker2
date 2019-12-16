@@ -3,7 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[CreateAssetMenu(menuName = "CreateScriptable/Create EnemyDate")]
+public class EnemyDate : ScriptableObject{
+    [SerializeField]
+    [Header("初期HP")]
+    int hitpoint;
+    [SerializeField]
+    [Header("移動速度")]
+    float speed = 1.0f;
+    [SerializeField]
+    [Header("攻撃力")]
+    int attack;
 
+    public int HP { get { return hitpoint; } }
+    public float Speed { get { return speed; } }
+    public int Attack { get { return attack; } }
+}
 
 //エネミーの基底クラス
 abstract public class Enemy : MonoBehaviour, CommonProcessing{
@@ -47,7 +62,6 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     public int formationNum = 0;
 
     protected void Start(){
-        Debug.Log(parameter.HP);
         enemyHp = parameter.HP;
     }
 
@@ -76,12 +90,12 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
         enemyHp -= add;
         if (enemyHp <= 0)
         {
-            
+
+            this.transform.parent = null;
             var formationScript = this.gameObject.GetComponentInParent<Formation>();
             if(formationScript != null){
                 formationScript.CheckFormation();
             }
-            this.transform.parent = null;
             this.gameObject.SetActive(false);
         }
     }
@@ -100,8 +114,8 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     //Enemyの攻撃
     virtual public void Attack() {
         var target = GameObject.FindGameObjectWithTag("Player");
-        var bulletScript = bullet.GetComponent<Bullet>();
-        BulletManager.Instnce.Fire(bulletScript,aim.transform.position,target.transform.position,ReturnMyType());
+        aim.transform.LookAt(target.transform.position);
+        Instantiate(bullet, aim.transform.position, aim.transform.rotation);
     }
 
 

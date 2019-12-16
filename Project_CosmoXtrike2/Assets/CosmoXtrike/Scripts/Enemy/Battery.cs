@@ -5,17 +5,21 @@ using UnityEngine;
 public class Battery : Enemy{
 
     bool fireWait = false;
-    
+    Vector3 playerPoint {
+        get => new Vector3(
+            0,GameObject.FindGameObjectWithTag("Player").transform.position.y,0
+            ) 
+            ;
+    }
     
     protected override void Move(){
-        Vector3 target = GameObject.FindGameObjectWithTag("Player").transform.position;
-        target.y = this.transform.position.y;
-        this.transform.rotation = Quaternion.LookRotation(target);
+        this.transform.LookAt(playerPoint);
     }
 
-    protected override void EnemyUpdate(){
+    protected override void EnemyUpdate()
+    {
         base.EnemyUpdate();
-        if (!fireWait){ StartCoroutine(AttackCoroutine()); }
+        
     }
 
     IEnumerator AttackCoroutine(){
