@@ -311,8 +311,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraObject: {fileID: 1098349390}
   rotSpeed: 5
-  zoomDistance: 5
-  zoomSpeed: 3
+  camera: {fileID: 1605189009}
+  defView: 60
+  minView: 50
+  zoomSpeed: 2.5
   titleCanvas: {fileID: 576616326}
 --- !u!1 &576616326
 GameObject:
