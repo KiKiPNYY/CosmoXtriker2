@@ -11,6 +11,11 @@ public class PlayerData : ScriptableObject
     [SerializeField] private float m_bulletInterval = 0;
     [SerializeField] private float m_defaultSpeed = 0;
     [SerializeField] private float m_maxSpeed = 0;
+    [SerializeField] private float m_rayCastRadius = 0;
+    [SerializeField] private float m_rayCastDistance = 0;
+    [SerializeField] private int m_maxHP = 0;
+    [SerializeField] private int m_meteoriteDamege = 0;
+
 
     /// <summary>
     /// 使用するバレット
@@ -41,4 +46,12 @@ public class PlayerData : ScriptableObject
     /// 最大速度
     /// </summary>
     public float MaxSpeed { get => m_maxSpeed; }
+
+    public float RayCastRadius { get => m_rayCastRadius; }
+
+    public float RayCastDistance { get => m_rayCastDistance; }
+
+    public int MaxHp { get => m_maxHP; }
+
+    public int MeteoriteDamege { get => m_meteoriteDamege; }
 }

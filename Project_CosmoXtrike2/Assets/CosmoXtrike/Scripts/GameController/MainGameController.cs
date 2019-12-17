@@ -47,6 +47,7 @@ public class MainGameController : MonoBehaviour
     private float m_fadeTimer = 0;
     private int m_destroyNum = 0;
     private bool m_sceneMove = false;
+    private bool m_sceneStart = false;
     private FadeType m_fade = FadeType.Nun;
 
     /// <summary>
@@ -58,6 +59,7 @@ public class MainGameController : MonoBehaviour
         m_fadeTimer = 0;
         m_enemyDestroy = 0;
         m_sceneMove = false;
+        m_sceneStart = false;
         m_fade = FadeType.Nun;
     }
 
@@ -68,17 +70,23 @@ public class MainGameController : MonoBehaviour
     {
         m_destroyNum++;
         if(m_destroyNum < m_enemyDestroy) { return; }
-        GameEnd();
+        SceneMove();
     }
 
     /// <summary>
     /// メインゲームが終わったときに呼びゲームを遷移させる
     /// </summary>
-    public void GameEnd()
+    private void SceneMove()
     {
         SoundManager.Instnce.BGMFade(1,FadeType.fadeOut);
         SoundManager.Instnce.SEFade(FadeType.fadeOut,1,true);
         SceneLoadManager.Instnce.LoadScene("Title");
+    }
+
+    public void MainGameEnd()
+    {
+        m_sceneMove = true;
+        m_fade = FadeType.fadeOut;
     }
 
     #region Unity関数
@@ -88,6 +96,7 @@ public class MainGameController : MonoBehaviour
         m_fade = FadeType.FadeIN;
         m_fadeTimer = 0;
         m_sceneMove = false;
+        m_sceneStart = false;
         m_rawImage.color = new Color(m_rawImage.color.r, m_rawImage.color.g, m_rawImage.color.b, 1);
         SoundManager.Instnce.SceneStart(m_soundData);
     }
@@ -101,6 +110,10 @@ public class MainGameController : MonoBehaviour
             if(m_fadeTimer < 1) { return; }
             m_fade = FadeType.Nun;
             m_fadeTimer = 0;
+
+            if (m_sceneStart) { return; }
+            PlayerManager.Instance.MoveStart();
+            m_sceneStart = true;
             return;
         }
         else if(m_fade == FadeType.fadeOut)
@@ -112,16 +125,15 @@ public class MainGameController : MonoBehaviour
             m_fadeTimer = 0;
 
             if (!m_sceneMove) { return; }
-
-            GameEnd();
+            
+            SceneMove();
             return;
         }
 
         m_timer += Time.deltaTime;
         if (m_timer < m_gamePlayTime) { return; }
 
-        m_sceneMove = true;
-        m_fade = FadeType.fadeOut;
+        MainGameEnd();
     }
 
     #endregion

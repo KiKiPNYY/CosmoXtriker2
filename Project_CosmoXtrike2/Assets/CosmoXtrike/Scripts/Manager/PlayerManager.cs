@@ -3,8 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider), typeof(Rigidbody))]
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, CommonProcessing
 {
+
+    #region シングルトン
+    private static PlayerManager m_instance = null;
+
+    public static PlayerManager Instance
+    {
+        get
+        {
+            return m_instance;
+        }
+    }
+
+    private void CreateInstance()
+    {
+        if (m_instance == null)
+        {
+            m_instance = this;
+            if (m_instance == null)
+            {
+                Debug.LogError("PlayerManagerがありません");
+            }
+
+        }
+        else
+        {
+            Destroy(this.transform.gameObject);
+        }
+    }
+
+    #endregion
+
     [SerializeField] private Transform[] m_bulletFire;
     [SerializeField] private Transform[] m_gunTrans;
     [SerializeField] private PlayerData m_playerData;
@@ -13,8 +44,11 @@ public class PlayerManager : MonoBehaviour
     private float m_moveSpeed = 0;
     private float m_acceleTimer = 0;
     private float m_bulletIntervalTimer = 0;
+    private int m_Hp = 0;
     private bool m_accele = false;
     private bool m_bulletTrigger = false;
+    private bool m_moveStart = false;
+    private Vector3 m_bulletTargerPos = Vector3.zero;
 
     /// <summary>
     /// 初期化
@@ -24,8 +58,10 @@ public class PlayerManager : MonoBehaviour
         m_moveSpeed = 0;
         m_acceleTimer = 0;
         m_bulletIntervalTimer = 0;
+        m_Hp = 0;
         m_accele = false;
         m_bulletTrigger = false;
+        m_moveStart = false;
         m_rb = null;
     }
 
@@ -66,12 +102,48 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < m_bulletFire.Length; i++)
         {
             EffectManager.Instnce.EffectPlay(m_playerData.Effect, m_bulletFire[i]);
-            BulletManager.Instnce.Fire(m_playerData.Bullet, m_bulletFire[i].position + m_bulletFire[i].forward, m_bulletFire[i].forward, ThisType.Player);
+            Vector3 targetPos = m_bulletTargerPos == Vector3.zero ? m_bulletFire[i].position + m_bulletFire[i].forward * 1.1f : m_bulletTargerPos;
+            Vector3 direction = (targetPos - m_bulletFire[i].position + m_bulletFire[i].forward).normalized;
+            BulletManager.Instnce.Fire(m_playerData.Bullet, m_bulletFire[i].position + m_bulletFire[i].forward, direction, ThisType.Player);
         }
         m_bulletIntervalTimer = 0;
     }
 
+    public ThisType ReturnMyType()
+    {
+        return ThisType.Player;
+    }
+
+    public int MeteoriteDamege()
+    {
+        return m_playerData.MeteoriteDamege;
+    }
+
+    /// <summary>
+    /// ダメージを受ける関数
+    /// </summary>
+    /// <param name="_addDamege"></param>
+    public void Damege(int _addDamege)
+    {
+        m_Hp = Mathf.Clamp(m_Hp - _addDamege, 0, m_playerData.MaxHp);
+        if (m_Hp > 0) { return; }
+        MainGameController.Instnce.MainGameEnd();
+    }
+
+    /// <summary>
+    /// 移動開始
+    /// </summary>
+    public void MoveStart()
+    {
+        m_moveStart = true;
+    }
+
     #region Unity関数
+
+    private void Awake()
+    {
+        CreateInstance();
+    }
 
     private void Start()
     {
@@ -83,11 +155,14 @@ public class PlayerManager : MonoBehaviour
         m_rb.useGravity = false;
         m_moveSpeed = m_playerData.DefaultSpeed;
         m_accele = false;
+        m_moveStart = false;
         m_acceleTimer = 0;
+        m_Hp = m_playerData.MaxHp;
     }
 
     private void Update()
     {
+        if (!m_moveStart) { return; }
         float x = Input.GetAxis("Right_Horizontal");
         float y = Input.GetAxis("Right_Vertical");
 
@@ -151,7 +226,19 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!m_moveStart) { return; }
         m_rb.velocity = Vector3.zero;
+
+        RaycastHit hit;
+        LayerMask layerMask = LayerMask.GetMask("Enemy");
+        if (Physics.SphereCast(this.transform.position, m_playerData.RayCastRadius, transform.forward, out hit, m_playerData.RayCastDistance, layerMask))
+        {
+            m_bulletTargerPos = hit.transform.position;
+        }else
+        {
+            m_bulletTargerPos = Vector3.zero;
+        }
+
         float deltatime = Time.deltaTime;
         MoveUpdate(deltatime);
         BulletUpdate(deltatime);

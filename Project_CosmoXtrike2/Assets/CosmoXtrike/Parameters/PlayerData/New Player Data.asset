@@ -20,3 +20,7 @@ MonoBehaviour:
   m_bulletInterval: 0.3
   m_defaultSpeed: 1
   m_maxSpeed: 3
+  m_rayCastRadius: 5
+  m_rayCastDistance: 250
+  m_maxHP: 20
+  m_meteoriteDamege: 3
