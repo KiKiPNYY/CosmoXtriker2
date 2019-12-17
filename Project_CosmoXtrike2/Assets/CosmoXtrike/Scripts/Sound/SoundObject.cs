@@ -125,8 +125,14 @@ public class SoundObject : MonoBehaviour
         UpdateAction = false;
         SoundPlayNow = false;
         m_fade = FadeType.Nun;
-        m_audioSource.clip = null;
-        transform.parent = null;
+        if(m_audioSource != null)
+        {
+            m_audioSource.clip = null;
+        }
+        if(transform.parent != null)
+        {
+            transform.parent = null;
+        }
     }
 
     /// <summary>
@@ -137,7 +143,7 @@ public class SoundObject : MonoBehaviour
     /// <param name="_volume"></param>
     public void FadeCall(FadeType _fadeType, float _fadeTime, float _volume)
     {
-        if (_fadeType == FadeType.Nun) { return; }
+        if (_fadeType == FadeType.Nun || (_fadeType == FadeType.fadeOut && !UpdateAction)) { return; }
         UpdateAction = true;
 
         m_fade = _fadeType;

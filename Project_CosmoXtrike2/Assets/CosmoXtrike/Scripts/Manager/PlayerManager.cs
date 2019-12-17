@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         m_moveSpeed = Mathf.Clamp(m_moveSpeed, m_playerData.DefaultSpeed, m_playerData.MaxSpeed);
-        this.transform.position += this.transform.forward * m_moveSpeed;
+        m_rb.MovePosition(this.transform.position + this.transform.forward * m_moveSpeed);
     }
 
     /// <summary>
@@ -80,6 +80,7 @@ public class PlayerManager : MonoBehaviour
             BulletManager.Instnce.AddBullet(m_playerData.Bullet);
         }
         m_rb = GetComponent<Rigidbody>();
+        m_rb.useGravity = false;
         m_moveSpeed = m_playerData.DefaultSpeed;
         m_accele = false;
         m_acceleTimer = 0;
@@ -150,6 +151,7 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        m_rb.velocity = Vector3.zero;
         float deltatime = Time.deltaTime;
         MoveUpdate(deltatime);
         BulletUpdate(deltatime);

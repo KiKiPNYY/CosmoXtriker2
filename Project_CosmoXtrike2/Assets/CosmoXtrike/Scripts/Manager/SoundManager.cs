@@ -73,6 +73,8 @@ public class SoundManager : MonoBehaviour
             m_soundObjects[i] = audioObject.GetComponent<SoundObject>();
         }
 
+        if (m_soundObjects.Length < 1) { return; }
+
         m_soundObjects[0].Init();
         m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[0].AudioClip, m_soundData.BGMParameters[0].Volume, m_soundData.BGMParameters[0].Loop, m_soundData.BGMParameters[0].SoundType3D, null);
 
@@ -110,6 +112,8 @@ public class SoundManager : MonoBehaviour
     /// <param name="_SEname"></param>
     public void SEPlay(string _SEname, Transform generatTrans = null)
     {
+        if (m_soundObjects.Length < 1) { return; }
+
         int SEHash = _SEname.GetHashCode();
         int recordSENum = -1;
         for (int i = 0; i < m_SEHash.Length; i++)
@@ -146,6 +150,8 @@ public class SoundManager : MonoBehaviour
     /// <param name="_SEname"></param>
     public void SEFade(FadeType _fadeType, float _fadeTime, bool _allFadeOut, string _SEname = null, Transform generatTrans = null)
     {
+        if (m_soundObjects.Length < 1) { return; }
+
         if (_fadeType == FadeType.Nun) { return; }
 
         if (_allFadeOut && _fadeType == FadeType.fadeOut)
@@ -155,6 +161,8 @@ public class SoundManager : MonoBehaviour
                 m_soundObjects[i].FadeCall(_fadeType, _fadeTime, 0);
             }
         }
+
+        if (_SEname == null) { return; }
 
         int SEHash = _SEname.GetHashCode();
         int recordSENum = -1;
@@ -190,6 +198,8 @@ public class SoundManager : MonoBehaviour
     /// <param name="_BGMname"></param>
     public void BGMPlay(string _BGMname)
     {
+        if (m_soundObjects.Length < 1) { return; }
+
         int BGMHash = _BGMname.GetHashCode();
         int recordBGMNum = -1;
         for (int i = 0; i < m_BGMHash.Length; i++)
@@ -208,9 +218,11 @@ public class SoundManager : MonoBehaviour
     /// BGMフェード
     /// </summary>
     /// <param name="_BGMname"></param>
-    public void BGMFade( float _fadeTime, FadeType _fadeType, string _BGMname = null)
+    public void BGMFade(float _fadeTime, FadeType _fadeType, string _BGMname = null)
     {
-        if(_fadeType == FadeType.fadeOut)
+        if (m_soundObjects.Length < 1) { return; }
+
+        if (_fadeType == FadeType.fadeOut)
         {
             m_soundObjects[0].FadeCall(_fadeType, _fadeTime, 0);
             return;
@@ -225,7 +237,7 @@ public class SoundManager : MonoBehaviour
             break;
         }
 
-        if(recordBGMNum < 0) { return; }
+        if (recordBGMNum < 0) { return; }
         m_soundObjects[0].Init();
         m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[recordBGMNum].AudioClip, 0, m_soundData.BGMParameters[recordBGMNum].Loop, m_soundData.BGMParameters[recordBGMNum].SoundType3D, null);
         m_soundObjects[0].FadeCall(_fadeType, _fadeTime, m_soundData.BGMParameters[recordBGMNum].Volume);
