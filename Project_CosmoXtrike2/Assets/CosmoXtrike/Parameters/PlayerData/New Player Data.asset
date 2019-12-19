@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f45695020cabd4f845a08a3398f7dd, type: 3}
   m_Name: New Player Data
   m_EditorClassIdentifier: 
-  m_bullet: {fileID: 5064150956633793291, guid: fab61f6acf697b04f8cce843db358ae7,
+  m_bullet: {fileID: 3231226053253789469, guid: bf9c84092fa6d4a4bb88752c01ac8f63,
     type: 3}
   m_fireEffect: {fileID: 7027801130163872160, guid: 95689dca8ca72f548a18c57ab6f91662,
     type: 3}
@@ -20,7 +20,7 @@ MonoBehaviour:
   m_bulletInterval: 0.3
   m_defaultSpeed: 1
   m_maxSpeed: 5
-  m_rayCastRadius: 3
-  m_rayCastDistance: 100
+  m_rayCastRadius: 100
+  m_rayCastDistance: 100000
   m_maxHP: 20
   m_meteoriteDamege: 3

@@ -71,12 +71,15 @@ public class SoundManager : MonoBehaviour
             audioObject.AddComponent<AudioSource>();
             audioObject.name = "audioObject" + (i + 1).ToString();
             m_soundObjects[i] = audioObject.GetComponent<SoundObject>();
+            m_soundObjects[i].Init();
         }
 
         if (m_soundObjects.Length < 1) { return; }
 
-        m_soundObjects[0].Init();
-        m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[0].AudioClip, m_soundData.BGMParameters[0].Volume, m_soundData.BGMParameters[0].Loop, m_soundData.BGMParameters[0].SoundType3D, null);
+       // m_soundObjects[0].Init();
+      
+        m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[0].AudioClip, 0, m_soundData.BGMParameters[0].Loop, m_soundData.BGMParameters[0].SoundType3D, null);
+        m_soundObjects[0].FadeCall(FadeType.FadeIN, m_soundData.BGMParameters[0].FadeTime, m_soundData.BGMParameters[0].Volume);
 
         m_BGMHash = new int[m_soundData.BGMParameters.Length];
         m_SEHash = new int[_soundData.SEParameters.Length];
@@ -113,8 +116,9 @@ public class SoundManager : MonoBehaviour
     public void SEPlay(string _SEname, Transform generatTrans = null)
     {
         if (m_soundObjects.Length < 1) { return; }
-
+        
         int SEHash = _SEname.GetHashCode();
+        
         int recordSENum = -1;
         for (int i = 0; i < m_SEHash.Length; i++)
         {
@@ -124,13 +128,14 @@ public class SoundManager : MonoBehaviour
         }
 
         if (recordSENum < 0) { return; }
-
+        
         float maxSoundPlayTime = -1;
         int recordObjectNum = -1;
         for (int i = 1; i < m_soundObjects.Length; i++)
         {
             if (!m_soundObjects[i].SoundPlayNow)
             {
+                
                 m_soundObjects[i].Init();
                 m_soundObjects[i].SoundPlay(m_soundData.SEParameters[recordSENum].AudioClip, m_soundData.SEParameters[recordSENum].Volume, m_soundData.SEParameters[recordSENum].Loop, m_soundData.SEParameters[recordSENum].SoundType3D, generatTrans);
                 return;
@@ -139,7 +144,8 @@ public class SoundManager : MonoBehaviour
             maxSoundPlayTime = m_soundObjects[i].SoundPlayTime;
             recordObjectNum = i;
         }
-        if (recordObjectNum < 0) { return; }
+
+        if (recordObjectNum < 1) { return; }
         m_soundObjects[recordObjectNum].SoundPlay(m_soundData.SEParameters[recordSENum].AudioClip, m_soundData.SEParameters[recordSENum].Volume, m_soundData.SEParameters[recordSENum].Loop, m_soundData.SEParameters[recordSENum].SoundType3D, generatTrans);
 
     }

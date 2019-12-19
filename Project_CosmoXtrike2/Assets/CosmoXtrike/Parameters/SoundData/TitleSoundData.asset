@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: TitleSoundData
   m_EditorClassIdentifier: 
   m_BGM:
-  - m_audioClip: {fileID: 8300000, guid: 3a360356324ba6a4e9dd34b203178a84, type: 3}
+  - m_audioClip: {fileID: 8300000, guid: 7c4a4479836b20444a0075d209865762, type: 3}
     m_volume: 1
-    m_fadeTime: 1.51
+    m_fadeTime: 1
     m_loop: 1
     m_3DSound: 0
   m_SE:
-  - m_audioClip: {fileID: 8300000, guid: 2bc4ace82d88a384098bfc73ae5ae7e5, type: 3}
+  - m_audioClip: {fileID: 8300000, guid: 63a0fabed1277ef4cb50e3a4040d5266, type: 3}
     m_volume: 1
-    m_fadeTime: 2.01
+    m_fadeTime: 1
     m_loop: 0
-    m_3DSound: 1
+    m_3DSound: 0
   m_audioNum: 2

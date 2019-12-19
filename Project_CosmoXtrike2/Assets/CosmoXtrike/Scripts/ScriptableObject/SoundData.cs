@@ -52,7 +52,7 @@ public class SoundData : ScriptableObject
     /// <summary>
     /// SEのパラメーター
     /// </summary>
-    public SoundParameter[] SEParameters { get => m_BGM; }
+    public SoundParameter[] SEParameters { get => m_SE; }
 
     /// <summary>
     /// シーン上に生成するサウンドオブジェクトの数

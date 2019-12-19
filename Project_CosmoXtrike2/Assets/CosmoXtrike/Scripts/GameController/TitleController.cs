@@ -68,6 +68,10 @@ public class TitleController : MonoBehaviour
         if (m_SceneMove) { return; }
         if (!Input.GetButtonDown("LeftTrigger") && !Input.GetButtonDown("RightTrigger") && !Input.GetKeyDown(KeyCode.Space)) { return; }
 
+        SoundManager.Instnce.BGMFade(1, FadeType.fadeOut);
+        //SoundManager.Instnce.SEFade(FadeType.fadeOut, 1, true);
+
+        SoundManager.Instnce.SEPlay("TitleClick");
         m_SceneMove = true;
         m_timer = 0;
         m_fadeTimer = 0;
@@ -112,8 +116,6 @@ public class TitleController : MonoBehaviour
 
         if (!m_SceneMove) { return; }
 
-        SoundManager.Instnce.BGMFade(1, FadeType.fadeOut);
-        SoundManager.Instnce.SEFade(FadeType.fadeOut, 1, true);
         SceneLoadManager.Instnce.LoadScene("Game");
     }
 

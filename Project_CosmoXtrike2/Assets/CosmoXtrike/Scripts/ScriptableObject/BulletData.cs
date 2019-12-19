@@ -8,7 +8,7 @@ public class BulletData : ScriptableObject
    
     [SerializeField] protected float m_bulletSpeed = 0;
     [SerializeField] protected int m_damege = 0;
-    [SerializeField] protected float m_instanceDistance = 0;
+    [SerializeField] protected float m_activeTime = 0;
 
     /// <summary>
     ///  弾速
@@ -18,7 +18,7 @@ public class BulletData : ScriptableObject
     /// <summary>
     /// 生成位置からオブジェクトを非表示にするまでの距離
     /// </summary>
-    public float InstanceDistance { get => m_instanceDistance; }
+    public float ActiveTime { get => m_activeTime; }
 
     /// <summary>
     /// 相手に与えるダメージ数

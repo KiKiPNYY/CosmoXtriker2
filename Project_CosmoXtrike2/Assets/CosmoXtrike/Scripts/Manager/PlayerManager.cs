@@ -48,7 +48,8 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     private bool m_accele = false;
     private bool m_bulletTrigger = false;
     private bool m_moveStart = false;
-    private Vector3 m_bulletTargerPos = Vector3.zero;
+    //private Vector3 m_bulletTargerPos = Vector3.zero;
+    private GameObject m_bulletTarger = null;
 
     /// <summary>
     /// 初期化
@@ -62,6 +63,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_accele = false;
         m_bulletTrigger = false;
         m_moveStart = false;
+        m_bulletTarger = null;
         m_rb = null;
     }
 
@@ -102,10 +104,11 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         for (int i = 0; i < m_bulletFire.Length; i++)
         {
             EffectManager.Instnce.EffectPlay(m_playerData.Effect, m_bulletFire[i]);
-            Vector3 targetPos = m_bulletTargerPos == Vector3.zero ? m_bulletFire[i].position + m_bulletFire[i].forward * 1.1f : m_bulletTargerPos;
+            Vector3 targetPos = m_bulletFire[i].position + m_bulletFire[i].forward * 1.1f; //m_bulletTarger == null ? m_bulletFire[i].position + m_bulletFire[i].forward * 1.1f : m_bulletTarger.transform.position;
             Vector3 direction = (targetPos - m_bulletFire[i].position + m_bulletFire[i].forward).normalized;
-            BulletManager.Instnce.Fire(m_playerData.Bullet, m_bulletFire[i].position + m_bulletFire[i].forward, direction, ThisType.Player);
+            BulletManager.Instnce.Fire(m_playerData.Bullet, m_bulletFire[i].position + m_bulletFire[i].forward, direction, ThisType.Player, m_bulletTarger);
         }
+        SoundManager.Instnce.SEPlay("BeamBrun", m_bulletFire[0]);
         m_bulletIntervalTimer = 0;
     }
 
@@ -166,26 +169,23 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         float x = Input.GetAxis("Right_Horizontal");
         float y = Input.GetAxis("Right_Vertical");
 
-        //x = Input.GetKey(KeyCode.RightArrow) == true ? 1 : 0;
-        //x = Input.GetKey(KeyCode.LeftArrow) == true ? -1 : 0;
-
         Vector3 vector = Vector3.zero;
         Quaternion loockRotation;
-       // for (int i = 0; i < m_gunTrans.Length; i++)
-       // {
+        // for (int i = 0; i < m_gunTrans.Length; i++)
+        // {
 
         //    if ((m_gunTrans[i].localEulerAngles.y > 30 && y > 0) || (m_gunTrans[i].localEulerAngles.y < -30 && y < 0))
         //    {
         //        m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x, m_gunTrans[i].rotation.y > 0 ? 30 : -30, m_gunTrans[i].rotation.z);
         //    }
-         //   if ((m_gunTrans[i].localEulerAngles.x > 10 && x > 0) || (m_gunTrans[i].localEulerAngles.x < -10 && x < 0))
-         //   {
-         //       m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x > 0 ? 10 : -10, m_gunTrans[i].rotation.y, m_gunTrans[i].rotation.z);
-         //   }
+        //   if ((m_gunTrans[i].localEulerAngles.x > 10 && x > 0) || (m_gunTrans[i].localEulerAngles.x < -10 && x < 0))
+        //   {
+        //       m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x > 0 ? 10 : -10, m_gunTrans[i].rotation.y, m_gunTrans[i].rotation.z);
+        //   }
 
-         //   vector = m_gunTrans[i].right * x + m_gunTrans[i].up * y + m_gunTrans[i].forward;
-         //   loockRotation = Quaternion.LookRotation((m_gunTrans[i].position + vector) - m_gunTrans[i].position);
-         //   m_gunTrans[i].rotation = Quaternion.Slerp(m_gunTrans[i].rotation, loockRotation, Time.deltaTime);
+        //   vector = m_gunTrans[i].right * x + m_gunTrans[i].up * y + m_gunTrans[i].forward;
+        //   loockRotation = Quaternion.LookRotation((m_gunTrans[i].position + vector) - m_gunTrans[i].position);
+        //   m_gunTrans[i].rotation = Quaternion.Slerp(m_gunTrans[i].rotation, loockRotation, Time.deltaTime);
 
         //}
 
@@ -212,8 +212,9 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
             for (int i = 0; i < m_bulletFire.Length; i++)
             {
                 EffectManager.Instnce.EffectPlay(m_playerData.Effect, m_bulletFire[i]);
-                BulletManager.Instnce.Fire(m_playerData.Bullet, m_bulletFire[i].position + m_bulletFire[i].forward, m_bulletFire[i].forward, ThisType.Player);
+                BulletManager.Instnce.Fire(m_playerData.Bullet, m_bulletFire[i].position + m_bulletFire[i].forward, m_bulletFire[i].forward, ThisType.Player, m_bulletTarger);
             }
+            SoundManager.Instnce.SEPlay("BeamBrun", m_bulletFire[0]);
             m_bulletTrigger = true;
         }
 
@@ -233,10 +234,19 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         LayerMask layerMask = LayerMask.GetMask("Enemy");
         if (Physics.SphereCast(this.transform.position, m_playerData.RayCastRadius, transform.forward, out hit, m_playerData.RayCastDistance, layerMask))
         {
-            m_bulletTargerPos = hit.transform.position;
-        }else
+            if (hit.transform.gameObject.activeSelf)
+            {
+                m_bulletTarger = hit.transform.gameObject;
+            }
+            else
+            {
+                m_bulletTarger = null;
+            }
+            
+        }
+        else
         {
-            m_bulletTargerPos = Vector3.zero;
+            m_bulletTarger = null;
         }
 
         float deltatime = Time.deltaTime;

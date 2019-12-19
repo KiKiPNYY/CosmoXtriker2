@@ -80,6 +80,9 @@ public class SoundObject : MonoBehaviour
             m_audioSource.playOnAwake = false;
         }
         m_audioSource.clip = null;
+
+        if(transform.parent == null) { return; }
+        transform.parent = null;
     }
 
     /// <summary>
@@ -92,7 +95,7 @@ public class SoundObject : MonoBehaviour
     /// <param name="_parent"></param>
     public void SoundPlay(AudioClip _audioClip, float _volume, bool _loop, bool _3DSound, Transform _parent)
     {
-
+        
         m_volume = _volume;
 
         m_audioSource.clip = _audioClip;
@@ -140,7 +143,7 @@ public class SoundObject : MonoBehaviour
     /// <param name="_volume"></param>
     public void FadeCall(FadeType _fadeType, float _fadeTime, float _volume)
     {
-        if (_fadeType == FadeType.Nun || (_fadeType == FadeType.fadeOut && !UpdateAction)) { return; }
+        if (_fadeType == FadeType.Nun || (_fadeType == FadeType.fadeOut && UpdateAction)) { return; }
         UpdateAction = true;
 
         m_fade = _fadeType;
@@ -151,7 +154,8 @@ public class SoundObject : MonoBehaviour
             m_volume = _volume;
             return;
         }
-        m_recordVolume = 0;
+
+        m_recordVolume = m_audioSource.volume;
     }
 
     /// <summary>
@@ -169,19 +173,24 @@ public class SoundObject : MonoBehaviour
             m_audioSource.volume = fadevolume;
             if (fadevolume < 1) { return; }
             m_aoudioTime = 0;
+            m_fade = FadeType.Nun;
+            UpdateAction = false;
             return;
         }
         else if (m_fade == FadeType.fadeOut)
         {
+
             float fadevolume = Mathf.Clamp(m_aoudioTime / m_fadeTime, 0, 1);
+
             fadevolume = m_recordVolume - (m_recordVolume * fadevolume);
             m_audioSource.volume = fadevolume;
+
             if (fadevolume < 1) { return; }
+
             End();
             return;
         }
-        Debug.Log(this.transform.gameObject.name);
-        Debug.Log(m_audioSource);
+
         if (m_audioSource.loop) { return; }
         if (m_aoudioTime < m_audioSource.clip.length) { return; }
         End();

@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody m_rb = null;
     protected Vector3 m_instanceOrigin = Vector3.zero;
     protected ThisType m_targetType = ThisType.Enemy;
+    protected float m_activeTimer = 0;
 
     public GameObject ThisGameObject { get => this.transform.gameObject; }
 
@@ -51,6 +52,8 @@ public class Bullet : MonoBehaviour
             m_particleSystem = this.transform.gameObject.GetComponent<ParticleSystem>();
         }
 
+        m_activeTimer = 0;
+
         this.transform.gameObject.SetActive(true);
     }
 
@@ -90,7 +93,7 @@ public class Bullet : MonoBehaviour
     public virtual void ThisObjectUpdate(float _deltaTime)
     {
         Move(_deltaTime);
-        ThisObjectShowCheck();
+        ThisObjectShowCheck(_deltaTime);
     }
 
     /// <summary>
@@ -106,10 +109,10 @@ public class Bullet : MonoBehaviour
     /// <summary>
     /// 表示できるかのチェック
     /// </summary>
-    public virtual void ThisObjectShowCheck()
+    public virtual void ThisObjectShowCheck(float _deltaTime)
     {
-        float nowDistance = Vector3.Distance(this.transform.position, m_instanceOrigin);
-        if(nowDistance < m_bulletData.InstanceDistance) { return; }
+        m_activeTimer += _deltaTime;
+        if(m_activeTimer < m_bulletData.ActiveTime) { return; }
         Hidden();
     }
 

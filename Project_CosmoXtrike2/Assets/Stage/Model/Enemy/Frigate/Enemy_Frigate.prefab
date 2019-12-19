@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2760197711384737213}
   - component: {fileID: 2760197711385835517}
   - component: {fileID: 3379440948981515347}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: side_thruster_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 2760197711384737215}
   - component: {fileID: 2760197711385835519}
   - component: {fileID: 6470859825417018873}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: thruster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 2760197711384737187}
   - component: {fileID: 2760197711385835491}
   - component: {fileID: 2945329814883365422}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: raider_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410091}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: side_thruster_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 2760197711384737191}
   - component: {fileID: 2760197711385835495}
   - component: {fileID: 554417387880836863}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: raider_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 2760197711384737185}
   - component: {fileID: 2760197711385835489}
   - component: {fileID: 5334938404756518645}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: raider_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 2760197711384737233}
   - component: {fileID: 2760197711385835281}
   - component: {fileID: 1521322198336834637}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410115}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 2760197711384737237}
   - component: {fileID: 2760197711385835285}
   - component: {fileID: 1820234326333500823}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: missile_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 2760197711384737239}
   - component: {fileID: 2760197711385835287}
   - component: {fileID: 3336204617678030185}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCube6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 2760197711384737243}
   - component: {fileID: 2760197711385835291}
   - component: {fileID: 1386692636715221439}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: main_houdai_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +899,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410123}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: missile_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 2760197711384737247}
   - component: {fileID: 2760197711385835295}
   - component: {fileID: 2831818647770002511}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: main_houdai_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 2760197711384737241}
   - component: {fileID: 2760197711385835289}
   - component: {fileID: 5560095645069485939}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: main_houdai_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1117,7 +1117,7 @@ GameObject:
   - component: {fileID: 2760197711384737195}
   - component: {fileID: 2760197711385835499}
   - component: {fileID: 5346206073925564457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder4 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1209,7 @@ GameObject:
   - component: {fileID: 2760197711384737189}
   - component: {fileID: 2760197711385835493}
   - component: {fileID: 1505128500156217426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,7 +1301,7 @@ GameObject:
   - component: {fileID: 2760197711384737193}
   - component: {fileID: 2760197711385835497}
   - component: {fileID: 1271549025954251297}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder3 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1390,7 +1390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410135}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1424,7 +1424,7 @@ GameObject:
   - component: {fileID: 2760197711384737199}
   - component: {fileID: 2760197711385835503}
   - component: {fileID: 3554351127625064199}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1513,7 +1513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410139}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1547,7 +1547,7 @@ GameObject:
   - component: {fileID: 2760197711384737235}
   - component: {fileID: 2760197711385835283}
   - component: {fileID: 9012307697231377124}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube5 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1639,7 +1639,7 @@ GameObject:
   - component: {fileID: 2760197711384737197}
   - component: {fileID: 2760197711385835501}
   - component: {fileID: 7537822933091029673}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCylinder13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1731,7 +1731,7 @@ GameObject:
   - component: {fileID: 2760197711384737225}
   - component: {fileID: 2760197711385835273}
   - component: {fileID: 8564139066376574379}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1823,7 +1823,7 @@ GameObject:
   - component: {fileID: 2760197711384737227}
   - component: {fileID: 2760197711385835275}
   - component: {fileID: 7839909045827551549}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1912,7 +1912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1943,7 +1943,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410151}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1977,7 +1977,7 @@ GameObject:
   - component: {fileID: 2760197711384737231}
   - component: {fileID: 2760197711385835279}
   - component: {fileID: 3804097370528892481}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dek
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2066,7 +2066,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410155}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2100,7 +2100,7 @@ GameObject:
   - component: {fileID: 8842091426919071027}
   - component: {fileID: 7770092711061719574}
   - component: {fileID: 4134767814532269062}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Frigate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2115,7 +2115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2760197711383570893}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 620.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 2760197711383410159}
@@ -2200,7 +2200,7 @@ GameObject:
   - component: {fileID: 2760197711384737229}
   - component: {fileID: 2760197711385835277}
   - component: {fileID: 5016636594663971126}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: corvette_hontai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2292,7 +2292,7 @@ GameObject:
   - component: {fileID: 2760197711384737219}
   - component: {fileID: 2760197711385835267}
   - component: {fileID: 3460347930102286167}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_4_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2384,7 +2384,7 @@ GameObject:
   - component: {fileID: 2760197711384737245}
   - component: {fileID: 2760197711385835293}
   - component: {fileID: 1109955335664492087}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: main_houdai_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2476,7 +2476,7 @@ GameObject:
   - component: {fileID: 2760197711384737223}
   - component: {fileID: 2760197711385835271}
   - component: {fileID: 7270811680129904860}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_4_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2568,7 +2568,7 @@ GameObject:
   - component: {fileID: 2760197711384737217}
   - component: {fileID: 2760197711385835265}
   - component: {fileID: 8333105391434677159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_4_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2657,7 +2657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410169}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2688,7 +2688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410171}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_3_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2722,7 +2722,7 @@ GameObject:
   - component: {fileID: 2760197711384737221}
   - component: {fileID: 2760197711385835269}
   - component: {fileID: 7670999521761336068}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2811,7 +2811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760197711383410175}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: houdai_3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

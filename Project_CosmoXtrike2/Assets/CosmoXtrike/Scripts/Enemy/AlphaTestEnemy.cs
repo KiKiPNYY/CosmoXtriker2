@@ -18,7 +18,7 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
     {
         m_hp -= _addDamege;
         if(m_hp > 0){return;}
-
+        SoundManager.Instnce.SEPlay("EnemyDestory", this.transform);
         EffectManager.Instnce.EffectPlay(m_burnEffect,this.transform);
         for(int i = 0; i < m_effctPos.Length; i++)
         {
