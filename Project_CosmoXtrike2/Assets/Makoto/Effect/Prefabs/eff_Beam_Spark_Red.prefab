@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5812415000786869038}
   - component: {fileID: 421416485395494422}
   - component: {fileID: 3565561756277287582}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: eff_Beam_Spark_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4728,7 +4728,7 @@ GameObject:
   - component: {fileID: 8940862047068852013}
   - component: {fileID: 8731223998656708508}
   - component: {fileID: 1091399693410650028}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_par_billboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9554,7 +9554,7 @@ GameObject:
   - component: {fileID: 8977724081410565159}
   - component: {fileID: 9217590122490025428}
   - component: {fileID: 4832013306978055815}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_par
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14368,7 +14368,7 @@ GameObject:
   - component: {fileID: 725170835897779423}
   - component: {fileID: 8813572640974262147}
   - component: {fileID: 5073769481584721541}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_flash_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19124,7 +19124,7 @@ GameObject:
   - component: {fileID: 8345813795620802627}
   - component: {fileID: 8026778236623033969}
   - component: {fileID: 9135867418230352518}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -89,6 +89,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         }
 
         m_moveSpeed = Mathf.Clamp(m_moveSpeed, m_playerData.DefaultSpeed, m_playerData.MaxSpeed);
+        MotionBlurEffect.Instance.EffectMagnification = m_moveSpeed / m_playerData.MaxSpeed;
         m_rb.MovePosition(this.transform.position + this.transform.forward * m_moveSpeed);
     }
 
@@ -192,11 +193,11 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         x = Input.GetAxis("Left_Horizontal");
         y = Input.GetAxis("Left_Vertical");
 
-        if (Input.GetButtonDown("LeftTrigger") && !m_accele)
+        if (( Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("LeftTrigger")) && !m_accele)
         {
             m_accele = true;
         }
-        if (Input.GetButtonUp("LeftTrigger") && m_accele)
+        if (Input.GetKeyUp(KeyCode.A) || (Input.GetButtonUp("LeftTrigger")) && m_accele)
         {
             m_accele = false;
         }

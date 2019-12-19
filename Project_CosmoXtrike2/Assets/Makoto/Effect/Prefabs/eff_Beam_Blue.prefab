@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1291784844587184424}
   - component: {fileID: 7167012459917525302}
   - component: {fileID: 8438363127853057826}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: eff_Beam_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4727,7 +4727,7 @@ GameObject:
   - component: {fileID: 3948353283495825146}
   - component: {fileID: 2585908230910230857}
   - component: {fileID: 4142640915492677629}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7122922981607416184}
   - component: {fileID: 4010807435816946752}
   - component: {fileID: 7027801130163872160}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: eff_Beam_Fire_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4726,7 +4726,7 @@ GameObject:
   - component: {fileID: 5705260271485553470}
   - component: {fileID: 5648708803050288507}
   - component: {fileID: 5430186543919449546}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_par
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9482,7 +9482,7 @@ GameObject:
   - component: {fileID: 4729383784098097685}
   - component: {fileID: 6707184018416217127}
   - component: {fileID: 5528576530173645008}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14247,7 +14247,7 @@ GameObject:
   - component: {fileID: 6923436176680125323}
   - component: {fileID: 6119298802114530612}
   - component: {fileID: 699659610797010387}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}

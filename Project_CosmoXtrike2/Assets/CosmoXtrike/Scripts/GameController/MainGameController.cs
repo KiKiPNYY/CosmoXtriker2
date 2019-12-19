@@ -42,6 +42,7 @@ public class MainGameController : MonoBehaviour
     [SerializeField] [Range(0.1f, 10)] private float m_fadeTime = 0.1f;
     [SerializeField] private RawImage m_rawImage = null;
     [SerializeField] private SoundData m_soundData = null;
+    [SerializeField] private GameObject[] m_changeLayerObject = null;
 
     private float m_timer = 0;
     private float m_fadeTimer = 0;
@@ -119,6 +120,11 @@ public class MainGameController : MonoBehaviour
 
             if (m_sceneStart) { return; }
             PlayerManager.Instance.MoveStart();
+            for(int i = 0; i < m_changeLayerObject.Length; i++)
+            {
+                m_changeLayerObject[i].layer = LayerMask.NameToLayer("Player");
+            }
+
             m_sceneStart = true;
             return;
         }
@@ -129,6 +135,11 @@ public class MainGameController : MonoBehaviour
             if (m_fadeTimer < 1) { return; }
             m_fade = FadeType.Nun;
             m_fadeTimer = 0;
+
+            for (int i = 0; i < m_changeLayerObject.Length; i++)
+            {
+                m_changeLayerObject[i].layer = LayerMask.NameToLayer("UI");
+            }
 
             if (!m_sceneMove) { return; }
             

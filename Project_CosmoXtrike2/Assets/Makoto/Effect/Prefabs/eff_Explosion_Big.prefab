@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2034984111353081535}
   - component: {fileID: 7007632623390783049}
   - component: {fileID: 4671183541722191965}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_flash_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 2703583551352409846}
   - component: {fileID: 3501885268204666593}
   - component: {fileID: 8285653156487936434}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_flash_in
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9523,7 +9523,7 @@ GameObject:
   - component: {fileID: 4712714311785916394}
   - component: {fileID: 4712714311785916396}
   - component: {fileID: 4712714311785916395}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_flash2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14279,7 +14279,7 @@ GameObject:
   - component: {fileID: 4712714312415698688}
   - component: {fileID: 4712714312415698690}
   - component: {fileID: 4712714312415698689}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_par
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19035,7 +19035,7 @@ GameObject:
   - component: {fileID: 4712714312452727449}
   - component: {fileID: 4712714312452727451}
   - component: {fileID: 4712714312452727450}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_flash_start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23791,7 +23791,7 @@ GameObject:
   - component: {fileID: 4712714313091310204}
   - component: {fileID: 4712714313091310206}
   - component: {fileID: 4712714313091310205}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28547,7 +28547,7 @@ GameObject:
   - component: {fileID: 4712714313154247183}
   - component: {fileID: 4712714313154247169}
   - component: {fileID: 4712714313154247168}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33304,7 +33304,7 @@ GameObject:
   - component: {fileID: 4712714313435607840}
   - component: {fileID: 4712714313435607855}
   - component: {fileID: 8762858720427497550}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: eff_Explosion_Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38025,7 +38025,7 @@ GameObject:
   - component: {fileID: 4712714313619124712}
   - component: {fileID: 4712714313619124714}
   - component: {fileID: 4712714313619124713}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42781,7 +42781,7 @@ GameObject:
   - component: {fileID: 379473516692999074}
   - component: {fileID: 5056657499488672837}
   - component: {fileID: 8322452592619533791}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_ring_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47537,7 +47537,7 @@ GameObject:
   - component: {fileID: 2862974293968337302}
   - component: {fileID: 3133217790236469769}
   - component: {fileID: 3720919896150081797}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ps_par_stretch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
