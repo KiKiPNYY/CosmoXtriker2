@@ -101,7 +101,8 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     //Enemyの攻撃
     virtual public void Attack() {
         var target = GameObject.FindGameObjectWithTag("Player");
-        BulletManager.Instnce.Fire(bullet,aim.transform.position,target.transform.position,ReturnMyType());
+        var targetAim = target.transform.position - aim.transform.position;
+        BulletManager.Instnce.Fire(bullet,aim.transform.position,targetAim,ReturnMyType());
     }
 
 

@@ -6,12 +6,10 @@ public class Battery : Enemy{
 
     bool fireWait = false;
     
-    
     protected override void Move(){
         Vector3 target = GameObject.FindGameObjectWithTag("Player").transform.position;
         target.y = this.transform.position.y;
-        
-        this.transform.rotation = Quaternion.LookRotation(target);
+        this.transform.LookAt(target);
     }
 
     protected override void EnemyUpdate(){
@@ -20,9 +18,9 @@ public class Battery : Enemy{
     }
 
     IEnumerator AttackCoroutine(){
+        if (!fireWait) { Attack();}
         fireWait = true;
         yield return new WaitForSeconds(2.0f);
-        Attack();
         fireWait = false;
     }
 
