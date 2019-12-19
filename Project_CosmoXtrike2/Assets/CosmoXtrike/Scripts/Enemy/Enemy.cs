@@ -72,7 +72,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     }
 
     //Enemyのダメージ。インターフェースで実装
-    public void Damege(int add){
+    virtual public void Damege(int add){
         EffectManager.Instnce.EffectPlay(effect, this.transform);
         enemyHp -= add;
         if (enemyHp <= 0)
