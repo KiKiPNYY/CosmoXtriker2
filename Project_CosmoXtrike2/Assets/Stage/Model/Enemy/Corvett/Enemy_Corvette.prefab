@@ -133,6 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0bad7d9030225a4995ef4b00a1b3ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHp: 100
+  m_maxHp: 20
   m_burnEffect: {fileID: 0}
   m_effctPos: []

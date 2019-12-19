@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BGM:
   - m_audioClip: {fileID: 8300000, guid: 7c4a4479836b20444a0075d209865762, type: 3}
-    m_volume: 1
+    m_volume: 0.04
     m_fadeTime: 1
     m_loop: 1
     m_3DSound: 0
