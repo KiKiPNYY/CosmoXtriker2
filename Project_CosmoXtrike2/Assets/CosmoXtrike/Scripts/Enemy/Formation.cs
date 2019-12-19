@@ -12,25 +12,37 @@ public class Formation : MonoBehaviour
       new Vector3(30, 30, 0),
       new Vector3(30, 45, 0)
     };
+
+    //フラグシップが生きているか。
+    bool flagshipAlive = true;
+
+    //弾の発射猶予
+    bool fireWait = false;
+    //現在の順番
+    int fireOrder = 0;
+
+
     // Start is called before the first frame update
     void Start(){
-        
+        CheckFormation();
     }
 
     // Update is called once per frame
     void Update(){
+        //弾を順番に放つ。
+        Shot();
         //デバッグ用
         if (Input.GetKeyDown(KeyCode.P)) { CheckFormation(); }
     }
 
     //機体数をチェックする
-    void CheckFormation(){
-        bool flagship = true;
+    public void CheckFormation(){
+        
         if (planes.Count != this.transform.childCount) {
             LlstUpdate();
-            flagship = CheckFlagShip();
+            flagshipAlive = CheckFlagShip();
         }
-        if (!flagship) {
+        if (!flagshipAlive) {
             int i = 0;
             foreach(Enemy enemy in planes){
                 enemy.FlagshipCrash = true;
@@ -52,14 +64,30 @@ public class Formation : MonoBehaviour
         planes.Clear();
         var childTransform = GetComponentsInChildren<Transform>();
         foreach (Transform child in childTransform){
-            if(this.name != child.gameObject.name){
+            if(child.GetComponent<Enemy>() != null){
                 planes.Add(child.gameObject.GetComponent<Enemy>());
             }
         
         }
-
+        planes.Sort((a, b) => a.formationNum - b.formationNum);
     }
-
     
+    void Shot(){
+        if (flagshipAlive&&!fireWait){
+            StartCoroutine(FireWaitCoroutine());
+        }
+    }
+    
+    IEnumerator FireWaitCoroutine(){
+        fireWait = true;
+        yield return new WaitForSeconds(1.0f);
+        planes[fireOrder].Attack();
+        fireOrder++;
+        if (fireOrder >= planes.Count)
+        {
+            fireOrder = 0;
+        }
+        fireWait = false;
+    }
 
 }
