@@ -166,28 +166,28 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         float x = Input.GetAxis("Right_Horizontal");
         float y = Input.GetAxis("Right_Vertical");
 
-        x = Input.GetKey(KeyCode.RightArrow) == true ? 1 : 0;
-        x = Input.GetKey(KeyCode.LeftArrow) == true ? -1 : 0;
+        //x = Input.GetKey(KeyCode.RightArrow) == true ? 1 : 0;
+        //x = Input.GetKey(KeyCode.LeftArrow) == true ? -1 : 0;
 
         Vector3 vector = Vector3.zero;
         Quaternion loockRotation;
-        for (int i = 0; i < m_gunTrans.Length; i++)
-        {
+       // for (int i = 0; i < m_gunTrans.Length; i++)
+       // {
 
-            if ((m_gunTrans[i].localEulerAngles.y > 30 && y > 0) || (m_gunTrans[i].localEulerAngles.y < -30 && y < 0))
-            {
-                m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x, m_gunTrans[i].rotation.y > 0 ? 30 : -30, m_gunTrans[i].rotation.z);
-            }
-            if ((m_gunTrans[i].localEulerAngles.x > 10 && x > 0) || (m_gunTrans[i].localEulerAngles.x < -10 && x < 0))
-            {
-                m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x > 0 ? 10 : -10, m_gunTrans[i].rotation.y, m_gunTrans[i].rotation.z);
-            }
+        //    if ((m_gunTrans[i].localEulerAngles.y > 30 && y > 0) || (m_gunTrans[i].localEulerAngles.y < -30 && y < 0))
+        //    {
+        //        m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x, m_gunTrans[i].rotation.y > 0 ? 30 : -30, m_gunTrans[i].rotation.z);
+        //    }
+         //   if ((m_gunTrans[i].localEulerAngles.x > 10 && x > 0) || (m_gunTrans[i].localEulerAngles.x < -10 && x < 0))
+         //   {
+         //       m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x > 0 ? 10 : -10, m_gunTrans[i].rotation.y, m_gunTrans[i].rotation.z);
+         //   }
 
-            vector = m_gunTrans[i].right * x + m_gunTrans[i].up * y + m_gunTrans[i].forward;
-            loockRotation = Quaternion.LookRotation((m_gunTrans[i].position + vector) - m_gunTrans[i].position);
-            m_gunTrans[i].rotation = Quaternion.Slerp(m_gunTrans[i].rotation, loockRotation, Time.deltaTime);
+         //   vector = m_gunTrans[i].right * x + m_gunTrans[i].up * y + m_gunTrans[i].forward;
+         //   loockRotation = Quaternion.LookRotation((m_gunTrans[i].position + vector) - m_gunTrans[i].position);
+         //   m_gunTrans[i].rotation = Quaternion.Slerp(m_gunTrans[i].rotation, loockRotation, Time.deltaTime);
 
-        }
+        //}
 
         x = Input.GetAxis("Left_Horizontal");
         y = Input.GetAxis("Left_Vertical");

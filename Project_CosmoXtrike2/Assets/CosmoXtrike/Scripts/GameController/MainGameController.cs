@@ -14,7 +14,7 @@ public class MainGameController : MonoBehaviour
         {
             if (m_instance == null)
             {
-                Debug.LogError("BulletManagerがありません");
+                Debug.LogError("MainGameControllerがありません");
             }
             return m_instance;
         }
@@ -28,7 +28,7 @@ public class MainGameController : MonoBehaviour
         if (m_instance == null)
         {
             m_instance = this;
-            DontDestroyOnLoad(this.transform.gameObject);
+            //DontDestroyOnLoad(this.transform.gameObject);
         }
         else
         {
@@ -70,7 +70,7 @@ public class MainGameController : MonoBehaviour
     {
         m_destroyNum++;
         if(m_destroyNum < m_enemyDestroy) { return; }
-        SceneMove();
+        MainGameEnd();
     }
 
     /// <summary>
@@ -86,10 +86,16 @@ public class MainGameController : MonoBehaviour
     public void MainGameEnd()
     {
         m_sceneMove = true;
+        m_fadeTimer = 0;
         m_fade = FadeType.fadeOut;
     }
 
     #region Unity関数
+
+    private  void Awake() 
+    {
+        CreateInstnce();
+    }
     private void Start()
     {
         CosmoXtrikerController.CallCameraSetting();

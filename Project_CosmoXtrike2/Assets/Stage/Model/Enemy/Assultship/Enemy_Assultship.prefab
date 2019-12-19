@@ -5990,6 +5990,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4013072833119785419}
+  - component: {fileID: 8503360742760502867}
+  - component: {fileID: 4406047932220248116}
   m_Layer: 0
   m_Name: Enemy_Assultship
   m_TagString: Untagged
@@ -6065,6 +6067,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8503360742760502867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013072833120275947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0bad7d9030225a4995ef4b00a1b3ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHp: 10
+  m_burnEffect: {fileID: 0}
+  m_effctPos: []
+--- !u!65 &4406047932220248116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013072833120275947}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 54.856934, y: 21.172293, z: 23.611181}
+  m_Center: {x: 1.7423877, y: 0.119056396, z: -0.36470214}
 --- !u!1 &4013072833120275949
 GameObject:
   m_ObjectHideFlags: 0

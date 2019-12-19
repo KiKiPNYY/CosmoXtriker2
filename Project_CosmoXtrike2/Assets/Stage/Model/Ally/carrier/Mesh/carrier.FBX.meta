@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 43cd7e1c2e544c447a9cf81fd8f61d77
+guid: 6a927384ce8a0834c95e620a0622d59a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -1844,7 +1844,22 @@ ModelImporter:
     4300710: ship_thrusters
     4300712: ship_thrusters
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 7d26fa144444e754dbb9a37b652a9350, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Standard_22
+    second: {fileID: 2100000, guid: dd4f226b7dfcc3a4995c41d23278d388, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Standard_22j
+    second: {fileID: 2100000, guid: d41570c8679b25e40bf528b4c1fc9c4a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

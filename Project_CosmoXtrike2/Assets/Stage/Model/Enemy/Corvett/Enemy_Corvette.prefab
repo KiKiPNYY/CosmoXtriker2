@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2908045855867824001}
   - component: {fileID: 6211195635840467371}
   - component: {fileID: 1057601619682591119}
+  - component: {fileID: 166616989590751615}
+  - component: {fileID: 7351906580492530269}
   m_Layer: 0
   m_Name: Enemy_Corvette
   m_TagString: Untagged
@@ -106,3 +108,31 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 8e1f346e1a2b2974bb8483f6b9732a67, type: 3}
+--- !u!65 &166616989590751615
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2908045855870089537}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 85.03073, y: 47.070873, z: 160.24533}
+  m_Center: {x: 0, y: -0.0000019073486, z: 0}
+--- !u!114 &7351906580492530269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2908045855870089537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0bad7d9030225a4995ef4b00a1b3ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHp: 4
+  m_burnEffect: {fileID: 0}
+  m_effctPos: []

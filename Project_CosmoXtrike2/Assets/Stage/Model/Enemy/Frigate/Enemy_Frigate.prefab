@@ -2098,6 +2098,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2760197711383410157}
   - component: {fileID: 8842091426919071027}
+  - component: {fileID: 7770092711061719574}
+  - component: {fileID: 4134767814532269062}
   m_Layer: 0
   m_Name: Enemy_Frigate
   m_TagString: Untagged
@@ -2158,6 +2160,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &7770092711061719574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760197711383570893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0bad7d9030225a4995ef4b00a1b3ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHp: 6
+  m_burnEffect: {fileID: 0}
+  m_effctPos: []
+--- !u!65 &4134767814532269062
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760197711383570893}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.013165, y: 10.224837, z: 28.238592}
+  m_Center: {x: -0.19337463, y: 2.0192773, z: 1.8131866}
 --- !u!1 &2760197711383570895
 GameObject:
   m_ObjectHideFlags: 0

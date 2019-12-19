@@ -129,10 +129,7 @@ public class SoundObject : MonoBehaviour
         {
             m_audioSource.clip = null;
         }
-        if(transform.parent != null)
-        {
-            transform.parent = null;
-        }
+
     }
 
     /// <summary>
