@@ -12,11 +12,17 @@ public class CameraContoroler : MonoBehaviour
 
     //アニメーションフラグ
     private bool animFlag = false;
+    public PivotControler pivotControler;
+    private Animator animator;
+
+    //カメラのアニメーション後に消すタイトルオブジェクト
+    [SerializeField] private GameObject titleObject;
 
     // Start is called before the first frame update
     void Start()
     {
         defalutView = Camera.main.fieldOfView;
+        animator = pivotControler.PanelAnim;
     }
 
     // Update is called once per frame
@@ -47,7 +53,8 @@ public class CameraContoroler : MonoBehaviour
     private void CameraZoomOut()
     {
         if(!animFlag) { return; }
-        DOVirtual.DelayedCall(zoomSpeed,()=> { DOTween.To(() => Camera.main.fieldOfView, fovOut => Camera.main.fieldOfView = fovOut, defalutView, zoomSpeed + 1f); });
+        DOVirtual.DelayedCall(zoomSpeed,()=> { DOTween.To(() => Camera.main.fieldOfView, fovOut => Camera.main.fieldOfView = fovOut, defalutView, zoomSpeed + 1f); Destroy(titleObject); });
+        animator.SetBool("OpenFlag", true);
         animFlag = false;
     }
 }
