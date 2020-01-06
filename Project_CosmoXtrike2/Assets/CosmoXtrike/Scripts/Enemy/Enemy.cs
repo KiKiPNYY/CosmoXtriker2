@@ -50,11 +50,20 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
         Debug.Log(parameter.HP);
         enemyHp = parameter.HP;
         BulletManager.Instnce.AddBullet( bullet );
+        EnemyStart();
     }
 
     protected void FixedUpdate(){
 
         EnemyUpdate();
+    }
+
+    ///<summary>
+    ///継承先のStartを書くところ
+    /// </summary>
+    virtual protected void EnemyStart(){
+
+
     }
 
     /// <summary>
