@@ -39,6 +39,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     [SerializeField] private Transform[] m_bulletFire;
     [SerializeField] private Transform[] m_gunTrans;
     [SerializeField] private PlayerData m_playerData;
+    [SerializeField] private EnemyHpBar m_enemyHpBar = null;
 
     private Rigidbody m_rb = null;
     private float m_moveSpeed = 0;
@@ -48,8 +49,8 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     private bool m_accele = false;
     private bool m_bulletTrigger = false;
     private bool m_moveStart = false;
-    //private Vector3 m_bulletTargerPos = Vector3.zero;
     private GameObject m_bulletTarger = null;
+    private PlayerLookCursor m_playerLookCursor = null;
 
     /// <summary>
     /// 初期化
@@ -65,6 +66,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_moveStart = false;
         m_bulletTarger = null;
         m_rb = null;
+        m_playerLookCursor = null;
     }
 
     /// <summary>
@@ -162,6 +164,9 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_moveStart = false;
         m_acceleTimer = 0;
         m_Hp = m_playerData.MaxHp;
+        GameObject cursor = Instantiate(m_playerData.PlayerLookCursor.gameObject);
+        m_playerLookCursor = cursor.GetComponent<PlayerLookCursor>();
+        cursor.SetActive(false);
     }
 
     private void Update()
@@ -193,7 +198,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         x = Input.GetAxis("Left_Horizontal");
         y = Input.GetAxis("Left_Vertical");
 
-        if (( Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("LeftTrigger")) && !m_accele)
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("LeftTrigger")) && !m_accele)
         {
             m_accele = true;
         }
@@ -206,6 +211,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
         vector = this.transform.right * x * -1 + this.transform.up * y + this.transform.forward;
         loockRotation = Quaternion.LookRotation((this.transform.position + vector) - this.transform.position);
+        loockRotation *= Quaternion.Euler(0, 0, 45 * x);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime);
 
         if (Input.GetButtonDown("RightTrigger") || Input.GetKeyDown(KeyCode.Space))
@@ -233,21 +239,36 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
         RaycastHit hit;
         LayerMask layerMask = LayerMask.GetMask("Enemy");
-        if (Physics.SphereCast(this.transform.position, m_playerData.RayCastRadius, transform.forward, out hit, m_playerData.RayCastDistance, layerMask))
+        if (Physics.SphereCast(this.transform.position, m_playerData.SphereCastRadius, transform.forward, out hit, m_playerData.SphereCastDistance, layerMask))
         {
             if (hit.transform.gameObject.activeSelf)
             {
                 m_bulletTarger = hit.transform.gameObject;
+                if (!m_playerLookCursor.gameObject.activeSelf)
+                {
+                    m_playerLookCursor.gameObject.SetActive(true);
+                }
+
+                //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);
+               // m_enemyHpBar.SetEnemy(hit.transform.GetComponent<AlphaTestEnemy>(), this.transform.gameObject);
             }
             else
             {
                 m_bulletTarger = null;
+                if (m_playerLookCursor.gameObject.activeSelf)
+                {
+                    m_playerLookCursor.gameObject.SetActive(false);
+                }
             }
-            
+
         }
         else
         {
             m_bulletTarger = null;
+            if (m_playerLookCursor.gameObject.activeSelf)
+            {
+                m_playerLookCursor.gameObject.SetActive(false);
+            }
         }
 
         float deltatime = Time.deltaTime;

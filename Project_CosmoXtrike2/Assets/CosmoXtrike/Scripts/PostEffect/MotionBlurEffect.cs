@@ -35,7 +35,8 @@ public class MotionBlurEffect : MonoBehaviour
     #endregion
 
     [SerializeField, Range(0.0f, 0.95f)] private float m_blurAmount = 0.8f;
-
+    [SerializeField, Range(0.0f, 1.0f)] private float m_blurMinRange = 0.8f;
+    [SerializeField, Range(0.0f, 1.0f)] private float m_blurMaxRange = 0.8f;
     [SerializeField] Shader m_curShader;
 
     private Material m_curMaterial;
@@ -97,8 +98,9 @@ public class MotionBlurEffect : MonoBehaviour
 
 
             material.SetTexture("_MainTex", m_tempRT);
-            material.SetFloat("_BlurAmount", 1 - (m_blurAmount * m_effectMagnification));
-
+            material.SetFloat("_BlurAmount", 1 - (m_blurAmount));
+            material.SetFloat("_BlurMinRange", m_blurMinRange);
+            material.SetFloat("_BlurMaxRange", m_blurMaxRange);
 
             Graphics.Blit(source, m_tempRT, material);
             Graphics.Blit(m_tempRT, destination);
