@@ -12,7 +12,7 @@ public static class CosmoXtrikerController
 {
     public static void CallCameraSetting()
     {
-        UnityEngine.XR.XRSettings.showDeviceView = false;
+      //  UnityEngine.XR.XRSettings.showDeviceView = false;
     }
 
     /// <summary>

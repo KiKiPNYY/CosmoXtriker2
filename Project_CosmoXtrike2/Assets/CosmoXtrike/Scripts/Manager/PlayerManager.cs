@@ -41,6 +41,10 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     [SerializeField] private PlayerData m_playerData;
     [SerializeField] private EnemyHpBar m_enemyHpBar = null;
 
+    [SerializeField] private Transform m_cameraOffsetTrans = null;
+
+    [SerializeField] private Transform thisObjectTrans = null;
+
     private Rigidbody m_rb = null;
     private float m_moveSpeed = 0;
     private float m_acceleTimer = 0;
@@ -166,34 +170,38 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_Hp = m_playerData.MaxHp;
         GameObject cursor = Instantiate(m_playerData.PlayerLookCursor.gameObject);
         m_playerLookCursor = cursor.GetComponent<PlayerLookCursor>();
+        CameraManager.Instance.CameraOffset(m_cameraOffsetTrans);
         cursor.SetActive(false);
     }
 
     private void Update()
     {
         if (!m_moveStart) { return; }
-        float x = Input.GetAxis("Right_Horizontal");
-        float y = Input.GetAxis("Right_Vertical");
+        float x = Input.GetAxis("Right_Vertical") *-1;
+        float y = Input.GetAxis("Right_Horizontal");
 
         Vector3 vector = Vector3.zero;
-        Quaternion loockRotation;
+        Quaternion loockRotation = Quaternion.identity;
         // for (int i = 0; i < m_gunTrans.Length; i++)
         // {
 
-        //    if ((m_gunTrans[i].localEulerAngles.y > 30 && y > 0) || (m_gunTrans[i].localEulerAngles.y < -30 && y < 0))
-        //    {
-        //        m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x, m_gunTrans[i].rotation.y > 0 ? 30 : -30, m_gunTrans[i].rotation.z);
-        //    }
-        //   if ((m_gunTrans[i].localEulerAngles.x > 10 && x > 0) || (m_gunTrans[i].localEulerAngles.x < -10 && x < 0))
-        //   {
-        //       m_gunTrans[i].rotation = Quaternion.Euler(m_gunTrans[i].rotation.x > 0 ? 10 : -10, m_gunTrans[i].rotation.y, m_gunTrans[i].rotation.z);
-        //   }
+        //     if(Mathf.Abs(x) <= 0 && Mathf.Abs(y) <= 0){break;}
+            
+        //     if(Mathf.Abs(x) > 0 && Mathf.Abs(y) <= 0)
+        //     {
+        //         loockRotation = Quaternion.Euler(10 * x, m_gunTrans[i].localEulerAngles.y, m_gunTrans[i].localEulerAngles.z);
+        //     }else if(Mathf.Abs(x) <= 0 && Mathf.Abs(y) > 0)
+        //     {
+        //         loockRotation = Quaternion.Euler(m_gunTrans[i].localEulerAngles.x,30 * y, m_gunTrans[i].localEulerAngles.z);
+        //     }else
+        //     {
+        //         loockRotation = Quaternion.Euler(10 * x,30 * y, m_gunTrans[i].localEulerAngles.z);
+        //     }
 
-        //   vector = m_gunTrans[i].right * x + m_gunTrans[i].up * y + m_gunTrans[i].forward;
-        //   loockRotation = Quaternion.LookRotation((m_gunTrans[i].position + vector) - m_gunTrans[i].position);
-        //   m_gunTrans[i].rotation = Quaternion.Slerp(m_gunTrans[i].rotation, loockRotation, Time.deltaTime);
+           
+        //    m_gunTrans[i].localRotation = Quaternion.Slerp(m_gunTrans[i].localRotation, loockRotation, Time.deltaTime);
 
-        //}
+        // }
 
         x = Input.GetAxis("Left_Horizontal");
         y = Input.GetAxis("Left_Vertical");
@@ -207,11 +215,11 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
             m_accele = false;
         }
 
-        vector = Vector3.zero;
-
+       // Debug.Log(this.transform.right + " : " + this.transform.up + " : " + this.transform.forward);
         vector = this.transform.right * x * -1 + this.transform.up * y + this.transform.forward;
-        loockRotation = Quaternion.LookRotation((this.transform.position + vector) - this.transform.position);
-        loockRotation *= Quaternion.Euler(0, 0, 45 * x);
+        Debug.Log(vector);
+        loockRotation = Quaternion.LookRotation((vector).normalized);
+        // loockRotation *= Quaternion.Euler(0, 0, 45 * x);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime);
 
         if (Input.GetButtonDown("RightTrigger") || Input.GetKeyDown(KeyCode.Space))
