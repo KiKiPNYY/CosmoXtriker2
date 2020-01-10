@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 576485667}
   - component: {fileID: 576485666}
   - component: {fileID: 576485665}
+  - component: {fileID: 576485668}
   m_Layer: 0
   m_Name: Jiki2Panel
   m_TagString: Untagged
@@ -337,7 +338,7 @@ Transform:
   m_GameObject: {fileID: 576485663}
   m_LocalRotation: {x: 0.5043443, y: 0.49561772, z: -0.49561772, w: 0.5043443}
   m_LocalPosition: {x: 130, y: 0, z: -10}
-  m_LocalScale: {x: 1.2000002, y: 1, z: 1.500001}
+  m_LocalScale: {x: 1.2000002, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 893765069}
   m_RootOrder: 3
@@ -401,6 +402,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576485663}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!111 &576485668
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576485663}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b5118635e8e18274da7fe0216b329d0e, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &576616326
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +628,7 @@ MonoBehaviour:
   roteTime: 2
   roteValue: 90
   PanelAnim: {fileID: 914637599}
+  PanelAnim2: {fileID: 576485668}
 --- !u!1 &914637598
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,25 +649,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &914637599
-Animator:
-  serializedVersion: 3
+--- !u!111 &914637599
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914637598}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ccd19865254addd4283db86aceb7f633, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9d28c58a085854542b9760c9ab721b3f, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!64 &914637600
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -748,14 +761,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098349390}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -150}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1605189010}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1098349392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,7 +784,7 @@ MonoBehaviour:
   zoomInValue: 30
   zoomSpeed: 2
   roteSpeed: 6
-  pivotControler: {fileID: 893765070}
+  PanelAnim: {fileID: 914637599}
   titleObject: {fileID: 576616326}
 --- !u!1001 &1163110073
 PrefabInstance:
