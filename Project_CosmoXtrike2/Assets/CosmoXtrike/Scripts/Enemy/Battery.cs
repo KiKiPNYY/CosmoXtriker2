@@ -20,7 +20,7 @@ public class Battery : Enemy{
     }
 
     protected override void EnemyUpdate(){
-        if (!PlayerDistance()) { return; }
+        if (!PlayerDistance() ) { return; }
         Move();
         if (lockOn&&!fireWait){ StartCoroutine(AttackCoroutine()); }
     }
@@ -50,8 +50,9 @@ public class Battery : Enemy{
     bool PlayerDistance() {
         Vector3 target = GameObject.FindGameObjectWithTag("Player").transform.position;
         float answer = Vector3.Distance(target, this.transform.position);
-        if(answer > 100) { return true; }
-        return false;
+        //if(answer > 10000) { return true; }
+        //return false;
+        return true;
     }
 
     bool AngleRestriction(){

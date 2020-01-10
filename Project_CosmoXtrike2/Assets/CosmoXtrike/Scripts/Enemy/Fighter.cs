@@ -6,7 +6,15 @@ public class Fighter : Enemy{
 
 
     bool turnMode = false;
+    //割り振られたnumber。
+    public int number = 0;
+    //自機を狙っているか
+    bool target;
 
+    public bool Target{
+        get { return target; }
+        set { target = value; }
+    }
 
     protected override void Move(){
         base.Move();
