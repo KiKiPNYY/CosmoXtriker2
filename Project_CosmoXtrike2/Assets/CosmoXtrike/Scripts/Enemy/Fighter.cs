@@ -15,9 +15,18 @@ public class Fighter : Enemy{
     //自機を狙っているか
     bool target = false;
 
+    //playerのtransform
+    Transform lockOnTransform;
+
     public bool Target{
         get { return target; }
         set { target = value; }
+    }
+
+
+    protected override void EnemyStart(){
+        base.EnemyStart();
+        lockOnTransform = GameObject.FindGameObjectWithTag("player").transform;
     }
 
     protected override void Move(){
@@ -25,6 +34,8 @@ public class Fighter : Enemy{
         if (!target){
             Debug.Log("旋回中");
             FrightTurn();
+        }else if (target) {
+            LockOnPlayer(TurnTime);
         }
         //Turn(180, 3.0f);
         //if (!turnMode){ StartCoroutine( TurnStayCoroutine() ); }
@@ -33,6 +44,11 @@ public class Fighter : Enemy{
 
     float timer = 0;
     bool turnMode = true;
+    /// <summary>
+    ///　旋回する関数
+    /// </summary>
+    /// <param name="angle"></param>
+    /// <param name="time"></param>
     private void Turn(float angle,float time) {
         if (!turnMode) {
             Debug.Log("回ってないよ");
@@ -50,6 +66,11 @@ public class Fighter : Enemy{
 
     float swingTimer = 0;
     bool swingMode = true;
+    /// <summary>
+    /// 上下する関数
+    /// </summary>
+    /// <param name="angle"></param>
+    /// <param name="time"></param>
     void Swing(float angle,float time) {
         if (!swingMode) { return; }
         swingTimer += Time.deltaTime;
@@ -64,6 +85,17 @@ public class Fighter : Enemy{
             this.transform.Rotate((angle / (time/2) ) * Time.deltaTime, 0, 0, Space.World);
         }
         
+    }
+
+    /// <summary>
+    /// playerの方を向く関数
+    /// </summary>
+    /// <param name="time"></param>
+    void LockOnPlayer(float time){
+        float locktime = time * Time.deltaTime;
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lockOnTransform.rotation, locktime);
+
     }
 
     bool clockWise = true;
