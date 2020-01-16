@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fighter : Enemy{
 
     
-    bool turnMode = true;
+
     //割り振られたnumber。
     public int number = 0;
     //旋回の時間
@@ -32,13 +32,14 @@ public class Fighter : Enemy{
     }
 
     float timer = 0;
+    bool turnMode = true;
     private void Turn(float angle,float time) {
         if (!turnMode) {
             Debug.Log("回ってないよ");
             return;
         }
         timer += Time.deltaTime;
-        this.transform.Rotate(0, (angle / time) * Time.deltaTime, 0);
+        this.transform.Rotate(0, (angle / time) * Time.deltaTime, 0, Space.World);
         if ( timer >= time){
             Debug.Log("turn End");
             //turnMode = false;
@@ -47,12 +48,36 @@ public class Fighter : Enemy{
         }
     }
 
+    float swingTimer = 0;
+    bool swingMode = true;
+    void Swing(float angle,float time) {
+        if (!swingMode) { return; }
+        swingTimer += Time.deltaTime;
+        if (swingTimer > time) {
+            //swingMode = false;
+            swingTimer = 0;
+        }
+        else if(swingTimer >= time/2) {
+            this.transform.Rotate(-(angle / (time/2) ) * Time.deltaTime, 0, 0, Space.World);
+        }
+        else {
+            this.transform.Rotate((angle / (time/2) ) * Time.deltaTime, 0, 0, Space.World);
+        }
+        
+    }
+
     bool clockWise = true;
     //∞型に旋回する。通常の旋回状態
     void FrightTurn() {
         if (target) { return; }
-        if (clockWise){ Turn(360, TurnTime); Debug.Log("右回転"); }
-        else if (!clockWise) { Turn(-360, TurnTime); Debug.Log("左回転"); }
+        if (clockWise){
+            Turn(360, TurnTime);
+            Debug.Log("右回転");
+        }
+        else if (!clockWise) {
+            Turn(-360, TurnTime);
+            Debug.Log("左回転");
+        }
         if(timer >= TurnTime) {
             turnMode = true;
             clockWise = !clockWise;
@@ -61,13 +86,13 @@ public class Fighter : Enemy{
 
     }
 
-    bool isRunning = false;
+    bool turnIsRunning = false;
     IEnumerator TurnStayCoroutine(float Time) {
-        if (isRunning) yield break;
-        isRunning = true;
+        if (turnIsRunning) yield break;
+        turnIsRunning = true;
         yield return new WaitForSeconds(Time);
         turnMode = true;
-        isRunning = false;
+        turnIsRunning = false;
     }
     
 }
