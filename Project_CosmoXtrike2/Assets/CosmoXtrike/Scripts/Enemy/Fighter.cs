@@ -18,6 +18,9 @@ public class Fighter : Enemy{
     //playerのtransform
     Transform lockOnTransform;
 
+    //ショットを撃った後か
+    bool coolTimeMode = false;
+
     public bool Target{
         get { return target; }
         set { target = value; }
@@ -26,7 +29,13 @@ public class Fighter : Enemy{
 
     protected override void EnemyStart(){
         base.EnemyStart();
-        lockOnTransform = GameObject.FindGameObjectWithTag("player").transform;
+        lockOnTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    protected override void EnemyUpdate()
+    {
+        base.EnemyUpdate();
+        Shot();
     }
 
     protected override void Move(){
@@ -35,10 +44,33 @@ public class Fighter : Enemy{
             Debug.Log("旋回中");
             FrightTurn();
         }else if (target) {
-            LockOnPlayer(TurnTime);
+            LockOnPlayer();
+            Debug.Log("追跡中");
         }
         //Turn(180, 3.0f);
         //if (!turnMode){ StartCoroutine( TurnStayCoroutine() ); }
+
+    }
+
+    void Shot(){
+        if (coolTimeMode){ return; }
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if(Physics.Raycast(ray,out hit, 800.0f)) {
+            if(hit.transform.tag == "Player"){
+                Attack();
+                Debug.Log("ショット！！");
+                StartCoroutine( CoolTime() );
+            }
+        }
+    }
+
+
+    IEnumerator CoolTime(){
+        if (coolTimeMode) { yield break; }
+        coolTimeMode = true;
+        yield return new WaitForSeconds(2.0f);
+        coolTimeMode = false;
 
     }
 
@@ -91,10 +123,11 @@ public class Fighter : Enemy{
     /// playerの方を向く関数
     /// </summary>
     /// <param name="time"></param>
-    void LockOnPlayer(float time){
-        float locktime = time * Time.deltaTime;
+    void LockOnPlayer(){
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lockOnTransform.rotation, locktime);
+        Quaternion targetRotation = Quaternion.LookRotation(lockOnTransform.position - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+
 
     }
 
