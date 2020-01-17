@@ -45,6 +45,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     [SerializeField] private Transform thisObjectTrans = null;
 
+[SerializeField] private GameObject par;
     private Rigidbody m_rb = null;
     private float m_moveSpeed = 0;
     private float m_acceleTimer = 0;
@@ -165,6 +166,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_rb.useGravity = false;
         m_moveSpeed = m_playerData.DefaultSpeed;
         m_accele = false;
+        par.SetActive(m_accele);
         m_moveStart = false;
         m_acceleTimer = 0;
         m_Hp = m_playerData.MaxHp;
@@ -180,46 +182,54 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         float x = Input.GetAxis("Right_Vertical") *-1;
         float y = Input.GetAxis("Right_Horizontal");
 
+// Debug.Log(x + " : " + y);
+
         Vector3 vector = Vector3.zero;
         Quaternion loockRotation = Quaternion.identity;
-        // for (int i = 0; i < m_gunTrans.Length; i++)
-        // {
+        for (int i = 0; i < m_gunTrans.Length; i++)
+        {
 
-        //     if(Mathf.Abs(x) <= 0 && Mathf.Abs(y) <= 0){break;}
+             if(Mathf.Abs(x) <= 0 && Mathf.Abs(y) <= 0){break;}
             
-        //     if(Mathf.Abs(x) > 0 && Mathf.Abs(y) <= 0)
-        //     {
-        //         loockRotation = Quaternion.Euler(10 * x, m_gunTrans[i].localEulerAngles.y, m_gunTrans[i].localEulerAngles.z);
-        //     }else if(Mathf.Abs(x) <= 0 && Mathf.Abs(y) > 0)
-        //     {
-        //         loockRotation = Quaternion.Euler(m_gunTrans[i].localEulerAngles.x,30 * y, m_gunTrans[i].localEulerAngles.z);
-        //     }else
-        //     {
-        //         loockRotation = Quaternion.Euler(10 * x,30 * y, m_gunTrans[i].localEulerAngles.z);
-        //     }
+             if(Mathf.Abs(x) > 0 && Mathf.Abs(y) <= 0)
+             {
+                 loockRotation = Quaternion.Euler(10 * x, m_gunTrans[i].localEulerAngles.y, m_gunTrans[i].localEulerAngles.z);
+             }else if(Mathf.Abs(x) <= 0 && Mathf.Abs(y) > 0)
+             {
+                 loockRotation = Quaternion.Euler(m_gunTrans[i].localEulerAngles.x,30 * y, m_gunTrans[i].localEulerAngles.z);
+             }else
+             {
+                 loockRotation = Quaternion.Euler(10 * x,30 * y, m_gunTrans[i].localEulerAngles.z);
+             }
 
            
-        //    m_gunTrans[i].localRotation = Quaternion.Slerp(m_gunTrans[i].localRotation, loockRotation, Time.deltaTime);
+            m_gunTrans[i].localRotation = Quaternion.Slerp(m_gunTrans[i].localRotation, loockRotation, Time.deltaTime);
 
-        // }
+        }
 
-        x = Input.GetAxis("Left_Horizontal");
+        x = Input.GetAxis("Left_Horizontal") * -1;
         y = Input.GetAxis("Left_Vertical");
+
+// Debug.Log(x + " : " + y);
 
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("LeftTrigger")) && !m_accele)
         {
+            
             m_accele = true;
+            par.SetActive(m_accele);
         }
         if (Input.GetKeyUp(KeyCode.A) || (Input.GetButtonUp("LeftTrigger")) && m_accele)
         {
             m_accele = false;
+            par.SetActive(m_accele);
         }
 
        // Debug.Log(this.transform.right + " : " + this.transform.up + " : " + this.transform.forward);
-        vector = this.transform.right * x * -1 + this.transform.up * y + this.transform.forward;
-        Debug.Log(vector);
-        loockRotation = Quaternion.LookRotation((vector).normalized);
-        // loockRotation *= Quaternion.Euler(0, 0, 45 * x);
+        //vector = this.transform.right * x * -1 + this.transform.up * y + this.transform.forward;
+        //Debug.Log(vector);
+        //loockRotation = Quaternion.LookRotation((vector).normalized);
+        this.transform.Rotate(new Vector3(90 * -y, 90 * x, 0) * Time.deltaTime,Space.World);
+        loockRotation *= Quaternion.Euler(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 45 * -x);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime);
 
         if (Input.GetButtonDown("RightTrigger") || Input.GetKeyDown(KeyCode.Space))
