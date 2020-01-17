@@ -228,10 +228,25 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         //vector = this.transform.right * x * -1 + this.transform.up * y + this.transform.forward;
         //Debug.Log(vector);
         //loockRotation = Quaternion.LookRotation((vector).normalized);
-        this.transform.Rotate(new Vector3(90 * -y, 90 * x, 0) * Time.deltaTime,Space.World);
-        loockRotation *= Quaternion.Euler(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 45 * -x);
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime);
+        //this.transform.RotateAround(this.transform.position, this.transform.right * -y +this.transform.up * x, 90 * Time.deltaTime);
+        //this.transform.Rotate(new Vector3(90 * -y, 90 * x, 0) * Time.deltaTime,Space.World);
 
+        float rotationX = Mathf.Clamp(this.transform.localEulerAngles.x < 0 ? 360 - this.transform.localEulerAngles.x : this.transform.localEulerAngles.x, 0,360);
+        float rotationY = Mathf.Clamp(this.transform.localEulerAngles.y < 0 ? 360 - this.transform.localEulerAngles.y : this.transform.localEulerAngles.y, 0,360);
+        float rotationZ = Mathf.Clamp(this.transform.localEulerAngles.z > 180 ? this.transform.localEulerAngles.z - 360: this.transform.localEulerAngles.z,0,180);
+
+        Debug.Log(" X = " + rotationX + " X = " + this.transform.localEulerAngles.x);
+
+        rotationX += 90 * -y * Time.deltaTime;
+        rotationY += 90 * x * Time.deltaTime;
+        rotationZ = rotationZ + 45 * -x * Time.deltaTime;//Mathf.Clamp(rotationZ + 45 * -x * Time.deltaTime, -45,45);
+
+        Debug.Log(" X = " + rotationX + " X = " + this.transform.localEulerAngles.x);
+
+        this.transform.rotation = Quaternion.Euler(rotationX, 0, 0);
+        loockRotation *= Quaternion.Euler(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 45 * -x);
+        //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime);
+        //this.transform.rotation = Quaternion.Euler(this.transform.localEulerAngles.x + 90 * -y * Time.deltaTime, this.transform.localEulerAngles.y + 90 * x * Time.deltaTime, 45 * -x * Time.deltaTime);
         if (Input.GetButtonDown("RightTrigger") || Input.GetKeyDown(KeyCode.Space))
         {
             for (int i = 0; i < m_bulletFire.Length; i++)
