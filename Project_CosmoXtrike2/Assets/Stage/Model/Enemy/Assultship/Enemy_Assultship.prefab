@@ -5018,7 +5018,7 @@ GameObject:
   - component: {fileID: 1808688678936779814}
   m_Layer: 0
   m_Name: Enemy_Assultship
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

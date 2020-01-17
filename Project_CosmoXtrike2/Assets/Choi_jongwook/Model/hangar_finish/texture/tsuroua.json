@@ -1,0 +1,94 @@
+{
+    "format": {
+        "version": "1.0"
+    },
+    "shaders": {
+        "Main shader": {
+            "parameters": {
+                "Common Parameters": {
+                    "ao_intensity": 0.75,
+                    "emissive_intensity": 1,
+                    "horizonFade": 1.2999999523162842,
+                    "nbSamples": 16
+                },
+                "Parallax Occlusion Mapping": {
+                    "maxPOMSamples": 16,
+                    "minPOMSamples": 4,
+                    "pomStrength": 1,
+                    "usePOM": false
+                },
+                "Subsurface Scattering Parameters": {
+                    "sssColor": [
+                        0.7009999752044678,
+                        0.3009999990463257,
+                        0.3050000071525574
+                    ],
+                    "sssEnabled": true,
+                    "sssScale": 0.5,
+                    "sssType": 1
+                }
+            },
+            "shader": "pbr-metal-rough",
+            "shaderInstance": "Main shader"
+        }
+    },
+    "texturesets": {
+        "akari2": {
+            "shader": "Main shader"
+        },
+        "daiza1": {
+            "shader": "Main shader"
+        },
+        "e_kazari1": {
+            "shader": "Main shader"
+        },
+        "elevator1": {
+            "shader": "Main shader"
+        },
+        "kabe4": {
+            "shader": "Main shader"
+        },
+        "kazariB": {
+            "shader": "Main shader"
+        },
+        "kazariC": {
+            "shader": "Main shader"
+        },
+        "kazariD": {
+            "shader": "Main shader"
+        },
+        "kazariE": {
+            "shader": "Main shader"
+        },
+        "lambert24": {
+            "shader": "Main shader"
+        },
+        "lambert25": {
+            "shader": "Main shader"
+        },
+        "lambert26": {
+            "shader": "Main shader"
+        },
+        "lambert28": {
+            "shader": "Main shader"
+        },
+        "lambert29": {
+            "shader": "Main shader"
+        },
+        "lambert30": {
+            "shader": "Main shader"
+        },
+        "lambert31": {
+            "shader": "Main shader"
+        },
+        "lambert32": {
+            "shader": "Main shader"
+        },
+        "lambert8": {
+            "shader": "Main shader"
+        },
+        "tsuroua": {
+            "shader": "Main shader"
+        }
+    }
+}
