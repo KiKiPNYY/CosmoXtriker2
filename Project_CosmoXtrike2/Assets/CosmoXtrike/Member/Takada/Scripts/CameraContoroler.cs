@@ -16,15 +16,15 @@ public class CameraContoroler : MonoBehaviour
     //カメラのアニメーション後に消すタイトルオブジェクト
     [SerializeField] private GameObject titleObject;
 
+    //PivotControler
     [SerializeField] private PivotControler _pivotControler;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //現在のカメラの倍率をデフォルトに設定
         defalutView = Camera.main.fieldOfView;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //ボタンを押したらアニメーションフラグをオンにする
@@ -48,11 +48,11 @@ public class CameraContoroler : MonoBehaviour
         DOTween.To(() => Camera.main.fieldOfView, fovIn => Camera.main.fieldOfView = fovIn, zoomInValue, animSpeed / 2);
     }
 
-    //ズームインしている間遅延させ、再び元の倍率にズームアウト
+    //ズームインしている間遅延させ、再び元の倍率にズームアウトした後にパネルのアニメーションを再生
     private void CameraZoomOut()
     {
         if(!animFlag) { return; }
         DOVirtual.DelayedCall(animSpeed / 2,()=> { DOTween.To(() => Camera.main.fieldOfView, fovOut => Camera.main.fieldOfView = fovOut, defalutView, animSpeed / 2); Destroy(titleObject); });
-        DOVirtual.DelayedCall(animSpeed / 2,()=> { _pivotControler.Panel1.SetActive(true); _pivotControler.PanelAnim.Play("PanelOpen"); _pivotControler.AnimFlag = true; animFlag = false; });
+        DOVirtual.DelayedCall(animSpeed / 2,()=> { _pivotControler.panel1.SetActive(true); _pivotControler.panelAnim.Play("PanelOpen"); _pivotControler.AnimFlag = true; animFlag = false; });
     }
 }

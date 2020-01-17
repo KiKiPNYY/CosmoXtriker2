@@ -8,14 +8,18 @@ public class PivotControler : MonoBehaviour
 {
     [SerializeField] private float roteTime;    //Pivotを回転させるのにかける時間
     [SerializeField] private float roteValue;   //回転させる値
-    [HideInInspector] public bool AnimFlag;    
-    private bool roteFlag;
+    [HideInInspector] public bool AnimFlag;     //アニメーションに使うフラグ
+    private bool roteFlag;                      //カメラの回転に使うフラグ
 
-    //パネルとパネルのアニメーション
-    public GameObject Panel1;
-    public Animator PanelAnim;
-    [SerializeField] private GameObject Panel2;
-    [SerializeField] private Animator PanelAnim2;
+    public GameObject panel1;                       //パネル1
+    public Animator panelAnim;                      //パネル1のアニメーション
+    [SerializeField] private GameObject panel2;     //パネル2
+    [SerializeField] private Animator panelAnim2;   //パネル2のアニメーション
+
+    //public GameObject panel1Letter;                     //パネル1に表示する文字
+    //public Animator panel1LetterAnim;                   //パネル1に表示する文字のアニメーション
+    //[SerializeField]private GameObject panel2Letter;    //パネル2に表示する文字
+    //[SerializeField]private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
 
     //プレイヤーの番号
     public static int playerNum;
@@ -29,14 +33,12 @@ public class PivotControler : MonoBehaviour
         roteFlag = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         PivotRote();
         PlayerSelect();
     }
 
-    //Pivotを回転させる
     private void PivotRote()
     {
         if (!AnimFlag) { return; }
@@ -44,17 +46,19 @@ public class PivotControler : MonoBehaviour
         //Pivotの回転が終わったらパネルをアニメーション表示
         if (roteFlag && Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            //パネル2を表示
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
-            Panel1.SetActive(false);
-            DOVirtual.DelayedCall(roteTime,()=> { Panel2.SetActive(true); PanelAnim2.Play("PanelOpen"); /*panel2Flag = false;*/});
+            panel1.SetActive(false);
+            DOVirtual.DelayedCall(roteTime,()=> { panel2.SetActive(true); panelAnim2.Play("PanelOpen");});
 
             roteFlag = false;
         }
         else if (!roteFlag && Input.GetKeyDown(KeyCode.RightArrow))
         {
+            //パネル１を表示
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
-            Panel2.SetActive(false);
-            DOVirtual.DelayedCall(roteTime,()=>{ Panel1.SetActive(true); PanelAnim.Play("PanelOpen"); /*panelFlag = false;*/ });
+            panel2.SetActive(false);
+            DOVirtual.DelayedCall(roteTime,()=>{ panel1.SetActive(true); panelAnim.Play("PanelOpen");});
 
             roteFlag = true;
         }
@@ -63,15 +67,13 @@ public class PivotControler : MonoBehaviour
     //自機選択
     private void PlayerSelect()
     {
-        //ボタンを押したらメインゲームへ
+        //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
         if (roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
-            playerNum = 1;
             SceneManager.LoadScene("Game");
         }
         else if(!roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
-            playerNum = 2;
             SceneManager.LoadScene("Game");
         }
     }

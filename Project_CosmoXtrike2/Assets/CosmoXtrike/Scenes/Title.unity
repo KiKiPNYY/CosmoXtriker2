@@ -632,10 +632,10 @@ MonoBehaviour:
   roteTime: 2
   roteValue: 90
   AnimFlag: 0
-  Panel1: {fileID: 914637598}
-  PanelAnim: {fileID: 914637599}
-  Panel2: {fileID: 576485663}
-  PanelAnim2: {fileID: 576485668}
+  panel1: {fileID: 914637598}
+  panelAnim: {fileID: 914637599}
+  panel2: {fileID: 576485663}
+  panelAnim2: {fileID: 576485668}
 --- !u!1 &914637598
 GameObject:
   m_ObjectHideFlags: 0
