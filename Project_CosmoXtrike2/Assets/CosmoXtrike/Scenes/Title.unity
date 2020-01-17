@@ -328,7 +328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &576485664
 Transform:
   m_ObjectHideFlags: 0
@@ -402,21 +402,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576485663}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!111 &576485668
-Animation:
+--- !u!95 &576485668
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576485663}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: b5118635e8e18274da7fe0216b329d0e, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71cb9b6893b9f124cb5a3e9fb17e8e9e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &576616326
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +631,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roteTime: 2
   roteValue: 90
+  AnimFlag: 0
+  Panel1: {fileID: 914637598}
   PanelAnim: {fileID: 914637599}
+  Panel2: {fileID: 576485663}
   PanelAnim2: {fileID: 576485668}
 --- !u!1 &914637598
 GameObject:
@@ -648,22 +655,26 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!111 &914637599
-Animation:
+  m_IsActive: 0
+--- !u!95 &914637599
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914637598}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 9d28c58a085854542b9760c9ab721b3f, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ccd19865254addd4283db86aceb7f633, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!64 &914637600
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -782,10 +793,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomInValue: 30
-  zoomSpeed: 2
-  roteSpeed: 6
-  PanelAnim: {fileID: 914637599}
+  animSpeed: 4
   titleObject: {fileID: 576616326}
+  _pivotControler: {fileID: 893765070}
 --- !u!1001 &1163110073
 PrefabInstance:
   m_ObjectHideFlags: 0
