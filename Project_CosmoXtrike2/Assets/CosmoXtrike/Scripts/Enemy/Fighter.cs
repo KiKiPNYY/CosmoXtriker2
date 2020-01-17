@@ -137,10 +137,12 @@ public class Fighter : Enemy{
         if (target) { return; }
         if (clockWise){
             Turn(360, TurnTime);
+            Swing(30, TurnTime);
             Debug.Log("右回転");
         }
         else if (!clockWise) {
             Turn(-360, TurnTime);
+            Swing(30, TurnTime);
             Debug.Log("左回転");
         }
         if(timer >= TurnTime) {
