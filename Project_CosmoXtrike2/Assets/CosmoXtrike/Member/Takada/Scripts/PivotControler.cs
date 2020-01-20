@@ -9,12 +9,17 @@ public class PivotControler : MonoBehaviour
     [SerializeField] private float roteTime;    //Pivotを回転させるのにかける時間
     [SerializeField] private float roteValue;   //回転させる値
     [HideInInspector] public bool AnimFlag;     //アニメーションに使うフラグ
-    private bool roteFlag;                      //カメラの回転に使うフラグ
+    private bool roteFlag;                      //Pivotの回転に使うフラグ
 
     public GameObject panel1;                       //パネル1
     public Animator panelAnim;                      //パネル1のアニメーション
     [SerializeField] private GameObject panel2;     //パネル2
     [SerializeField] private Animator panelAnim2;   //パネル2のアニメーション
+
+    [SerializeField] private GameObject cameraObject;   //カメラ
+    [SerializeField] private float animSpeed;           //カメラのアニメーションにかける時間
+    [SerializeField] private Transform jiki1Pos;        
+    [SerializeField] private Transform jiki2Pos;        
 
     //public GameObject panel1Letter;                     //パネル1に表示する文字
     //public Animator panel1LetterAnim;                   //パネル1に表示する文字のアニメーション
@@ -70,11 +75,15 @@ public class PivotControler : MonoBehaviour
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
         if (roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("Game");
+            cameraObject.transform.DOLocalMove(new Vector3(),animSpeed);
+            cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
+            DOVirtual.DelayedCall(animSpeed, () => { SceneManager.LoadScene("Game"); });
         }
         else if(!roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("Game");
+            cameraObject.transform.DOLocalMove(new Vector3(),animSpeed);
+            cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
+            DOVirtual.DelayedCall(animSpeed, () => { SceneManager.LoadScene("Game"); });
         }
     }
 
