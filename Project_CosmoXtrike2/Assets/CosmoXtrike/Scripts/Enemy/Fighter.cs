@@ -40,6 +40,11 @@ public class Fighter : Enemy{
 
     protected override void Move(){
         base.Move();
+        bool avoidance = Avoidance();
+        if (avoidance){
+            Turn(60, timer);
+            return;
+        }
         if (!target){
             Debug.Log("旋回中");
             FrightTurn();
@@ -63,6 +68,20 @@ public class Fighter : Enemy{
                 StartCoroutine( CoolTime() );
             }
         }
+    }
+
+    bool Avoidance(){
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if(Physics.Raycast(ray,out hit, 1000.0f)) {
+            if(hit.transform.tag != "Player"){
+                return true;
+            }
+            if(hit.transform == null) {
+                return false;
+            }
+        }
+        return false;
     }
 
 
