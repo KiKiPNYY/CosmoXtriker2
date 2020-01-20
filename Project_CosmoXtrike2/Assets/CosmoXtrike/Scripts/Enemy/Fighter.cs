@@ -42,7 +42,8 @@ public class Fighter : Enemy{
         base.Move();
         bool avoidance = Avoidance();
         if (avoidance){
-            Turn(60, timer);
+            timer = 0;
+            Turn(90, timer);
             return;
         }
         if (!target){
