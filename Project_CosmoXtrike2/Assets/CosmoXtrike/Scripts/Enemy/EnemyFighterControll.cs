@@ -31,6 +31,13 @@ public class EnemyFighterControll : MonoBehaviour
 
     private List<Fighter> fighters = new List<Fighter>();
 
+    //スポーンするポイント
+    [SerializeField]
+    private Transform SpownPoints;
+    //スポーンしてから移動するポイント
+    [SerializeField]
+    private Transform StartPoints;
+
     /// <summary>
     /// リストに追加する
     /// </summary>
