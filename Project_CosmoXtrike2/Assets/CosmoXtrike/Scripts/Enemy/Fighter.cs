@@ -28,6 +28,15 @@ public class Fighter : Enemy{
 
     //生成されたばかりか
     bool sorite;
+    //最初に向かうポイント
+    Transform firstPoint;
+    //最初のポイントに向かっているか
+    bool goFirstPoint;
+
+    public Transform FirstPoint{
+        get { return firstPoint; }
+        set { firstPoint = value; }
+    }
 
 
     protected override void EnemyStart(){
@@ -45,12 +54,11 @@ public class Fighter : Enemy{
         base.Move();
         if (sorite) { return; }
         bool avoidance = Avoidance();
-        if (avoidance){
+        if(avoidance){
             timer = 0;
             Turn(90, timer);
             return;
-        }
-        if (!target){
+        }else if(!target){
             Debug.Log("旋回中");
             FrightTurn();
         }else if (target) {
@@ -155,6 +163,11 @@ public class Fighter : Enemy{
 
     }
 
+    void LockOnFirstPlayer(){
+        Quaternion targetRotation = Quaternion.LookRotation(firstPoint.position - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+    }
+
     bool clockWise = true;
     //∞型に旋回する。通常の旋回状態
     void FrightTurn() {
@@ -188,6 +201,8 @@ public class Fighter : Enemy{
 
     IEnumerator SoriteCoroutine(){
         yield return new WaitForSeconds(3.0f);
+        sorite = false;
+        goFirstPoint = true;
     }
     
 }

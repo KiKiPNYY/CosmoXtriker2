@@ -31,12 +31,14 @@ public class EnemyFighterControll : MonoBehaviour
 
     private List<Fighter> fighters = new List<Fighter>();
 
+    [SerializeField]
+    private GameObject fighter;
     //スポーンするポイント
     [SerializeField]
-    private Transform SpownPoints;
+    private Transform[] SpownPoints;
     //スポーンしてから移動するポイント
     [SerializeField]
-    private Transform StartPoints;
+    private Transform[] StartPoints;
 
     /// <summary>
     /// リストに追加する
@@ -75,15 +77,27 @@ public class EnemyFighterControll : MonoBehaviour
         else { return false; }
     }
 
+    private void Spown(){
+        for(int i = 0;i < SpownPoints.Length; i++){
+            var spownFighter = Instantiate(fighter, SpownPoints[i]);
+            Fighter fighterScript = spownFighter.GetComponent<Fighter>();
+            AddFighter(fighterScript);
+            fighterScript.FirstPoint = StartPoints[i];
+        }
+        SelectTargetFighter();
+    }
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update(){
+        if( CheckFighter()) {
+            Spown();
+        }
     }
+
+
 }
