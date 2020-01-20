@@ -26,20 +26,24 @@ public class Fighter : Enemy{
         set { target = value; }
     }
 
+    //生成されたばかりか
+    bool sorite;
+
 
     protected override void EnemyStart(){
         base.EnemyStart();
         lockOnTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        StartCoroutine( SoriteCoroutine() );
     }
 
-    protected override void EnemyUpdate()
-    {
+    protected override void EnemyUpdate(){
         base.EnemyUpdate();
         Shot();
     }
 
     protected override void Move(){
         base.Move();
+        if (sorite) { return; }
         bool avoidance = Avoidance();
         if (avoidance){
             timer = 0;
@@ -180,6 +184,10 @@ public class Fighter : Enemy{
         yield return new WaitForSeconds(Time);
         turnMode = true;
         turnIsRunning = false;
+    }
+
+    IEnumerator SoriteCoroutine(){
+        yield return new WaitForSeconds(3.0f);
     }
     
 }
