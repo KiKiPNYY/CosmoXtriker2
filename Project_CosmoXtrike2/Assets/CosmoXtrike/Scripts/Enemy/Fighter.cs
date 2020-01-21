@@ -13,7 +13,8 @@ public class Fighter : Enemy{
     float TurnTime = 5.0f;
 
     //自機を狙っているか
-    bool target = false;
+    [SerializeField]
+    bool target = true;
 
     //playerのtransform
     Transform lockOnTransform;
@@ -74,7 +75,7 @@ public class Fighter : Enemy{
         if (coolTimeMode){ return; }
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if(Physics.Raycast(ray,out hit, 800.0f)) {
+        if(Physics.Raycast(ray,out hit, 2000.0f)) {
             if(hit.transform.tag == "Player"){
                 Attack();
                 Debug.Log("ショット！！");
