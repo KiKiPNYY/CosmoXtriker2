@@ -30,13 +30,14 @@
 
 		fixed4 _Color;
 		fixed4 _Emission;
+		fixed3 _ThisPosition;
 		fixed _Speed;
 		fixed _Space;
 		fixed _Division;
 
 		void surf(Input IN, inout SurfaceOutputStandard o) 
 		{
-			clip(frac((IN.worldPos.y + _Time.r * _Speed) * _Division) - _Space);
+			clip(frac(((IN.worldPos.y - _ThisPosition.y) + _Time.r * _Speed) * _Division) - _Space);
 			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 			o.Albedo = c.rgb;
 			o.Emission = _Emission * (1.0 - saturate(dot(normalize(IN.viewDir), o.Normal)));

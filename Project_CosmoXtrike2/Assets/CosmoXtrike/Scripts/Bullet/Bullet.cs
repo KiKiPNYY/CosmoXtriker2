@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody m_rb = null;
     protected Vector3 m_instanceOrigin = Vector3.zero;
     protected ThisType m_targetType = ThisType.Enemy;
+    protected float m_activeTimer = 0;
 
     public GameObject ThisGameObject { get => this.transform.gameObject; }
 
@@ -24,7 +25,7 @@ public class Bullet : MonoBehaviour
     public void Generate(BulletData _bulletData)
     {
         m_bulletData = _bulletData;
-        this.transform.gameObject.SetActive(false);  
+        this.transform.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -51,6 +52,8 @@ public class Bullet : MonoBehaviour
             m_particleSystem = this.transform.gameObject.GetComponent<ParticleSystem>();
         }
 
+        m_activeTimer = 0;
+
         this.transform.gameObject.SetActive(true);
     }
 
@@ -69,7 +72,7 @@ public class Bullet : MonoBehaviour
     /// <param name="_direction"></param>
     /// <param name="_thisType"></param>
     /// <param name="_target"></param>
-    public virtual void Fire(Vector3 _instncePos,Vector3 _direction, ThisType _thisType, GameObject _target = null)
+    public virtual void Fire(Vector3 _instncePos, Vector3 _direction, ThisType _thisType, GameObject _target = null)
     {
         Quaternion rotation = Quaternion.LookRotation(_direction);
         this.transform.rotation = rotation;
@@ -77,7 +80,7 @@ public class Bullet : MonoBehaviour
         m_instanceOrigin = this.transform.position;
         m_targetType = _thisType;
 
-        if(m_particleSystem != null)
+        if (m_particleSystem != null)
         {
             m_particleSystem.Play();
         }
@@ -90,7 +93,7 @@ public class Bullet : MonoBehaviour
     public virtual void ThisObjectUpdate(float _deltaTime)
     {
         Move(_deltaTime);
-        ThisObjectShowCheck();
+        ThisObjectShowCheck(_deltaTime);
     }
 
     /// <summary>
@@ -106,10 +109,10 @@ public class Bullet : MonoBehaviour
     /// <summary>
     /// 表示できるかのチェック
     /// </summary>
-    public virtual void ThisObjectShowCheck()
+    public virtual void ThisObjectShowCheck(float _deltaTime)
     {
-        float nowDistance = Vector3.Distance(this.transform.position, m_instanceOrigin);
-        if(nowDistance < m_bulletData.InstanceDistance) { return; }
+        m_activeTimer += _deltaTime;
+        if (m_activeTimer < m_bulletData.ActiveTime) { return; }
         Hidden();
     }
 
@@ -120,7 +123,7 @@ public class Bullet : MonoBehaviour
     protected virtual void GiveDamege(CommonProcessing _commonProcessing)
     {
         _commonProcessing.Damege(m_bulletData.Damege);
-        
+
         // エフェクトがあれば発生させる
         if (m_effect != null)
         {
@@ -151,6 +154,14 @@ public class Bullet : MonoBehaviour
         if (commonProcessing == null) { return; }
         if (commonProcessing.ReturnMyType() == m_targetType) { return; }
         GiveDamege(commonProcessing);
+        AlphaTestEnemy alphaTestEnemy = _other.GetComponent<AlphaTestEnemy>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        Debug.Log(alphaTestEnemy + " : " + player);
+
+        if (alphaTestEnemy == null || player == null) { return; }
+
+        EnemyHpBar.Instance.SetEnemy(alphaTestEnemy, player);
     }
     #endregion
 }

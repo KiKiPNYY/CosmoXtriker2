@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+
 //エネミーの基底クラス
-abstract public class Enemy : MonoBehaviour, CommonProcessing
-{
+abstract public class Enemy : MonoBehaviour, CommonProcessing{
     [SerializeField] private Effect effect;
     //Flag機かどうか
     [SerializeField]
@@ -14,16 +15,15 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
     public bool FlagShip{
         get { return flagShip; }
     }
+    //エネミーのステータス
+    [SerializeField]
+    EnemyDate parameter;
     //エネミーのライフ
     protected int enemyHp;
-    //エネミーの移動速度
-    protected float speed = 1.0f;
-    //エネミーの攻撃力
-    protected int attack;
     //エネミーの弾の種類
     [SerializeField]
-    protected GameObject bullet;
-    //砲弾の向き
+    protected Bullet bullet;
+    //砲弾の向きの位置
     [SerializeField]
     protected GameObject aim;
 
@@ -42,35 +42,47 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
         get { return spreadAngle; }
         set { spreadAngle = value; }
     }
+
     [SerializeField]
     public int formationNum = 0;
 
+    protected void Start(){
+        Debug.Log(parameter.HP);
+        enemyHp = parameter.HP;
+        BulletManager.Instnce.AddBullet( bullet );
+    }
 
     protected void FixedUpdate(){
 
-        Move();
+        EnemyUpdate();
+    }
 
+    /// <summary>
+    /// 継承先のUpdateを書くところ　
+    /// </summary>
+    virtual protected void EnemyUpdate(){
+        Move();
     }
 
     //Enemyの移動
     virtual protected void Move() {
         
-        transform.Translate(0f, 0f, speed*Time.deltaTime);
+        transform.Translate(0f, 0f, parameter.Speed*Time.deltaTime);
         
     }
 
     //Enemyのダメージ。インターフェースで実装
-    public void Damege(int add){
+    virtual public void Damege(int add){
         EffectManager.Instnce.EffectPlay(effect, this.transform);
         enemyHp -= add;
         if (enemyHp <= 0)
         {
-
-            this.transform.parent = null;
+            
             var formationScript = this.gameObject.GetComponentInParent<Formation>();
             if(formationScript != null){
                 formationScript.CheckFormation();
             }
+            this.transform.parent = null;
             this.gameObject.SetActive(false);
         }
     }
@@ -89,8 +101,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing
     //Enemyの攻撃
     virtual public void Attack() {
         var target = GameObject.FindGameObjectWithTag("Player");
-        aim.transform.LookAt(target.transform.position);
-        Instantiate(bullet, aim.transform.position, aim.transform.rotation);
+        BulletManager.Instnce.Fire(bullet,aim.transform.position,target.transform.position,ReturnMyType());
     }
 
 
