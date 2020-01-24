@@ -28,10 +28,9 @@ public class CameraContoroler : MonoBehaviour
     void Update()
     {
         //ボタンを押したらアニメーションフラグをオンにする
-        //if (Input.GetMouseButtonDown(0)) { animFlag = true;}
-        if (Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger")) { animFlag = true; }
+        if (Input.GetMouseButtonDown(0)) { animFlag = true;}
+        //if (Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger")) { animFlag = true; }
 
-        if (!animFlag) { return; }
         CameraRote();
         CameraZoomIn();
         CameraZoomOut();
@@ -43,6 +42,8 @@ public class CameraContoroler : MonoBehaviour
     /// </summary>
     private void CameraRote()
     {
+        if (!animFlag) { return; }
+
         this.transform.DORotate(new Vector3(0, -180f, 0), animSpeed);
     }
 
@@ -51,6 +52,8 @@ public class CameraContoroler : MonoBehaviour
     /// </summary>
     private void CameraZoomIn()
     {
+        if (!animFlag) { return; }
+
         DOTween.To(() => Camera.main.fieldOfView, fovIn => Camera.main.fieldOfView = fovIn, zoomInValue, animSpeed / 2);
     }
 
@@ -59,9 +62,12 @@ public class CameraContoroler : MonoBehaviour
     /// </summary>
     private void CameraZoomOut()
     {
+        if (!animFlag) { return; }
+
         //ズームインしている時間遅延させる
         DOVirtual.DelayedCall(animSpeed / 2,()=> { DOTween.To(() => Camera.main.fieldOfView, fovOut => Camera.main.fieldOfView = fovOut, defalutView, animSpeed / 2); Destroy(titleObject); });
         DOVirtual.DelayedCall(animSpeed / 2,()=> { _pivotControler.panel1.SetActive(true); _pivotControler.panelAnim.Play("PanelOpen"); _pivotControler.AnimFlag = true; animFlag = false; });
+        DOVirtual.DelayedCall(animSpeed / 2 + 1f,()=> { _pivotControler.panel1Letter.SetActive(true); _pivotControler.panel1LetterAnim.Play("PanelLetterOpen"); });
     }
 
     #endregion

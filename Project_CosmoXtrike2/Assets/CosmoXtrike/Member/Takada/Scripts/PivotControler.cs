@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class PivotControler : MonoBehaviour
@@ -18,13 +19,15 @@ public class PivotControler : MonoBehaviour
 
     [SerializeField] private GameObject cameraObject;   //カメラ
     [SerializeField] private float animSpeed;           //カメラのアニメーションにかける時間
-    [SerializeField] private Transform jiki1Pos;        
-    [SerializeField] private Transform jiki2Pos;        
 
-    //public GameObject panel1Letter;                     //パネル1に表示する文字
-    //public Animator panel1LetterAnim;                   //パネル1に表示する文字のアニメーション
-    //[SerializeField]private GameObject panel2Letter;    //パネル2に表示する文字
-    //[SerializeField]private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
+    
+    //[SerializeField] private Transform jiki1Pos;        
+    //[SerializeField] private Transform jiki2Pos;        
+
+    public GameObject panel1Letter;                     //パネル1に表示する文字
+    public Animator panel1LetterAnim;                   //パネル1に表示する文字のアニメーション
+    [SerializeField]private GameObject panel2Letter;    //パネル2に表示する文字
+    [SerializeField]private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
 
 
     void Start()
@@ -36,10 +39,10 @@ public class PivotControler : MonoBehaviour
 
     void Update()
     {
-        //PivotRote_PC();
-        //PlayerSelect_PC();
-        PivotRote_VR();
-        PlayerSelect_VR();
+        PivotRote_PC();
+        PlayerSelect_PC();
+        //PivotRote_VR();
+        //PlayerSelect_VR();
     }
 
     #region 自機選択
@@ -56,7 +59,9 @@ public class PivotControler : MonoBehaviour
             //パネル2を表示
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
             panel1.SetActive(false);
+            panel1Letter.SetActive(false);
             DOVirtual.DelayedCall(roteTime,()=> { panel2.SetActive(true); panelAnim2.Play("PanelOpen");});
+            DOVirtual.DelayedCall(roteTime + 1f, () => { panel2Letter.SetActive(true); panel2LetterAnim.Play("PanelLetterOpen"); });
 
             roteFlag = false;
         }
@@ -65,7 +70,9 @@ public class PivotControler : MonoBehaviour
             //パネル１を表示
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
             panel2.SetActive(false);
+            panel2Letter.SetActive(false);
             DOVirtual.DelayedCall(roteTime,()=>{ panel1.SetActive(true); panelAnim.Play("PanelOpen");});
+            DOVirtual.DelayedCall(roteTime + 1f, () => { panel1Letter.SetActive(true); panel1LetterAnim.Play("PanelLetterOpen");});
 
             roteFlag = true;
         }
@@ -83,7 +90,7 @@ public class PivotControler : MonoBehaviour
         if (x < -1) { x = -1; }
 
         //Pivotの回転が終わったらパネルをアニメーション表示
-        if (roteFlag && x == -1)
+        if (roteFlag && x <= 0)
         {
             //パネル2を表示
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
@@ -92,7 +99,7 @@ public class PivotControler : MonoBehaviour
 
             roteFlag = false;
         }
-        else if (!roteFlag && x == 1)
+        else if (!roteFlag && x >= 0)
         {
             //パネル１を表示
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
