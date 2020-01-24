@@ -67,22 +67,39 @@ public class EnemyFighterControll : MonoBehaviour
     /// リストの中からtargetキャラを一機選ぶ
     /// </summary>
     public void SelectTargetFighter(){
-        int beforeTarget = 9;
+
+
+        /*旧仕様。無限ループに突入する
+        List<int> beforeTarget = new List<int>();
         for(int i = 0;i < fightersScript.Count; i++){
             if (fightersScript[i].Target){
-                beforeTarget = i;
-                fightersScript[i].Target = false;
+                beforeTarget.Add(i);
             }
         }
+        int j = 0;
          while(true){
             int x = Random.Range(0, fightersScript.Count);
-            if(x != beforeTarget) {
+            if (beforeTarget.Count <= 0){
                 fightersScript[x].Target = true;
-                return;
+                break;
             }
-            
+            bool check = false;
+            foreach(int i in beforeTarget){
+                if(x == i) {
+                    check = true;
+                }
+            }
+            if (!check){
+                fightersScript[x].Target = true;
+                break;
+            }
+            j++;
+            if(j >= 100){
+                Debug.LogError("無限ループに突入してます");
+                break;
+            }
         }
-            
+          */  
     }
         
     
@@ -103,9 +120,10 @@ public class EnemyFighterControll : MonoBehaviour
         for(int i = 0;i < SpownPoints.Length; i++){
             var spownFighter = Instantiate(fighter, SpownPoints[i]);
             Fighter fighterScript = spownFighter.GetComponent<Fighter>();
-            fighters[i] = spownFighter;
+            fighters.Add(spownFighter);
             AddFighter(fighterScript);
             fighterScript.FirstPoint = StartPoints[i];
+            fighterScript.Sorite();
         }
         SelectTargetFighter();
     }
@@ -117,7 +135,10 @@ public class EnemyFighterControll : MonoBehaviour
             fighters[i].SetActive(true);
             fighters[i].transform.position = SpownPoints[i].position;
             fighters[i].transform.rotation = SpownPoints[i].rotation;
+            fightersScript[i].Target = false;
+            fightersScript[i].Sorite();
         }
+
     }
     
     // Start is called before the first frame update
