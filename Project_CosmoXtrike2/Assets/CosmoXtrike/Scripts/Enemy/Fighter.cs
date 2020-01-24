@@ -53,12 +53,15 @@ public class Fighter : Enemy{
     protected override void Move(){
         base.Move();
         if (sorite) { return; }
+        /*
         bool avoidance = Avoidance();
         if(avoidance){
             timer = 0;
             Turn(90, timer);
             return;
-        }else if(!target){
+        }else 
+        */
+        if(!target){
             //Debug.Log("旋回中");
             FrightTurn();
         }else if (target) {
