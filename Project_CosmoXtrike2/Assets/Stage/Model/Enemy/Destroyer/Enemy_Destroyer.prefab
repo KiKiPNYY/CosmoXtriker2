@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3613018913346084502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 638048304280842943}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2079819646515520231}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2079819646515520231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1443348153714380888, guid: feb7076fce2197d4e9fb3c6f9b9fcb0e,
+    type: 3}
+  m_PrefabInstance: {fileID: 638048304280842943}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3613018913346084502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2118525721994104120}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4462978131338168692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 638048304280842943}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118525721994104120}
+  m_Layer: 0
+  m_Name: DestroyerAfterBurner (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118525721994104120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 638048304280842943}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4462978131338168692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2079819646515520231}
+  m_Father: {fileID: 5680954960148293774}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5680954960148591776
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5680954960148293774}
   - component: {fileID: 1082701084826020508}
+  - component: {fileID: 9187789048346951815}
   m_Layer: 0
   m_Name: Enemy_Destroyer
   m_TagString: Enemy
@@ -311,7 +374,7 @@ Transform:
   - {fileID: 5680954960148293770}
   - {fileID: 5680954960148293780}
   - {fileID: 5680954960148293782}
-  - {fileID: 2079819646515520231}
+  - {fileID: 2118525721994104120}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -331,6 +394,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9187789048346951815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680954960148591790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374e4b94c1f84ae4b941c1b0bf3d2d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
 --- !u!1 &5680954960148591792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,11 +2173,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5680954960148293774}
     m_Modifications:
-    - target: {fileID: 418499537373768131, guid: feb7076fce2197d4e9fb3c6f9b9fcb0e,
-        type: 3}
-      propertyPath: m_Name
-      value: DestroyerAfterBurner
-      objectReference: {fileID: 0}
     - target: {fileID: 1443348153714380888, guid: feb7076fce2197d4e9fb3c6f9b9fcb0e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2156,6 +2227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418499537373768131, guid: feb7076fce2197d4e9fb3c6f9b9fcb0e,
+        type: 3}
+      propertyPath: m_Name
+      value: DestroyerAfterBurner
       objectReference: {fileID: 0}
     - target: {fileID: 555409557774645363, guid: feb7076fce2197d4e9fb3c6f9b9fcb0e,
         type: 3}
@@ -2274,9 +2350,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb7076fce2197d4e9fb3c6f9b9fcb0e, type: 3}
---- !u!4 &2079819646515520231 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1443348153714380888, guid: feb7076fce2197d4e9fb3c6f9b9fcb0e,
-    type: 3}
-  m_PrefabInstance: {fileID: 638048304280842943}
-  m_PrefabAsset: {fileID: 0}

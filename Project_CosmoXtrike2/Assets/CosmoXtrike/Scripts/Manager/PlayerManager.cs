@@ -241,7 +241,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         rotationY += 90 * x * Time.deltaTime;
         rotationZ = rotationZ + 45 * -x * Time.deltaTime;//Mathf.Clamp(rotationZ + 45 * -x * Time.deltaTime, -45,45);
 
-        Debug.Log(" X = " + rotationX + " X = " + this.transform.localEulerAngles.x);
+        //Debug.Log(" X = " + rotationX + " X = " + this.transform.localEulerAngles.x);
 
         this.transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
         loockRotation *= Quaternion.Euler(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 45 * -x);

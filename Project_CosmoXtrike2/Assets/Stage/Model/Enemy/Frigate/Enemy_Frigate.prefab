@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &329139004524530689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2732122051981611370}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3208061474923978110}
+  m_Layer: 0
+  m_Name: CorvetteAfterBurner (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3208061474923978110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2732122051981611370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329139004524530689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8852540499175475535}
+  m_Father: {fileID: 726797512771585492}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &698191941114262133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,6 +2125,7 @@ GameObject:
   - component: {fileID: 726797512771585492}
   - component: {fileID: 2240094593299235453}
   - component: {fileID: 2474638881922306406}
+  - component: {fileID: 4973628164330631316}
   m_Layer: 0
   m_Name: Enemy_Frigate
   m_TagString: Enemy
@@ -2138,7 +2170,7 @@ Transform:
   - {fileID: 726797512771585426}
   - {fileID: 726797512771585436}
   - {fileID: 726797512771585438}
-  - {fileID: 8852540499175475535}
+  - {fileID: 3208061474923978110}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2171,6 +2203,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 13, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4973628164330631316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726797512771688948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374e4b94c1f84ae4b941c1b0bf3d2d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
 --- !u!1 &726797512771688950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,6 +2510,37 @@ Transform:
   m_Father: {fileID: 726797512771585492}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1791194294893971366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2732122051981611370}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8852540499175475535}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8852540499175475535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 6859255089651849253, guid: 92e10d191f9c4454b9ae936c638557ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 2732122051981611370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791194294893971366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3208061474923978110}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2691174091554497557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,11 +2638,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 726797512771585492}
     m_Modifications:
-    - target: {fileID: 5690854802057437630, guid: 92e10d191f9c4454b9ae936c638557ae,
-        type: 3}
-      propertyPath: m_Name
-      value: CorvetteAfterBurner
-      objectReference: {fileID: 0}
     - target: {fileID: 6859255089651849253, guid: 92e10d191f9c4454b9ae936c638557ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2621,6 +2692,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690854802057437630, guid: 92e10d191f9c4454b9ae936c638557ae,
+        type: 3}
+      propertyPath: m_Name
+      value: CorvetteAfterBurner
       objectReference: {fileID: 0}
     - target: {fileID: 14889971413453002, guid: 92e10d191f9c4454b9ae936c638557ae,
         type: 3}
@@ -2729,9 +2805,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92e10d191f9c4454b9ae936c638557ae, type: 3}
---- !u!4 &8852540499175475535 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6859255089651849253, guid: 92e10d191f9c4454b9ae936c638557ae,
-    type: 3}
-  m_PrefabInstance: {fileID: 2732122051981611370}
-  m_PrefabAsset: {fileID: 0}
