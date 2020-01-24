@@ -14,7 +14,7 @@ public class Fighter : Enemy{
 
     //自機を狙っているか
     [SerializeField]
-    bool target = true;
+    bool target = false;
 
     //playerのtransform
     Transform lockOnTransform;
@@ -43,7 +43,6 @@ public class Fighter : Enemy{
     protected override void EnemyStart(){
         base.EnemyStart();
         lockOnTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        StartCoroutine( SoriteCoroutine() );
     }
 
     protected override void EnemyUpdate(){
@@ -60,10 +59,10 @@ public class Fighter : Enemy{
             timer = 0;
             Turn(90, timer);
             return;
-        }else
+        }else 
         */
         if(!target){
-            Debug.Log("旋回中");
+            //Debug.Log("旋回中");
             FrightTurn();
         }else if (target) {
             LockOnPlayer();
@@ -81,7 +80,7 @@ public class Fighter : Enemy{
         if(Physics.Raycast(ray,out hit, 2000.0f)) {
             if(hit.transform.tag == "Player"){
                 Attack();
-                Debug.Log("ショット！！");
+                //Debug.Log("ショット！！");
                 StartCoroutine( CoolTime() );
             }
         }
@@ -119,7 +118,7 @@ public class Fighter : Enemy{
     /// <param name="time"></param>
     private void Turn(float angle,float time) {
         if (!turnMode) {
-            Debug.Log("回ってないよ");
+            //Debug.Log("回ってないよ");
             return;
         }
         timer += Time.deltaTime;
@@ -179,12 +178,12 @@ public class Fighter : Enemy{
         if (clockWise){
             Turn(360, TurnTime);
             Swing(30, TurnTime);
-            Debug.Log("右回転");
+            //Debug.Log("右回転");
         }
         else if (!clockWise) {
             Turn(-360, TurnTime);
             Swing(30, TurnTime);
-            Debug.Log("左回転");
+            //Debug.Log("左回転");
         }
         if(timer >= TurnTime) {
             turnMode = true;
@@ -203,7 +202,12 @@ public class Fighter : Enemy{
         turnIsRunning = false;
     }
 
+    public void Sorite() {
+        StartCoroutine(SoriteCoroutine());
+    }
+
     IEnumerator SoriteCoroutine(){
+        sorite = true;
         yield return new WaitForSeconds(3.0f);
         sorite = false;
         goFirstPoint = true;
