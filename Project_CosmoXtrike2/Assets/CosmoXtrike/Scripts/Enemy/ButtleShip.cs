@@ -29,6 +29,7 @@ public class ButtleShip : MonoBehaviour
     void Update(){
         if (coolTime){
             Attack();
+            StartCoroutine(CoolTimeCoroutine(Time));
         }
     }
 
