@@ -243,8 +243,9 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
         Debug.Log(" X = " + rotationX + " X = " + this.transform.localEulerAngles.x);
 
-        this.transform.rotation = Quaternion.Euler(rotationX, 0, 0);
+        this.transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
         loockRotation *= Quaternion.Euler(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 45 * -x);
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation,Time.deltaTime* 10);
         //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime);
         //this.transform.rotation = Quaternion.Euler(this.transform.localEulerAngles.x + 90 * -y * Time.deltaTime, this.transform.localEulerAngles.y + 90 * x * Time.deltaTime, 45 * -x * Time.deltaTime);
         if (Input.GetButtonDown("RightTrigger") || Input.GetKeyDown(KeyCode.Space))

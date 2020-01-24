@@ -4043,16 +4043,12 @@ Transform:
   - {fileID: 1691490970553307122}
   - {fileID: 7131495904105631582}
   - {fileID: 1873630694496375043}
-  - {fileID: 7297099013018681395}
-  - {fileID: 5723590708096545109}
   - {fileID: 8625633654350163492}
   - {fileID: 8625633654812279226}
   - {fileID: 8625633654492415140}
   - {fileID: 8625633655260270185}
   - {fileID: 8625633655375672915}
   - {fileID: 8625633653876815756}
-  - {fileID: 8625633655175416684}
-  - {fileID: 8625633655107784584}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23241,98 +23237,6 @@ Transform:
   m_Father: {fileID: 1976748466779871533}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5723590708096860163
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5723590708096545109}
-  - component: {fileID: 5723590708097881233}
-  - component: {fileID: 5723590708098938617}
-  - component: {fileID: 5723590708094768309}
-  m_Layer: 0
-  m_Name: Corridor_2C (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5723590708096545109
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5723590708096860163}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.7484436, y: 4.527611, z: 1.6827222}
-  m_LocalScale: {x: 0.013888888, y: 0.015555554, z: 0.005555555}
-  m_Children: []
-  m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5723590708097881233
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5723590708096860163}
-  m_Mesh: {fileID: 4300004, guid: 7649011e69153af429fdde502dc90940, type: 3}
---- !u!23 &5723590708098938617
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5723590708096860163}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 03365bfd384e91f45a5f70cdca913cd9, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!64 &5723590708094768309
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5723590708096860163}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300004, guid: 7649011e69153af429fdde502dc90940, type: 3}
 --- !u!1 &6788538233955650085
 GameObject:
   m_ObjectHideFlags: 0
@@ -23602,98 +23506,6 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7131495904105446920}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300004, guid: 7649011e69153af429fdde502dc90940, type: 3}
---- !u!1 &7297099013018366309
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7297099013018681395}
-  - component: {fileID: 7297099013019510263}
-  - component: {fileID: 7297099013020551071}
-  - component: {fileID: 7297099013016266195}
-  m_Layer: 0
-  m_Name: Corridor_2C (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7297099013018681395
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7297099013018366309}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.7484436, y: 4.527611, z: 1.5906667}
-  m_LocalScale: {x: 0.013888888, y: 0.015555554, z: 0.005555555}
-  m_Children: []
-  m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7297099013019510263
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7297099013018366309}
-  m_Mesh: {fileID: 4300004, guid: 7649011e69153af429fdde502dc90940, type: 3}
---- !u!23 &7297099013020551071
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7297099013018366309}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 03365bfd384e91f45a5f70cdca913cd9, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!64 &7297099013016266195
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7297099013018366309}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -30258,7 +30070,7 @@ Transform:
   m_LocalScale: {x: 0.0055555566, y: 0.0038888885, z: 0.0055555566}
   m_Children: []
   m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 27
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: -145, y: 90, z: 90}
 --- !u!33 &8625633653873915820
 MeshFilter:
@@ -30335,7 +30147,7 @@ Transform:
   m_LocalScale: {x: 0.005555555, y: 0.0038888885, z: 0.005555556}
   m_Children: []
   m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 22
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: -145, y: -90, z: 90}
 --- !u!33 &8625633654347296260
 MeshFilter:
@@ -30412,7 +30224,7 @@ Transform:
   m_LocalScale: {x: 0.005555555, y: 0.0038888885, z: 0.005555556}
   m_Children: []
   m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 24
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: -145, y: -90, z: 90}
 --- !u!33 &8625633654491088004
 MeshFilter:
@@ -30489,7 +30301,7 @@ Transform:
   m_LocalScale: {x: 0.0055555566, y: 0.0038888885, z: 0.0055555566}
   m_Children: []
   m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 23
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: -145, y: 90, z: 90}
 --- !u!33 &8625633654808887706
 MeshFilter:
@@ -30506,160 +30318,6 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8625633654812056986}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 590cc425744e4488580bcb847b1e0568, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!1 &8625633655107949480
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8625633655107784584}
-  - component: {fileID: 8625633655109111720}
-  - component: {fileID: 8625633655110208872}
-  m_Layer: 0
-  m_Name: Roof_Light_01 (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8625633655107784584
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625633655107949480}
-  m_LocalRotation: {x: -0.32650554, y: 0.6272114, z: 0.6272114, w: -0.32650554}
-  m_LocalPosition: {x: -7.758446, y: 4.5480084, z: 1.6604098}
-  m_LocalScale: {x: 0.0055555566, y: 0.0038888885, z: 0.0055555566}
-  m_Children: []
-  m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 29
-  m_LocalEulerAnglesHint: {x: -145, y: 90, z: 90}
---- !u!33 &8625633655109111720
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625633655107949480}
-  m_Mesh: {fileID: 4300000, guid: 09f6686f757cb4b0a975a2f6f5f1c9ff, type: 3}
---- !u!23 &8625633655110208872
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625633655107949480}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 590cc425744e4488580bcb847b1e0568, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!1 &8625633655175583564
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8625633655175416684}
-  - component: {fileID: 8625633655174646604}
-  - component: {fileID: 8625633655173646732}
-  m_Layer: 0
-  m_Name: Roof_Light_01 (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8625633655175416684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625633655175583564}
-  m_LocalRotation: {x: -0.6272114, y: 0.32650554, z: -0.32650554, w: 0.6272114}
-  m_LocalPosition: {x: -7.739057, y: 4.5480084, z: 1.6368543}
-  m_LocalScale: {x: 0.005555555, y: 0.0038888885, z: 0.005555556}
-  m_Children: []
-  m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 28
-  m_LocalEulerAnglesHint: {x: -145, y: -90, z: 90}
---- !u!33 &8625633655174646604
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625633655175583564}
-  m_Mesh: {fileID: 4300000, guid: 09f6686f757cb4b0a975a2f6f5f1c9ff, type: 3}
---- !u!23 &8625633655173646732
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625633655175583564}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -30720,7 +30378,7 @@ Transform:
   m_LocalScale: {x: 0.0055555566, y: 0.0038888885, z: 0.0055555566}
   m_Children: []
   m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 25
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: -145, y: 90, z: 90}
 --- !u!33 &8625633655257370185
 MeshFilter:
@@ -30797,7 +30455,7 @@ Transform:
   m_LocalScale: {x: 0.005555555, y: 0.0038888885, z: 0.005555556}
   m_Children: []
   m_Father: {fileID: 1976748466779871533}
-  m_RootOrder: 26
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: -145, y: -90, z: 90}
 --- !u!33 &8625633655377000051
 MeshFilter:
@@ -30851,6 +30509,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872903}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30906,11 +30569,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &5314825685450919207 stripped
@@ -30926,6 +30584,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872787}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3 (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30981,11 +30644,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3 (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &7808839238439722684 stripped
@@ -31001,6 +30659,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872955}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31071,11 +30734,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000081
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &8584969294087780781 stripped
@@ -31091,6 +30749,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872961}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31161,11 +30824,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000096
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &820047375869716011 stripped
@@ -31181,6 +30839,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872941}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31251,11 +30914,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000065
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &1728167202387778391 stripped
@@ -31271,6 +30929,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872967}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31340,11 +31003,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.10000061
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -31537,6 +31195,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -31554,18 +31224,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -31681,6 +31339,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -31698,18 +31368,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -31821,6 +31479,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -31841,18 +31511,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -31869,6 +31527,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872895}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31924,11 +31587,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739557720187857 stripped
@@ -31944,6 +31602,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872949}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32013,11 +31676,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.10000077
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -32130,6 +31788,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -32147,18 +31817,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -32430,6 +32088,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779871607}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32499,11 +32162,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.10000056
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -32604,6 +32262,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872847}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32673,11 +32336,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.10000126
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -32790,6 +32448,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -32807,18 +32477,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -32930,6 +32588,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -32950,18 +32620,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -32978,6 +32636,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872965}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33048,11 +32711,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000056
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558004894472 stripped
@@ -33068,6 +32726,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872983}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33122,11 +32785,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -33239,6 +32897,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -33259,18 +32929,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -33287,6 +32945,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872875}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33356,11 +33019,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.100000694
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -33469,6 +33127,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -33486,18 +33156,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -33601,6 +33259,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872915}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33655,11 +33318,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -33772,6 +33430,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -33792,18 +33462,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -33820,6 +33478,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872899}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33890,11 +33553,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000061
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739557145266676 stripped
@@ -33910,6 +33568,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872861}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33979,11 +33642,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.10000055
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -34264,6 +33922,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -34284,18 +33954,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -34312,6 +33970,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872939}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34382,11 +34045,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000093
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739557559638090 stripped
@@ -34402,6 +34060,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872873}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34471,11 +34134,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.100000635
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -34584,6 +34242,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -34601,18 +34271,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -34812,6 +34470,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -34832,18 +34502,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -34860,6 +34518,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872977}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34929,11 +34592,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.10000056
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -35126,6 +34784,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -35143,18 +34813,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -35270,6 +34928,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -35290,18 +34960,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -35318,6 +34976,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872971}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35373,11 +35036,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558943857004 stripped
@@ -35393,6 +35051,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872953}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35463,11 +35126,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.100000635
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558936148428 stripped
@@ -35483,6 +35141,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872857}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35552,11 +35215,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.100000784
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -35657,6 +35315,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872937}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35727,11 +35390,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000073
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558885999316 stripped
@@ -35747,6 +35405,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872889}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35816,11 +35479,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.100000605
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -36005,6 +35663,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872819}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36074,11 +35737,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.100000694
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -36187,6 +35845,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -36204,18 +35874,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -36487,6 +36145,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779871603}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36557,11 +36220,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.100000724
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558859720767 stripped
@@ -36577,6 +36235,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872879}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36647,11 +36310,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.100000575
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558858372662 stripped
@@ -36667,6 +36325,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872925}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36736,11 +36399,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.100000836
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -36841,6 +36499,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872927}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36910,11 +36573,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.100000985
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -37015,6 +36673,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872817}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37070,11 +36733,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739559163647743 stripped
@@ -37090,6 +36748,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872963}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37160,11 +36823,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000065
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739559168723575 stripped
@@ -37180,6 +36838,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872885}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37250,11 +36913,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000082
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739559179800324 stripped
@@ -37270,6 +36928,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779871605}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37325,11 +36988,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739559183670166 stripped
@@ -37345,6 +37003,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872943}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37414,11 +37077,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.100000605
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -37527,6 +37185,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -37544,18 +37214,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -37755,6 +37413,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -37775,18 +37445,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -37803,6 +37461,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872877}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37857,11 +37520,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -37974,6 +37632,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -37994,18 +37664,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -38022,6 +37680,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872835}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38076,11 +37739,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -38181,6 +37839,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779871601}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38251,11 +37914,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000065
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558359820698 stripped
@@ -38271,6 +37929,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872959}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38325,11 +37988,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -38438,6 +38096,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -38455,18 +38125,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -38662,6 +38320,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -38679,18 +38349,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -38886,6 +38544,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -38906,18 +38576,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
@@ -38934,6 +38592,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872891}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39003,11 +38666,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.10000071
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -39108,6 +38766,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872863}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39178,11 +38841,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000066
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558666050626 stripped
@@ -39198,6 +38856,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779873005}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39268,11 +38931,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000065
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558655751377 stripped
@@ -39288,6 +38946,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872845}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39357,11 +39020,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.10000108
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -39638,6 +39296,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -39655,18 +39325,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -39854,6 +39512,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872897}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39908,11 +39571,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
@@ -40021,6 +39679,18 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -40038,18 +39708,6 @@ PrefabInstance:
       value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.3137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800002, guid: 31e92f47a14b1434397c9d18b23ef28d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -40153,6 +39811,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872979}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40223,11 +39886,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.10000061
       objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (2)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}
 --- !u!4 &3146739558586199631 stripped
@@ -40243,6 +39901,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976748466779872951}
     m_Modifications:
+    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
+        type: 3}
+      propertyPath: m_Name
+      value: WFXMR_MF Spr RIFLE3_Blue (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5185304664884504101, guid: 86e8dd05faf26ba40971450ee6152f73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40312,11 +39975,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.10000092
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185304664884279813, guid: 86e8dd05faf26ba40971450ee6152f73,
-        type: 3}
-      propertyPath: m_Name
-      value: WFXMR_MF Spr RIFLE3_Blue (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86e8dd05faf26ba40971450ee6152f73, type: 3}

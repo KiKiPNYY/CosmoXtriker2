@@ -9608,7 +9608,6 @@ GameObject:
   - component: {fileID: 5100732435457639959}
   - component: {fileID: 5150749482507201717}
   - component: {fileID: 2476126594720849246}
-  - component: {fileID: 5538626965988366756}
   - component: {fileID: 6441620175483371637}
   m_Layer: 0
   m_Name: Ally_Destroyer
@@ -9707,21 +9706,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!114 &5538626965988366756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3043616524118342021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2bce0a7a297a824198295b2dbeab8b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectPrefab: {fileID: 7102527449383866027, guid: c44015c7847148c418f2845c492cd3b3,
-    type: 3}
-  Hp: 15
 --- !u!65 &6441620175483371637
 BoxCollider:
   m_ObjectHideFlags: 0
