@@ -1,0 +1,94 @@
+{
+    "format": {
+        "version": "1.0"
+    },
+    "shaders": {
+        "Main shader": {
+            "parameters": {
+                "Common Parameters": {
+                    "ao_intensity": 1,
+                    "emissive_intensity": 26.329999923706055,
+                    "horizonFade": 1.149999976158142,
+                    "nbSamples": 32
+                },
+                "Parallax Occlusion Mapping": {
+                    "maxPOMSamples": 16,
+                    "minPOMSamples": 4,
+                    "pomStrength": 1,
+                    "usePOM": false
+                },
+                "Subsurface Scattering Parameters": {
+                    "sssColor": [
+                        0.7009999752044678,
+                        0.3009999990463257,
+                        0.3050000071525574
+                    ],
+                    "sssEnabled": true,
+                    "sssScale": 0.5,
+                    "sssType": 1
+                }
+            },
+            "shader": "pbr-metal-rough",
+            "shaderInstance": "Main shader"
+        }
+    },
+    "texturesets": {
+        "KAZARIA": {
+            "shader": "Main shader"
+        },
+        "akari2": {
+            "shader": "Main shader"
+        },
+        "daiza1": {
+            "shader": "Main shader"
+        },
+        "door1": {
+            "shader": "Main shader"
+        },
+        "door2": {
+            "shader": "Main shader"
+        },
+        "door3": {
+            "shader": "Main shader"
+        },
+        "door4": {
+            "shader": "Main shader"
+        },
+        "door5": {
+            "shader": "Main shader"
+        },
+        "e_kazari1": {
+            "shader": "Main shader"
+        },
+        "elevator1": {
+            "shader": "Main shader"
+        },
+        "elevatordaiza": {
+            "shader": "Main shader"
+        },
+        "kabe": {
+            "shader": "Main shader"
+        },
+        "kabe4": {
+            "shader": "Main shader"
+        },
+        "kazariB": {
+            "shader": "Main shader"
+        },
+        "kazariC": {
+            "shader": "Main shader"
+        },
+        "kazariD": {
+            "shader": "Main shader"
+        },
+        "kazariE": {
+            "shader": "Main shader"
+        },
+        "tsurou3": {
+            "shader": "Main shader"
+        },
+        "tsuroua": {
+            "shader": "Main shader"
+        }
+    }
+}

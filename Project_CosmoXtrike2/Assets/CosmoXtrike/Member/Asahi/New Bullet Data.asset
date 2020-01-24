@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1972f0f65167ebc40a321bd09bd12269, type: 3}
   m_Name: New Bullet Data
   m_EditorClassIdentifier: 
-  m_bulletSpeed: 0
+  m_bulletSpeed: 100
   m_damege: 0
-  m_instanceDistance: 0
+  m_instanceDistance: 10000

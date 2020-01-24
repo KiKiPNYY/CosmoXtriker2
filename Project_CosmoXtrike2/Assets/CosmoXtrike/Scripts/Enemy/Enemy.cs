@@ -50,11 +50,20 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
         Debug.Log(parameter.HP);
         enemyHp = parameter.HP;
         BulletManager.Instnce.AddBullet( bullet );
+        EnemyStart();
     }
 
     protected void FixedUpdate(){
 
         EnemyUpdate();
+    }
+
+    ///<summary>
+    ///継承先のStartを書くところ
+    /// </summary>
+    virtual protected void EnemyStart(){
+
+
     }
 
     /// <summary>
@@ -101,7 +110,8 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     //Enemyの攻撃
     virtual public void Attack() {
         var target = GameObject.FindGameObjectWithTag("Player");
-        BulletManager.Instnce.Fire(bullet,aim.transform.position,target.transform.position,ReturnMyType());
+        var targetAim = target.transform.position - aim.transform.position;
+        BulletManager.Instnce.Fire(bullet,aim.transform.position,targetAim,ReturnMyType());
     }
 
 
