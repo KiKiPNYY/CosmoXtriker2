@@ -131,6 +131,7 @@ public class EnemyFighterControll : MonoBehaviour
     private void Spown(){
         for(int i = 0;i < SpownPoints.Length; i++){
             var spownFighter = Instantiate(fighter, SpownPoints[i]);
+            spownFighter.transform.parent = null;
             Fighter fighterScript = spownFighter.GetComponent<Fighter>();
             fighters.Add(spownFighter);
             AddFighter(fighterScript);
