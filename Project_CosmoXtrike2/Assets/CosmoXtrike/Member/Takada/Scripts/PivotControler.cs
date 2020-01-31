@@ -29,12 +29,18 @@ public class PivotControler : MonoBehaviour
     [SerializeField]private GameObject panel2Letter;    //パネル2に表示する文字
     [SerializeField]private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
 
+    private Sequence sequence;
+
 
     void Start()
     {
         //フラグの初期化
         AnimFlag = false;
         roteFlag = true;
+
+        //Sequenceの生成
+        sequence = DOTween.Sequence();
+
     }
 
     void Update()
@@ -47,7 +53,7 @@ public class PivotControler : MonoBehaviour
 
     #region 自機選択
     /// <summary>
-    /// ＰＣ操作版
+    /// PC操作版
     /// </summary>
     private void PivotRote_PC()
     {
@@ -64,6 +70,7 @@ public class PivotControler : MonoBehaviour
             DOVirtual.DelayedCall(roteTime + 1f, () => { panel2Letter.SetActive(true); panel2LetterAnim.Play("PanelLetterOpen"); });
 
             roteFlag = false;
+
         }
         else if (!roteFlag && Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -75,11 +82,12 @@ public class PivotControler : MonoBehaviour
             DOVirtual.DelayedCall(roteTime + 1f, () => { panel1Letter.SetActive(true); panel1LetterAnim.Play("PanelLetterOpen");});
 
             roteFlag = true;
+
         }
     }
 
     /// <summary>
-    /// ＶＲ操作版
+    /// VR操作版
     /// </summary>
     private void PivotRote_VR()
     {
@@ -94,19 +102,23 @@ public class PivotControler : MonoBehaviour
         {
             //パネル2を表示
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
+            panel1Letter.SetActive(false);
             panel1.SetActive(false);
             DOVirtual.DelayedCall(roteTime, () => { panel2.SetActive(true); panelAnim2.Play("PanelOpen"); });
 
             roteFlag = false;
+
         }
         else if (!roteFlag && x >= 0)
         {
             //パネル１を表示
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
             panel2.SetActive(false);
+            panel2.SetActive(false);
             DOVirtual.DelayedCall(roteTime, () => { panel1.SetActive(true); panelAnim.Play("PanelOpen"); });
 
             roteFlag = true;
+
         }
     }
 
@@ -114,42 +126,42 @@ public class PivotControler : MonoBehaviour
 
     #region 自機決定
     /// <summary>
-    /// ＰＣ操作版
+    /// PC操作版
     /// </summary>
     private void PlayerSelect_PC()
     {
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
         if (roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
-            cameraObject.transform.DOLocalMove(new Vector3(),animSpeed);
-            cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
-            DOVirtual.DelayedCall(animSpeed, () => { SceneManager.LoadScene("Game"); });
+            //cameraObject.transform.DOLocalMove(new Vector3(),animSpeed);
+            //cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
+            DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
         }
         else if(!roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
-            cameraObject.transform.DOLocalMove(new Vector3(),animSpeed);
-            cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
-            DOVirtual.DelayedCall(animSpeed, () => { SceneManager.LoadScene("Game"); });
+            //cameraObject.transform.DOLocalMove(new Vector3(),animSpeed);
+            //cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
+            DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
         }
     }
 
     /// <summary>
-    /// ＶＲ操作版
+    /// VR操作版
     /// </summary>
     private void PlayerSelect_VR()
     {
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
         if (roteFlag && Input.GetButtonDown("RightTrigger") || roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
-            cameraObject.transform.DOLocalMove(new Vector3(), animSpeed);
-            cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
-            DOVirtual.DelayedCall(animSpeed, () => { SceneManager.LoadScene("Game"); });
+            //cameraObject.transform.DOLocalMove(new Vector3(), animSpeed);
+            //cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
+            DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
         }
         else if (!roteFlag && Input.GetButtonDown("RightTrigger") || !roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
-            cameraObject.transform.DOLocalMove(new Vector3(), animSpeed);
-            cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
-            DOVirtual.DelayedCall(animSpeed, () => { SceneManager.LoadScene("Game"); });
+            //cameraObject.transform.DOLocalMove(new Vector3(), animSpeed);
+            //cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
+            DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
         }
     }
     #endregion
