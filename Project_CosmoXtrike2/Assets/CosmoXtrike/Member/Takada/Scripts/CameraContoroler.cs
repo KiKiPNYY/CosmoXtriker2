@@ -16,43 +16,59 @@ public class CameraContoroler : MonoBehaviour
     //カメラのアニメーション後に消すタイトルオブジェクト
     [SerializeField] private GameObject titleObject;
 
+    //PivotControler
     [SerializeField] private PivotControler _pivotControler;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //現在のカメラの倍率をデフォルトの倍率に設定
         defalutView = Camera.main.fieldOfView;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //ボタンを押したらアニメーションフラグをオンにする
         if (Input.GetMouseButtonDown(0)) { animFlag = true;}
+        //if (Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger")) { animFlag = true; }
+
         CameraRote();
         CameraZoomIn();
         CameraZoomOut();
     }
 
-    //カメラを回転
+    #region カメラの動き
+    /// <summary>
+    /// 回転
+    /// </summary>
     private void CameraRote()
     {
         if (!animFlag) { return; }
+
         this.transform.DORotate(new Vector3(0, -180f, 0), animSpeed);
     }
 
-    //カメラをズームイン
+    /// <summary>
+    /// ズームイン
+    /// </summary>
     private void CameraZoomIn()
     {
         if (!animFlag) { return; }
+
         DOTween.To(() => Camera.main.fieldOfView, fovIn => Camera.main.fieldOfView = fovIn, zoomInValue, animSpeed / 2);
     }
 
-    //ズームインしている間遅延させ、再び元の倍率にズームアウト
+    /// <summary>
+    /// ズームアウト
+    /// </summary>
     private void CameraZoomOut()
     {
-        if(!animFlag) { return; }
+        if (!animFlag) { return; }
+
+        //ズームインしている時間遅延させる
         DOVirtual.DelayedCall(animSpeed / 2,()=> { DOTween.To(() => Camera.main.fieldOfView, fovOut => Camera.main.fieldOfView = fovOut, defalutView, animSpeed / 2); Destroy(titleObject); });
-        DOVirtual.DelayedCall(animSpeed / 2,()=> { _pivotControler.Panel1.SetActive(true); _pivotControler.PanelAnim.Play("PanelOpen"); _pivotControler.AnimFlag = true; animFlag = false; });
+        DOVirtual.DelayedCall(animSpeed / 2,()=> { _pivotControler.panel1.SetActive(true); _pivotControler.panelAnim.Play("PanelOpen"); _pivotControler.AnimFlag = true; animFlag = false; });
+        DOVirtual.DelayedCall(animSpeed / 2 + 1f,()=> { _pivotControler.panel1Letter.SetActive(true); _pivotControler.panel1LetterAnim.Play("PanelLetterOpen"); });
     }
+
+    #endregion
 }
