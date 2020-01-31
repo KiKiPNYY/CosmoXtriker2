@@ -67,7 +67,19 @@ public class EnemyFighterControll : MonoBehaviour
     /// リストの中からtargetキャラを一機選ぶ
     /// </summary>
     public void SelectTargetFighter(){
-
+        //
+        for (int i = 0;i < fightersScript.Count; i++){
+            if (!fightersScript[i].Target){
+                fightersScript[i].Target = true;
+                return;
+            }
+        }
+        //すべてのターゲットモードがtrueになっているなら全てを
+        //falseにして一番目をtrueにする
+        foreach(Fighter i in fightersScript){
+            i.Target = false;
+        }
+        fightersScript[0].Target = true;
 
         /*旧仕様。無限ループに突入する
         List<int> beforeTarget = new List<int>();
@@ -119,6 +131,7 @@ public class EnemyFighterControll : MonoBehaviour
     private void Spown(){
         for(int i = 0;i < SpownPoints.Length; i++){
             var spownFighter = Instantiate(fighter, SpownPoints[i]);
+            spownFighter.transform.parent = null;
             Fighter fighterScript = spownFighter.GetComponent<Fighter>();
             fighters.Add(spownFighter);
             AddFighter(fighterScript);

@@ -61,7 +61,9 @@ public class Fighter : Enemy{
             return;
         }else 
         */
-        if(!target){
+        if (goFirstPoint) {
+            LockOnFirstPoint();
+        }else if(!target){
             //Debug.Log("旋回中");
             FrightTurn();
         }else if (target) {
@@ -166,9 +168,11 @@ public class Fighter : Enemy{
 
     }
 
-    void LockOnFirstPlayer(){
+    void LockOnFirstPoint(){
         Quaternion targetRotation = Quaternion.LookRotation(firstPoint.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+        float renge = Vector3.Distance(this.transform.position, firstPoint.position);
+        if(renge < 50) { goFirstPoint = false; }
     }
 
     bool clockWise = true;
@@ -214,3 +218,4 @@ public class Fighter : Enemy{
     }
     
 }
+
