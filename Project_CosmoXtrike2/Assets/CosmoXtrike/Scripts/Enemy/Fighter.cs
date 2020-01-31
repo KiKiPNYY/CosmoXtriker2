@@ -33,6 +33,8 @@ public class Fighter : Enemy{
     Transform firstPoint;
     //最初のポイントに向かっているか
     bool goFirstPoint;
+    //ぶつかりそうになったか
+    bool avoidanceTime;
 
     public Transform FirstPoint{
         get { return firstPoint; }
@@ -48,6 +50,12 @@ public class Fighter : Enemy{
     protected override void EnemyUpdate(){
         base.EnemyUpdate();
         Shot();
+    }
+
+    public override void Damege(int add)
+    {
+        base.Damege(add);
+        if (enemyHp <= 0&&target){ EnemyFighterControll.Instance.SelectTargetFighter(); }
     }
 
     protected override void Move(){
