@@ -51,18 +51,15 @@ public class Fighter : Enemy{
     }
 
     protected override void Move(){
-        base.Move();
-        if (sorite) { return; }
-        /*
         bool avoidance = Avoidance();
+        float speed = parameter.Speed;
+        if (avoidance) {transform.Translate(0f, 0f, speed/2 * Time.deltaTime); }
+        else if (!avoidance) { transform.Translate(0f, 0f, speed * Time.deltaTime); }
+        if (sorite) { return; }
         if(avoidance){
             timer = 0;
-            Turn(90, timer);
+            Turn(90, 3.0f);
             return;
-        }else 
-        */
-        if (goFirstPoint) {
-            LockOnFirstPoint();
         }else if(!target){
             //Debug.Log("旋回中");
             FrightTurn();
@@ -92,7 +89,7 @@ public class Fighter : Enemy{
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, 1000.0f)) {
-            if(hit.transform.tag != "Player"){
+            if(hit.transform.tag == "Player"){
                 return true;
             }
             if(hit.transform == null) {
@@ -168,11 +165,9 @@ public class Fighter : Enemy{
 
     }
 
-    void LockOnFirstPoint(){
+    void LockOnFirstPlayer(){
         Quaternion targetRotation = Quaternion.LookRotation(firstPoint.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
-        float renge = Vector3.Distance(this.transform.position, firstPoint.position);
-        if(renge < 50) { goFirstPoint = false; }
     }
 
     bool clockWise = true;
