@@ -33303,6 +33303,7 @@ GameObject:
   - component: {fileID: 4712714313435607841}
   - component: {fileID: 4712714313435607840}
   - component: {fileID: 4712714313435607855}
+  - component: {fileID: 623197893798279015}
   m_Layer: 0
   m_Name: eff_Explosion_Big
   m_TagString: Untagged
@@ -38001,6 +38002,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &623197893798279015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712714313435607854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ba957cdf165c346a2d4c3d04d5cecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_effectData: {fileID: 11400000, guid: 49c97dce25fd45d40a5dd3dc8d4d2f9a, type: 2}
 --- !u!1 &4712714313619124631
 GameObject:
   m_ObjectHideFlags: 0

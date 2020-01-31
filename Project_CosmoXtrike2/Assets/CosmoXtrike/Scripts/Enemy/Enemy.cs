@@ -93,6 +93,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
             }
             this.transform.parent = null;
             this.gameObject.SetActive(false);
+            MainGameController.Instnce.EnemyDestroyAdd();
         }
     }
 

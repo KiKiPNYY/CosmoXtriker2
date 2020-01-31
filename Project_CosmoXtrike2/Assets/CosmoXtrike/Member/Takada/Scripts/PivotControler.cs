@@ -34,21 +34,23 @@ public class PivotControler : MonoBehaviour
 
     void Start()
     {
+
         //フラグの初期化
         AnimFlag = false;
         roteFlag = true;
 
         //Sequenceの生成
-        sequence = DOTween.Sequence();
+        //sequence = DOTween.Sequence();
 
     }
 
     void Update()
     {
-        PivotRote_PC();
-        PlayerSelect_PC();
-        //PivotRote_VR();
-        //PlayerSelect_VR();
+        //PivotRote_PC();
+        //PlayerSelect_PC();
+        PivotRote_VR();
+        PlayerSelect_VR();
+
     }
 
     #region 自機選択
@@ -92,34 +94,38 @@ public class PivotControler : MonoBehaviour
     private void PivotRote_VR()
     {
         if (!AnimFlag) { return; }
+
         float x = Input.GetAxis("Right_Vertical");
 
         if (x > 1) { x = 1; }
-        if (x < -1) { x = -1; }
+        if (x < 0) { x = 0; }
 
         //Pivotの回転が終わったらパネルをアニメーション表示
-        if (roteFlag && x <= 0)
+        if (roteFlag && x == 1)
         {
             //パネル2を表示
-            this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
             panel1Letter.SetActive(false);
             panel1.SetActive(false);
+            this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
             DOVirtual.DelayedCall(roteTime, () => { panel2.SetActive(true); panelAnim2.Play("PanelOpen"); });
 
             roteFlag = false;
 
         }
-        else if (!roteFlag && x >= 0)
+        else if (!roteFlag && x == 0)
         {
             //パネル１を表示
+            panel2.SetActive(false);
+            panel2.SetActive(false);
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
-            panel2.SetActive(false);
-            panel2.SetActive(false);
             DOVirtual.DelayedCall(roteTime, () => { panel1.SetActive(true); panelAnim.Play("PanelOpen"); });
 
             roteFlag = true;
 
         }
+
+        Debug.Log(x);
+
     }
 
     #endregion

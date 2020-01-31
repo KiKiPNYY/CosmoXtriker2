@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: New Enemy Date
   m_EditorClassIdentifier: 
   hitpoint: 0
-  speed: 80
+  speed: 40
   attack: 0

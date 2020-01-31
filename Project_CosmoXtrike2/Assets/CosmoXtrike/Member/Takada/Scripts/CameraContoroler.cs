@@ -28,8 +28,8 @@ public class CameraContoroler : MonoBehaviour
     void Update()
     {
         //ボタンを押したらアニメーションフラグをオンにする
-        if (Input.GetMouseButtonDown(0)) { animFlag = true;}
-        //if (Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger")) { animFlag = true; }
+        //if (Input.GetMouseButtonDown(0)) { animFlag = true;}
+        if (Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger")) { animFlag = true; }
 
         CameraRote();
         CameraZoomIn();
@@ -43,7 +43,7 @@ public class CameraContoroler : MonoBehaviour
     private void CameraRote()
     {
         if (!animFlag) { return; }
-
+            
         this.transform.DORotate(new Vector3(0, -180f, 0), animSpeed);
     }
 
