@@ -66,8 +66,16 @@ public class CameraContoroler : MonoBehaviour
 
         //ズームインしている時間遅延させる
         DOVirtual.DelayedCall(animSpeed / 2,()=> { DOTween.To(() => Camera.main.fieldOfView, fovOut => Camera.main.fieldOfView = fovOut, defalutView, animSpeed / 2); Destroy(titleObject); });
-        DOVirtual.DelayedCall(animSpeed / 2,()=> { _pivotControler.panel1.SetActive(true); _pivotControler.panelAnim.Play("PanelOpen"); _pivotControler.AnimFlag = true; animFlag = false; });
-        DOVirtual.DelayedCall(animSpeed / 2 + 1f,()=> { _pivotControler.panel1Letter.SetActive(true); _pivotControler.panel1LetterAnim.Play("PanelLetterOpen"); });
+        //DOVirtual.DelayedCall(animSpeed / 2,()=> { _pivotControler.panel1.SetActive(true); _pivotControler.panelAnim.Play("PanelOpen"); _pivotControler.AnimFlag = true; animFlag = false; });
+        //DOVirtual.DelayedCall(animSpeed / 2 + 1f,()=> { _pivotControler.panel1Letter.SetActive(true); _pivotControler.panel1LetterAnim.Play("PanelLetterOpen"); });
+    }
+
+    /// <summary>
+    /// PivotControlerのフラグをTrueにする
+    /// </summary>
+    private void FlagOpen()
+    {
+        DOVirtual.DelayedCall(animSpeed / 2, () => { animFlag = false; _pivotControler.AnimFlag = true; _pivotControler.roteFlag = true; });
     }
 
     #endregion

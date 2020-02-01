@@ -10,7 +10,7 @@ public class PivotControler : MonoBehaviour
     [SerializeField] private float roteTime;    //Pivotを回転させるのにかける時間
     [SerializeField] private float roteValue;   //回転させる値
     [HideInInspector] public bool AnimFlag;     //アニメーションに使うフラグ
-    private bool roteFlag;                      //Pivotの回転に使うフラグ
+    [HideInInspector] public bool roteFlag;     //Pivotの回転に使うフラグ
 
     public GameObject panel1;                       //パネル1
     public Animator panelAnim;                      //パネル1のアニメーション
@@ -101,7 +101,7 @@ public class PivotControler : MonoBehaviour
         if (x < 0) { x = 0; }
 
         //Pivotの回転が終わったらパネルをアニメーション表示
-        if (roteFlag && x == 1)
+        if (!roteFlag)
         {
             //パネル2を表示
             panel1Letter.SetActive(false);
@@ -112,7 +112,7 @@ public class PivotControler : MonoBehaviour
             roteFlag = false;
 
         }
-        else if (!roteFlag && x == 0)
+        else if (roteFlag)
         {
             //パネル１を表示
             panel2.SetActive(false);
