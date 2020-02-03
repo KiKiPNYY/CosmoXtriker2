@@ -67,13 +67,15 @@ public class Fighter : Enemy{
         if (avoidance) {transform.Translate(0f, 0f, speed/5 * Time.deltaTime); }
         else if (!avoidance) { transform.Translate(0f, 0f, speed * Time.deltaTime); }
         if (sorite) { return; }
-        if(avoidance && !avoidanced){ StartCoroutine(AvoidanceTime()); }
+        if(avoidance && !avoidanced){
+            timer = 0;
+            StartCoroutine(AvoidanceTime());
+        }
 
         if (target&&!avoidanced){
             LockOnPlayer();
             //Debug.Log("追跡中");
         }else if(avoidanced){
-            timer = 0;
             Turn(90, avoidTime);
             return;
         }else if(!target){
