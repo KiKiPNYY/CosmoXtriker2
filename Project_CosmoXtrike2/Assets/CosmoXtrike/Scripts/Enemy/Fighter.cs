@@ -36,6 +36,7 @@ public class Fighter : Enemy{
     //ぶつかりそうになったか
     bool avoidanced;
     //回避する時間
+    [SerializeField]
     float avoidTime = 0.5f;
 
     public Transform FirstPoint{
@@ -63,12 +64,12 @@ public class Fighter : Enemy{
     protected override void Move(){
         bool avoidance = Avoidance();
         float speed = parameter.Speed;
-        if (avoidance) {transform.Translate(0f, 0f, speed/2 * Time.deltaTime); }
+        if (avoidance) {transform.Translate(0f, 0f, speed/5 * Time.deltaTime); }
         else if (!avoidance) { transform.Translate(0f, 0f, speed * Time.deltaTime); }
         if (sorite) { return; }
         if(avoidance && !avoidanced){ StartCoroutine(AvoidanceTime()); }
 
-        if (target){
+        if (target&&!avoidanced){
             LockOnPlayer();
             //Debug.Log("追跡中");
         }else if(avoidanced){
@@ -167,7 +168,7 @@ public class Fighter : Enemy{
     /// </summary>
     /// <param name="time"></param>
     void LockOnPlayer(){
-
+    
         Quaternion targetRotation = Quaternion.LookRotation(lockOnTransform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
 
