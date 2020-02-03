@@ -37,7 +37,7 @@ public class PivotControler : MonoBehaviour
 
         //フラグの初期化
         AnimFlag = false;
-        roteFlag = true;
+        roteFlag = false;
 
         //Sequenceの生成
         //sequence = DOTween.Sequence();
@@ -95,36 +95,32 @@ public class PivotControler : MonoBehaviour
     {
         if (!AnimFlag) { return; }
 
-        float x = Input.GetAxis("Right_Vertical");
+        float x = Input.GetAxis("Right_Horizontal");
 
-        if (x > 1) { x = 1; }
-        if (x < 0) { x = 0; }
+        if (x > 0) { x = 0; }
+        else if (x < -1) { x = -1; }
 
-        //Pivotの回転が終わったらパネルをアニメーション表示
-        if (!roteFlag)
+        if (x == 0) { roteFlag = true; }
+        else if(x == 1) { roteFlag = false; }
+
+        //Pivotの回転が終わったらパネルのアニメーションを再生し表示する
+        if (roteFlag)
+        {
+            panel2.SetActive(false);
+            panel2.SetActive(false);
+            this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
+            StartCoroutine("StartPanelAnim");
+        }
+        else
         {
             //パネル2を表示
             panel1Letter.SetActive(false);
             panel1.SetActive(false);
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
-            DOVirtual.DelayedCall(roteTime, () => { panel2.SetActive(true); panelAnim2.Play("PanelOpen"); });
-
-            roteFlag = false;
-
-        }
-        else if (roteFlag)
-        {
-            //パネル１を表示
-            panel2.SetActive(false);
-            panel2.SetActive(false);
-            this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
-            DOVirtual.DelayedCall(roteTime, () => { panel1.SetActive(true); panelAnim.Play("PanelOpen"); });
-
-            roteFlag = true;
-
+            StartCoroutine("StartPanelAnim");
         }
 
-        Debug.Log(x);
+        //Debug.Log(x);
 
     }
 
@@ -139,14 +135,10 @@ public class PivotControler : MonoBehaviour
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
         if (roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
-            //cameraObject.transform.DOLocalMove(new Vector3(),animSpeed);
-            //cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
             DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
         }
         else if(!roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
-            //cameraObject.transform.DOLocalMove(new Vector3(),animSpeed);
-            //cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
             DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
         }
     }
@@ -157,19 +149,54 @@ public class PivotControler : MonoBehaviour
     private void PlayerSelect_VR()
     {
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
-        if (roteFlag && Input.GetButtonDown("RightTrigger") || roteFlag && Input.GetButtonDown("LeftTrigger"))
+        if (/*roteFlag && Input.GetButtonDown("RightTrigger") ||*/ roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
-            //cameraObject.transform.DOLocalMove(new Vector3(), animSpeed);
-            //cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
-            DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
+            //プレイヤー1に決定
+            SceneLoadManager.Instnce.LoadScene("Game");
+
         }
-        else if (!roteFlag && Input.GetButtonDown("RightTrigger") || !roteFlag && Input.GetButtonDown("LeftTrigger"))
+        else if (/*!roteFlag && Input.GetButtonDown("RightTrigger") ||*/ !roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
-            //cameraObject.transform.DOLocalMove(new Vector3(), animSpeed);
-            //cameraObject.transform.DORotate(new Vector3(0f, 180f, 0f), animSpeed);
-            DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
+            //プレイヤー2に決定
+            SceneLoadManager.Instnce.LoadScene("Game");
+
         }
     }
     #endregion
+    
+    /// <summary>
+    /// コルーチン
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator StartPanelAnim()
+    {
+        yield return new WaitForSeconds(roteTime);
+
+        //パネルのアニメーション再生
+        if (roteFlag)
+        {
+            panel1.SetActive(true);
+            panelAnim.Play("PanelOpen");
+        } 
+        else
+        {
+            panel2.SetActive(true);
+            panelAnim2.Play("PanelOpen");
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        //文字のアニメーション再生
+        if (roteFlag)
+        {
+            panel1Letter.SetActive(true);
+            panel1LetterAnim.Play("PanelLetterOpen");
+        }
+        else
+        {
+            panel2Letter.SetActive(true);
+            panel2LetterAnim.Play("PanelLetterOpen");
+        }
+    }
 
 }
