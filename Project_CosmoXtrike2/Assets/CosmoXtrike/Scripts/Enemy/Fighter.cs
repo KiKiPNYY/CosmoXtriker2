@@ -34,7 +34,9 @@ public class Fighter : Enemy{
     //最初のポイントに向かっているか
     bool goFirstPoint;
     //ぶつかりそうになったか
-    bool avoidanceTime;
+    bool avoidanced;
+    //回避する時間
+    float avoidTime = 0.5f;
 
     public Transform FirstPoint{
         get { return firstPoint; }
@@ -64,16 +66,18 @@ public class Fighter : Enemy{
         if (avoidance) {transform.Translate(0f, 0f, speed/2 * Time.deltaTime); }
         else if (!avoidance) { transform.Translate(0f, 0f, speed * Time.deltaTime); }
         if (sorite) { return; }
-        if(avoidance){
+        if(avoidance && !avoidanced){ StartCoroutine(AvoidanceTime()); }
+
+        if (target){
+            LockOnPlayer();
+            //Debug.Log("追跡中");
+        }else if(avoidanced){
             timer = 0;
-            Turn(90, 3.0f);
+            Turn(90, avoidTime);
             return;
         }else if(!target){
             //Debug.Log("旋回中");
             FrightTurn();
-        }else if (target) {
-            LockOnPlayer();
-            //Debug.Log("追跡中");
         }
         //Turn(180, 3.0f);
         //if (!turnMode){ StartCoroutine( TurnStayCoroutine() ); }
@@ -97,12 +101,9 @@ public class Fighter : Enemy{
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, 1000.0f)) {
-            if(hit.transform.tag == "Player"){
+            
                 return true;
-            }
-            if(hit.transform == null) {
-                return false;
-            }
+            
         }
         return false;
     }
@@ -218,6 +219,13 @@ public class Fighter : Enemy{
         yield return new WaitForSeconds(3.0f);
         sorite = false;
         goFirstPoint = true;
+    }
+
+    IEnumerator AvoidanceTime() {
+        if (avoidanced) { yield break; }
+        avoidanced = true;
+        yield return new WaitForSeconds(avoidTime);
+        avoidanced = false;
     }
     
 }
