@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f45695020cabd4f845a08a3398f7dd, type: 3}
+  m_Name: MissilePlayer Data 1
+  m_EditorClassIdentifier: 
+  m_bullet: {fileID: 3231226053253789469, guid: bf9c84092fa6d4a4bb88752c01ac8f63,
+    type: 3}
+  m_fireEffect: {fileID: 7027801130163872160, guid: 95689dca8ca72f548a18c57ab6f91662,
+    type: 3}
+  m_acceleTime: 3
+  m_bulletInterval: 0.3
+  m_defaultSpeed: 1
+  m_maxSpeed: 5
+  m_sphereCastRadius: 50
+  m_sphereCastDistance: 1000
+  m_maxHP: 20
+  m_meteoriteDamege: 3
+  m_targetCursor: {fileID: 6088693311979195816, guid: 84b985ecbc41bdb4fad8d15945b34e7b,
+    type: 3}

@@ -7,6 +7,7 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
     [SerializeField] private int m_maxHp;
     [SerializeField] private Effect m_burnEffect = null;
     [SerializeField] private Vector3[] m_effctPos;
+    [SerializeField] private int m_destroyNum = 0;
 
     private int m_hp;
 
@@ -27,7 +28,7 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
         {
             
         }
-        MainGameController.Instnce.EnemyDestroyAdd();
+        MainGameController.Instnce.EnemyDestroyAdd(m_destroyNum);
         this.transform.gameObject.SetActive(false);
     }
 

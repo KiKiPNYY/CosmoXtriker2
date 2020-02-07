@@ -37,7 +37,7 @@ public class MainGameController : MonoBehaviour
     }
     #endregion
 
-    [SerializeField][Range(1, 20)] private int m_enemyDestroy = 1;
+    [SerializeField][Range(1, 20)] private int m_enemyDestroyCount = 1;
     [SerializeField] [Range(60, 300)] private float m_gamePlayTime = 60;
     [SerializeField] [Range(0.1f, 10)] private float m_fadeTime = 0.1f;
     [SerializeField] private RawImage m_rawImage = null;
@@ -58,7 +58,7 @@ public class MainGameController : MonoBehaviour
     {
         m_timer = 0;
         m_fadeTimer = 0;
-        m_enemyDestroy = 0;
+        m_enemyDestroyCount = 0;
         m_sceneMove = false;
         m_sceneStart = false;
         m_fade = FadeType.Nun;
@@ -67,12 +67,13 @@ public class MainGameController : MonoBehaviour
     /// <summary>
     /// エネミーを破壊したときに撃破数の加算
     /// </summary>
-    public void EnemyDestroyAdd()
+    public void EnemyDestroyAdd(int _addCount = 0)
     {
-        m_destroyNum++;
-        if(m_destroyNum < m_enemyDestroy) { return; }
+        m_destroyNum += _addCount;
+        if(m_destroyNum < m_enemyDestroyCount) { return; }
         MainGameEnd();
     }
+
 
     /// <summary>
     /// メインゲームが終わったときに呼びゲームを遷移させる

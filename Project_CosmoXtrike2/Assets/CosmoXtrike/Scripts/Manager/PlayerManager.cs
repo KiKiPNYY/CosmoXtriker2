@@ -38,7 +38,10 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     [SerializeField] private Transform[] m_bulletFire;
     [SerializeField] private Transform[] m_gunTrans;
-    [SerializeField] private PlayerData m_playerData;
+
+    [SerializeField] private PlayerData m_normalData = null;
+    [SerializeField] private PlayerData m_missileData = null;
+    private PlayerData m_playerData = null;
     [SerializeField] private EnemyHpBar m_enemyHpBar = null;
 
     [SerializeField] private Transform m_cameraOffsetTrans = null;
@@ -56,6 +59,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     private bool m_moveStart = false;
     private GameObject m_bulletTarger = null;
     private PlayerLookCursor m_playerLookCursor = null;
+    private bool m_search = false;
 
     /// <summary>
     /// 初期化
@@ -72,6 +76,8 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_bulletTarger = null;
         m_rb = null;
         m_playerLookCursor = null;
+        m_playerData = null;
+        m_search = true;
     }
 
     /// <summary>
@@ -149,6 +155,45 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_moveStart = true;
     }
 
+    public void SearchUpdate()
+    {
+        if (!m_search) { return; }
+
+        RaycastHit hit;
+        LayerMask layerMask = LayerMask.GetMask("Enemy");
+        if (Physics.SphereCast(this.transform.position, m_playerData.SphereCastRadius, transform.forward, out hit, m_playerData.SphereCastDistance, layerMask))
+        {
+            if (hit.transform.gameObject.activeSelf)
+            {
+                m_bulletTarger = hit.transform.gameObject;
+                if (!m_playerLookCursor.gameObject.activeSelf)
+                {
+                    m_playerLookCursor.gameObject.SetActive(true);
+                }
+
+                //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);
+                // m_enemyHpBar.SetEnemy(hit.transform.GetComponent<AlphaTestEnemy>(), this.transform.gameObject);
+            }
+            else
+            {
+                m_bulletTarger = null;
+                if (m_playerLookCursor.gameObject.activeSelf)
+                {
+                    m_playerLookCursor.gameObject.SetActive(false);
+                }
+            }
+
+        }
+        else
+        {
+            m_bulletTarger = null;
+            if (m_playerLookCursor.gameObject.activeSelf)
+            {
+                m_playerLookCursor.gameObject.SetActive(false);
+            }
+        }
+    }
+
     #region Unity関数
 
     private void Awake()
@@ -158,6 +203,16 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     private void Start()
     {
+        if(CosmoXtrikerController.PlayerUseShip == UseShip.normal)
+        {
+            m_playerData = m_normalData;
+            m_search = false;
+        }
+        else
+        {
+            m_playerData = m_missileData;
+            m_search = true;
+        }
         for (int i = 0; i < m_bulletFire.Length; i++)
         {
             BulletManager.Instnce.AddBullet(m_playerData.Bullet);
@@ -277,41 +332,10 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         if (!m_moveStart) { return; }
         m_rb.velocity = Vector3.zero;
 
-        RaycastHit hit;
-        LayerMask layerMask = LayerMask.GetMask("Enemy");
-        if (Physics.SphereCast(this.transform.position, m_playerData.SphereCastRadius, transform.forward, out hit, m_playerData.SphereCastDistance, layerMask))
-        {
-            if (hit.transform.gameObject.activeSelf)
-            {
-                m_bulletTarger = hit.transform.gameObject;
-                if (!m_playerLookCursor.gameObject.activeSelf)
-                {
-                    m_playerLookCursor.gameObject.SetActive(true);
-                }
-
-                //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);
-                // m_enemyHpBar.SetEnemy(hit.transform.GetComponent<AlphaTestEnemy>(), this.transform.gameObject);
-            }
-            else
-            {
-                m_bulletTarger = null;
-                if (m_playerLookCursor.gameObject.activeSelf)
-                {
-                    m_playerLookCursor.gameObject.SetActive(false);
-                }
-            }
-
-        }
-        else
-        {
-            m_bulletTarger = null;
-            if (m_playerLookCursor.gameObject.activeSelf)
-            {
-                m_playerLookCursor.gameObject.SetActive(false);
-            }
-        }
+       
 
         float deltatime = Time.deltaTime;
+        SearchUpdate();
         MoveUpdate(deltatime);
         BulletUpdate(deltatime);
     }
