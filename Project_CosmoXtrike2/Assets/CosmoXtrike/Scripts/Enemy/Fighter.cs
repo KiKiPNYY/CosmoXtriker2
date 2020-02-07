@@ -35,6 +35,8 @@ public class Fighter : Enemy{
     bool goFirstPoint;
     //ぶつかりそうになったか
     bool avoidanced;
+    //プレイヤーに接近したか
+    bool playerApproach;
     //回避する時間
     [SerializeField]
     float avoidTime = 2.0f;
@@ -74,10 +76,10 @@ public class Fighter : Enemy{
             StartCoroutine(AvoidanceTime());
         }
 
-        if (target&&!avoidanced){
+        if (target&&!playerApproach){
             LockOnPlayer();
             //Debug.Log("追跡中");
-        }else if(avoidanced){
+        }else if(avoidanced&&!target){
             Turn(90, avoidTime);
             return;
         }else if(!target){
@@ -119,7 +121,9 @@ public class Fighter : Enemy{
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, 1000.0f)) {
-            
+            if (hit.transform.tag == "Player"){
+                playerApproach = true;
+            }
                 return true;
             
         }
@@ -244,6 +248,7 @@ public class Fighter : Enemy{
         avoidanced = true;
         yield return new WaitForSeconds(avoidTime);
         avoidanced = false;
+        playerApproach = false;
     }
     
 }
