@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -234,10 +234,8 @@ MonoBehaviour:
   fighter: {fileID: 8845081796753788760, guid: 6eb2dd61473f17046ba545c248671052, type: 3}
   SpownPoints:
   - {fileID: 103311698}
-  - {fileID: 1321954800}
   StartPoints:
   - {fileID: 271554291}
-  - {fileID: 121719940}
 --- !u!4 &666114197
 Transform:
   m_ObjectHideFlags: 0
@@ -367,6 +365,7 @@ GameObject:
   - component: {fileID: 1333770761}
   - component: {fileID: 1333770760}
   - component: {fileID: 1333770759}
+  - component: {fileID: 1333770763}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Player
@@ -440,12 +439,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333770758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20.7}
+  m_LocalPosition: {x: 0, y: 0, z: 152.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1333770763
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333770758}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1845226114
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +502,7 @@ MonoBehaviour:
   number: 0
   TurnTime: 20
   target: 0
+  avoidTime: 0.5
 --- !u!65 &1845226116
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -20,8 +20,6 @@ public class SearchFighter : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        if (thisFighter.Target) { Debug.Log("もうターゲット指定してるよ"); return;  }
-        if(other.gameObject.tag != "Player") { Debug.Log("Playerじゃないよ"); return; }
         if(EnemyFighterControll.Instance.CheckTarget()){
             thisFighter.Target = true;
             Debug.Log("索敵したよ");
