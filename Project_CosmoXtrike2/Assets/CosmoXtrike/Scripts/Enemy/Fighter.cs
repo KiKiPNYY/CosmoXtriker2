@@ -33,6 +33,13 @@ public class Fighter : Enemy{
     Transform firstPoint;
     //最初のポイントに向かっているか
     bool goFirstPoint;
+    //ぶつかりそうになったか
+    bool avoidanced;
+    //プレイヤーに接近したか
+    bool playerApproach;
+    //回避する時間
+    [SerializeField]
+    float avoidTime = 2.0f;
 
     public Transform FirstPoint{
         get { return firstPoint; }
@@ -50,25 +57,34 @@ public class Fighter : Enemy{
         Shot();
     }
 
+    /*
+    public override void Damege(int add)
+    {
+        base.Damege(add);
+        //if (enemyHp <= 0&&target){ EnemyFighterControll.Instance.SelectTargetFighter(); }
+    }
+    */
+
     protected override void Move(){
-        base.Move();
-        if (sorite) { return; }
-        /*
         bool avoidance = Avoidance();
-        if(avoidance){
+        float speed = parameter.Speed;
+        if (avoidance) {transform.Translate(0f, 0f, speed/5 * Time.deltaTime); }
+        else if (!avoidance) { transform.Translate(0f, 0f, speed * Time.deltaTime); }
+        if (sorite) { return; }
+        if(avoidance && !avoidanced){
             timer = 0;
-            Turn(90, timer);
+            StartCoroutine(AvoidanceTime());
+        }
+
+        if (target&&!playerApproach){
+            LockOnPlayer();
+            //Debug.Log("追跡中");
+        }else if(avoidanced&&!target){
+            Turn(90, avoidTime);
             return;
-        }else 
-        */
-        if (goFirstPoint) {
-            LockOnFirstPoint();
         }else if(!target){
             //Debug.Log("旋回中");
             FrightTurn();
-        }else if (target) {
-            LockOnPlayer();
-            //Debug.Log("追跡中");
         }
         //Turn(180, 3.0f);
         //if (!turnMode){ StartCoroutine( TurnStayCoroutine() ); }
@@ -88,16 +104,28 @@ public class Fighter : Enemy{
         }
     }
 
+    void Search(){
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if(Physics.Raycast(ray,out hit, 3000.0f)) {
+            if(hit.transform.tag == "Player"){
+                if (EnemyFighterControll.Instance.CheckTarget()){
+                    target = true;
+                    Debug.Log("索敵したよ");
+                }
+            }
+        }
+    }
+
     bool Avoidance(){
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, 1000.0f)) {
-            if(hit.transform.tag != "Player"){
+            if (hit.transform.tag == "Player"){
+                playerApproach = true;
+            }
                 return true;
-            }
-            if(hit.transform == null) {
-                return false;
-            }
+            
         }
         return false;
     }
@@ -161,18 +189,16 @@ public class Fighter : Enemy{
     /// </summary>
     /// <param name="time"></param>
     void LockOnPlayer(){
-
+    
         Quaternion targetRotation = Quaternion.LookRotation(lockOnTransform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
 
 
     }
 
-    void LockOnFirstPoint(){
+    void LockOnFirstPlayer(){
         Quaternion targetRotation = Quaternion.LookRotation(firstPoint.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
-        float renge = Vector3.Distance(this.transform.position, firstPoint.position);
-        if(renge < 50) { goFirstPoint = false; }
     }
 
     bool clockWise = true;
@@ -215,6 +241,14 @@ public class Fighter : Enemy{
         yield return new WaitForSeconds(3.0f);
         sorite = false;
         goFirstPoint = true;
+    }
+
+    IEnumerator AvoidanceTime() {
+        if (avoidanced) { yield break; }
+        avoidanced = true;
+        yield return new WaitForSeconds(avoidTime);
+        avoidanced = false;
+        playerApproach = false;
     }
     
 }

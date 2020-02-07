@@ -63,6 +63,16 @@ public class EnemyFighterControll : MonoBehaviour
         }
     }
 
+    public bool CheckTarget(){
+        for (int i = 0;i < fightersScript.Count; i++){
+            if (fightersScript[i].Target){
+                return true;
+            }
+            
+        }
+        return false;
+    }
+
     /// <summary>
     /// リストの中からtargetキャラを一機選ぶ
     /// </summary>
@@ -138,7 +148,7 @@ public class EnemyFighterControll : MonoBehaviour
             fighterScript.FirstPoint = StartPoints[i];
             fighterScript.Sorite();
         }
-        SelectTargetFighter();
+        //SelectTargetFighter();
     }
 
     //全てのfighterが停止したら復活する
