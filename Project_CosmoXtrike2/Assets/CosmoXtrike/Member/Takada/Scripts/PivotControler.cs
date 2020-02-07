@@ -50,7 +50,7 @@ public class PivotControler : MonoBehaviour
         //PlayerSelect_PC();
         PivotRote_VR();
         PlayerSelect_VR();
-
+        Debug.Log(roteFlag);
     }
 
     #region 自機選択
@@ -95,13 +95,20 @@ public class PivotControler : MonoBehaviour
     {
         if (!AnimFlag) { return; }
 
-        float x = Input.GetAxis("Right_Horizontal");
+        /*float x = Input.GetAxisRaw("Right_Horizontal") * -1;
+        x += Time.deltaTime;
+        
+        if (x > 1) { x = 1f; }
+        else if (x < -0.01) { x = -0.01f; }
 
-        if (x > 0) { x = 0; }
-        else if (x < -1) { x = -1; }
+        Debug.Log(x);
 
-        if (x == 0) { roteFlag = true; }
-        else if(x == 1) { roteFlag = false; }
+        if (x > 0.8) { roteFlag = true; }
+        else if(x > -0.1) { roteFlag = false; }*/
+
+
+        if (roteFlag && Input.GetButtonDown("hoge")) { roteFlag = false; }
+        else if (!roteFlag && Input.GetButtonDown("hoge")) { roteFlag = true; }
 
         //Pivotの回転が終わったらパネルのアニメーションを再生し表示する
         if (roteFlag)
@@ -119,8 +126,6 @@ public class PivotControler : MonoBehaviour
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
             StartCoroutine("StartPanelAnim");
         }
-
-        //Debug.Log(x);
 
     }
 

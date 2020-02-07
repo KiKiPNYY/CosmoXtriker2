@@ -77,6 +77,7 @@ public class CameraContoroler : MonoBehaviour
     /// </summary>
     private void FlagCange()
     {
+        if(!animFlag) { return; }
         StartCoroutine("FlagOn");
     }
 
@@ -86,11 +87,11 @@ public class CameraContoroler : MonoBehaviour
     /// <returns></returns>
     private IEnumerator FlagOn()
     {
-        yield return new WaitForSeconds(animSpeed + 0.5f);
+        yield return new WaitForSeconds(animSpeed + 1f);
 
         animFlag = false;
         _pivotControler.AnimFlag = true;
-
+        _pivotControler.roteFlag = true;
     }
 
 
