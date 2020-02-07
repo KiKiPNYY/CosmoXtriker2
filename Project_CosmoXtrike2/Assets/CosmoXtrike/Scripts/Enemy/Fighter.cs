@@ -37,7 +37,7 @@ public class Fighter : Enemy{
     bool avoidanced;
     //回避する時間
     [SerializeField]
-    float avoidTime = 0.5f;
+    float avoidTime = 2.0f;
 
     public Transform FirstPoint{
         get { return firstPoint; }
@@ -55,11 +55,13 @@ public class Fighter : Enemy{
         Shot();
     }
 
+    /*
     public override void Damege(int add)
     {
         base.Damege(add);
-        if (enemyHp <= 0&&target){ EnemyFighterControll.Instance.SelectTargetFighter(); }
+        //if (enemyHp <= 0&&target){ EnemyFighterControll.Instance.SelectTargetFighter(); }
     }
+    */
 
     protected override void Move(){
         bool avoidance = Avoidance();
@@ -96,6 +98,19 @@ public class Fighter : Enemy{
                 Attack();
                 //Debug.Log("ショット！！");
                 StartCoroutine( CoolTime() );
+            }
+        }
+    }
+
+    void Search(){
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if(Physics.Raycast(ray,out hit, 3000.0f)) {
+            if(hit.transform.tag == "Player"){
+                if (EnemyFighterControll.Instance.CheckTarget()){
+                    target = true;
+                    Debug.Log("索敵したよ");
+                }
             }
         }
     }
