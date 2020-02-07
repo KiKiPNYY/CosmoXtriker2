@@ -17,7 +17,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     }
     //エネミーのステータス
     [SerializeField]
-    EnemyDate parameter;
+    protected EnemyDate parameter;
     //エネミーのライフ
     protected int enemyHp;
     //エネミーの弾の種類
@@ -87,10 +87,10 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
         if (enemyHp <= 0)
         {
             
-            var formationScript = this.gameObject.GetComponentInParent<Formation>();
-            if(formationScript != null){
-                formationScript.CheckFormation();
-            }
+            //var formationScript = this.gameObject.GetComponentInParent<Formation>();
+            //if(formationScript != null){
+            //    formationScript.CheckFormation();
+            //}
             this.transform.parent = null;
             this.gameObject.SetActive(false);
             MainGameController.Instnce.EnemyDestroyAdd();
