@@ -18,14 +18,10 @@ public class PivotControler : MonoBehaviour
     [SerializeField] private Animator panelAnim2;   //パネル2のアニメーション
 
     [SerializeField] private GameObject cameraObject;   //カメラ
-    [SerializeField] private float animSpeed;           //カメラのアニメーションにかける時間
+    [SerializeField] private float animSpeed;           //カメラのアニメーションにかける時間 
 
-    
-    //[SerializeField] private Transform jiki1Pos;        
-    //[SerializeField] private Transform jiki2Pos;        
-
-    [SerializeField] private GameObject panel1Letter;                     //パネル1に表示する文字
-    [SerializeField] private Animator panel1LetterAnim;                   //パネル1に表示する文字のアニメーション
+    [SerializeField] private GameObject panel1Letter;    //パネル1に表示する文字
+    [SerializeField] private Animator panel1LetterAnim;  //パネル1に表示する文字のアニメーション
     [SerializeField] private GameObject panel2Letter;    //パネル2に表示する文字
     [SerializeField] private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
 
@@ -47,7 +43,6 @@ public class PivotControler : MonoBehaviour
         //PlayerSelect_PC();
         PivotRote_VR();
         PlayerSelect_VR();
-        Debug.Log(roteFlag);
     }
 
     #region 自機選択
@@ -92,18 +87,6 @@ public class PivotControler : MonoBehaviour
     {
         if (!AnimFlag) { return; }
 
-        /*float x = Input.GetAxisRaw("Right_Horizontal") * -1;
-        x += Time.deltaTime;
-        
-        if (x > 1) { x = 1f; }
-        else if (x < -0.01) { x = -0.01f; }
-
-        Debug.Log(x);
-
-        if (x > 0.8) { roteFlag = true; }
-        else if(x > -0.1) { roteFlag = false; }*/
-
-
         if (roteFlag && Input.GetButtonDown("hoge")) { roteFlag = false; }
         else if (!roteFlag && Input.GetButtonDown("hoge")) { roteFlag = true; }
 
@@ -134,6 +117,8 @@ public class PivotControler : MonoBehaviour
     /// </summary>
     private void PlayerSelect_PC()
     {
+        if (!AnimFlag) { return; }
+
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
         if (roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
@@ -150,8 +135,10 @@ public class PivotControler : MonoBehaviour
     /// </summary>
     private void PlayerSelect_VR()
     {
+        if (!AnimFlag) { return; }
+
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
-        if (/*roteFlag && Input.GetButtonDown("RightTrigger") ||*/ roteFlag && Input.GetButtonDown("LeftTrigger"))
+        if (roteFlag && Input.GetButtonDown("RightTrigger") || roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
             //プレイヤー1に決定
             SceneLoadManager.Instnce.LoadScene("Game");
