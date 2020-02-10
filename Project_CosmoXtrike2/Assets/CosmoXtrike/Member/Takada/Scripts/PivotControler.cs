@@ -10,7 +10,7 @@ public class PivotControler : MonoBehaviour
     [SerializeField] private float roteTime;    //Pivotを回転させるのにかける時間
     [SerializeField] private float roteValue;   //回転させる値
     [HideInInspector] public bool AnimFlag;     //アニメーションに使うフラグ
-    [HideInInspector] public bool roteFlag;     //Pivotの回転に使うフラグ
+    private bool roteFlag;     //Pivotの回転に使うフラグ
 
     public GameObject panel1;                       //パネル1
     public Animator panelAnim;                      //パネル1のアニメーション
@@ -24,20 +24,17 @@ public class PivotControler : MonoBehaviour
     //[SerializeField] private Transform jiki1Pos;        
     //[SerializeField] private Transform jiki2Pos;        
 
-    public GameObject panel1Letter;                     //パネル1に表示する文字
-    public Animator panel1LetterAnim;                   //パネル1に表示する文字のアニメーション
-    [SerializeField]private GameObject panel2Letter;    //パネル2に表示する文字
-    [SerializeField]private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
-
-    private Sequence sequence;
-
+    [SerializeField] private GameObject panel1Letter;                     //パネル1に表示する文字
+    [SerializeField] private Animator panel1LetterAnim;                   //パネル1に表示する文字のアニメーション
+    [SerializeField] private GameObject panel2Letter;    //パネル2に表示する文字
+    [SerializeField] private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
 
     void Start()
     {
 
         //フラグの初期化
         AnimFlag = false;
-        roteFlag = false;
+        roteFlag = true;
 
         //Sequenceの生成
         //sequence = DOTween.Sequence();
