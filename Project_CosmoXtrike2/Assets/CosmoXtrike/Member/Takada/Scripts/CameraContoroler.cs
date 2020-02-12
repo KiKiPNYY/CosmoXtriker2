@@ -96,6 +96,4 @@ public class CameraContoroler : MonoBehaviour
         animFlag = false;
         _pivotControler.AnimFlag = true;
     }
-
-
 }

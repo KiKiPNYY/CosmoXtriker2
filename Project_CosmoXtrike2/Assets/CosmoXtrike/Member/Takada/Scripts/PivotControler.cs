@@ -7,23 +7,23 @@ using DG.Tweening;
 
 public class PivotControler : MonoBehaviour
 {
-    [SerializeField] private float roteTime;    //Pivotを回転させるのにかける時間
-    [SerializeField] private float roteValue;   //回転させる値
-    [HideInInspector] public bool AnimFlag;     //アニメーションに使うフラグ
-    private bool roteFlag;     //Pivotの回転に使うフラグ
+    [SerializeField] private float roteTime;            //Pivotを回転させるのにかける時間
+    [SerializeField] private float roteValue;           //回転させる値
+    [HideInInspector] public bool AnimFlag;             //アニメーションに使うフラグ
+    private bool roteFlag;                              //Pivotの回転に使うフラグ
 
-    public GameObject panel1;                       //パネル1
-    public Animator panelAnim;                      //パネル1のアニメーション
-    [SerializeField] private GameObject panel2;     //パネル2
-    [SerializeField] private Animator panelAnim2;   //パネル2のアニメーション
+    public GameObject panel1;                           //パネル1
+    public Animator panelAnim;                          //パネル1のアニメーション
+    [SerializeField] private GameObject panel2;         //パネル2
+    [SerializeField] private Animator panelAnim2;       //パネル2のアニメーション
 
     [SerializeField] private GameObject cameraObject;   //カメラ
     [SerializeField] private float animSpeed;           //カメラのアニメーションにかける時間 
 
-    [SerializeField] private GameObject panel1Letter;    //パネル1に表示する文字
-    [SerializeField] private Animator panel1LetterAnim;  //パネル1に表示する文字のアニメーション
-    [SerializeField] private GameObject panel2Letter;    //パネル2に表示する文字
-    [SerializeField] private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
+    [SerializeField] private GameObject panel1Letter;   //パネル1に表示する文字
+    [SerializeField] private Animator panel1LetterAnim; //パネル1に表示する文字のアニメーション
+    [SerializeField] private GameObject panel2Letter;   //パネル2に表示する文字
+    [SerializeField] private Animator panel2LetterAnim; //パネル2に表示する文字のアニメーション
 
     void Start()
     {
@@ -31,9 +31,6 @@ public class PivotControler : MonoBehaviour
         //フラグの初期化
         AnimFlag = false;
         roteFlag = true;
-
-        //Sequenceの生成
-        //sequence = DOTween.Sequence();
 
     }
 
@@ -93,17 +90,22 @@ public class PivotControler : MonoBehaviour
         //Pivotの回転が終わったらパネルのアニメーションを再生し表示する
         if (roteFlag)
         {
-            panel2.SetActive(false);
-            panel2.SetActive(false);
-            this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
+            panelAnim2.speed = -1;
+            panel2LetterAnim.speed = -1;
+            panelAnim2.Play("PanelOpen");
+            panel2LetterAnim.Play("PanelLetterOpen");
 
+            this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
             StartCoroutine("StartPanelAnim");
         }
         else
         {
             //パネル2を表示
-            panel1Letter.SetActive(false);
-            panel1.SetActive(false);
+            panelAnim.speed = -1;
+            panel1LetterAnim.speed = -1;
+            panelAnim.Play("PanelOpen");
+            panel1LetterAnim.Play("PanelOpen");
+
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
             StartCoroutine("StartPanelAnim");
         }
@@ -165,13 +167,17 @@ public class PivotControler : MonoBehaviour
         //パネルのアニメーション再生
         if (roteFlag)
         {
+            panelAnim.speed = 1;
             panel1.SetActive(true);
             panelAnim.Play("PanelOpen");
+
         } 
         else
         {
+            panelAnim2.speed = 1;
             panel2.SetActive(true);
             panelAnim2.Play("PanelOpen");
+
         }
 
         yield return new WaitForSeconds(1f);
@@ -179,14 +185,15 @@ public class PivotControler : MonoBehaviour
         //文字のアニメーション再生
         if (roteFlag)
         {
-            panel1Letter.SetActive(true);
+            panel1LetterAnim.speed = 1;
             panel1LetterAnim.Play("PanelLetterOpen");
+
         }
         else
         {
-            panel2Letter.SetActive(true);
+            panel2LetterAnim.speed = 1;
             panel2LetterAnim.Play("PanelLetterOpen");
+
         }
     }
-
 }
