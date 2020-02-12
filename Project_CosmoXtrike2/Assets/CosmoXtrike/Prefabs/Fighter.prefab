@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7798785161872074921}
   m_Layer: 0
   m_Name: Fighter
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,8 +75,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 109.19359, y: 22.879105, z: 95.85282}
-  m_Center: {x: 0.6027603, y: 1.7854996, z: -0.59205246}
+  m_Size: {x: 20, y: 8, z: 26}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7798785161872074921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,15 +89,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b66ccd239c5d944b24396f948192ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 623197893798279015, guid: 35bf9f63a5f8ad141a8c0b5bc8dfd5a5, type: 3}
+  effect: {fileID: 0}
   flagShip: 0
   parameter: {fileID: 11400000, guid: 7b0bac3198a59f04db0d3dfcfeda4d1b, type: 2}
   bullet: {fileID: 4776540728697155984, guid: d5ad6767be8d04645a4fe781507d6d4e, type: 3}
   aim: {fileID: 262828237412166191}
   formationNum: 0
   number: 0
-  TurnTime: 15
+  TurnTime: 5
   target: 0
+  avoidTime: 0.5
 --- !u!1001 &8521274221215525404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,21 +165,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7107502105528344757, guid: d5531de7fc1088146b606e9ea8f12d73,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7107502105528344757, guid: d5531de7fc1088146b606e9ea8f12d73,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7107502105528344757, guid: d5531de7fc1088146b606e9ea8f12d73,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5531de7fc1088146b606e9ea8f12d73, type: 3}

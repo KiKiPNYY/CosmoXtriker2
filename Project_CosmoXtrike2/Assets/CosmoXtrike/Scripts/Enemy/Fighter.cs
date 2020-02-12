@@ -16,6 +16,9 @@ public class Fighter : Enemy{
     [SerializeField]
     bool target = false;
 
+    [SerializeField]
+    float soriteTime = 5.0f;
+
     //playerのtransform
     Transform lockOnTransform;
 
@@ -35,9 +38,11 @@ public class Fighter : Enemy{
     bool goFirstPoint;
     //ぶつかりそうになったか
     bool avoidanced;
+    //プレイヤーに接近したか
+    bool playerApproach;
     //回避する時間
     [SerializeField]
-    float avoidTime = 0.5f;
+    float avoidTime = 2.0f;
 
     public Transform FirstPoint{
         get { return firstPoint; }
@@ -55,11 +60,13 @@ public class Fighter : Enemy{
         Shot();
     }
 
+    /*
     public override void Damege(int add)
     {
         base.Damege(add);
-        if (enemyHp <= 0&&target){ EnemyFighterControll.Instance.SelectTargetFighter(); }
+        //if (enemyHp <= 0&&target){ EnemyFighterControll.Instance.SelectTargetFighter(); }
     }
+    */
 
     protected override void Move(){
         bool avoidance = Avoidance();
@@ -72,10 +79,10 @@ public class Fighter : Enemy{
             StartCoroutine(AvoidanceTime());
         }
 
-        if (target&&!avoidanced){
+        if (target&&!playerApproach){
             LockOnPlayer();
             //Debug.Log("追跡中");
-        }else if(avoidanced){
+        }else if(avoidanced&&!target){
             Turn(90, avoidTime);
             return;
         }else if(!target){
@@ -100,11 +107,26 @@ public class Fighter : Enemy{
         }
     }
 
+    void Search(){
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if(Physics.Raycast(ray,out hit, 3000.0f)) {
+            if(hit.transform.tag == "Player"){
+                if (EnemyFighterControll.Instance.CheckTarget()){
+                    target = true;
+                    Debug.Log("索敵したよ");
+                }
+            }
+        }
+    }
+
     bool Avoidance(){
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, 1000.0f)) {
-            
+            if (hit.transform.tag == "Player"){
+                playerApproach = true;
+            }
                 return true;
             
         }
@@ -219,7 +241,7 @@ public class Fighter : Enemy{
 
     IEnumerator SoriteCoroutine(){
         sorite = true;
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(soriteTime);
         sorite = false;
         goFirstPoint = true;
     }
@@ -229,6 +251,7 @@ public class Fighter : Enemy{
         avoidanced = true;
         yield return new WaitForSeconds(avoidTime);
         avoidanced = false;
+        playerApproach = false;
     }
     
 }
