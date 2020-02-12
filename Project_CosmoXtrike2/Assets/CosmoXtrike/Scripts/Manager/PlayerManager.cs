@@ -64,6 +64,8 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     private PlayerLookCursor m_playerLookCursor = null;
     private bool m_search = false;
 
+    public bool LeverOperation { get; set; }
+
     /// <summary>
     /// 初期化
     /// </summary>
@@ -133,6 +135,8 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     {
         return ThisType.Player;
     }
+
+    
 
     public int MeteoriteDamege()
     {
@@ -275,15 +279,33 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_playerLookCursor = cursor.GetComponent<PlayerLookCursor>();
         CameraManager.Instance.CameraOffset(m_cameraOffsetTrans);
         cursor.SetActive(false);
+        LeverOperation = false;
     }
 
     private void Update()
     {
         if (!m_moveStart) { return; }
+
+        // 加速
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("LeftTrigger")) && !m_accele)
+        {
+
+            m_accele = true;
+            par.SetActive(m_accele);
+        }
+        if (Input.GetKeyUp(KeyCode.A) || (Input.GetButtonUp("LeftTrigger")) && m_accele)
+        {
+            m_accele = false;
+            par.SetActive(m_accele);
+        }
+
+        if (!LeverOperation) { return; }
+
+        // 
+
         float x = Input.GetAxis("Right_Vertical") * -1;
         float y = Input.GetAxis("Right_Horizontal");
 
-        // Debug.Log(x + " : " + y);
 
         Vector3 vector = Vector3.zero;
         Quaternion loockRotation = Quaternion.identity;
@@ -317,23 +339,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         x = Input.GetAxis("Left_Horizontal") * -1;
         y = Input.GetAxis("Left_Vertical");
 
-        // Debug.Log(x + " : " + y);
-
-        if ((Input.GetKeyDown(KeyCode.A) || Input.GetButtonDown("LeftTrigger")) && !m_accele)
-        {
-
-            m_accele = true;
-            par.SetActive(m_accele);
-        }
-        if (Input.GetKeyUp(KeyCode.A) || (Input.GetButtonUp("LeftTrigger")) && m_accele)
-        {
-            m_accele = false;
-            par.SetActive(m_accele);
-        }
-
-        // Debug.Log(this.transform.right + " : " + this.transform.up + " : " + this.transform.forward);
         //vector = this.transform.right * x * -1 + this.transform.up * y + this.transform.forward;
-        //Debug.Log(vector);
         //loockRotation = Quaternion.LookRotation((vector).normalized);
         //this.transform.RotateAround(this.transform.position, this.transform.right * -y +this.transform.up * x, 90 * Time.deltaTime);
         //this.transform.Rotate(new Vector3(90 * -y, 90 * x, 0) * Time.deltaTime,Space.World);
@@ -342,13 +348,11 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         float rotationY = Mathf.Clamp(this.transform.localEulerAngles.y < 0 ? 360 - this.transform.localEulerAngles.y : this.transform.localEulerAngles.y, 0, 360);
         float rotationZ = Mathf.Clamp(this.transform.localEulerAngles.z > 180 ? this.transform.localEulerAngles.z - 360 : this.transform.localEulerAngles.z, 0, 180);
 
-       // Debug.Log(" X = " + rotationX + " X = " + this.transform.localEulerAngles.x);
 
         rotationX += 90 * -y * Time.deltaTime;
         rotationY += 90 * x * Time.deltaTime;
         rotationZ = rotationZ + 45 * -x * Time.deltaTime;//Mathf.Clamp(rotationZ + 45 * -x * Time.deltaTime, -45,45);
 
-        //Debug.Log(" X = " + rotationX + " X = " + this.transform.localEulerAngles.x);
 
         this.transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
         loockRotation *= Quaternion.Euler(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 45 * -x);
@@ -377,9 +381,6 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     {
         if (!m_moveStart) { return; }
         m_rb.velocity = Vector3.zero;
-
-        Debug.Log(m_bulletTarger);
-
         float deltatime = Time.deltaTime;
         SearchUpdate();
         MoveUpdate(deltatime);

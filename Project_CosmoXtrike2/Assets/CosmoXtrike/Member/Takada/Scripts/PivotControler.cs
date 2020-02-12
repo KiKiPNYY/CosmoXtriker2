@@ -25,19 +25,34 @@ public class PivotControler : MonoBehaviour
     [SerializeField] private GameObject panel2Letter;   //パネル2に表示する文字
     [SerializeField] private Animator panel2LetterAnim; //パネル2に表示する文字のアニメーション
 
+
+    [SerializeField] private float m_minLeverVal = 0;
+    private float m_timer = 0;
+    private bool m_triggerPermission = false;
+    private bool m_coroutineUpdate = false;
+
+    public void CallCoroutine()
+    {
+        m_coroutineUpdate = true;
+        m_triggerPermission = true;
+        StartCoroutine("StartPanelAnim");
+    }
+
     void Start()
     {
 
         //フラグの初期化
         AnimFlag = false;
         roteFlag = true;
-
+        m_timer = 0;
+        m_triggerPermission = true;
     }
 
     void Update()
     {
         //PivotRote_PC();
         //PlayerSelect_PC();
+        LeverTriggerUpdate();
         PivotRote_VR();
         PlayerSelect_VR();
     }
@@ -57,7 +72,7 @@ public class PivotControler : MonoBehaviour
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
             panel1.SetActive(false);
             panel1Letter.SetActive(false);
-            DOVirtual.DelayedCall(roteTime,()=> { panel2.SetActive(true); panelAnim2.Play("PanelOpen");});
+            DOVirtual.DelayedCall(roteTime, () => { panel2.SetActive(true); panelAnim2.Play("PanelOpen"); });
             DOVirtual.DelayedCall(roteTime + 1f, () => { panel2Letter.SetActive(true); panel2LetterAnim.Play("PanelLetterOpen"); });
 
             roteFlag = false;
@@ -69,8 +84,8 @@ public class PivotControler : MonoBehaviour
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
             panel2.SetActive(false);
             panel2Letter.SetActive(false);
-            DOVirtual.DelayedCall(roteTime,()=>{ panel1.SetActive(true); panelAnim.Play("PanelOpen");});
-            DOVirtual.DelayedCall(roteTime + 1f, () => { panel1Letter.SetActive(true); panel1LetterAnim.Play("PanelLetterOpen");});
+            DOVirtual.DelayedCall(roteTime, () => { panel1.SetActive(true); panelAnim.Play("PanelOpen"); });
+            DOVirtual.DelayedCall(roteTime + 1f, () => { panel1Letter.SetActive(true); panel1LetterAnim.Play("PanelLetterOpen"); });
 
             roteFlag = true;
 
@@ -83,33 +98,34 @@ public class PivotControler : MonoBehaviour
     private void PivotRote_VR()
     {
         if (!AnimFlag) { return; }
-
-        if (roteFlag && Input.GetButtonDown("RightTrigger")) { roteFlag = false; }
-        else if (!roteFlag && Input.GetButtonDown("RightTrigger")) { roteFlag = true; }
-
+        if (m_triggerPermission) { return; }
+        if (m_coroutineUpdate) { return; }
+        Debug.Log(AnimFlag);
+        Debug.Log(m_triggerPermission);
+        Debug.Log(m_coroutineUpdate);
+        //if (roteFlag && Input.GetButtonDown("RightTrigger")) { roteFlag = false; }
+        //else if (!roteFlag && Input.GetButtonDown("RightTrigger")) { roteFlag = true; }
+        m_timer += Time.deltaTime;
         //Pivotの回転が終わったらパネルのアニメーションを再生し表示する
         if (roteFlag)
         {
-            panelAnim2.speed = -1;
-            panel2LetterAnim.speed = -1;
-            panelAnim2.Play("PanelOpen");
-            panel2LetterAnim.Play("PanelLetterOpen");
+
 
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
-            StartCoroutine("StartPanelAnim");
+            //StartCoroutine("StartPanelAnim");
         }
         else
         {
-            //パネル2を表示
-            panelAnim.speed = -1;
-            panel1LetterAnim.speed = -1;
-            panelAnim.Play("PanelOpen");
-            panel1LetterAnim.Play("PanelOpen");
+
 
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
-            StartCoroutine("StartPanelAnim");
+            //StartCoroutine("StartPanelAnim");
         }
 
+        if (m_timer < roteTime) { return; }
+        m_coroutineUpdate = true;
+        m_timer = 0;
+        StartCoroutine("StartPanelAnim");
     }
 
     #endregion
@@ -127,7 +143,7 @@ public class PivotControler : MonoBehaviour
         {
             DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
         }
-        else if(!roteFlag && Input.GetKeyDown(KeyCode.Return))
+        else if (!roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
             DOVirtual.DelayedCall(animSpeed, () => { SceneLoadManager.Instnce.LoadScene("Game"); });
         }
@@ -158,29 +174,69 @@ public class PivotControler : MonoBehaviour
         }
     }
     #endregion
-    
+
+    /// <summary>
+    /// レバー入力のUpdate
+    /// </summary>
+    private void LeverTriggerUpdate()
+    {
+        if (!AnimFlag) { return; }
+        if (!m_triggerPermission) { return; }
+        float x = Input.GetAxis("Right_Vertical");
+        x += Input.GetKeyDown(KeyCode.LeftArrow) == true ? 1 : 0;
+        x += Input.GetKeyDown(KeyCode.RightArrow) == true ? -1 : 0;
+        Debug.Log(x);
+        if (Mathf.Abs(x) < m_minLeverVal) { return; }
+
+        if (roteFlag && (x >= 0))
+        {
+            //パネル2を表示
+            panelAnim2.Play("PanelOpen", 0, -1);
+            panel2LetterAnim.Play("PanelLetterOpen", 0, -1);
+            Debug.Log(panelAnim.speed);
+            //panelAnim.speed = -1;
+            //panel1LetterAnim.speed = -1;
+            
+            roteFlag = false;
+        }
+        else if (!roteFlag && (x <= 0))
+        {
+            panelAnim.Play("PanelOpen", 0, -1);
+            panel1LetterAnim.Play("PanelOpen", 0, -1);
+            //panelAnim2.speed = -1;
+            //panel2LetterAnim.speed = -1;
+           
+
+            roteFlag = true;
+        }
+
+        m_triggerPermission = false;
+    }
+
     /// <summary>
     /// コルーチン
     /// </summary>
     /// <returns></returns>
     private IEnumerator StartPanelAnim()
     {
-        yield return new WaitForSeconds(roteTime);
+        //yield return new WaitForSeconds(roteTime);
 
         //パネルのアニメーション再生
         if (roteFlag)
         {
-            panelAnim.speed = 1;
+            // panelAnim.speed = 1;
             panel1.SetActive(true);
             panelAnim.Play("PanelOpen");
 
-        } 
+            panel2.SetActive(false);
+        }
         else
         {
-            panelAnim2.speed = 1;
+            // panelAnim2.speed = 1;
             panel2.SetActive(true);
             panelAnim2.Play("PanelOpen");
 
+            panel1.SetActive(false);
         }
 
         yield return new WaitForSeconds(1f);
@@ -188,15 +244,19 @@ public class PivotControler : MonoBehaviour
         //文字のアニメーション再生
         if (roteFlag)
         {
-            panel1LetterAnim.speed = 1;
+            //  panel1LetterAnim.speed = 1;
             panel1LetterAnim.Play("PanelLetterOpen");
 
         }
         else
         {
-            panel2LetterAnim.speed = 1;
+            //panel2LetterAnim.speed = 1;
             panel2LetterAnim.Play("PanelLetterOpen");
 
         }
+
+        m_coroutineUpdate = false;
+        m_timer = 0;
+        m_triggerPermission = true;
     }
 }

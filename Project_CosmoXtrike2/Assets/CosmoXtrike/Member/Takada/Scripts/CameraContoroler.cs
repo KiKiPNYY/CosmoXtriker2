@@ -11,6 +11,7 @@ public class CameraContoroler : MonoBehaviour
 
     //アニメーションフラグ
     private bool animFlag = false;
+    private bool col = false;
     private Animator animator;
 
     //カメラのアニメーション後に消すタイトルオブジェクト
@@ -23,13 +24,14 @@ public class CameraContoroler : MonoBehaviour
     {
         //現在のカメラの倍率をデフォルトの倍率に設定
         defalutView = Camera.main.fieldOfView;
+        col = false;
     }
 
     void Update()
     {
         //ボタンを押したらアニメーションフラグをオンにする
         //if (Input.GetMouseButtonDown(0)) { animFlag = true;}
-        if (Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger")) { animFlag = true; }
+        if (Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger") || Input.GetKeyDown(KeyCode.Space)) { animFlag = true; }
 
         CameraRote();
         CameraZoomIn();
@@ -70,7 +72,7 @@ public class CameraContoroler : MonoBehaviour
             DOTween.To(() => Camera.main.fieldOfView,
             fovOut => Camera.main.fieldOfView = fovOut, 
             defalutView, animSpeed / 2);
-            Destroy(titleObject); });
+            titleObject.SetActive(false); });
 
     }
 
@@ -82,6 +84,8 @@ public class CameraContoroler : MonoBehaviour
     private void FlagCange()
     {
         if(!animFlag) { return; }
+        if (col) { return; }
+        col = true;
         StartCoroutine("FlagOn");
     }
 
@@ -95,5 +99,6 @@ public class CameraContoroler : MonoBehaviour
 
         animFlag = false;
         _pivotControler.AnimFlag = true;
+        _pivotControler.CallCoroutine();
     }
 }

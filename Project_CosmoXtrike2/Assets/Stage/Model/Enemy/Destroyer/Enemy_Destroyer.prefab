@@ -417,7 +417,17 @@ MonoBehaviour:
   - {fileID: 5680954960148293810}
   - {fileID: 5680954960148293816}
   - {fileID: 5680954960148293814}
-  m_destroyNum: 0
+  m_destoryEffects:
+  - m_effctPos: {fileID: 5680954960148293776}
+    m_effectTime: 0.5
+  - m_effctPos: {fileID: 5680954960148293808}
+    m_effectTime: 0.5
+  - m_effctPos: {fileID: 5680954960148293810}
+    m_effectTime: 0.5
+  - m_effctPos: {fileID: 5680954960148293816}
+    m_effectTime: 0.5
+  - m_effctPos: {fileID: 5680954960148293814}
+    m_effectTime: 0.5
 --- !u!114 &4094263805627314117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374e4b94c1f84ae4b941c1b0bf3d2d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
 --- !u!65 &458946937965821030
 BoxCollider:
   m_ObjectHideFlags: 0

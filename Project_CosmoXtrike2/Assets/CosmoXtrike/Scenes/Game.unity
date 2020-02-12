@@ -2233,7 +2233,64 @@ MonoBehaviour:
   m_burnEffect: {fileID: 623197893798279015, guid: 35bf9f63a5f8ad141a8c0b5bc8dfd5a5,
     type: 3}
   m_effctPos: []
-  m_destroyNum: 0
+  m_destoryEffects: []
+--- !u!1 &537905371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537905373}
+  - component: {fileID: 537905372}
+  - component: {fileID: 537905375}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &537905372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537905371}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 36.891163, y: 43.934174, z: 7.909851}
+  m_Center: {x: -0.14639473, y: 1.9925842, z: 3.4549255}
+--- !u!4 &537905373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537905371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.21254063, y: -0.049476624, z: 362.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &537905375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537905371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0658fcb21ef67e74c8067b5c727d0ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &547559340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7585,7 +7642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbe1fac656ee2c41b47f4f834663b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_modelRotationSpeed: 1.5
+  m_modelRotationSpeed: 0.7
   m_material:
   - {fileID: 2100000, guid: 72129320608ff23448e1dbf0bbe07267, type: 2}
 --- !u!1 &1713479744 stripped
@@ -7614,7 +7671,7 @@ MonoBehaviour:
   - {fileID: 825256443}
   - {fileID: 342909202}
   - {fileID: 1059276901}
-  m_destroyNum: 0
+  m_destoryEffects: []
 --- !u!1001 &1729470534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8673,7 +8730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1937531166
 Transform:
   m_ObjectHideFlags: 0
@@ -9206,7 +9263,7 @@ MonoBehaviour:
   m_burnEffect: {fileID: 623197893798279015, guid: 35bf9f63a5f8ad141a8c0b5bc8dfd5a5,
     type: 3}
   m_effctPos: []
-  m_destroyNum: 0
+  m_destoryEffects: []
 --- !u!4 &2024539135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 812489517618359695, guid: 3155acea618be994abdecc4bfbb787f9,

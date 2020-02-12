@@ -1013,6 +1013,7 @@ MonoBehaviour:
   panel1LetterAnim: {fileID: 918256082}
   panel2Letter: {fileID: 529728539}
   panel2LetterAnim: {fileID: 529728540}
+  m_minLeverVal: 0.5
 --- !u!1 &914637598
 GameObject:
   m_ObjectHideFlags: 0
