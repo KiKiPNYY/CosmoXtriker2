@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7798785161872074921}
   m_Layer: 9
   m_Name: Fighter
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
