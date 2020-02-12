@@ -87,8 +87,8 @@ public class PivotControler : MonoBehaviour
     {
         if (!AnimFlag) { return; }
 
-        if (roteFlag && Input.GetButtonDown("hoge")) { roteFlag = false; }
-        else if (!roteFlag && Input.GetButtonDown("hoge")) { roteFlag = true; }
+        if (roteFlag && Input.GetButtonDown("RightTrigger")) { roteFlag = false; }
+        else if (!roteFlag && Input.GetButtonDown("RightTrigger")) { roteFlag = true; }
 
         //Pivotの回転が終わったらパネルのアニメーションを再生し表示する
         if (roteFlag)
@@ -96,6 +96,7 @@ public class PivotControler : MonoBehaviour
             panel2.SetActive(false);
             panel2.SetActive(false);
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
+
             StartCoroutine("StartPanelAnim");
         }
         else
@@ -138,13 +139,13 @@ public class PivotControler : MonoBehaviour
         if (!AnimFlag) { return; }
 
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
-        if (roteFlag && Input.GetButtonDown("RightTrigger") || roteFlag && Input.GetButtonDown("LeftTrigger"))
+        if (roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
             //プレイヤー1に決定
             SceneLoadManager.Instnce.LoadScene("Game");
 
         }
-        else if (/*!roteFlag && Input.GetButtonDown("RightTrigger") ||*/ !roteFlag && Input.GetButtonDown("LeftTrigger"))
+        else if (!roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
             //プレイヤー2に決定
             SceneLoadManager.Instnce.LoadScene("Game");
