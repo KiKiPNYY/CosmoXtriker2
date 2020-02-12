@@ -66,7 +66,11 @@ public class CameraContoroler : MonoBehaviour
         if (!animFlag) { return; }
 
         //ズームインしている時間遅延させる
-        DOVirtual.DelayedCall(animSpeed / 2,()=> { DOTween.To(() => Camera.main.fieldOfView, fovOut => Camera.main.fieldOfView = fovOut, defalutView, animSpeed / 2); titleObject.SetActive(false); });
+        DOVirtual.DelayedCall(animSpeed / 2,()=> {
+            DOTween.To(() => Camera.main.fieldOfView,
+            fovOut => Camera.main.fieldOfView = fovOut, 
+            defalutView, animSpeed / 2);
+            Destroy(titleObject); });
 
     }
 
@@ -92,6 +96,4 @@ public class CameraContoroler : MonoBehaviour
         animFlag = false;
         _pivotControler.AnimFlag = true;
     }
-
-
 }
