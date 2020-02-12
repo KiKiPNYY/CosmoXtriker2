@@ -141,14 +141,17 @@ public class PivotControler : MonoBehaviour
         if (roteFlag && Input.GetButtonDown("RightTrigger") || roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
             //プレイヤー1に決定
-            SceneLoadManager.Instnce.LoadScene("Game");
+            //   SceneLoadManager.Instnce.LoadScene("Game");
+            CosmoXtrikerController.PlayerUseShip = UseShip.normal;
+            TitleController.Instnce.ChangeScene();
 
         }
         else if (/*!roteFlag && Input.GetButtonDown("RightTrigger") ||*/ !roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
             //プレイヤー2に決定
-            SceneLoadManager.Instnce.LoadScene("Game");
-
+            //  SceneLoadManager.Instnce.LoadScene("Game");
+            CosmoXtrikerController.PlayerUseShip = UseShip.missile;
+            TitleController.Instnce.ChangeScene();
         }
     }
     #endregion

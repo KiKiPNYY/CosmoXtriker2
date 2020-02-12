@@ -217,7 +217,12 @@ public class SoundManager : MonoBehaviour
 
         if (recordBGMNum < 0) { return; }
 
-        m_soundObjects[0].SoundPlay(m_soundData.BGMParameters[recordBGMNum].AudioClip, m_soundData.BGMParameters[recordBGMNum].Volume, m_soundData.BGMParameters[recordBGMNum].Loop, m_soundData.BGMParameters[recordBGMNum].SoundType3D, null);
+        AudioClip audioClip = m_soundData.BGMParameters[recordBGMNum].AudioClip;
+        float volume = m_soundData.BGMParameters[recordBGMNum].Volume;
+        bool loop = m_soundData.BGMParameters[recordBGMNum].Loop;
+        bool ThreeSound = m_soundData.BGMParameters[recordBGMNum].SoundType3D;
+
+        m_soundObjects[0].SoundPlay(audioClip, volume, loop, ThreeSound, null);
     }
 
     /// <summary>

@@ -28,7 +28,7 @@ public class TitleController : MonoBehaviour
         if (m_instance == null)
         {
             m_instance = this;
-            DontDestroyOnLoad(this.transform.gameObject);
+          //  DontDestroyOnLoad(this.transform.gameObject);
         }
         else
         {
@@ -63,10 +63,10 @@ public class TitleController : MonoBehaviour
     /// <summary>
     /// シーン遷移のチェック
     /// </summary>
-    private void ChangeScene()
+    public void ChangeScene()
     {
         if (m_SceneMove) { return; }
-        if (!Input.GetButtonDown("LeftTrigger") && !Input.GetButtonDown("RightTrigger") && !Input.GetKeyDown(KeyCode.Space)) { return; }
+        // if (!Input.GetButtonDown("LeftTrigger") && !Input.GetButtonDown("RightTrigger") && !Input.GetKeyDown(KeyCode.Space)) { return; }
 
         SoundManager.Instnce.BGMFade(1, FadeType.fadeOut);
         //SoundManager.Instnce.SEFade(FadeType.fadeOut, 1, true);
@@ -121,6 +121,11 @@ public class TitleController : MonoBehaviour
 
     #region Unity関数
 
+    private void Awake()
+    {
+        CreateInstnce();
+    }
+
     private void Start()
     {
         SoundManager.Instnce.SceneStart(m_soundData);
@@ -128,10 +133,10 @@ public class TitleController : MonoBehaviour
         m_fadeImage.color = new Color(m_fadeImage.color.r, m_fadeImage.color.g, m_fadeImage.color.b, 1);
     }
 
-    private void Update()
-    {
-        ChangeScene();
-    }
+    //private void Update()
+    //{
+    //    ChangeScene();
+    //}
 
     private void FixedUpdate()
     {

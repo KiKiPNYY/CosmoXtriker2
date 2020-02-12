@@ -9658,7 +9658,6 @@ GameObject:
   - component: {fileID: 6754384252631835194}
   - component: {fileID: 4758945336857939083}
   - component: {fileID: 2140446748566809770}
-  - component: {fileID: 3449136541880440908}
   m_Layer: 0
   m_Name: Anti_aircraft_cannon
   m_TagString: Untagged
@@ -9726,24 +9725,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3449136541880440908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5442895563502801750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e2ea1fa73b063c4f90519cf4f84ef53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pivot1: {fileID: 5864883458649758177}
-  pivot2: {fileID: 5727004790159358358}
-  missile: {fileID: 1452043023141516, guid: ecd5aa37695acf94c9813203c7d69882, type: 3}
-  missileSpeed: 50000
-  timeOut: 20
-  timer: 5
 --- !u!1 &5657647962105883217
 GameObject:
   m_ObjectHideFlags: 0
@@ -19552,7 +19533,6 @@ GameObject:
   - component: {fileID: 7842458734184289840}
   - component: {fileID: 5210757130264697451}
   - component: {fileID: 1073875523574795691}
-  - component: {fileID: 5186620763041139165}
   - component: {fileID: 969929063420268295}
   m_Layer: 0
   m_Name: Ally_Frigate
@@ -19651,21 +19631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
---- !u!114 &5186620763041139165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7819330583766896452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2bce0a7a297a824198295b2dbeab8b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectPrefab: {fileID: 7102527449383866027, guid: c44015c7847148c418f2845c492cd3b3,
-    type: 3}
-  Hp: 10
 --- !u!65 &969929063420268295
 BoxCollider:
   m_ObjectHideFlags: 0

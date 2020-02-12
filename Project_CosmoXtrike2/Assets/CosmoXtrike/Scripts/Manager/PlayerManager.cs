@@ -49,6 +49,9 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     [SerializeField] private Transform thisObjectTrans = null;
 
     [SerializeField] private GameObject par;
+
+    [SerializeField] private GameObject gameObjects = null;
+
     private Rigidbody m_rb = null;
     private float m_moveSpeed = 0;
     private float m_acceleTimer = 0;
@@ -161,7 +164,10 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
         RaycastHit hit;
         LayerMask layerMask = LayerMask.GetMask("Enemy");
-        if (Physics.SphereCast(this.transform.position, m_playerData.SphereCastRadius, transform.forward, out hit, m_playerData.SphereCastDistance, layerMask))
+
+        bool search = false;
+        gameObjects.transform.position = this.transform.position + this.transform.forward * m_playerData.SphereCastDistance;
+        if (Physics.SphereCast(this.transform.position, m_playerData.SphereCastRadius, this.transform.forward, out hit, m_playerData.SphereCastDistance, layerMask))
         {
             if (hit.transform.gameObject.activeSelf)
             {
@@ -170,7 +176,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
                 {
                     m_playerLookCursor.gameObject.SetActive(true);
                 }
-
+                search = true;
                 //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);
                 // m_enemyHpBar.SetEnemy(hit.transform.GetComponent<AlphaTestEnemy>(), this.transform.gameObject);
             }
@@ -192,6 +198,45 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
                 m_playerLookCursor.gameObject.SetActive(false);
             }
         }
+
+        //for (int i = 0; i < m_gunTrans.Length; i++)
+        //{
+        //    if (Physics.SphereCast(m_gunTrans[i].position, m_playerData.SphereCastRadius, m_gunTrans[i].forward, out hit, m_playerData.SphereCastDistance, layerMask))
+        //    {
+        //        if (hit.transform.gameObject.activeSelf)
+        //        {
+        //            m_bulletTarger = hit.transform.gameObject;
+        //            if (!m_playerLookCursor.gameObject.activeSelf)
+        //            {
+        //                m_playerLookCursor.gameObject.SetActive(true);
+        //            }
+        //            search = true;
+        //            //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);
+        //            // m_enemyHpBar.SetEnemy(hit.transform.GetComponent<AlphaTestEnemy>(), this.transform.gameObject);
+        //        }
+        //        else
+        //        {
+        //            m_bulletTarger = null;
+        //            if (m_playerLookCursor.gameObject.activeSelf)
+        //            {
+        //                m_playerLookCursor.gameObject.SetActive(false);
+        //            }
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        m_bulletTarger = null;
+        //        if (m_playerLookCursor.gameObject.activeSelf)
+        //        {
+        //            m_playerLookCursor.gameObject.SetActive(false);
+        //        }
+        //    }
+
+        //    if (search) { break; }
+        //}
+
+
     }
 
     #region Unity関数
@@ -206,12 +251,13 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         if(CosmoXtrikerController.PlayerUseShip == UseShip.normal)
         {
             m_playerData = m_normalData;
-            m_search = false;
+            m_search = true;
+            
         }
         else
         {
             m_playerData = m_missileData;
-            m_search = true;
+            m_search = false;
         }
         for (int i = 0; i < m_bulletFire.Length; i++)
         {
@@ -296,7 +342,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         float rotationY = Mathf.Clamp(this.transform.localEulerAngles.y < 0 ? 360 - this.transform.localEulerAngles.y : this.transform.localEulerAngles.y, 0, 360);
         float rotationZ = Mathf.Clamp(this.transform.localEulerAngles.z > 180 ? this.transform.localEulerAngles.z - 360 : this.transform.localEulerAngles.z, 0, 180);
 
-        Debug.Log(" X = " + rotationX + " X = " + this.transform.localEulerAngles.x);
+       // Debug.Log(" X = " + rotationX + " X = " + this.transform.localEulerAngles.x);
 
         rotationX += 90 * -y * Time.deltaTime;
         rotationY += 90 * x * Time.deltaTime;
@@ -332,7 +378,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         if (!m_moveStart) { return; }
         m_rb.velocity = Vector3.zero;
 
-       
+        Debug.Log(m_bulletTarger);
 
         float deltatime = Time.deltaTime;
         SearchUpdate();

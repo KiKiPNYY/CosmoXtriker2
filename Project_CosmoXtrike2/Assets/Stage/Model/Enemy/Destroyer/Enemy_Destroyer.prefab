@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2079819646515520231}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Missing Prefab (Dummy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2118525721994104120}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DestroyerAfterBurner (Missing Prefab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 5680954960148293760}
   - component: {fileID: 5680954960147490980}
   - component: {fileID: 5680954960146393700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5680954960148293762}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5680954960148293764}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5680954960148293766}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5680954960148293768}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: e
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5680954960148293770}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: f
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5680954960148293772}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,8 +346,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5680954960148293774}
   - component: {fileID: 1082701084826020508}
-  - component: {fileID: 9187789048346951815}
-  m_Layer: 0
+  - component: {fileID: 1225960831817076959}
+  - component: {fileID: 4094263805627314117}
+  - component: {fileID: 458946937965821030}
+  m_Layer: 9
   m_Name: Enemy_Destroyer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -394,7 +396,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9187789048346951815
+--- !u!114 &1225960831817076959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680954960148591790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0bad7d9030225a4995ef4b00a1b3ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHp: 0
+  m_burnEffect: {fileID: 623197893798279015, guid: 35bf9f63a5f8ad141a8c0b5bc8dfd5a5,
+    type: 3}
+  m_effctPos:
+  - {fileID: 5680954960148293776}
+  - {fileID: 5680954960148293808}
+  - {fileID: 5680954960148293810}
+  - {fileID: 5680954960148293816}
+  - {fileID: 5680954960148293814}
+  m_destroyNum: 0
+--- !u!114 &4094263805627314117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -407,6 +431,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+--- !u!65 &458946937965821030
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680954960148591790}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2543987, y: 0.21305162, z: 0.70494974}
+  m_Center: {x: -0.0034301074, y: 0.054980915, z: -0.010292511}
 --- !u!1 &5680954960148591792
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +455,7 @@ GameObject:
   - component: {fileID: 5680954960148293776}
   - component: {fileID: 5680954960147490982}
   - component: {fileID: 5680954960146393702}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +532,7 @@ GameObject:
   - component: {fileID: 5680954960148293778}
   - component: {fileID: 5680954960147490976}
   - component: {fileID: 5680954960146393696}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5680954960148293780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: g
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5680954960148293782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: h
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +674,7 @@ GameObject:
   - component: {fileID: 5680954960148293784}
   - component: {fileID: 5680954960147490990}
   - component: {fileID: 5680954960146393710}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +751,7 @@ GameObject:
   - component: {fileID: 5680954960148293786}
   - component: {fileID: 5680954960147490984}
   - component: {fileID: 5680954960146393704}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +828,7 @@ GameObject:
   - component: {fileID: 5680954960148293788}
   - component: {fileID: 5680954960147490978}
   - component: {fileID: 5680954960146393698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pasted__pCylinder4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,7 +905,7 @@ GameObject:
   - component: {fileID: 5680954960148293790}
   - component: {fileID: 5680954960147490988}
   - component: {fileID: 5680954960146393708}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +982,7 @@ GameObject:
   - component: {fileID: 5680954960148293792}
   - component: {fileID: 5680954960147490998}
   - component: {fileID: 5680954960146393718}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1022,7 +1059,7 @@ GameObject:
   - component: {fileID: 5680954960148293794}
   - component: {fileID: 5680954960147490992}
   - component: {fileID: 5680954960146393712}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1099,7 +1136,7 @@ GameObject:
   - component: {fileID: 5680954960148293796}
   - component: {fileID: 5680954960147490986}
   - component: {fileID: 5680954960146393706}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1176,7 +1213,7 @@ GameObject:
   - component: {fileID: 5680954960148293798}
   - component: {fileID: 5680954960147490996}
   - component: {fileID: 5680954960146393716}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1253,7 +1290,7 @@ GameObject:
   - component: {fileID: 5680954960148293800}
   - component: {fileID: 5680954960147491006}
   - component: {fileID: 5680954960146393726}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1330,7 +1367,7 @@ GameObject:
   - component: {fileID: 5680954960148293802}
   - component: {fileID: 5680954960147491000}
   - component: {fileID: 5680954960146393720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1407,7 +1444,7 @@ GameObject:
   - component: {fileID: 5680954960148293804}
   - component: {fileID: 5680954960147490994}
   - component: {fileID: 5680954960146393714}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1484,7 +1521,7 @@ GameObject:
   - component: {fileID: 5680954960148293806}
   - component: {fileID: 5680954960147491004}
   - component: {fileID: 5680954960146393724}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1561,7 +1598,7 @@ GameObject:
   - component: {fileID: 5680954960148293808}
   - component: {fileID: 5680954960147491014}
   - component: {fileID: 5680954960146393734}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1638,7 +1675,7 @@ GameObject:
   - component: {fileID: 5680954960148293810}
   - component: {fileID: 5680954960147491008}
   - component: {fileID: 5680954960146393728}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1715,7 +1752,7 @@ GameObject:
   - component: {fileID: 5680954960148293812}
   - component: {fileID: 5680954960147491002}
   - component: {fileID: 5680954960146393722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1792,7 +1829,7 @@ GameObject:
   - component: {fileID: 5680954960148293814}
   - component: {fileID: 5680954960147491012}
   - component: {fileID: 5680954960146393732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1869,7 +1906,7 @@ GameObject:
   - component: {fileID: 5680954960148293816}
   - component: {fileID: 5680954960147491022}
   - component: {fileID: 5680954960146393742}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1946,7 +1983,7 @@ GameObject:
   - component: {fileID: 5680954960148293818}
   - component: {fileID: 5680954960147491016}
   - component: {fileID: 5680954960146393736}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2023,7 +2060,7 @@ GameObject:
   - component: {fileID: 5680954960148293820}
   - component: {fileID: 5680954960147491010}
   - component: {fileID: 5680954960146393730}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2100,7 +2137,7 @@ GameObject:
   - component: {fileID: 5680954960148293822}
   - component: {fileID: 5680954960147491020}
   - component: {fileID: 5680954960146393740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: polySurface7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2173,6 +2210,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5680954960148293774}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1443348153714380888, guid: feb7076fce2197d4e9fb3c6f9b9fcb0e,
         type: 3}
       propertyPath: m_LocalPosition.x

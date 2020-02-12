@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4184052045748216390}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: small_pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 6780301654913705252}
   - component: {fileID: 5090508963456660152}
   - component: {fileID: 11386094866699493}
-  m_Layer: 0
+  - component: {fileID: 6958024738285527531}
+  m_Layer: 9
   m_Name: Enemy_Corvette
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -159,6 +160,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+--- !u!114 &6958024738285527531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812489517618000303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0bad7d9030225a4995ef4b00a1b3ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHp: 0
+  m_burnEffect: {fileID: 623197893798279015, guid: 35bf9f63a5f8ad141a8c0b5bc8dfd5a5,
+    type: 3}
+  m_effctPos:
+  - {fileID: 4184052045748216390}
+  - {fileID: 4183270439888157645}
+  m_destroyNum: 0
 --- !u!1 &1189570886727285972
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6667089414662625982}
   - component: {fileID: 8874171352359702967}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2113376547826375544}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pivot (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +267,7 @@ GameObject:
   - component: {fileID: 8494439519543630652}
   - component: {fileID: 3668300847252274568}
   - component: {fileID: 3620429477533714003}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Afterburner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4917,7 +4937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 660069846473917064}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pivot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4948,7 +4968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5088747381625228610}
   - component: {fileID: 6411953449308214738}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pivot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4996,7 +5016,7 @@ GameObject:
   - component: {fileID: 5861475861951371365}
   - component: {fileID: 6401758753870647136}
   - component: {fileID: 769744553377801321}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9638,7 +9658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4183270439888157645}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: small_pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

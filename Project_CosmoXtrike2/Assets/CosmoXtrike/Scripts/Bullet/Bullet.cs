@@ -161,7 +161,7 @@ public class Bullet : MonoBehaviour
 
         if (alphaTestEnemy == null || player == null) { return; }
 
-        EnemyHpBar.Instance.SetEnemy(alphaTestEnemy, player);
+       // EnemyHpBar.Instance.SetEnemy(alphaTestEnemy, player);
     }
     #endregion
 }

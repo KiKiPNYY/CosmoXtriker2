@@ -157,7 +157,7 @@ public class Fighter : Enemy{
         timer += Time.deltaTime;
         this.transform.Rotate(0, (angle / time) * Time.deltaTime, 0, Space.World);
         if ( timer >= time){
-            Debug.Log("turn End");
+          //  Debug.Log("turn End");
             //turnMode = false;
             //timer = 0;
             return;

@@ -6,7 +6,7 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
 {
     [SerializeField] private int m_maxHp;
     [SerializeField] private Effect m_burnEffect = null;
-    [SerializeField] private Vector3[] m_effctPos;
+    [SerializeField] private Transform[] m_effctPos;
     [SerializeField] private int m_destroyNum = 0;
 
     private int m_hp;
@@ -23,10 +23,10 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
         m_hp -= _addDamege;
         if(m_hp > 0){return;}
         SoundManager.Instnce.SEPlay("EnemyDestory", this.transform);
-        EffectManager.Instnce.EffectPlay(m_burnEffect,this.transform);
+        
         for(int i = 0; i < m_effctPos.Length; i++)
         {
-            
+            EffectManager.Instnce.EffectPlay(m_burnEffect, m_effctPos[i]);
         }
         MainGameController.Instnce.EnemyDestroyAdd(m_destroyNum);
         this.transform.gameObject.SetActive(false);

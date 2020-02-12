@@ -47,7 +47,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     public int formationNum = 0;
 
     protected void Start(){
-        Debug.Log(parameter.HP);
+     //   Debug.Log(parameter.HP);
         enemyHp = parameter.HP;
         BulletManager.Instnce.AddBullet( bullet );
         EnemyStart();
