@@ -10,7 +10,7 @@ public class PivotControler : MonoBehaviour
     [SerializeField] private float roteTime;    //Pivotを回転させるのにかける時間
     [SerializeField] private float roteValue;   //回転させる値
     [HideInInspector] public bool AnimFlag;     //アニメーションに使うフラグ
-    [HideInInspector] public bool roteFlag;     //Pivotの回転に使うフラグ
+    private bool roteFlag;     //Pivotの回転に使うフラグ
 
     public GameObject panel1;                       //パネル1
     public Animator panelAnim;                      //パネル1のアニメーション
@@ -18,26 +18,19 @@ public class PivotControler : MonoBehaviour
     [SerializeField] private Animator panelAnim2;   //パネル2のアニメーション
 
     [SerializeField] private GameObject cameraObject;   //カメラ
-    [SerializeField] private float animSpeed;           //カメラのアニメーションにかける時間
+    [SerializeField] private float animSpeed;           //カメラのアニメーションにかける時間 
 
-    
-    //[SerializeField] private Transform jiki1Pos;        
-    //[SerializeField] private Transform jiki2Pos;        
-
-    public GameObject panel1Letter;                     //パネル1に表示する文字
-    public Animator panel1LetterAnim;                   //パネル1に表示する文字のアニメーション
-    [SerializeField]private GameObject panel2Letter;    //パネル2に表示する文字
-    [SerializeField]private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
-
-    private Sequence sequence;
-
+    [SerializeField] private GameObject panel1Letter;    //パネル1に表示する文字
+    [SerializeField] private Animator panel1LetterAnim;  //パネル1に表示する文字のアニメーション
+    [SerializeField] private GameObject panel2Letter;    //パネル2に表示する文字
+    [SerializeField] private Animator panel2LetterAnim;  //パネル2に表示する文字のアニメーション
 
     void Start()
     {
 
         //フラグの初期化
         AnimFlag = false;
-        roteFlag = false;
+        roteFlag = true;
 
         //Sequenceの生成
         //sequence = DOTween.Sequence();
@@ -50,7 +43,6 @@ public class PivotControler : MonoBehaviour
         //PlayerSelect_PC();
         PivotRote_VR();
         PlayerSelect_VR();
-
     }
 
     #region 自機選択
@@ -95,13 +87,8 @@ public class PivotControler : MonoBehaviour
     {
         if (!AnimFlag) { return; }
 
-        float x = Input.GetAxis("Right_Horizontal");
-
-        if (x > 0) { x = 0; }
-        else if (x < -1) { x = -1; }
-
-        if (x == 0) { roteFlag = true; }
-        else if(x == 1) { roteFlag = false; }
+        if (roteFlag && Input.GetButtonDown("hoge")) { roteFlag = false; }
+        else if (!roteFlag && Input.GetButtonDown("hoge")) { roteFlag = true; }
 
         //Pivotの回転が終わったらパネルのアニメーションを再生し表示する
         if (roteFlag)
@@ -120,8 +107,6 @@ public class PivotControler : MonoBehaviour
             StartCoroutine("StartPanelAnim");
         }
 
-        //Debug.Log(x);
-
     }
 
     #endregion
@@ -132,6 +117,8 @@ public class PivotControler : MonoBehaviour
     /// </summary>
     private void PlayerSelect_PC()
     {
+        if (!AnimFlag) { return; }
+
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
         if (roteFlag && Input.GetKeyDown(KeyCode.Return))
         {
@@ -148,8 +135,10 @@ public class PivotControler : MonoBehaviour
     /// </summary>
     private void PlayerSelect_VR()
     {
+        if (!AnimFlag) { return; }
+
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
-        if (/*roteFlag && Input.GetButtonDown("RightTrigger") ||*/ roteFlag && Input.GetButtonDown("LeftTrigger"))
+        if (roteFlag && Input.GetButtonDown("RightTrigger") || roteFlag && Input.GetButtonDown("LeftTrigger"))
         {
             //プレイヤー1に決定
             SceneLoadManager.Instnce.LoadScene("Game");
