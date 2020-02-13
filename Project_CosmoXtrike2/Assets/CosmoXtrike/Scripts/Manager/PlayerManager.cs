@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     [SerializeField] private Transform[] m_bulletFire;
     [SerializeField] private Transform[] m_gunTrans;
+    [SerializeField] private GameObject[] m_model = null;
 
     [SerializeField] private PlayerData m_normalData = null;
     [SerializeField] private PlayerData m_missileData = null;
@@ -63,6 +64,9 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     private GameObject m_bulletTarger = null;
     private PlayerLookCursor m_playerLookCursor = null;
     private bool m_search = false;
+    private bool m_death = false;
+    private float m_fadeTime = 0;
+    private bool m_deathEffect = false;
 
     public bool LeverOperation { get; set; }
 
@@ -83,6 +87,9 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_playerLookCursor = null;
         m_playerData = null;
         m_search = true;
+        m_death = false;
+        m_fadeTime = 0;
+        m_deathEffect = false;
     }
 
     /// <summary>
@@ -91,6 +98,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     /// <param name="_deltaTime"></param>
     private void MoveUpdate(float _deltaTime)
     {
+        if (m_death) { return; }
         if (m_accele)
         {
             m_acceleTimer += _deltaTime / m_playerData.AcceleTime;
@@ -117,6 +125,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     /// <param name="_deltaTime"></param>
     private void BulletUpdate(float _deltaTime)
     {
+        if (m_death) { return; }
         if (!m_bulletTrigger) { return; }
         m_bulletIntervalTimer += _deltaTime;
         if (m_bulletIntervalTimer < m_playerData.BulletInterval) { return; }
@@ -136,7 +145,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         return ThisType.Player;
     }
 
-    
+
 
     public int MeteoriteDamege()
     {
@@ -149,9 +158,14 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     /// <param name="_addDamege"></param>
     public void Damege(int _addDamege)
     {
+        if (m_death) { return; }
         m_Hp = Mathf.Clamp(m_Hp - _addDamege, 0, m_playerData.MaxHp);
         if (m_Hp > 0) { return; }
-        MainGameController.Instnce.MainGameEnd();
+
+        //MainGameController.Instnce.MainGameEnd();
+        m_death = true;
+        CameraManager.Instance.PlayerDeath = true;
+        m_fadeTime = 0;
     }
 
     /// <summary>
@@ -164,82 +178,39 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     public void SearchUpdate()
     {
+        if (m_death) { return; }
         if (!m_search) { return; }
 
         RaycastHit hit;
         LayerMask layerMask = LayerMask.GetMask("Enemy");
 
         bool search = false;
-        gameObjects.transform.position = this.transform.position + this.transform.forward * m_playerData.SphereCastDistance;
-        if (Physics.SphereCast(this.transform.position, m_playerData.SphereCastRadius, this.transform.forward, out hit, m_playerData.SphereCastDistance, layerMask))
-        {
-            if (hit.transform.gameObject.activeSelf)
-            {
-                m_bulletTarger = hit.transform.gameObject;
-                if (!m_playerLookCursor.gameObject.activeSelf)
-                {
-                    
-                    m_playerLookCursor.gameObject.SetActive(true);
-                    Enemy enemy = m_bulletTarger.GetComponent<Enemy>();
-                    AlphaTestEnemy alphaTestEnemy = m_bulletTarger.GetComponent<AlphaTestEnemy>();
-                    if (enemy != null)
-                    {
-                        m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject, enemy.OffSet);
-                    }
-                    if(alphaTestEnemy != null)
-                    {
-                        m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject, alphaTestEnemy.OffSet);
-                    }
-
-                    m_playerLookCursor.transform.parent = m_bulletTarger.transform;
-                }
-                search = true;
-                //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);
-                // m_enemyHpBar.SetEnemy(hit.transform.GetComponent<AlphaTestEnemy>(), this.transform.gameObject);
-            }
-            else
-            {
-                m_bulletTarger = null;
-                if (m_playerLookCursor.gameObject.activeSelf)
-                {
-                    m_playerLookCursor.gameObject.SetActive(false);
-                }
-            }
-
-        }
-        else
-        {
-            m_bulletTarger = null;
-            if (m_playerLookCursor.gameObject.activeSelf)
-            {
-                m_playerLookCursor.gameObject.SetActive(false);
-            }
-        }
-
-        //for (int i = 0; i < m_gunTrans.Length; i++)
+        ///gameObjects.transform.position = this.transform.position + this.transform.forward * m_playerData.SphereCastDistance;
+        //if (Physics.SphereCast(this.transform.position, m_playerData.SphereCastRadius, this.transform.forward, out hit, m_playerData.SphereCastDistance, layerMask))
         //{
-        //    if (Physics.SphereCast(m_gunTrans[i].position, m_playerData.SphereCastRadius, m_gunTrans[i].forward, out hit, m_playerData.SphereCastDistance, layerMask))
+        //    if (hit.transform.gameObject.activeSelf)
         //    {
-        //        if (hit.transform.gameObject.activeSelf)
+        //        m_bulletTarger = hit.transform.gameObject;
+        //        if (!m_playerLookCursor.gameObject.activeSelf)
         //        {
-        //            m_bulletTarger = hit.transform.gameObject;
-        //            if (!m_playerLookCursor.gameObject.activeSelf)
-        //            {
-        //                m_playerLookCursor.gameObject.SetActive(true);
-        //            }
-        //            search = true;
-        //            //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);
-        //            // m_enemyHpBar.SetEnemy(hit.transform.GetComponent<AlphaTestEnemy>(), this.transform.gameObject);
-        //        }
-        //        else
-        //        {
-        //            m_bulletTarger = null;
-        //            if (m_playerLookCursor.gameObject.activeSelf)
-        //            {
-        //                m_playerLookCursor.gameObject.SetActive(false);
-        //            }
-        //        }
 
+        //            m_playerLookCursor.gameObject.SetActive(true);
+        //            Enemy enemy = m_bulletTarger.GetComponent<Enemy>();
+        //            AlphaTestEnemy alphaTestEnemy = m_bulletTarger.GetComponent<AlphaTestEnemy>();
+        //            if (enemy != null)
+        //            {
+        //                m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject, enemy.OffSet);
+        //            }
+        //            if (alphaTestEnemy != null)
+        //            {
+        //                m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject, alphaTestEnemy.OffSet);
+        //            }
+
+        //            m_playerLookCursor.transform.parent = m_bulletTarger.transform;
+        //        }
+        //        search = true;
+        //        //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);
+        //        // m_enemyHpBar.SetEnemy(hit.transform.GetComponent<AlphaTestEnemy>(), this.transform.gameObject);
         //    }
         //    else
         //    {
@@ -250,10 +221,96 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         //        }
         //    }
 
-        //    if (search) { break; }
+        //}
+        //else
+        //{
+        //    m_bulletTarger = null;
+        //    if (m_playerLookCursor.gameObject.activeSelf)
+        //    {
+        //        m_playerLookCursor.gameObject.SetActive(false);
+        //    }
         //}
 
+        for (int i = 0; i < m_gunTrans.Length; i++)
+        {
+            if (Physics.SphereCast(m_gunTrans[i].position, m_playerData.SphereCastRadius, m_gunTrans[i].forward, out hit, m_playerData.SphereCastDistance, layerMask))
+            {
+                if (hit.transform.gameObject.activeSelf)
+                {
+                    m_bulletTarger = hit.transform.gameObject;
+                    if (m_playerLookCursor != null)
+                    {
 
+                        m_playerLookCursor.gameObject.SetActive(true);
+                        Enemy enemy = m_bulletTarger.GetComponent<Enemy>();
+                        AlphaTestEnemy alphaTestEnemy = m_bulletTarger.GetComponent<AlphaTestEnemy>();
+                        if (enemy != null)
+                        {
+                            m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject, enemy.OffSet);
+                        }
+                        if (alphaTestEnemy != null)
+                        {
+                            m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject, alphaTestEnemy.OffSet);
+                        }
+
+                        m_playerLookCursor.transform.parent = m_bulletTarger.transform;
+                    }
+                    search = true;
+                    //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);
+                    // m_enemyHpBar.SetEnemy(hit.transform.GetComponent<AlphaTestEnemy>(), this.transform.gameObject);
+                }
+                else
+                {
+                    m_bulletTarger = null;
+                    if (m_playerLookCursor.gameObject.activeSelf)
+                    {
+                        m_playerLookCursor.gameObject.SetActive(false);
+                    }
+                }
+
+            }
+            else
+            {
+                m_bulletTarger = null;
+                if (m_playerLookCursor.gameObject.activeSelf)
+                {
+                    m_playerLookCursor.gameObject.SetActive(false);
+                }
+            }
+
+            if (search) { break; }
+        }
+
+
+    }
+
+    private void DeathUpdate(float _deltaTime)
+    {
+        if (!m_death) { return; }
+        m_fadeTime += _deltaTime;
+        if (m_fadeTime > m_playerData.ExplosionTime && !m_deathEffect)
+        {
+            EffectManager.Instnce.EffectPlay(m_playerData.Explosion, this.transform);
+            m_deathEffect = true;
+            m_fadeTime = 0;
+
+            for(int i = 0; i < m_model.Length; i++)
+            {
+                m_model[i].SetActive(false);
+            }
+
+            //this.transform.
+            return;
+        }
+
+        Debug.Log(m_fadeTime + " : " + m_deathEffect);
+        if (m_fadeTime > m_playerData.FadeTime && m_deathEffect)
+        {
+            MainGameController.Instnce.MainGameEnd();
+        }
+        
+        //m_deathEffect = true;
+        
     }
 
     #region Unity関数
@@ -265,11 +322,11 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     private void Start()
     {
-        if(CosmoXtrikerController.PlayerUseShip == UseShip.normal)
+        if (CosmoXtrikerController.PlayerUseShip == UseShip.normal)
         {
             m_playerData = m_normalData;
             m_search = true;
-            
+
         }
         else
         {
@@ -297,6 +354,11 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Damege(10000);
+        }
+
         if (!m_moveStart) { return; }
 
         // 加速
@@ -398,6 +460,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         SearchUpdate();
         MoveUpdate(deltatime);
         BulletUpdate(deltatime);
+        DeathUpdate(deltatime);
     }
 
     #endregion

@@ -7,6 +7,7 @@ public class PlayerData : ScriptableObject
 {
     [SerializeField] private Bullet m_bullet;
     [SerializeField] private Effect m_fireEffect;
+    [SerializeField] private Effect m_explosion = null;
     [SerializeField] private float m_acceleTime = 0;
     [SerializeField] private float m_bulletInterval = 0;
     [SerializeField] private float m_defaultSpeed = 0;
@@ -16,6 +17,8 @@ public class PlayerData : ScriptableObject
     [SerializeField] private int m_maxHP = 0;
     [SerializeField] private int m_meteoriteDamege = 0;
     [SerializeField] private PlayerLookCursor m_targetCursor = null;
+    [SerializeField] private float m_explosionTime = 0;
+    [SerializeField] private float m_fadeTime = 0;
 
 
     /// <summary>
@@ -68,5 +71,11 @@ public class PlayerData : ScriptableObject
     /// </summary>
     public int MeteoriteDamege { get => m_meteoriteDamege; }
 
+    public Effect Explosion => m_explosion;
+
     public PlayerLookCursor PlayerLookCursor { get => m_targetCursor; }
+
+    public float FadeTime => m_fadeTime;
+
+    public float ExplosionTime => m_explosionTime;
 }

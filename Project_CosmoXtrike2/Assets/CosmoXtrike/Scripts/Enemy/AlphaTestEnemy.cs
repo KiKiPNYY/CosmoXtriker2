@@ -20,7 +20,8 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
     [SerializeField] private Transform[] m_effctPos;
     [SerializeField] private DestoryEffect[] m_destoryEffects = null;
     [SerializeField] private Vector3 m_offset = Vector3.zero;
-   // [SerializeField] private float m_destroyTime = 0;
+    [SerializeField] private float m_hiddenTime = 0;
+    // [SerializeField] private float m_destroyTime = 0;
 
     //private int m_hp;
 
@@ -41,12 +42,12 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
     {
         if (m_destroy) { return; }
         NowHP -= _addDamege;
-        if(NowHP > 0){return;}
+        if (NowHP > 0) { return; }
 
         m_destroy = true;
 
         //SoundManager.Instnce.SEPlay("EnemyDestory", this.transform);
-        
+
         //for(int i = 0; i < m_effctPos.Length; i++)
         //{
         //    EffectManager.Instnce.EffectPlay(m_burnEffect, m_effctPos[i]);
@@ -72,16 +73,24 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
         if (!m_destroy) { return; }
 
         m_timer += Time.deltaTime;
-        if(m_timer < m_destoryEffects[m_effectPlayCount].EffectTime) { return; }
+
+        if (m_effectPlayCount >= m_destoryEffects.Length && m_timer > m_hiddenTime)
+        {
+            MainGameController.Instnce.EnemyDestroyAdd(m_maxHp);
+            this.transform.gameObject.SetActive(false);
+            return;
+        }
+
+        if (m_effectPlayCount >= m_destoryEffects.Length) { return; }
+
+        if (m_timer < m_destoryEffects[m_effectPlayCount].EffectTime) { return; }
 
         SoundManager.Instnce.SEPlay("EnemyDestory", m_destoryEffects[m_effectPlayCount].EffectTrans);
         EffectManager.Instnce.EffectPlay(m_burnEffect, m_destoryEffects[m_effectPlayCount].EffectTrans);
 
         m_timer = 0;
         m_effectPlayCount++;
-        if(m_effectPlayCount < m_destoryEffects.Length) { return; }
+        Debug.Log(m_effectPlayCount);
 
-        MainGameController.Instnce.EnemyDestroyAdd(m_maxHp);
-        this.transform.gameObject.SetActive(false);
     }
 }

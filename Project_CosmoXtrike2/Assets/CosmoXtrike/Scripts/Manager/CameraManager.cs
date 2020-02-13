@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-  #region シングルトン
+    #region シングルトン
     private static CameraManager m_instance = null;
 
     public static CameraManager Instance
@@ -33,26 +33,46 @@ public class CameraManager : MonoBehaviour
     }
 
     #endregion
-    
-  private Transform m_cameraOffset = null;
-  public CameraManager()
-  {
-    m_cameraOffset = null;
-  }
 
-  private void Awake() {
-    CreateInstance();
-  }
-  public void CameraOffset(Transform _offsetTrans)
-  {
-    if(m_cameraOffset != null){return;}
-    if(_offsetTrans == null){return;}
-    m_cameraOffset = _offsetTrans;
-  }
+    [SerializeField] private Vector3 m_playerDeathDirection = Vector3.zero;
+
+    [SerializeField] private float m_moveSpeed = 0;
+
+    private Transform m_cameraOffset = null;
+
+    public bool PlayerDeath { get; set; }
+
+    private void Start()
+    {
+        PlayerDeath = false;
+    }
+
+    public CameraManager()
+    {
+        m_cameraOffset = null;
+    }
+
+    private void Awake()
+    {
+        CreateInstance();
+    }
+    public void CameraOffset(Transform _offsetTrans)
+    {
+        if (m_cameraOffset != null) { return; }
+        if (_offsetTrans == null) { return; }
+        m_cameraOffset = _offsetTrans;
+    }
 
     void Update()
     {
-      if(m_cameraOffset == null){return;}
+        if (m_cameraOffset == null) { return; }
+
+        if(PlayerDeath)
+        {
+            this.transform.position += m_playerDeathDirection.normalized * m_moveSpeed * Time.deltaTime;
+            return;
+        }
+
         this.transform.position = m_cameraOffset.position;
         this.transform.rotation = m_cameraOffset.transform.rotation;
     }

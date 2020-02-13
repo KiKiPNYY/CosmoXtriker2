@@ -184,6 +184,7 @@ MonoBehaviour:
   - m_effctPos: {fileID: 4183270439888157645}
     m_effectTime: 0.2
   m_offset: {x: 0, y: -2, z: 85}
+  m_hiddenTime: 2
 --- !u!1 &1189570886727285972
 GameObject:
   m_ObjectHideFlags: 0
