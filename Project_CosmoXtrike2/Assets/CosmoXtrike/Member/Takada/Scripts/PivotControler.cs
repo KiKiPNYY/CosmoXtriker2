@@ -90,22 +90,17 @@ public class PivotControler : MonoBehaviour
         //Pivotの回転が終わったらパネルのアニメーションを再生し表示する
         if (roteFlag)
         {
-            panelAnim2.speed = -1;
-            panel2LetterAnim.speed = -1;
-            panelAnim2.Play("PanelOpen");
-            panel2LetterAnim.Play("PanelLetterOpen");
-
+            //パネル1を取得
+            panel2.SetActive(false);
+            panel2Letter.SetActive(false);
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue - roteValue), roteTime);
             StartCoroutine("StartPanelAnim");
         }
         else
         {
             //パネル2を表示
-            panelAnim.speed = -1;
-            panel1LetterAnim.speed = -1;
-            panelAnim.Play("PanelOpen");
-            panel1LetterAnim.Play("PanelOpen");
-
+            panel1.SetActive(false);
+            panel1Letter.SetActive(false);
             this.gameObject.transform.DORotate(new Vector3(0f, roteValue * -1), roteTime);
             StartCoroutine("StartPanelAnim");
         }
@@ -167,14 +162,12 @@ public class PivotControler : MonoBehaviour
         //パネルのアニメーション再生
         if (roteFlag)
         {
-            panelAnim.speed = 1;
             panel1.SetActive(true);
             panelAnim.Play("PanelOpen");
 
         } 
         else
         {
-            panelAnim2.speed = 1;
             panel2.SetActive(true);
             panelAnim2.Play("PanelOpen");
 
@@ -185,15 +178,14 @@ public class PivotControler : MonoBehaviour
         //文字のアニメーション再生
         if (roteFlag)
         {
-            panel1LetterAnim.speed = 1;
+            panel1Letter.SetActive(true);
             panel1LetterAnim.Play("PanelLetterOpen");
 
         }
         else
         {
-            panel2LetterAnim.speed = 1;
+            panel2Letter.SetActive(true);
             panel2LetterAnim.Play("PanelLetterOpen");
-
         }
     }
 }

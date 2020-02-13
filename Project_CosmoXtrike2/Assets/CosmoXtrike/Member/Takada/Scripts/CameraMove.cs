@@ -13,6 +13,7 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //プレイヤーがゲームオーバーになったらこの先の処理を通す
         if (!gameover) { return; }
 
         CameraSecession(cameraVector);
