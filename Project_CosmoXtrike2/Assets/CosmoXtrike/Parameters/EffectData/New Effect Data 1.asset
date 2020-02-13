@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3846df720b1f9f44aaf05b3c2d373a8, type: 3}
-  m_Name: PlayerMissileData
+  m_Script: {fileID: 11500000, guid: 89a1cc90f16afce43828fed8aaa2427e, type: 3}
+  m_Name: New Effect Data 1
   m_EditorClassIdentifier: 
-  m_bulletSpeed: 20000
-  m_damege: 1
-  m_activeTime: 10
-  m_rotationTimeSpeed: 45
-  m_trackingMaxDistance: 500
-  m_trackingMinDistance: 100
-  m_trackingTime: 2
+  m_activeTime: 5
+  m_activeOffset: {x: 0, y: 0, z: 0}
+  m_rotationStandardWorld: 1
+  m_activeRotation: {x: 0, y: 0, z: 0}
+  m_parent: 0

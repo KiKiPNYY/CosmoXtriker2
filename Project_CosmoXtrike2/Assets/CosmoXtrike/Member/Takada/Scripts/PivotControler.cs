@@ -100,9 +100,7 @@ public class PivotControler : MonoBehaviour
         if (!AnimFlag) { return; }
         if (m_triggerPermission) { return; }
         if (m_coroutineUpdate) { return; }
-        Debug.Log(AnimFlag);
-        Debug.Log(m_triggerPermission);
-        Debug.Log(m_coroutineUpdate);
+ 
         //if (roteFlag && Input.GetButtonDown("RightTrigger")) { roteFlag = false; }
         //else if (!roteFlag && Input.GetButtonDown("RightTrigger")) { roteFlag = true; }
         m_timer += Time.deltaTime;
@@ -157,7 +155,7 @@ public class PivotControler : MonoBehaviour
         if (!AnimFlag) { return; }
 
         //ボタンを押したらメインゲームへ、その際にプレイヤーを決定する
-        if (roteFlag && Input.GetButtonDown("LeftTrigger"))
+        if (roteFlag && (Input.GetButtonDown("LeftTrigger") || Input.GetButtonDown("RightTrigger")))
         {
             //プレイヤー1に決定
             //   SceneLoadManager.Instnce.LoadScene("Game");
@@ -165,7 +163,7 @@ public class PivotControler : MonoBehaviour
             TitleController.Instnce.ChangeScene();
 
         }
-        else if (!roteFlag && Input.GetButtonDown("LeftTrigger"))
+        else if (!roteFlag && (Input.GetButtonDown("LeftTrigger") || Input.GetButtonDown("RightTrigger")))
         {
             //プレイヤー2に決定
             //  SceneLoadManager.Instnce.LoadScene("Game");
@@ -182,24 +180,25 @@ public class PivotControler : MonoBehaviour
     {
         if (!AnimFlag) { return; }
         if (!m_triggerPermission) { return; }
-        float x = Input.GetAxis("Right_Vertical");
-        x += Input.GetKeyDown(KeyCode.LeftArrow) == true ? 1 : 0;
-        x += Input.GetKeyDown(KeyCode.RightArrow) == true ? -1 : 0;
+        Debug.Log(Input.GetAxis("Right_Horizontal"));
+        float x = Input.GetAxis("Right_Horizontal");
+        //x += Input.GetKeyDown(KeyCode.LeftArrow) == true ? 1 : 0;
+        //x += Input.GetKeyDown(KeyCode.RightArrow) == true ? -1 : 0;
         Debug.Log(x);
         if (Mathf.Abs(x) < m_minLeverVal) { return; }
 
-        if (roteFlag && (x >= 0))
+        if (roteFlag)
         {
             //パネル2を表示
             panelAnim2.Play("PanelOpen", 0, -1);
             panel2LetterAnim.Play("PanelLetterOpen", 0, -1);
-            Debug.Log(panelAnim.speed);
+            //Debug.Log(panelAnim.speed);
             //panelAnim.speed = -1;
             //panel1LetterAnim.speed = -1;
             
             roteFlag = false;
         }
-        else if (!roteFlag && (x <= 0))
+        else if (!roteFlag)
         {
             panelAnim.Play("PanelOpen", 0, -1);
             panel1LetterAnim.Play("PanelOpen", 0, -1);

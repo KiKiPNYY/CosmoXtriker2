@@ -16,13 +16,17 @@ MonoBehaviour:
     type: 3}
   m_fireEffect: {fileID: 7027801130163872160, guid: 95689dca8ca72f548a18c57ab6f91662,
     type: 3}
+  m_explosion: {fileID: 623197893798279015, guid: 35bf9f63a5f8ad141a8c0b5bc8dfd5a5,
+    type: 3}
   m_acceleTime: 3
-  m_bulletInterval: 0.3
-  m_defaultSpeed: 1
-  m_maxSpeed: 5
+  m_bulletInterval: 1
+  m_defaultSpeed: 3
+  m_maxSpeed: 6
   m_sphereCastRadius: 100
-  m_sphereCastDistance: 10000
+  m_sphereCastDistance: 3000
   m_maxHP: 20
   m_meteoriteDamege: 3
   m_targetCursor: {fileID: 6088693311979195816, guid: 84b985ecbc41bdb4fad8d15945b34e7b,
     type: 3}
+  m_explosionTime: 1.3
+  m_fadeTime: 0.2

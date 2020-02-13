@@ -8,6 +8,7 @@ public class MissileData : BulletData
     [SerializeField] protected float m_rotationTimeSpeed = 0;
     [SerializeField] protected float m_trackingMaxDistance = 0;
     [SerializeField] protected float m_trackingMinDistance = 0;
+    [SerializeField] protected float m_trackingTime = 0;
 
     /// <summary>
     /// 回転速度
@@ -17,4 +18,6 @@ public class MissileData : BulletData
     public float TrackingMaxDistance { get => m_trackingMaxDistance; }
 
     public float TrackingMinDistance { get => m_trackingMinDistance; }
+
+    public float TrackingTime => m_trackingTime;
 }

@@ -145,8 +145,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 85.03073, y: 47.070873, z: 160.24533}
-  m_Center: {x: 0, y: -0.0000019073486, z: 0}
+  m_Size: {x: 60.101624, y: 47.070873, z: 160.24533}
+  m_Center: {x: -0.18405151, y: -0.0000019073486, z: 0}
 --- !u!114 &11386094866699493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +175,8 @@ MonoBehaviour:
   m_maxHp: 0
   m_burnEffect: {fileID: 623197893798279015, guid: 35bf9f63a5f8ad141a8c0b5bc8dfd5a5,
     type: 3}
+  m_finalBurnEffect: {fileID: 626614112434935505, guid: 2c9bcbfe2dc7ce74d8945329b065110a,
+    type: 3}
   m_effctPos:
   - {fileID: 4184052045748216390}
   - {fileID: 4183270439888157645}
@@ -183,6 +185,8 @@ MonoBehaviour:
     m_effectTime: 0.2
   - m_effctPos: {fileID: 4183270439888157645}
     m_effectTime: 0.2
+  m_offset: {x: 0, y: -2, z: 85}
+  m_hiddenTime: 2
 --- !u!1 &1189570886727285972
 GameObject:
   m_ObjectHideFlags: 0

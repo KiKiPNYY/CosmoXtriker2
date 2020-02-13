@@ -4743,7 +4743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa247cd78270ee843aa48971e256e820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletData: {fileID: 11400000, guid: cbc6efb26ca28184f8442b44ff7ac278, type: 2}
+  m_bulletData: {fileID: 11400000, guid: ea94606ec6d321e4f8ed1620067fa166, type: 2}
   m_effect: {fileID: 3565561756277287582, guid: 7aa2374a840cca540b9f7250af01de02,
     type: 3}
 --- !u!1 &7213696561609577045
@@ -5030,7 +5030,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 1.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5346,7 +5346,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 5000000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -5664,7 +5664,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 100
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5729,21 +5729,21 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -1.7427074
-          outSlope: -1.7427074
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0
-          outWeight: 0.10364146
+          inWeight: 0.33333334
+          outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -0.24403767
-          outSlope: -0.24403767
+          inSlope: -2
+          outSlope: -2
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.16246498
-          outWeight: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4

@@ -5106,9 +5106,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxHp: 50
-  m_burnEffect: {fileID: 0}
+  m_burnEffect: {fileID: 623197893798279015, guid: 35bf9f63a5f8ad141a8c0b5bc8dfd5a5,
+    type: 3}
+  m_finalBurnEffect: {fileID: 626614112434935505, guid: 2c9bcbfe2dc7ce74d8945329b065110a,
+    type: 3}
   m_effctPos: []
-  m_destroyNum: 0
+  m_destoryEffects:
+  - m_effctPos: {fileID: 4013072833119785365}
+    m_effectTime: 0.1
+  - m_effctPos: {fileID: 4013072833119785353}
+    m_effectTime: 0.2
+  - m_effctPos: {fileID: 4013072833119785371}
+    m_effectTime: 0.3
+  - m_effctPos: {fileID: 4013072833119785445}
+    m_effectTime: 0.2
+  - m_effctPos: {fileID: 4013072833119785359}
+    m_effectTime: 0.2
+  - m_effctPos: {fileID: 4013072833119785047}
+    m_effectTime: 0.1
+  - m_effctPos: {fileID: 4013072833119785031}
+    m_effectTime: 0.3
+  - m_effctPos: {fileID: 4013072833119785383}
+    m_effectTime: 0.4
+  - m_effctPos: {fileID: 4013072833119785377}
+    m_effectTime: 0.3
+  - m_effctPos: {fileID: 4013072833119785459}
+    m_effectTime: 0.1
+  m_offset: {x: 0, y: 0, z: 0}
+  m_hiddenTime: 0
 --- !u!65 &4406047932220248116
 BoxCollider:
   m_ObjectHideFlags: 0

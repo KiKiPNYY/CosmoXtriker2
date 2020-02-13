@@ -37,7 +37,7 @@ public class MainGameController : MonoBehaviour
     }
     #endregion
 
-    [SerializeField][Range(1, 20)] private int m_enemyDestroyCount = 1;
+    [SerializeField] private int m_enemyDestroyCount = 1;
     [SerializeField] [Range(60, 300)] private float m_gamePlayTime = 60;
     [SerializeField] [Range(0.1f, 10)] private float m_fadeTime = 0.1f;
     [SerializeField] private RawImage m_rawImage = null;
@@ -69,8 +69,9 @@ public class MainGameController : MonoBehaviour
     /// </summary>
     public void EnemyDestroyAdd(int _addCount = 0)
     {
+        if (_addCount <= 0) { _addCount = 1; }
         m_destroyNum += _addCount;
-        if(m_destroyNum < m_enemyDestroyCount) { return; }
+        if (m_destroyNum < m_enemyDestroyCount) { return; }
         MainGameEnd();
     }
 
@@ -80,13 +81,15 @@ public class MainGameController : MonoBehaviour
     /// </summary>
     private void SceneMove()
     {
-        SoundManager.Instnce.BGMFade(1,FadeType.fadeOut);
-        SoundManager.Instnce.SEFade(FadeType.fadeOut,1,true);
+        SoundManager.Instnce.BGMFade(1, FadeType.fadeOut);
+        SoundManager.Instnce.SEFade(FadeType.fadeOut, 1, true);
         SceneLoadManager.Instnce.LoadScene("Title");
     }
 
     public void MainGameEnd()
     {
+        if (m_sceneMove) { return; }
+
         m_sceneMove = true;
         m_fadeTimer = 0;
         m_fade = FadeType.fadeOut;
@@ -94,7 +97,7 @@ public class MainGameController : MonoBehaviour
 
     #region Unity関数
 
-    private  void Awake() 
+    private void Awake()
     {
         CreateInstnce();
     }
@@ -111,17 +114,17 @@ public class MainGameController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(m_fade == FadeType.FadeIN)
+        if (m_fade == FadeType.FadeIN)
         {
-            m_fadeTimer = Mathf.Clamp(m_fadeTimer + Time.deltaTime / m_fadeTime, 0,1);
+            m_fadeTimer = Mathf.Clamp(m_fadeTimer + Time.deltaTime / m_fadeTime, 0, 1);
             m_rawImage.color = new Color(m_rawImage.color.r, m_rawImage.color.g, m_rawImage.color.b, 1 - m_fadeTimer);
-            if(m_fadeTimer < 1) { return; }
+            if (m_fadeTimer < 1) { return; }
             m_fade = FadeType.Nun;
             m_fadeTimer = 0;
 
             if (m_sceneStart) { return; }
             PlayerManager.Instance.MoveStart();
-            for(int i = 0; i < m_changeLayerObject.Length; i++)
+            for (int i = 0; i < m_changeLayerObject.Length; i++)
             {
                 m_changeLayerObject[i].layer = LayerMask.NameToLayer("Player");
             }
@@ -129,10 +132,10 @@ public class MainGameController : MonoBehaviour
             m_sceneStart = true;
             return;
         }
-        else if(m_fade == FadeType.fadeOut)
+        else if (m_fade == FadeType.fadeOut)
         {
             m_fadeTimer = Mathf.Clamp(m_fadeTimer + Time.deltaTime / m_fadeTime, 0, 1);
-            m_rawImage.color = new Color(m_rawImage.color.r, m_rawImage.color.g, m_rawImage.color.b,  m_fadeTimer);
+            m_rawImage.color = new Color(m_rawImage.color.r, m_rawImage.color.g, m_rawImage.color.b, m_fadeTimer);
             if (m_fadeTimer < 1) { return; }
             m_fade = FadeType.Nun;
             m_fadeTimer = 0;
@@ -143,15 +146,15 @@ public class MainGameController : MonoBehaviour
             }
 
             if (!m_sceneMove) { return; }
-            
+
             SceneMove();
             return;
         }
 
-        m_timer += Time.deltaTime;
-        if (m_timer < m_gamePlayTime) { return; }
+        // m_timer += Time.deltaTime;
+        // if (m_timer < m_gamePlayTime) { return; }
 
-        MainGameEnd();
+        // MainGameEnd();
     }
 
     #endregion

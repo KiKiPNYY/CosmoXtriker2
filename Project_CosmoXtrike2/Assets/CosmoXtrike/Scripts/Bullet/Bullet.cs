@@ -157,8 +157,6 @@ public class Bullet : MonoBehaviour
         AlphaTestEnemy alphaTestEnemy = _other.GetComponent<AlphaTestEnemy>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        Debug.Log(alphaTestEnemy + " : " + player);
-
         if (alphaTestEnemy == null || player == null) { return; }
 
        // EnemyHpBar.Instance.SetEnemy(alphaTestEnemy, player);
