@@ -19,6 +19,7 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
     [SerializeField] private Effect m_burnEffect = null;
     [SerializeField] private Transform[] m_effctPos;
     [SerializeField] private DestoryEffect[] m_destoryEffects = null;
+    [SerializeField] private Vector3 m_offset = Vector3.zero;
    // [SerializeField] private float m_destroyTime = 0;
 
     //private int m_hp;
@@ -29,6 +30,8 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
 
     public int NowHP { get; private set; }
     public int MaxHP { get { return m_maxHp; } }
+    public Vector3 OffSet => m_offset;
+
     public ThisType ReturnMyType()
     {
         return ThisType.Enemy;

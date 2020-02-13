@@ -46,6 +46,10 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     [SerializeField]
     public int formationNum = 0;
 
+    [SerializeField] private Vector3 m_offset = Vector3.zero;
+
+    public Vector3 OffSet => m_offset;
+
     protected void Start(){
      //   Debug.Log(parameter.HP);
         enemyHp = parameter.HP;

@@ -178,7 +178,20 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
                 m_bulletTarger = hit.transform.gameObject;
                 if (!m_playerLookCursor.gameObject.activeSelf)
                 {
+                    
                     m_playerLookCursor.gameObject.SetActive(true);
+                    Enemy enemy = m_bulletTarger.GetComponent<Enemy>();
+                    AlphaTestEnemy alphaTestEnemy = m_bulletTarger.GetComponent<AlphaTestEnemy>();
+                    if (enemy != null)
+                    {
+                        m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject, enemy.OffSet);
+                    }
+                    if(alphaTestEnemy != null)
+                    {
+                        m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject, alphaTestEnemy.OffSet);
+                    }
+
+                    m_playerLookCursor.transform.parent = m_bulletTarger.transform;
                 }
                 search = true;
                 //m_playerLookCursor.TargetSet(m_bulletTarger, this.transform.gameObject);

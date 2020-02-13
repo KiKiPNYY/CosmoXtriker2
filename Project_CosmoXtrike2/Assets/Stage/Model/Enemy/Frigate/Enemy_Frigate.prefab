@@ -2202,8 +2202,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20, y: 13, z: 25}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 14.731728, y: 8.563458, z: 28.609095}
+  m_Center: {x: 0.00005569458, y: 2.218271, z: 1.8045456}
 --- !u!114 &1263967064773185752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2239,6 +2239,7 @@ MonoBehaviour:
     m_effectTime: 0.1
   - m_effctPos: {fileID: 726797512771585438}
     m_effectTime: 0.3
+  m_offset: {x: 0, y: 2, z: 17}
 --- !u!114 &1722466042506371720
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class CameraContoroler : MonoBehaviour
 {
-     private float defalutView;                 //カメラの有効視野
+    private float defalutView;                 //カメラの有効視野
     [SerializeField] private float zoomInValue; //ズームインさせる値
     [SerializeField] private float animSpeed;   //カメラを回転させる時間
 
@@ -25,13 +25,19 @@ public class CameraContoroler : MonoBehaviour
         //現在のカメラの倍率をデフォルトの倍率に設定
         defalutView = Camera.main.fieldOfView;
         col = false;
+        animFlag = false;
+         _pivotControler.transform.gameObject.SetActive(false);
     }
 
     void Update()
     {
         //ボタンを押したらアニメーションフラグをオンにする
         //if (Input.GetMouseButtonDown(0)) { animFlag = true;}
-        if (Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger") || Input.GetKeyDown(KeyCode.Space)) { animFlag = true; }
+        if ((Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger") || Input.GetKeyDown(KeyCode.Space)))
+        {
+            animFlag = true;
+            _pivotControler.transform.gameObject.SetActive(true);
+        }
 
         CameraRote();
         CameraZoomIn();
@@ -46,7 +52,7 @@ public class CameraContoroler : MonoBehaviour
     private void CameraRote()
     {
         if (!animFlag) { return; }
-            
+
         this.transform.DORotate(new Vector3(0, -180f, 0), animSpeed);
     }
 
@@ -68,11 +74,13 @@ public class CameraContoroler : MonoBehaviour
         if (!animFlag) { return; }
 
         //ズームインしている時間遅延させる
-        DOVirtual.DelayedCall(animSpeed / 2,()=> {
+        DOVirtual.DelayedCall(animSpeed / 2, () =>
+        {
             DOTween.To(() => Camera.main.fieldOfView,
-            fovOut => Camera.main.fieldOfView = fovOut, 
+            fovOut => Camera.main.fieldOfView = fovOut,
             defalutView, animSpeed / 2);
-            titleObject.SetActive(false); });
+            titleObject.SetActive(false);
+        });
 
     }
 
@@ -83,7 +91,7 @@ public class CameraContoroler : MonoBehaviour
     /// </summary>
     private void FlagCange()
     {
-        if(!animFlag) { return; }
+        if (!animFlag) { return; }
         if (col) { return; }
         col = true;
         StartCoroutine("FlagOn");
