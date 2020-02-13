@@ -6,17 +6,18 @@ using DG.Tweening;
 
 public class GameOver : MonoBehaviour
 {
-    private bool gameover;
+    public bool gameover;
     [SerializeField] private GameObject cameraObject;   //カメラ
     [SerializeField] private Vector3 cameraVector;      //カメラを移動させる距離
     [SerializeField] private float moveSpeed;           //カメラを移動させる時間
 
     [SerializeField] private GameObject text;           //表示するテキスト
-    [SerializeField] private float conversionTime;      //テキストを表示するのにかける時間
+    [SerializeField] private float textDisplayTime;      //テキストを何秒後に表示するか
 
     [SerializeField] private Image fadeImage;           //透明化させるパネル
     [SerializeField] private float fadeSpeed;           //フェードアウト
     private float red, green, blue, alpha;              //パネルの色、不透明度
+    private bool fadeOutStart;
     
     private void Start()
     {
@@ -29,6 +30,9 @@ public class GameOver : MonoBehaviour
 
         alpha = 0;
 
+        gameover = false;
+        fadeOutStart = false;
+
     }
 
     // Update is called once per frame
@@ -38,13 +42,11 @@ public class GameOver : MonoBehaviour
         if (!gameover) { return; }
 
         CameraSecession(cameraVector);
-        Invoke("TextDisplay", conversionTime);
+        Invoke("TextDisplay", textDisplayTime);
 
-        if(Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger"))
-        {
-            StartFadeOut(fadeSpeed);
-        }
+        if(Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger") || Input.GetMouseButtonDown(0)){ fadeOutStart = true; }
 
+        StartFadeOut(fadeSpeed);
     }
 
     /// <summary>
@@ -71,14 +73,15 @@ public class GameOver : MonoBehaviour
     /// <param name="speed"></param>
     private void StartFadeOut(float speed)
     {
+        if (!fadeOutStart) { return; }
+
         fadeImage.enabled = true;
         alpha += speed;
         SetAlpha();
 
         if (alpha >= 1)
         {
-            gameover = false;
-            /*シーンの移動*/
+            SceneLoadManager.Instnce.LoadScene("Title");
         } 
        
     }
