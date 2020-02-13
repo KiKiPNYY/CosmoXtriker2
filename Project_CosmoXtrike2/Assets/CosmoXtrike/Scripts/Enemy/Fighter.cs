@@ -215,7 +215,7 @@ public class Fighter : Enemy{
         }
         else if (!clockWise) {
             Turn(-360, TurnTime);
-            Swing(30, TurnTime);
+            Swing(-30, TurnTime);
             //Debug.Log("左回転");
         }
         if(timer >= TurnTime) {

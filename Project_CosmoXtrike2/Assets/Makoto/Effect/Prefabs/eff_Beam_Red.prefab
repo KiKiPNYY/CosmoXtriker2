@@ -4743,7 +4743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa247cd78270ee843aa48971e256e820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletData: {fileID: 11400000, guid: cbc6efb26ca28184f8442b44ff7ac278, type: 2}
+  m_bulletData: {fileID: 11400000, guid: ea94606ec6d321e4f8ed1620067fa166, type: 2}
   m_effect: {fileID: 3565561756277287582, guid: 7aa2374a840cca540b9f7250af01de02,
     type: 3}
 --- !u!1 &7213696561609577045

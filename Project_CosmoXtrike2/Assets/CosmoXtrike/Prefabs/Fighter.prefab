@@ -91,10 +91,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effect: {fileID: 0}
   flagShip: 0
-  parameter: {fileID: 11400000, guid: 7b0bac3198a59f04db0d3dfcfeda4d1b, type: 2}
+  parameter: {fileID: 11400000, guid: d77a600b1e7384b4b9386c0dafb0c467, type: 2}
   bullet: {fileID: 4776540728697155984, guid: d5ad6767be8d04645a4fe781507d6d4e, type: 3}
   aim: {fileID: 262828237412166191}
+  DownPoint: 1
   formationNum: 0
+  m_offset: {x: 0, y: 0, z: 0}
   number: 0
   TurnTime: 5
   target: 0
@@ -107,16 +109,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1395078140047029776}
     m_Modifications:
-    - target: {fileID: 7107502105528384661, guid: d5531de7fc1088146b606e9ea8f12d73,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_Fighter
-      objectReference: {fileID: 0}
-    - target: {fileID: 7107502105528384661, guid: d5531de7fc1088146b606e9ea8f12d73,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 7107502105528344757, guid: d5531de7fc1088146b606e9ea8f12d73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -171,6 +163,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107502105528384661, guid: d5531de7fc1088146b606e9ea8f12d73,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_Fighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107502105528384661, guid: d5531de7fc1088146b606e9ea8f12d73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5531de7fc1088146b606e9ea8f12d73, type: 3}
