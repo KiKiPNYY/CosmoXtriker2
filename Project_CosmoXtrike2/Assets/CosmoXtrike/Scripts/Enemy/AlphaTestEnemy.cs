@@ -17,6 +17,7 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
 {
     [SerializeField] private int m_maxHp;
     [SerializeField] private Effect m_burnEffect = null;
+    [SerializeField] private Effect m_finalBurnEffect = null;
     [SerializeField] private Transform[] m_effctPos;
     [SerializeField] private DestoryEffect[] m_destoryEffects = null;
     [SerializeField] private Vector3 m_offset = Vector3.zero;
@@ -45,21 +46,13 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
         if (NowHP > 0) { return; }
 
         m_destroy = true;
-
-        //SoundManager.Instnce.SEPlay("EnemyDestory", this.transform);
-
-        //for(int i = 0; i < m_effctPos.Length; i++)
-        //{
-        //    EffectManager.Instnce.EffectPlay(m_burnEffect, m_effctPos[i]);
-        //}
-        //MainGameController.Instnce.EnemyDestroyAdd(m_destroyNum);
-        //this.transform.gameObject.SetActive(false);
     }
 
     public int MeteoriteDamege()
     {
         return 0;
     }
+
     void Start()
     {
         NowHP = m_maxHp;
@@ -76,6 +69,8 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
 
         if (m_effectPlayCount >= m_destoryEffects.Length && m_timer > m_hiddenTime)
         {
+            SoundManager.Instnce.SEPlay("EnemyDestory", this.transform);
+            EffectManager.Instnce.EffectPlay(m_finalBurnEffect, this.transform);
             MainGameController.Instnce.EnemyDestroyAdd(m_maxHp);
             this.transform.gameObject.SetActive(false);
             return;
@@ -90,7 +85,7 @@ public class AlphaTestEnemy : MonoBehaviour, CommonProcessing
 
         m_timer = 0;
         m_effectPlayCount++;
-        Debug.Log(m_effectPlayCount);
+       
 
     }
 }

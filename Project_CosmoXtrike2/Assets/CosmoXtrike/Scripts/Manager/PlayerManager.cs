@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     [SerializeField] private GameObject par;
 
-    [SerializeField] private GameObject gameObjects = null;
+    
 
     private Rigidbody m_rb = null;
     private float m_moveSpeed = 0;
@@ -379,7 +379,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         // 
 
         float x = Input.GetAxis("Right_Vertical") * -1;
-        float y = Input.GetAxis("Right_Horizontal");
+        float y = Input.GetAxis("Right_Horizontal") * -1;
 
 
         Vector3 vector = Vector3.zero;

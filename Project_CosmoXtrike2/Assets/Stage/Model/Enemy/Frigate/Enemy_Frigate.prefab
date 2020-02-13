@@ -2219,6 +2219,8 @@ MonoBehaviour:
   m_maxHp: 0
   m_burnEffect: {fileID: 623197893798279015, guid: 35bf9f63a5f8ad141a8c0b5bc8dfd5a5,
     type: 3}
+  m_finalBurnEffect: {fileID: 626614112434935505, guid: 2c9bcbfe2dc7ce74d8945329b065110a,
+    type: 3}
   m_effctPos:
   - {fileID: 726797512771585508}
   - {fileID: 726797512771585496}
