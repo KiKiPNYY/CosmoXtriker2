@@ -59,6 +59,8 @@ public class SmollBattery : MonoBehaviour
         if(other.tag == "Player") {
             //ここにダメージ処理を書く
             CommonProcessing commonProcessing = other.GetComponent<CommonProcessing>();
+            if(commonProcessing == null) { return; }
+            if (commonProcessing.ReturnMyType() != ThisType.Player){ return; }
             Damage(damage,commonProcessing);
             BatteryRotation();
         }
