@@ -9,6 +9,11 @@ public class SmollBattery : MonoBehaviour
     
     List<Quaternion> startSmollBatterysAngle;
 
+    [SerializeField]
+    int damage = 2;
+
+    bool coolTime = false;
+
     // Start is called before the first frame update
     void Start(){
         foreach(GameObject i in SmollBatterys) {
@@ -36,10 +41,25 @@ public class SmollBattery : MonoBehaviour
         ClockRotate = false;
     }
 
+    private void Damage(int damagePoint,CommonProcessing _common){
+        if (coolTime) { return; }
+        _common.Damege(damagePoint);
+        StartCoroutine(CoolTimeCoroutine());
+    }
+
+    private IEnumerator CoolTimeCoroutine(){
+        if (coolTime) { yield break; }
+        coolTime = true;
+        yield return new WaitForSeconds(1.0f);
+        coolTime = false;
+
+    }
+
     private void OnTriggerStay(Collider other){
         if(other.tag == "Player") {
             //ここにダメージ処理を書く
-
+            CommonProcessing commonProcessing = other.GetComponent<CommonProcessing>();
+            Damage(damage,commonProcessing);
             BatteryRotation();
         }
     }
