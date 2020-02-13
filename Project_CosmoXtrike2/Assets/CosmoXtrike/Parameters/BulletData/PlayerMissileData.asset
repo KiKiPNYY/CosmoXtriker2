@@ -18,3 +18,4 @@ MonoBehaviour:
   m_rotationTimeSpeed: 45
   m_trackingMaxDistance: 500
   m_trackingMinDistance: 100
+  m_trackingTime: 2

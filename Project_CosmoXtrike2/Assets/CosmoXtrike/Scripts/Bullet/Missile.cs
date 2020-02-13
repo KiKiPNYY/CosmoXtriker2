@@ -7,6 +7,7 @@ public class Missile : Bullet
     [SerializeField] private MissileData m_missileData = null;
 
     private GameObject m_target = null;
+    private float m_timer = 0;
 
     public override void Init()
     {
@@ -27,16 +28,17 @@ public class Missile : Bullet
     {
         base.Move(_deltaTime);
         if (m_target == null) { return; }
+        m_timer += _deltaTime;
         Quaternion targetrotation = Quaternion.LookRotation((m_target.transform.position - this.transform.position).normalized);
-        float magnification = Vector3.Distance(m_target.transform.position, this.transform.position);
-        if(magnification > m_missileData.TrackingMaxDistance)
-        {
-            magnification = 0;
-        }
-        else
-        {
-            magnification = Mathf.Clamp((m_missileData.TrackingMaxDistance - magnification) / (m_missileData.TrackingMaxDistance - m_missileData.TrackingMinDistance),0,1);
-        }
+        float magnification = m_timer >= m_missileData.TrackingTime ? 1 : 0;//Vector3.Distance(m_target.transform.position, this.transform.position);
+        //if(magnification > m_missileData.TrackingMaxDistance)
+        //{
+        //    magnification = 0;
+        //}
+        //else
+        //{
+        //    magnification = Mathf.Clamp((m_missileData.TrackingMaxDistance - magnification) / (m_missileData.TrackingMaxDistance - m_missileData.TrackingMinDistance),0,1);
+        //}
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetrotation, Time.deltaTime * m_missileData.RotationTimeSpeed * magnification);
     }
 

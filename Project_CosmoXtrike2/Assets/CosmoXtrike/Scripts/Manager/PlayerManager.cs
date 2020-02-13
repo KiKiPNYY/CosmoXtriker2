@@ -359,15 +359,15 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
         float rotationX = Mathf.Clamp(this.transform.localEulerAngles.x < 0 ? 360 - this.transform.localEulerAngles.x : this.transform.localEulerAngles.x, 0, 360);
         float rotationY = Mathf.Clamp(this.transform.localEulerAngles.y < 0 ? 360 - this.transform.localEulerAngles.y : this.transform.localEulerAngles.y, 0, 360);
-        float rotationZ = Mathf.Clamp(this.transform.localEulerAngles.z > 180 ? this.transform.localEulerAngles.z - 360 : this.transform.localEulerAngles.z, 0, 180);
+        float rotationZ = Mathf.Clamp(this.transform.localEulerAngles.z > 180 ? this.transform.localEulerAngles.z - 360 : this.transform.localEulerAngles.z, -180, 180);
 
 
         rotationX += 90 * -y * Time.deltaTime;
         rotationY += 90 * x * Time.deltaTime;
-        rotationZ = rotationZ + 45 * -x * Time.deltaTime;//Mathf.Clamp(rotationZ + 45 * -x * Time.deltaTime, -45,45);
+        rotationZ = 45 * -x * Time.deltaTime;//Mathf.Clamp(rotationZ + 45 * -x * Time.deltaTime, -45,45);
 
 
-        this.transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
+        this.transform.rotation = Quaternion.Euler(rotationX, rotationY, this.transform.localEulerAngles.z);
         loockRotation *= Quaternion.Euler(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 45 * -x);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime * 10);
         //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime);
