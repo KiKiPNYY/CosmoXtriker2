@@ -22,8 +22,7 @@ public class PlayerLookCursor : MonoBehaviour
         if(_enemy == null || _player == null) { return; }
         m_player = _player;
         m_enemy = _enemy;
-        Debug.Log(_offset);
-        Vector3 setPosition = m_enemy.transform.right * _offset.x + m_enemy.transform.up * _offset.y + m_enemy.transform.forward * _offset.z;
+        Vector3 setPosition = Vector3.zero;//m_enemy.transform.right * _offset.x + m_enemy.transform.up * _offset.y + m_enemy.transform.forward * _offset.z;
         this.transform.position = m_enemy.transform.position + setPosition;
         //this.transform.localPosition = Vector3.zero;
         this.transform.LookAt(m_player.transform);

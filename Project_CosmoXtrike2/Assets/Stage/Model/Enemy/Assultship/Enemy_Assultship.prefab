@@ -5108,7 +5108,29 @@ MonoBehaviour:
   m_maxHp: 50
   m_burnEffect: {fileID: 0}
   m_effctPos: []
-  m_destroyNum: 0
+  m_destoryEffects:
+  - m_effctPos: {fileID: 4013072833119785365}
+    m_effectTime: 0.1
+  - m_effctPos: {fileID: 4013072833119785353}
+    m_effectTime: 0.2
+  - m_effctPos: {fileID: 4013072833119785371}
+    m_effectTime: 0.3
+  - m_effctPos: {fileID: 4013072833119785445}
+    m_effectTime: 0.2
+  - m_effctPos: {fileID: 4013072833119785359}
+    m_effectTime: 0.2
+  - m_effctPos: {fileID: 4013072833119785047}
+    m_effectTime: 0.1
+  - m_effctPos: {fileID: 4013072833119785031}
+    m_effectTime: 0.3
+  - m_effctPos: {fileID: 4013072833119785383}
+    m_effectTime: 0.4
+  - m_effctPos: {fileID: 4013072833119785377}
+    m_effectTime: 0.3
+  - m_effctPos: {fileID: 4013072833119785459}
+    m_effectTime: 0.1
+  m_offset: {x: 0, y: 0, z: 0}
+  m_hiddenTime: 0
 --- !u!65 &4406047932220248116
 BoxCollider:
   m_ObjectHideFlags: 0

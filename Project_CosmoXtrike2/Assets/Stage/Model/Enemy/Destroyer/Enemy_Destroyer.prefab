@@ -429,6 +429,7 @@ MonoBehaviour:
   - m_effctPos: {fileID: 5680954960148293814}
     m_effectTime: 0.5
   m_offset: {x: 0, y: 7, z: 30}
+  m_hiddenTime: 2
 --- !u!114 &4094263805627314117
 MonoBehaviour:
   m_ObjectHideFlags: 0

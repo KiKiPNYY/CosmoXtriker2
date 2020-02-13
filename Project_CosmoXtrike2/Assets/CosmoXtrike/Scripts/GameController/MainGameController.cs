@@ -69,6 +69,7 @@ public class MainGameController : MonoBehaviour
     /// </summary>
     public void EnemyDestroyAdd(int _addCount = 0)
     {
+        if(_addCount <= 0) { _addCount = 1; }
         m_destroyNum += _addCount;
         if(m_destroyNum < m_enemyDestroyCount) { return; }
         MainGameEnd();
@@ -87,6 +88,8 @@ public class MainGameController : MonoBehaviour
 
     public void MainGameEnd()
     {
+        if (m_sceneMove) { return; }
+
         m_sceneMove = true;
         m_fadeTimer = 0;
         m_fade = FadeType.fadeOut;
@@ -148,10 +151,10 @@ public class MainGameController : MonoBehaviour
             return;
         }
 
-        m_timer += Time.deltaTime;
-        if (m_timer < m_gamePlayTime) { return; }
+       // m_timer += Time.deltaTime;
+       // if (m_timer < m_gamePlayTime) { return; }
 
-        MainGameEnd();
+       // MainGameEnd();
     }
 
     #endregion
