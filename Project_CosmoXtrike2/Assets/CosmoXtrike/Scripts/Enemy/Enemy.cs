@@ -26,6 +26,9 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
     //砲弾の向きの位置
     [SerializeField]
     protected GameObject aim;
+    //撃墜されたときの撃墜数
+    [SerializeField]
+    int DownPoint = 1;
 
     //フラグ機が落とされたか
     protected bool flagshipCrash = false;
@@ -97,7 +100,7 @@ abstract public class Enemy : MonoBehaviour, CommonProcessing{
             //}
             this.transform.parent = null;
             this.gameObject.SetActive(false);
-            MainGameController.Instnce.EnemyDestroyAdd();
+            MainGameController.Instnce.EnemyDestroyAdd(DownPoint);
         }
     }
 
