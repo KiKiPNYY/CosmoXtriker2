@@ -23,7 +23,7 @@ MonoBehaviour:
   m_maxSpeed: 5
   m_sphereCastRadius: 100
   m_sphereCastDistance: 10000
-  m_maxHP: 20
+  m_maxHP: 3000
   m_meteoriteDamege: 3
   m_targetCursor: {fileID: 6088693311979195816, guid: 84b985ecbc41bdb4fad8d15945b34e7b,
     type: 3}
