@@ -88,6 +88,7 @@ public class Fighter : Enemy{
         }else if(!target){
             //Debug.Log("旋回中");
             FrightTurn();
+            
         }
         //Turn(180, 3.0f);
         //if (!turnMode){ StartCoroutine( TurnStayCoroutine() ); }
@@ -179,12 +180,11 @@ public class Fighter : Enemy{
             swingTimer = 0;
         }
         else if(swingTimer >= time/2) {
-            this.transform.Rotate(-(angle / (time/2) ) * Time.deltaTime, 0, 0, Space.World);
+            this.transform.Rotate(-(angle / (time/2) ) * Time.deltaTime, 0,0, Space.World);
         }
         else {
             this.transform.Rotate((angle / (time/2) ) * Time.deltaTime, 0, 0, Space.World);
         }
-        
     }
 
     /// <summary>
@@ -218,7 +218,9 @@ public class Fighter : Enemy{
             Swing(-30, TurnTime);
             //Debug.Log("左回転");
         }
-        if(timer >= TurnTime) {
+        //transform.eulerAngles = new Vector3(this.transform.rotation.x, this.transform.rotation.y, 0);
+
+        if (timer >= TurnTime) {
             turnMode = true;
             clockWise = !clockWise;
             timer = 0;

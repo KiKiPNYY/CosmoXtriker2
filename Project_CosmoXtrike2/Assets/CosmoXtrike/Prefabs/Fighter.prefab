@@ -98,7 +98,7 @@ MonoBehaviour:
   formationNum: 0
   m_offset: {x: 0, y: 0, z: 0}
   number: 0
-  TurnTime: 5
+  TurnTime: 20
   target: 0
   soriteTime: 5
   avoidTime: 0.5
@@ -109,6 +109,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1395078140047029776}
     m_Modifications:
+    - target: {fileID: 7107502105528384661, guid: d5531de7fc1088146b606e9ea8f12d73,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_Fighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107502105528384661, guid: d5531de7fc1088146b606e9ea8f12d73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7107502105528344757, guid: d5531de7fc1088146b606e9ea8f12d73,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -163,16 +173,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7107502105528384661, guid: d5531de7fc1088146b606e9ea8f12d73,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy_Fighter
-      objectReference: {fileID: 0}
-    - target: {fileID: 7107502105528384661, guid: d5531de7fc1088146b606e9ea8f12d73,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5531de7fc1088146b606e9ea8f12d73, type: 3}
