@@ -27,5 +27,6 @@ public class AllyAnimation : MonoBehaviour
         counter++;
         if(m_animationPlayTrans.Length > counter) { return; }
         counter = 0;
+        m_timer = 0;
     }
 }

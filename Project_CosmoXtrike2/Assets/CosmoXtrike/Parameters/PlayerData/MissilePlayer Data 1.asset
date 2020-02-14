@@ -20,8 +20,8 @@ MonoBehaviour:
     type: 3}
   m_acceleTime: 3
   m_bulletInterval: 1
-  m_defaultSpeed: 3
-  m_maxSpeed: 6
+  m_defaultSpeed: 1
+  m_maxSpeed: 3
   m_sphereCastRadius: 100
   m_sphereCastDistance: 3000
   m_maxHP: 20

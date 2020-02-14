@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bulletSpeed: 20000
   m_damege: 30
-  m_activeTime: 0
+  m_activeTime: 10
