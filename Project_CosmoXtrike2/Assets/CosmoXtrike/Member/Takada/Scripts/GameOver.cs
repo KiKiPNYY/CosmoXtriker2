@@ -7,12 +7,12 @@ using DG.Tweening;
 public class GameOver : MonoBehaviour
 {
     public bool gameover;
-    [SerializeField] private GameObject cameraObject;   //カメラ
-    [SerializeField] private Vector3 cameraVector;      //カメラを移動させる距離
+    [SerializeField] private Transform cameraPos;       //カメラを移動させる距離
+    [SerializeField] private float moveX, moveY, moveZ; //カメラをx,y,x方向にどれだけ飛ばすか
     [SerializeField] private float moveSpeed;           //カメラを移動させる時間
 
     [SerializeField] private GameObject text;           //表示するテキスト
-    [SerializeField] private float textDisplayTime;      //テキストを何秒後に表示するか
+    [SerializeField] private float textDisplayTime;     //テキストを何秒後に表示するか
 
     [SerializeField] private Image fadeImage;           //透明化させるパネル
     [SerializeField] private float fadeSpeed;           //フェードアウト
@@ -41,21 +41,22 @@ public class GameOver : MonoBehaviour
         //プレイヤーがゲームオーバーになったらこの先の処理を通す
         if (!gameover) { return; }
 
-        CameraSecession(cameraVector);
+        CameraSecession();
         Invoke("TextDisplay", textDisplayTime);
+        Invoke("StartFadeOut", textDisplayTime + 7f);
 
-        if(Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger") || Input.GetMouseButtonDown(0)){ fadeOutStart = true; }
+        //if(Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger") || Input.GetMouseButtonDown(0)){ fadeOutStart = true; }
 
-        StartFadeOut(fadeSpeed);
+        //StartFadeOut();
     }
 
     /// <summary>
     /// カメラの移動
     /// </summary>
     /// <param name="vtr"></param>
-    private void CameraSecession(Vector3 vtr)
+    private void CameraSecession()
     {
-        cameraObject.transform.DOMove(new Vector3(vtr.x, vtr.y, vtr.z), moveSpeed);
+        cameraPos.DOMove(new Vector3(cameraPos.position.x + moveX,cameraPos.position.y + moveY,cameraPos.position.z + moveZ), moveSpeed);
     }
 
     /// <summary>
@@ -71,12 +72,12 @@ public class GameOver : MonoBehaviour
     /// フェードアウト
     /// </summary>
     /// <param name="speed"></param>
-    private void StartFadeOut(float speed)
+    private void StartFadeOut()
     {
-        if (!fadeOutStart) { return; }
+        //if (!fadeOutStart) { return; }
 
         fadeImage.enabled = true;
-        alpha += speed;
+        alpha += fadeSpeed;
         SetAlpha();
 
         if (alpha >= 1)
