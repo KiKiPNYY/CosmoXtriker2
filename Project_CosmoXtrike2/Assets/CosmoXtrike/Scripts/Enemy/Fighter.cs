@@ -99,7 +99,7 @@ public class Fighter : Enemy{
         if (coolTimeMode){ return; }
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if(Physics.Raycast(ray,out hit, 2000.0f)) {
+        if(Physics.Raycast(ray,out hit, 1500.0f)) {
             if(hit.transform.tag == "Player"){
                 Attack();
                 //Debug.Log("ショット！！");
@@ -111,7 +111,7 @@ public class Fighter : Enemy{
     void Search(){
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if(Physics.Raycast(ray,out hit, 3000.0f)) {
+        if(Physics.Raycast(ray,out hit, 2000.0f)) {
             if(hit.transform.tag == "Player"){
                 if (EnemyFighterControll.Instance.CheckTarget()){
                     target = true;
@@ -124,7 +124,7 @@ public class Fighter : Enemy{
     bool Avoidance(){
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if(Physics.Raycast(ray,out hit, 1000.0f)) {
+        if(Physics.Raycast(ray,out hit, 200.0f)) {
             if (hit.transform.tag == "Player"){
                 playerApproach = true;
             }
