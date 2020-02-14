@@ -43,6 +43,7 @@ public class MainGameController : MonoBehaviour
     [SerializeField] private RawImage m_rawImage = null;
     [SerializeField] private SoundData m_soundData = null;
     [SerializeField] private GameObject[] m_changeLayerObject = null;
+    
 
     private float m_timer = 0;
     private float m_fadeTimer = 0;
@@ -90,6 +91,7 @@ public class MainGameController : MonoBehaviour
     {
         if (m_sceneMove) { return; }
 
+        //m_gameOver.TextDisplay();
         m_sceneMove = true;
         m_fadeTimer = 0;
         m_fade = FadeType.fadeOut;

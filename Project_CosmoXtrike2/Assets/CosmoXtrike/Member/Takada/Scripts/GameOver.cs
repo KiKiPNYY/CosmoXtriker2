@@ -14,8 +14,8 @@ public class GameOver : MonoBehaviour
     [SerializeField] private GameObject text;           //表示するテキスト
     [SerializeField] private float textDisplayTime;     //テキストを何秒後に表示するか
 
-    [SerializeField] private Image fadeImage;           //透明化させるパネル
-    [SerializeField] private float fadeSpeed;           //フェードアウト
+    //[SerializeField] private Image fadeImage;           //透明化させるパネル
+    ///[SerializeField] private float fadeSpeed;           //フェードアウト
     private float red, green, blue, alpha;              //パネルの色、不透明度
     private bool fadeOutStart;
     
@@ -23,32 +23,32 @@ public class GameOver : MonoBehaviour
     {
         text.SetActive(false);
 
-        red = fadeImage.color.r;
+        /*red = fadeImage.color.r;
         green = fadeImage.color.g;
         blue = fadeImage.color.b;
         alpha = fadeImage.color.a;
 
-        alpha = 0;
+        alpha = 0;*/
 
         gameover = false;
-        fadeOutStart = false;
+        //fadeOutStart = false;
 
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        //プレイヤーがゲームオーバーになったらこの先の処理を通す
-        if (!gameover) { return; }
+    //// Update is called once per frame
+    //private void Update()
+    //{
+    //    if (Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger") || Input.GetMouseButtonDown(0)) { gameover = true; }
 
-        CameraSecession();
-        Invoke("TextDisplay", textDisplayTime);
-        Invoke("StartFadeOut", textDisplayTime + 7f);
+    //    //プレイヤーがゲームオーバーになったらこの先の処理を通す
+    //    if (!gameover) { return; }
 
-        //if(Input.GetButtonDown("RightTrigger") || Input.GetButtonDown("LeftTrigger") || Input.GetMouseButtonDown(0)){ fadeOutStart = true; }
+    //    CameraSecession();
+    //    Invoke("TextDisplay", textDisplayTime);
+    //    //Invoke("StartFadeOut", textDisplayTime + 7f);
 
-        //StartFadeOut();
-    }
+    //    //StartFadeOut();
+    //}
 
     /// <summary>
     /// カメラの移動
@@ -63,7 +63,7 @@ public class GameOver : MonoBehaviour
     /// テキストの表示
     /// </summary>
     /// <param name="time"></param>
-    private void TextDisplay()
+    public void TextDisplay()
     {
         text.SetActive(true);
     }
@@ -76,8 +76,8 @@ public class GameOver : MonoBehaviour
     {
         //if (!fadeOutStart) { return; }
 
-        fadeImage.enabled = true;
-        alpha += fadeSpeed;
+        //fadeImage.enabled = true;
+        //alpha += fadeSpeed;
         SetAlpha();
 
         if (alpha >= 1)
@@ -92,7 +92,7 @@ public class GameOver : MonoBehaviour
     /// </summary>
     private void SetAlpha()
     {
-        fadeImage.color = new Color(red, green, blue, alpha);
+        //fadeImage.color = new Color(red, green, blue, alpha);
     }
 
 }

@@ -165,6 +165,7 @@ public class PivotControler : MonoBehaviour
         {
             //プレイヤー1に決定
             //   SceneLoadManager.Instnce.LoadScene("Game");
+            SoundManager.Instnce.SEPlay("TitleClick");
             CosmoXtrikerController.PlayerUseShip = UseShip.normal;
             TitleController.Instnce.ChangeScene();
 
@@ -173,6 +174,7 @@ public class PivotControler : MonoBehaviour
         {
             //プレイヤー2に決定
             //  SceneLoadManager.Instnce.LoadScene("Game");
+            SoundManager.Instnce.SEPlay("TitleClick");
             CosmoXtrikerController.PlayerUseShip = UseShip.missile;
             TitleController.Instnce.ChangeScene();
         }

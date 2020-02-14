@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     [SerializeField] private GameObject par;
 
-    
+
 
     private Rigidbody m_rb = null;
     private float m_moveSpeed = 0;
@@ -67,6 +67,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     private bool m_death = false;
     private float m_fadeTime = 0;
     private bool m_deathEffect = false;
+    private bool m_bulletOn = false;
 
     public bool LeverOperation { get; set; }
 
@@ -90,6 +91,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         m_death = false;
         m_fadeTime = 0;
         m_deathEffect = false;
+        m_bulletOn = false;
     }
 
     /// <summary>
@@ -125,9 +127,18 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
     /// <param name="_deltaTime"></param>
     private void BulletUpdate(float _deltaTime)
     {
+        if (!LeverOperation) { return; }
         if (m_death) { return; }
-        if (!m_bulletTrigger) { return; }
+
         m_bulletIntervalTimer += _deltaTime;
+        if (!m_bulletTrigger)
+        {
+            if (m_bulletIntervalTimer < m_playerData.BulletInterval) { return; }
+            m_bulletOn = false;
+            m_bulletIntervalTimer = 0;
+            return;
+        }
+
         if (m_bulletIntervalTimer < m_playerData.BulletInterval) { return; }
         for (int i = 0; i < m_bulletFire.Length; i++)
         {
@@ -178,6 +189,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
 
     public void SearchUpdate()
     {
+        if (!LeverOperation) { return; }
         if (m_death) { return; }
         if (!m_search) { return; }
 
@@ -294,7 +306,7 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
             m_deathEffect = true;
             m_fadeTime = 0;
 
-            for(int i = 0; i < m_model.Length; i++)
+            for (int i = 0; i < m_model.Length; i++)
             {
                 m_model[i].SetActive(false);
             }
@@ -303,14 +315,14 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
             return;
         }
 
-        Debug.Log(m_fadeTime + " : " + m_deathEffect);
+        //Debug.Log(m_fadeTime + " : " + m_deathEffect);
         if (m_fadeTime > m_playerData.FadeTime && m_deathEffect)
         {
             MainGameController.Instnce.MainGameEnd();
         }
-        
+
         //m_deathEffect = true;
-        
+
     }
 
     #region Unity関数
@@ -325,13 +337,14 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         if (CosmoXtrikerController.PlayerUseShip == UseShip.normal)
         {
             m_playerData = m_normalData;
-            m_search = true;
+            m_search = false;
 
         }
         else
         {
             m_playerData = m_missileData;
-            m_search = false;
+
+            m_search = true;
         }
         for (int i = 0; i < m_bulletFire.Length; i++)
         {
@@ -434,6 +447,14 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime * 10);
         //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, loockRotation, Time.deltaTime);
         //this.transform.rotation = Quaternion.Euler(this.transform.localEulerAngles.x + 90 * -y * Time.deltaTime, this.transform.localEulerAngles.y + 90 * x * Time.deltaTime, 45 * -x * Time.deltaTime);
+
+        //m_bulletIntervalTimer += Time.deltaTime;
+        if (Input.GetButtonUp("RightTrigger") || Input.GetKeyUp(KeyCode.Space))
+        {
+            m_bulletTrigger = false;
+        }
+        if (m_bulletOn) { return; }
+
         if (Input.GetButtonDown("RightTrigger") || Input.GetKeyDown(KeyCode.Space))
         {
             for (int i = 0; i < m_bulletFire.Length; i++)
@@ -443,13 +464,10 @@ public class PlayerManager : MonoBehaviour, CommonProcessing
             }
             SoundManager.Instnce.SEPlay("BeamBrun", m_bulletFire[0]);
             m_bulletTrigger = true;
+            m_bulletOn = true;
         }
 
-        if (Input.GetButtonUp("RightTrigger") || Input.GetKeyUp(KeyCode.Space))
-        {
-            m_bulletIntervalTimer = 0;
-            m_bulletTrigger = false;
-        }
+        
     }
 
     private void FixedUpdate()

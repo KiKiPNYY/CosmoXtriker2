@@ -42,6 +42,8 @@ public class CameraManager : MonoBehaviour
 
     public bool PlayerDeath { get; set; }
 
+    [SerializeField] private GameOver m_gameOver = null;
+
     private void Start()
     {
         PlayerDeath = false;
@@ -69,6 +71,7 @@ public class CameraManager : MonoBehaviour
 
         if(PlayerDeath)
         {
+            m_gameOver.TextDisplay();
             this.transform.position += m_playerDeathDirection.normalized * m_moveSpeed * Time.deltaTime;
             return;
         }
