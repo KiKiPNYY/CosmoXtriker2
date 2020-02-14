@@ -6,6 +6,10 @@ TagManager:
   tags:
   - projectile
   - FxTemporaire
+  - Enemy
+  - Ally
+  - EnemyShip
+  - EnemyFlight
   layers:
   - Default
   - TransparentFX
@@ -19,7 +23,7 @@ TagManager:
   - Enemy
   - Player
   - Effect
-  - 
+  - Ally
   - 
   - 
   - 
