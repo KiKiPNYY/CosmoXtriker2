@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98382f1207d6764eb2646b8c4bb2b7c, type: 3}
   m_Name: FigtherDate
   m_EditorClassIdentifier: 
-  hitpoint: 0
+  hitpoint: 300
   speed: 40
-  attack: 0

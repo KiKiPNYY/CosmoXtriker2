@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerMissileData
   m_EditorClassIdentifier: 
   m_bulletSpeed: 20000
-  m_damege: 1
+  m_damege: 15
   m_activeTime: 10
   m_rotationTimeSpeed: 45
   m_trackingMaxDistance: 500
