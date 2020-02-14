@@ -6,9 +6,9 @@ using DG.Tweening;
 
 public class GameOver : MonoBehaviour
 {
-    public bool gameover;
+    private bool gameover;
     [SerializeField] private Transform cameraPos;       //カメラを移動させる距離
-    [SerializeField] private float moveX, moveY, moveZ; //カメラをx,y,x方向にどれだけ飛ばすか
+    [SerializeField] private float moveX, moveY, moveZ; //カメラをx,y,z方向にどれだけ飛ばすか
     [SerializeField] private float moveSpeed;           //カメラを移動させる時間
 
     [SerializeField] private GameObject text;           //表示するテキスト
