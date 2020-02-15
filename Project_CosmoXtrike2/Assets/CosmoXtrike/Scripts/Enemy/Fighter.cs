@@ -78,10 +78,13 @@ public class Fighter : Enemy{
             timer = 0;
             StartCoroutine(AvoidanceTime());
         }
-
+        
         if (target&&!playerApproach){
             LockOnPlayer();
             //Debug.Log("追跡中");
+        }else if (goFirstPoint){
+            LockOnFirstPoint();
+
         }else if(avoidanced&&!target){
             Turn(90, avoidTime);
             return;
@@ -199,9 +202,11 @@ public class Fighter : Enemy{
 
     }
 
-    void LockOnFirstPlayer(){
+    void LockOnFirstPoint(){
+        if (!goFirstPoint) { return; }
         Quaternion targetRotation = Quaternion.LookRotation(firstPoint.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+        if(Vector3.Distance(transform.position ,firstPoint.position) < 3) { goFirstPoint = false; }
     }
 
     bool clockWise = true;
